@@ -14,12 +14,6 @@
 
 
 
-  programs.zsh.enable = true;
-
-  main-user.enable = true;
-  main-user.userName = "n3rsti";
-
-
 home-manager = {
   # also pass inputs to home-manager modules
   extraSpecialArgs = {inherit inputs;};
@@ -28,6 +22,12 @@ home-manager = {
   };
 };
 
+  main-user.enable = true;
+  main-user.userName = "n3rsti";
+  programs.zsh.enable = true;
+
+
+  home-manager.backupFileExtension = "backup";
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -90,7 +90,7 @@ home-manager = {
 
   hardware = {
     graphics.enable = true;
-    
+
     nvidia = {
 
     # Modesetting is required.
@@ -98,7 +98,7 @@ home-manager = {
 
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
     # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
+    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
     # of just the bare essentials.
     powerManagement.enable = false;
 
@@ -108,9 +108,9 @@ home-manager = {
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+    # Support is limited to the Turing and later architectures. Full list of
+    # supported GPUs is at:
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     open = true;
 
@@ -120,7 +120,7 @@ home-manager = {
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };  
+  };
 };
   # Enable sound with pipewire.
   security.rtkit.enable = true;
@@ -165,6 +165,23 @@ home-manager = {
 	pkgs.rofi-wayland
 	pkgs.firefox
 	pkgs.hyprpaper
+	pkgs.signal-desktop
+    pkgs.gcc
+    pkgs.gopls
+    pkgs.stylua
+    pkgs.clang-tools
+    pkgs.lua-language-server
+    pkgs.ripgrep
+    pkgs.cargo
+    pkgs.xclip
+    pkgs.bitwarden-desktop
+    inputs.zed-editor.packages.x86_64-linux.default
+    pkgs.waybar
+    pkgs.zed-editor.fhs
+    pkgs.nixd
+    pkgs.television
+    pkgs.zsh-autosuggestions
+    pkgs.kitty-themes
   #  wget
   ];
 

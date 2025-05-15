@@ -12,10 +12,11 @@ in
     };
   };
 
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   config = lib.mkIf cfg.enable {
     users.users.${cfg.userName} = {
-      isNormalUser = true;
+    isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
