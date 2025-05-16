@@ -173,7 +173,6 @@ home-manager = {
     pkgs.lua-language-server
     pkgs.ripgrep
     pkgs.cargo
-    pkgs.xclip
     pkgs.bitwarden-desktop
     inputs.zed-editor.packages.x86_64-linux.default
     pkgs.waybar
@@ -187,12 +186,15 @@ home-manager = {
     pkgs.freetube
     pkgs.spotify
     pkgs.discord
+    pkgs.copyq
+    pkgs.wl-clipboard
   #  wget
   ];
 
     fonts.packages = with pkgs; [
         pkgs.nerd-fonts.iosevka
         pkgs.font-awesome
+        pkgs.nerd-fonts.space-mono
     ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];

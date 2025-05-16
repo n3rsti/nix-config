@@ -13,6 +13,7 @@
       exec-once = [
         "hyprpaper"
         "waybar"
+        "copyq --start-server"
       ];
 
       env = [
