@@ -1,6 +1,6 @@
 {lib, config, pkgs, ...}:
 
-let 
+let
   cfg = config.main-user;
 in
 {
@@ -17,7 +17,7 @@ in
   config = lib.mkIf cfg.enable {
     users.users.${cfg.userName} = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "dialout" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
     #  thunderbird

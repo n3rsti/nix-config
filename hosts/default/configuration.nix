@@ -182,8 +182,18 @@ home-manager = {
     pkgs.television
     pkgs.zsh-autosuggestions
     pkgs.kitty-themes
+    pkgs.arduino-ide
+    pkgs.pavucontrol
+    pkgs.freetube
+    pkgs.spotify
+    pkgs.discord
   #  wget
   ];
+
+    fonts.packages = with pkgs; [
+        pkgs.nerd-fonts.iosevka
+        pkgs.font-awesome
+    ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
