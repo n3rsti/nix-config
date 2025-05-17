@@ -12,5 +12,10 @@
       ];
       theme = "fwalch";
     };
+    shellAliases = {
+      "nix-update" = "sudo nix-channel --update";
+      "nix-switch" = "sudo nixos-rebuild switch --flake ~/nixos";
+      "nix-test" = "sudo nixos-rebuild test --flake ~/nixos";
+    };
   };
 }

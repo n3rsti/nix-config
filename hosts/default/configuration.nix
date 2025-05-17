@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, inputs, ... }:
-
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -13,6 +12,9 @@
     ];
 
 
+services.resolved.enable = true;
+services.mullvad-vpn.enable = true;
+services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
 home-manager = {
   # also pass inputs to home-manager modules
@@ -79,7 +81,7 @@ home-manager = {
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "us";
+    layout = "us,pl";
     variant = "";
   };
 
@@ -174,9 +176,7 @@ home-manager = {
     pkgs.ripgrep
     pkgs.cargo
     pkgs.bitwarden-desktop
-    inputs.zed-editor.packages.x86_64-linux.default
     pkgs.waybar
-    pkgs.zed-editor.fhs
     pkgs.nixd
     pkgs.television
     pkgs.zsh-autosuggestions
@@ -188,13 +188,21 @@ home-manager = {
     pkgs.discord
     pkgs.copyq
     pkgs.wl-clipboard
-  #  wget
+    pkgs.nwg-look
+    pkgs.prettierd
+    pkgs.gimp
+    pkgs.zed-editor-fhs
+    pkgs.go
   ];
 
     fonts.packages = with pkgs; [
         pkgs.nerd-fonts.iosevka
         pkgs.font-awesome
         pkgs.nerd-fonts.space-mono
+        pkgs.nerd-fonts.zed-mono
+        pkgs.nerd-fonts.im-writing
+        pkgs.nerd-fonts.fira-code
+        pkgs.nerd-fonts.fira-mono
     ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];

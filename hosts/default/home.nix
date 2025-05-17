@@ -8,8 +8,6 @@
       ../../modules/home-manager/git.nix
       ../../modules/home-manager/zsh.nix
       ../../modules/home-manager/kitty.nix
-      ../../modules/home-manager/waybar.nix
-      ../../modules/home-manager/hyprland.nix
     ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -37,6 +35,8 @@
   # environment.
   home.packages = [
     pkgs.zsh
+    pkgs.catppuccin
+    pkgs.catppuccin-gtk
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -88,6 +88,7 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+        #GTK_THEME = "catppuccin-frappe-blue-standard";
   };
 
   # Let Home Manager install and manage itself.
