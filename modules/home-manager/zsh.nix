@@ -14,8 +14,8 @@
     };
     shellAliases = {
       "nix-update" = "sudo nix-channel --update";
-      "nix-switch" = "sudo nixos-rebuild switch --flake ~/nixos";
-      "nix-test" = "sudo nixos-rebuild test --flake ~/nixos";
+      "nix-switch" = "sudo nixos-rebuild switch --flake ~/nixos#\${1:-default}";
+      "nix-test" = "sudo nixos-rebuild test --flake ~/nixos#\${1:-default}";
     };
   };
 }

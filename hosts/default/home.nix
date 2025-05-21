@@ -1,10 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-
-
   imports =
-    [ # Include the results of the hardware scan.
+    [ # Include modules common to all configurations
       ../../modules/home-manager/git.nix
       ../../modules/home-manager/zsh.nix
       ../../modules/home-manager/kitty.nix
@@ -15,12 +13,12 @@
   home.username = "n3rsti";
   home.homeDirectory = "/home/n3rsti";
 
-    home.pointerCursor = {
-        gtk.enable = true;
-        package = pkgs.bibata-cursors;
-        name = "Bibata-Modern-Classic";
-        size = 16;
-    };
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 16;
+  };
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -33,10 +31,11 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.zsh
-    pkgs.catppuccin
-    pkgs.catppuccin-gtk
+  # Allow host-specific configurations to merge with these packages
+  home.packages = with pkgs; [
+    zsh
+    catppuccin
+    catppuccin-gtk
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -88,9 +87,15 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
-        #GTK_THEME = "catppuccin-frappe-blue-standard";
+    #GTK_THEME = "catppuccin-frappe-blue-standard";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  
+  # This will help with merging configurations in derived configurations
+  # It allows host-specific configs to override settings using mkForce if needed
+  nixpkgs.config = lib.mkDefault {
+    allowUnfree = true;
+  };
 }
