@@ -5,17 +5,29 @@
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+
     oh-my-zsh = {
       enable = true;
-      plugins = [
-        "git"
-      ];
+      plugins = [ "git" ];
       theme = "fwalch";
     };
+
+    # Use shellAliases for simple no-argument aliases only
     shellAliases = {
-      "nix-update" = "sudo nix-channel --update";
-      "nix-switch" = "sudo nixos-rebuild switch --flake ~/nixos#\${1:-default}";
-      "nix-test" = "sudo nixos-rebuild test --flake ~/nixos#\${1:-default}";
+      nix-update = "sudo nix-channel --update";
+      nix-switch = "'nix-switch_func'";
+      nix-test = "'nix-test_func'";
     };
+
+    # Use initExtra for functions that need arguments
+    initContent = ''
+      nix-switch_func() {
+        sudo nixos-rebuild switch --flake ~/nixos#"$1"
+      }
+
+      nix-test_func() {
+        sudo nixos-rebuild test --flake ~/nixos#"$1"
+      }
+    '';
   };
 }

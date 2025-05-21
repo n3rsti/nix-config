@@ -4,7 +4,6 @@
 
 { config, pkgs, inputs, lib, ... }: {
   imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
     ../../modules/nixos/main-user.nix
     inputs.home-manager.nixosModules.default
   ];
@@ -24,7 +23,17 @@
   home-manager = {
     # also pass inputs to home-manager modules
     extraSpecialArgs = { inherit inputs; };
-    users = { "n3rsti" = import ./home.nix; };
+    users = {
+      "n3rsti" = { pkgs, ... }: {
+        imports = [ ./home.nix ];
+        home.pointerCursor = {
+          gtk.enable = true;
+          package = pkgs.bibata-cursors;
+          name = "Bibata-Modern-Classic";
+          size = 16;
+        };
+      };
+    };
     # This allows specific host configurations to override home-manager settings
     useGlobalPkgs = true;
     useUserPackages = true;

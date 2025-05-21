@@ -1,24 +1,16 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ # Include modules common to all configurations
-      ../../modules/home-manager/git.nix
-      ../../modules/home-manager/zsh.nix
-      ../../modules/home-manager/kitty.nix
-    ];
+  imports = [ # Include modules common to all configurations
+    ../../modules/home-manager/git.nix
+    ../../modules/home-manager/zsh.nix
+    ../../modules/home-manager/kitty.nix
+  ];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "n3rsti";
   home.homeDirectory = "/home/n3rsti";
-
-  home.pointerCursor = {
-    gtk.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
-    size = 16;
-  };
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -92,10 +84,7 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  
-  # This will help with merging configurations in derived configurations
-  # It allows host-specific configs to override settings using mkForce if needed
-  nixpkgs.config = lib.mkDefault {
-    allowUnfree = true;
-  };
+
+  # Home Manager will use the global nixpkgs config since useGlobalPkgs is enabled
+  # We don't need to set nixpkgs.config here
 }

@@ -1,4 +1,3 @@
-
 { config, pkgs, inputs, ... }: {
   imports = [ # Include the results of the hardware scan.
     # This expects hardware-configuration.nix to be present in this directory
@@ -9,16 +8,9 @@
     inputs.home-manager.nixosModules.default
   ];
 
-  # Override home-manager configuration for this specific host
-  home-manager = {
-    users = { "n3rsti" = import ./home.nix; };
-  };
-
-
   # PC-specific settings
   networking.hostName = "pc"; # Override default hostname
   services.xserver.videoDrivers = [ "nvidia" ];
-
 
   hardware = {
     graphics.enable = true;
