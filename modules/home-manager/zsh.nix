@@ -14,7 +14,7 @@
 
     # Use shellAliases for simple no-argument aliases only
     shellAliases = {
-      nix-update = "sudo nix-channel --update";
+      nix-update = "sudo nix flake update --flake ~/nixos";
       nix-switch = "'nix-switch_func'";
       nix-test = "'nix-test_func'";
     };
