@@ -196,6 +196,10 @@
     pkgs.wget
     pkgs.obs-studio
     pkgs.prismlauncher
+    pkgs.slack
+    pkgs.dunst
+    pkgs.libnotify
+    pkgs.networkmanagerapplet
   ];
 
   fonts.packages = with pkgs; [
