@@ -128,7 +128,7 @@
   users.users.n3rsti = {
     isNormalUser = true;
     description = "n3rsti";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "networkmanager" ];
     packages = with pkgs;
       [
         #  thunderbird
@@ -200,6 +200,8 @@
     pkgs.dunst
     pkgs.libnotify
     pkgs.networkmanagerapplet
+    pkgs.tree
+    pkgs.acpi
   ];
 
   fonts.packages = with pkgs; [
@@ -210,6 +212,8 @@
     pkgs.nerd-fonts.im-writing
     pkgs.nerd-fonts.fira-code
     pkgs.nerd-fonts.fira-mono
+    pkgs.nerd-fonts.jetbrains-mono
+    pkgs.icomoon-feather
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

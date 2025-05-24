@@ -7,19 +7,21 @@
     ../default/configuration.nix
     inputs.home-manager.nixosModules.default
   ];
-  
+
   # Override home-manager configuration for this specific host
-  home-manager = {
-    users = { "n3rsti" = import ./home.nix; };
-  };
+  home-manager = { users = { "n3rsti" = import ./home.nix; }; };
 
   # Laptop-specific settings
   networking.hostName = "laptop"; # Override default hostname
-  
+
+  services.power-profiles-daemon.enable = false;
+
   # Example laptop-specific configurations
-  # services.tlp.enable = true; # Power management
+  powerManagement.enable = true;
+  services.tlp.enable = true; # Power management
+  services.thermald.enable = true;
   # services.auto-cpufreq.enable = true;
-  
+
   # Example display/backlight configuration
   # services.actkbd = {
   #   enable = true;

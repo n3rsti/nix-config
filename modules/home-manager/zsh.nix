@@ -17,6 +17,7 @@
       nix-update = "sudo nix flake update --flake ~/nixos";
       nix-switch = "'nix-switch_func'";
       nix-test = "'nix-test_func'";
+      zed = "zeditor";
     };
 
     # Use initExtra for functions that need arguments
