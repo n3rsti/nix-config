@@ -202,6 +202,16 @@
     pkgs.networkmanagerapplet
     pkgs.tree
     pkgs.acpi
+    pkgs.python3
+    pkgs.btop
+    pkgs.overskride
+    pkgs.blueberry
+    # pkgs.hyprshade
+    pkgs.brightnessctl
+    pkgs.iwgtk
+    pkgs.networkmanager_dmenu
+    python3Packages.pygobject3
+    pkgs.pinentry-gnome3
   ];
 
   fonts.packages = with pkgs; [

@@ -16,6 +16,12 @@
 
   services.power-profiles-daemon.enable = false;
 
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true;
+  # services.blueman.enable = true;
+
+  # programs.light.enable = true;
+
   # Example laptop-specific configurations
   powerManagement.enable = true;
   services.tlp.enable = true; # Power management
