@@ -220,6 +220,9 @@
     python3Packages.pygobject3
     pkgs.pinentry-gnome3
     pkgs.qbittorrent
+    pkgs.hyprpicker
+    pkgs.grim
+    pkgs.slurp
   ];
 
   fonts.packages = with pkgs; [
