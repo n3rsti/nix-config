@@ -144,6 +144,14 @@
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
 
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.dates = "weekly";
+
+  nix.gc.automatic = true;
+  nix.gc.dates = "daily";
+  nix.gc.options = "--delete-older-than 7d";
+  nix.settings.auto-optimise-store = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -208,10 +216,13 @@
     pkgs.blueberry
     # pkgs.hyprshade
     pkgs.brightnessctl
-    pkgs.iwgtk
     pkgs.networkmanager_dmenu
     python3Packages.pygobject3
     pkgs.pinentry-gnome3
+    pkgs.qbittorrent
+    pkgs.hyprpicker
+    pkgs.grim
+    pkgs.slurp
   ];
 
   fonts.packages = with pkgs; [
