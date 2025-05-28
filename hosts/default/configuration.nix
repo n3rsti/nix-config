@@ -223,6 +223,18 @@
     pkgs.hyprpicker
     pkgs.grim
     pkgs.slurp
+    pkgs.R
+    pkgs.rPackages.languageserversetup
+    pkgs.rPackages.languageserver
+    pkgs.air-formatter
+    pkgs.rstudio
+    pkgs.nodejs_24
+    pkgs.fzf
+    pkgs.tmux-sessionizer
+    pkgs.tmux
+    pkgs.ghostty
+    pkgs.unzip
+    pkgs.typescript-language-server
   ];
 
   fonts.packages = with pkgs; [

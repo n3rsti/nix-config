@@ -18,6 +18,7 @@
       nix-switch = "'nix-switch_func'";
       nix-test = "'nix-test_func'";
       zed = "zeditor";
+      vim = "nvim";
     };
 
     # Use initExtra for functions that need arguments
