@@ -3,7 +3,7 @@
 {
   programs.kitty = {
     enable = true;
-    themeFile = "Catppuccin-Mocha";
+    themeFile = "tokyo_night_night";
     settings = {
       background_opacity = 0.9;
       confirm_os_window_close = 0;

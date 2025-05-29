@@ -69,6 +69,7 @@
     NIXOS_OZONE_WL = "1";
     STEAM_EXTRA_COMPAT_TOOLS_PATHS =
       "\${HOME}/.steam/root/compatibilitytools.d";
+    LM_LICENSE_FILE = "\${HOME}/Downloads/license.dat";
   };
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
@@ -105,6 +106,9 @@
   services.printing.enable = true;
 
   services.pulseaudio.enable = false;
+
+  nix.settings.max-jobs = lib.mkDefault 8;
+  nix.settings.cores = 0;
 
   # Enable sound with pipewire.
   security.rtkit.enable = true;
@@ -143,6 +147,8 @@
 
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
+
+  programs.nix-ld.enable = true;
 
   system.autoUpgrade.enable = true;
   system.autoUpgrade.dates = "weekly";
@@ -235,6 +241,8 @@
     pkgs.ghostty
     pkgs.unzip
     pkgs.typescript-language-server
+    pkgs.quartus-prime-lite
+    pkgs.vhdl-ls
   ];
 
   fonts.packages = with pkgs; [
