@@ -2,12 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../../modules/nixos/main-user.nix
+      inputs.home-manager.nixosModules.default
     ];
 
   # Bootloader.
@@ -23,6 +25,24 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  home-manager = {
+    # also pass inputs to home-manager modules
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "n3rsti" = { pkgs, ... }: {
+        imports = [ ./home.nix ];
+      };
+    };
+    # This allows specific host configurations to override home-manager settings
+    useGlobalPkgs = true;
+    useUserPackages = true;
+  };
+
+  main-user.enable = true;
+  main-user.userName = "n3rsti";
+
+
 
   services.openssh = {
     enable = true;
@@ -51,6 +71,8 @@
     layout = "us";
     variant = "";
   };
+
+  programs.zsh.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.n3rsti = {
