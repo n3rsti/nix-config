@@ -16,11 +16,11 @@
 
   services.power-profiles-daemon.enable = false;
   services.libinput = {
-enable = true; 
-        touchpad = {
-          disableWhileTyping = false; # Disable touchpad while typing
-        };
+    enable = true;
+    touchpad = {
+      disableWhileTyping = false; # Disable touchpad while typing
     };
+  };
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true;

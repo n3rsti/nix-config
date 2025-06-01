@@ -2,11 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, lib, ... }: {
+{ config, pkgs, inputs, lib, ... }:
+{
   imports = [ # Include the results of the hardware scan.
     ../../modules/nixos/main-user.nix
     inputs.home-manager.nixosModules.default
   ];
+
+
 
   services.resolved.enable = true;
   services.mullvad-vpn.enable = true;
@@ -243,6 +246,9 @@
     pkgs.typescript-language-server
         #pkgs.quartus-prime-lite
     pkgs.vhdl-ls
+    pkgs.fastfetch
+    pkgs.imagemagick
+    pkgs.chafa
   ];
 
   fonts.packages = with pkgs; [
