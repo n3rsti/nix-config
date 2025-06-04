@@ -244,7 +244,7 @@
     pkgs.ghostty
     pkgs.unzip
     pkgs.typescript-language-server
-    pkgs.quartus-prime-lite
+    # pkgs.quartus-prime-lite
     pkgs.vhdl-ls
     pkgs.fastfetch
     pkgs.imagemagick
