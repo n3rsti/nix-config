@@ -3,6 +3,12 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, inputs, lib, ... }:
+let
+    pkgs_stable = (import inputs.nixpkgs_25_05 {
+      inherit (pkgs) system;
+      config = config.nixpkgs.config;
+    });
+in
 {
   imports = [ # Include the results of the hardware scan.
     ../../modules/nixos/main-user.nix
@@ -244,7 +250,7 @@
     pkgs.ghostty
     pkgs.unzip
     pkgs.typescript-language-server
-    # pkgs.quartus-prime-lite
+    pkgs_stable.quartus-prime-lite
     pkgs.vhdl-ls
     pkgs.fastfetch
     pkgs.imagemagick

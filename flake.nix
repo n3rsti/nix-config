@@ -10,6 +10,9 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    nixpkgs_25_05.url = "github:nixos/nixpkgs/25.05";
+
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
