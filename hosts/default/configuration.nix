@@ -257,6 +257,13 @@ in
     pkgs.chafa
     pkgs.nmap
     pkgs.zip
+    pkgs.glsl_analyzer
+    pkgs.hyprsunset
+    pkgs.ddcutil
+    nodePackages.vscode-json-languageserver
+    vscode-langservers-extracted
+    pkgs.fixjson
+    pkgs.brave
   ];
 
   fonts.packages = with pkgs; [
