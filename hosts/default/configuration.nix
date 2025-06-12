@@ -250,7 +250,7 @@ in
     pkgs.ghostty
     pkgs.unzip
     pkgs.typescript-language-server
-    pkgs_stable.quartus-prime-lite
+    # pkgs_stable.quartus-prime-lite
     pkgs.vhdl-ls
     pkgs.fastfetch
     pkgs.imagemagick
@@ -264,6 +264,7 @@ in
     vscode-langservers-extracted
     pkgs.fixjson
     pkgs.brave
+    pkgs.yt-dlp
   ];
 
   fonts.packages = with pkgs; [
