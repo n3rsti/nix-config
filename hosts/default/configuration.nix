@@ -4,18 +4,15 @@
 
 { config, pkgs, inputs, lib, ... }:
 let
-    pkgs_stable = (import inputs.nixpkgs_25_05 {
-      inherit (pkgs) system;
-      config = config.nixpkgs.config;
-    });
-in
-{
+  pkgs_stable = (import inputs.nixpkgs_25_05 {
+    inherit (pkgs) system;
+    config = config.nixpkgs.config;
+  });
+in {
   imports = [ # Include the results of the hardware scan.
     ../../modules/nixos/main-user.nix
     inputs.home-manager.nixosModules.default
   ];
-
-
 
   services.resolved.enable = true;
   services.mullvad-vpn.enable = true;
@@ -41,6 +38,18 @@ in
           name = "Bibata-Modern-Classic";
           size = 16;
         };
+
+        xdg.mimeApps = {
+          enable = true;
+          defaultApplications = {
+            "text/html" = "librewolf.desktop";
+            "x-scheme-handler/http" = "firefox.desktop";
+            "x-scheme-handler/https" = "firefox.desktop";
+            "x-scheme-handler/about" = "firefox.desktop";
+            "x-scheme-handler/unknown" = "firefox.desktop";
+          };
+        };
+
       };
     };
     # This allows specific host configurations to override home-manager settings
@@ -265,6 +274,12 @@ in
     pkgs.fixjson
     pkgs.brave
     pkgs.yt-dlp
+    pkgs.cava
+    pkgs.lolcat
+    pkgs.pipes
+    pkgs.cmatrix
+    pkgs.firejail
+    pkgs.bambu-studio
   ];
 
   fonts.packages = with pkgs; [
