@@ -16,6 +16,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   systemd.user.services.qbittorrent-nox = {
     description = "qBittorrent-nox Web UI";
     wantedBy = [ "default.target" ];
@@ -113,6 +115,15 @@
   services.flaresolverr = {
     enable = true;
     openFirewall = true;
+  };
+
+
+  services.sonarr = {
+    enable = true;
+    openFirewall = true;
+    user = "n3rsti";
+    group = "users";
+    dataDir = "/home/n3rsti/sonarr";
   };
 
 
