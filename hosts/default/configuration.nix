@@ -280,6 +280,7 @@ in {
     pkgs.cmatrix
     pkgs.firejail
     pkgs.bambu-studio
+    pkgs.jellyfin-media-player
   ];
 
   fonts.packages = with pkgs; [
