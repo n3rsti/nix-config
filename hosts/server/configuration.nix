@@ -157,6 +157,7 @@
   jellyfin-web
   jellyfin-ffmpeg
   qbittorrent-nox
+  wakeonlan
   #  wget
   ];
 
