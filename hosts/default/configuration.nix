@@ -38,6 +38,28 @@ in {
           name = "Bibata-Modern-Classic";
           size = 16;
         };
+
+        xdg.mimeApps = {
+          enable = true;
+          defaultApplications = {
+            # Web-related
+            "text/html" = "librewolf.desktop";
+            "x-scheme-handler/http" = "firefox.desktop";
+            "x-scheme-handler/https" = "firefox.desktop";
+            "x-scheme-handler/about" = "firefox.desktop";
+            "x-scheme-handler/unknown" = "firefox.desktop";
+
+            # Image MIME types for Eye of GNOME
+            "image/png" = "eog.desktop";
+            "image/jpeg" = "eog.desktop";
+            "image/jpg" = "eog.desktop";
+            "image/gif" = "eog.desktop";
+            "image/webp" = "eog.desktop";
+            "image/bmp" = "eog.desktop";
+            "image/tiff" = "eog.desktop";
+          };
+        };
+
       };
     };
     # This allows specific host configurations to override home-manager settings
@@ -64,6 +86,7 @@ in {
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.interfaces.enp34s0 = { wakeOnLan.enable = true; };
 
   programs.hyprland = {
     enable = true;
@@ -266,6 +289,18 @@ in {
     pkgs.typescript-language-server
     pkgs.tailwindcss-language-server
     pkgs.typescript
+    pkgs.cava
+    pkgs.lolcat
+    pkgs.pipes
+    pkgs.cmatrix
+    pkgs.firejail
+    pkgs.bambu-studio
+    pkgs.jellyfin-media-player
+    pkgs.jdk
+    pkgs.gif-for-cli
+    pkgs.feather
+    pkgs.tty-clock
+    pkgs.grimblast
   ];
 
   fonts.packages = with pkgs; [

@@ -16,6 +16,18 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  systemd.user.services.qbittorrent-nox = {
+    description = "qBittorrent-nox Web UI";
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox";
+      Restart = "on-failure";
+    };
+  };
+  virtualisation.docker.enable = true;
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -73,12 +85,53 @@
   };
 
   programs.zsh.enable = true;
+  services.jellyfin = {
+    user = "n3rsti";
+    enable = true;
+    openFirewall = true;
+  };
+  services.radarr = {
+    enable = true;
+    openFirewall = true;
+    user = "n3rsti";
+    group = "users";
+    dataDir = "/home/n3rsti/radarr";
+  };
+
+  services.ombi = {
+    enable = true;
+    openFirewall = true;
+    user = "n3rsti";
+    group = "users";
+    dataDir = "/home/n3rsti/ombi";
+  };
+
+  services.prowlarr = {
+    enable = true;
+    openFirewall = true;
+    dataDir = "/home/n3rsti/prowlarr";
+  };
+
+  services.flaresolverr = {
+    enable = true;
+    openFirewall = true;
+  };
+
+
+  services.sonarr = {
+    enable = true;
+    openFirewall = true;
+    user = "n3rsti";
+    group = "users";
+    dataDir = "/home/n3rsti/sonarr";
+  };
+
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.n3rsti = {
     isNormalUser = true;
     description = "n3rsti";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
   };
 
@@ -94,6 +147,17 @@
   kitty
   neovim
   git
+  ghostty
+  jdk
+  btop
+  tmux
+  go
+  docker
+  jellyfin
+  jellyfin-web
+  jellyfin-ffmpeg
+  qbittorrent-nox
+  wakeonlan
   #  wget
   ];
 
@@ -111,7 +175,7 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 25565 8096 8082 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
