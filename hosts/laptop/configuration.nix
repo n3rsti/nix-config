@@ -24,6 +24,12 @@
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true;
+
+
+  environment.systemPackages = with pkgs; [
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    pkgs.moonlight-qt
+];
   # services.blueman.enable = true;
 
   # programs.light.enable = true;

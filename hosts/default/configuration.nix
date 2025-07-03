@@ -4,18 +4,15 @@
 
 { config, pkgs, inputs, lib, ... }:
 let
-    pkgs_stable = (import inputs.nixpkgs_25_05 {
-      inherit (pkgs) system;
-      config = config.nixpkgs.config;
-    });
-in
-{
+  pkgs_stable = (import inputs.nixpkgs_25_05 {
+    inherit (pkgs) system;
+    config = config.nixpkgs.config;
+  });
+in {
   imports = [ # Include the results of the hardware scan.
     ../../modules/nixos/main-user.nix
     inputs.home-manager.nixosModules.default
   ];
-
-
 
   services.resolved.enable = true;
   services.mullvad-vpn.enable = true;
@@ -265,6 +262,10 @@ in
     pkgs.fixjson
     pkgs.brave
     pkgs.yt-dlp
+    pkgs.vue-language-server
+    pkgs.typescript-language-server
+    pkgs.tailwindcss-language-server
+    pkgs.typescript
   ];
 
   fonts.packages = with pkgs; [
