@@ -133,6 +133,11 @@ in {
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   services.pulseaudio.enable = false;
 
@@ -301,6 +306,8 @@ in {
     pkgs.feather
     pkgs.tty-clock
     pkgs.grimblast
+    pkgs.vlc
+    pkgs.libreoffice-qt6-fresh
   ];
 
   fonts.packages = with pkgs; [
