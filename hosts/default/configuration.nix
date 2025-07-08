@@ -18,6 +18,10 @@ in {
   services.mullvad-vpn.enable = true;
   services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
+  virtualisation.docker.enable = true;
+
+  services.usbmuxd.enable = true;
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
@@ -42,21 +46,28 @@ in {
         xdg.mimeApps = {
           enable = true;
           defaultApplications = {
-            # Web-related
-            "text/html" = "librewolf.desktop";
-            "x-scheme-handler/http" = "firefox.desktop";
-            "x-scheme-handler/https" = "firefox.desktop";
-            "x-scheme-handler/about" = "firefox.desktop";
-            "x-scheme-handler/unknown" = "firefox.desktop";
-
             # Image MIME types for Eye of GNOME
-            "image/png" = "eog.desktop";
-            "image/jpeg" = "eog.desktop";
-            "image/jpg" = "eog.desktop";
-            "image/gif" = "eog.desktop";
-            "image/webp" = "eog.desktop";
-            "image/bmp" = "eog.desktop";
-            "image/tiff" = "eog.desktop";
+            "image/bmp" = "org.gnome.eog.desktop";
+            "image/gif" = "org.gnome.eog.desktop";
+            "image/jpeg" = "org.gnome.eog.desktop";
+            "image/jpg" = "org.gnome.eog.desktop";
+            "image/png" = "org.gnome.eog.desktop";
+            "image/tiff" = "org.gnome.eog.desktop";
+            "image/webp" = "org.gnome.eog.desktop";
+
+            # Web-related
+            "text/html" = "zen-beta.desktop";
+            "x-scheme-handler/http" = "zen-beta.desktop";
+            "x-scheme-handler/https" = "zen-beta.desktop";
+            "x-scheme-handler/chrome" = "zen-beta.desktop";
+
+            # HTML extensions
+            "application/x-extension-htm" = "zen-beta.desktop";
+            "application/x-extension-html" = "zen-beta.desktop";
+            "application/x-extension-shtml" = "zen-beta.desktop";
+            "application/xhtml+xml" = "zen-beta.desktop";
+            "application/x-extension-xhtml" = "zen-beta.desktop";
+            "application/x-extension-xht" = "zen-beta.desktop";
           };
         };
 
@@ -308,6 +319,14 @@ in {
     pkgs.grimblast
     pkgs.vlc
     pkgs.libreoffice-qt6-fresh
+    pkgs.eog
+    pkgs.resources
+    pkgs.altserver-linux
+    pkgs.libimobiledevice
+    pkgs.avahi
+    python313Packages.pip
+    pkgs.nix-ld
+    inputs.zen-browser.packages."${system}".default
   ];
 
   fonts.packages = with pkgs; [
