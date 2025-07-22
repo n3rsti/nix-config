@@ -18,6 +18,11 @@ in {
   services.mullvad-vpn.enable = true;
   services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
+  services.zerotierone = {
+    enable = true;
+    joinNetworks = [ "56374ac9a42a3c0f" ];
+  };
+
   virtualisation.docker.enable = true;
 
   services.usbmuxd.enable = true;
@@ -43,33 +48,33 @@ in {
           size = 16;
         };
 
-        xdg.mimeApps = {
-          enable = true;
-          defaultApplications = {
-            # Image MIME types for Eye of GNOME
-            "image/bmp" = "org.gnome.eog.desktop";
-            "image/gif" = "org.gnome.eog.desktop";
-            "image/jpeg" = "org.gnome.eog.desktop";
-            "image/jpg" = "org.gnome.eog.desktop";
-            "image/png" = "org.gnome.eog.desktop";
-            "image/tiff" = "org.gnome.eog.desktop";
-            "image/webp" = "org.gnome.eog.desktop";
-
-            # Web-related
-            "text/html" = "zen-beta.desktop";
-            "x-scheme-handler/http" = "zen-beta.desktop";
-            "x-scheme-handler/https" = "zen-beta.desktop";
-            "x-scheme-handler/chrome" = "zen-beta.desktop";
-
-            # HTML extensions
-            "application/x-extension-htm" = "zen-beta.desktop";
-            "application/x-extension-html" = "zen-beta.desktop";
-            "application/x-extension-shtml" = "zen-beta.desktop";
-            "application/xhtml+xml" = "zen-beta.desktop";
-            "application/x-extension-xhtml" = "zen-beta.desktop";
-            "application/x-extension-xht" = "zen-beta.desktop";
-          };
-        };
+        # xdg.mimeApps = {
+        #   enable = true;
+        #   defaultApplications = {
+        #     # Image MIME types for Eye of GNOME
+        #     "image/bmp" = "org.gnome.eog.desktop";
+        #     "image/gif" = "org.gnome.eog.desktop";
+        #     "image/jpeg" = "org.gnome.eog.desktop";
+        #     "image/jpg" = "org.gnome.eog.desktop";
+        #     "image/png" = "org.gnome.eog.desktop";
+        #     "image/tiff" = "org.gnome.eog.desktop";
+        #     "image/webp" = "org.gnome.eog.desktop";
+        #
+        #     # Web-related
+        #     "text/html" = "zen-beta.desktop";
+        #     "x-scheme-handler/http" = "zen-beta.desktop";
+        #     "x-scheme-handler/https" = "zen-beta.desktop";
+        #     "x-scheme-handler/chrome" = "zen-beta.desktop";
+        #
+        #     # HTML extensions
+        #     "application/x-extension-htm" = "zen-beta.desktop";
+        #     "application/x-extension-html" = "zen-beta.desktop";
+        #     "application/x-extension-shtml" = "zen-beta.desktop";
+        #     "application/xhtml+xml" = "zen-beta.desktop";
+        #     "application/x-extension-xhtml" = "zen-beta.desktop";
+        #     "application/x-extension-xht" = "zen-beta.desktop";
+        #   };
+        # };
 
       };
     };
@@ -235,8 +240,7 @@ in {
     pkgs.wl-clipboard
     pkgs.nwg-look
     pkgs.prettierd
-    pkgs.gimp
-    pkgs.zed-editor-fhs
+    pkgs_stable.gimp
     pkgs.go
     pkgs.dmidecode
     pkgs.protonup
@@ -254,7 +258,7 @@ in {
     pkgs.lutris
     pkgs.wget
     pkgs.obs-studio
-    pkgs.prismlauncher
+    pkgs_stable.prismlauncher
     pkgs.slack
     pkgs.dunst
     pkgs.libnotify
@@ -301,10 +305,8 @@ in {
     pkgs.fixjson
     pkgs.brave
     pkgs.yt-dlp
-    pkgs.vue-language-server
-    pkgs.typescript-language-server
+    # pkgs.vue-language-server
     pkgs.tailwindcss-language-server
-    pkgs.typescript
     pkgs.cava
     pkgs.lolcat
     pkgs.pipes
@@ -312,7 +314,7 @@ in {
     pkgs.firejail
     pkgs.bambu-studio
     pkgs.jellyfin-media-player
-    pkgs.jdk
+    # pkgs_stable.jdk
     pkgs.gif-for-cli
     pkgs.feather
     pkgs.tty-clock
@@ -327,6 +329,9 @@ in {
     python313Packages.pip
     pkgs.nix-ld
     inputs.zen-browser.packages."${system}".default
+    pkgs.zed-editor-fhs_git
+    # pkgs.vtsls
+    pkgs.typescript
   ];
 
   fonts.packages = with pkgs; [

@@ -19,6 +19,8 @@
     openFirewall = true;
   };
 
+  hardware.opentabletdriver.enable = true;
+
   hardware = {
     graphics.enable = true;
 
@@ -53,4 +55,10 @@
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   };
+
+  environment.systemPackages = with pkgs;
+    [
+      pkgs.osu-lazer
+      # pkgs.opentabletdriver
+    ];
 }
