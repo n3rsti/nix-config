@@ -225,6 +225,8 @@ in {
     pkgs.lua-language-server
     pkgs.ripgrep
     pkgs.cargo
+    pkgs.rustup
+    pkgs.rust-analyzer
     pkgs.bitwarden-desktop
     pkgs.waybar
     pkgs.nixd
@@ -332,6 +334,10 @@ in {
     pkgs.zed-editor-fhs_git
     # pkgs.vtsls
     pkgs.typescript
+    pkgs.jdt-language-server
+    pkgs.hoppscotch
+    pkgs.lsof
+    pkgs.lombok
   ];
 
   fonts.packages = with pkgs; [
@@ -363,7 +369,7 @@ in {
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedUDPPorts = [ 9993 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

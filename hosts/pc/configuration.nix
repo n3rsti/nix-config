@@ -56,9 +56,10 @@
     };
   };
 
-  environment.systemPackages = with pkgs;
-    [
-      pkgs.osu-lazer
-      # pkgs.opentabletdriver
-    ];
+  environment.systemPackages = with pkgs; [
+    pkgs.osu-lazer
+    # pkgs.opentabletdriver
+
+    (pkgs.heroic.override { extraPkgs = pkgs: [ pkgs.gamescope ]; })
+  ];
 }
