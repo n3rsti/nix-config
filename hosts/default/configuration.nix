@@ -182,7 +182,7 @@ in {
   users.users.n3rsti = {
     isNormalUser = true;
     description = "n3rsti";
-    extraGroups = [ "networkmanager" "wheel" "networkmanager" ];
+    extraGroups = [ "networkmanager" "wheel" "networkmanager" "ydotool" ];
     packages = with pkgs;
       [
         #  thunderbird
@@ -338,6 +338,7 @@ in {
     pkgs.hoppscotch
     pkgs.lsof
     pkgs.lombok
+    pkgs.evtest
   ];
 
   fonts.packages = with pkgs; [

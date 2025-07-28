@@ -19,6 +19,11 @@
     openFirewall = true;
   };
 
+  programs.ydotool = {
+    enable = true;
+    group = "users";
+  };
+
   hardware.opentabletdriver.enable = true;
 
   hardware = {
