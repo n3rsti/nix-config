@@ -26,6 +26,7 @@ in {
   virtualisation.docker.enable = true;
 
   services.usbmuxd.enable = true;
+  services.tailscale.enable = true;
 
   programs.steam = {
     enable = true;
@@ -339,6 +340,11 @@ in {
     pkgs.lsof
     pkgs.lombok
     pkgs.evtest
+    pkgs.nextcloud-client
+    pkgs.wine
+    pkgs.wine64
+    pkgs.netcat-gnu
+    pkgs.rofimoji
   ];
 
   fonts.packages = with pkgs; [
