@@ -2,14 +2,24 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, lib, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 let
-  pkgs_stable = (import inputs.nixpkgs_25_05 {
-    inherit (pkgs) system;
-    config = config.nixpkgs.config;
-  });
-in {
-  imports = [ # Include the results of the hardware scan.
+  pkgs_stable = (
+    import inputs.nixpkgs_25_05 {
+      inherit (pkgs) system;
+      config = config.nixpkgs.config;
+    }
+  );
+in
+{
+  imports = [
+    # Include the results of the hardware scan.
     ../../modules/nixos/main-user.nix
     inputs.home-manager.nixosModules.default
   ];
@@ -40,44 +50,46 @@ in {
     # also pass inputs to home-manager modules
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "n3rsti" = { pkgs, ... }: {
-        imports = [ ./home.nix ];
-        home.pointerCursor = {
-          gtk.enable = true;
-          package = pkgs.bibata-cursors;
-          name = "Bibata-Modern-Classic";
-          size = 16;
+      "n3rsti" =
+        { pkgs, ... }:
+        {
+          imports = [ ./home.nix ];
+          home.pointerCursor = {
+            gtk.enable = true;
+            package = pkgs.bibata-cursors;
+            name = "Bibata-Modern-Classic";
+            size = 16;
+          };
+
+          # xdg.mimeApps = {
+          #   enable = true;
+          #   defaultApplications = {
+          #     # Image MIME types for Eye of GNOME
+          #     "image/bmp" = "org.gnome.eog.desktop";
+          #     "image/gif" = "org.gnome.eog.desktop";
+          #     "image/jpeg" = "org.gnome.eog.desktop";
+          #     "image/jpg" = "org.gnome.eog.desktop";
+          #     "image/png" = "org.gnome.eog.desktop";
+          #     "image/tiff" = "org.gnome.eog.desktop";
+          #     "image/webp" = "org.gnome.eog.desktop";
+          #
+          #     # Web-related
+          #     "text/html" = "zen-beta.desktop";
+          #     "x-scheme-handler/http" = "zen-beta.desktop";
+          #     "x-scheme-handler/https" = "zen-beta.desktop";
+          #     "x-scheme-handler/chrome" = "zen-beta.desktop";
+          #
+          #     # HTML extensions
+          #     "application/x-extension-htm" = "zen-beta.desktop";
+          #     "application/x-extension-html" = "zen-beta.desktop";
+          #     "application/x-extension-shtml" = "zen-beta.desktop";
+          #     "application/xhtml+xml" = "zen-beta.desktop";
+          #     "application/x-extension-xhtml" = "zen-beta.desktop";
+          #     "application/x-extension-xht" = "zen-beta.desktop";
+          #   };
+          # };
+
         };
-
-        # xdg.mimeApps = {
-        #   enable = true;
-        #   defaultApplications = {
-        #     # Image MIME types for Eye of GNOME
-        #     "image/bmp" = "org.gnome.eog.desktop";
-        #     "image/gif" = "org.gnome.eog.desktop";
-        #     "image/jpeg" = "org.gnome.eog.desktop";
-        #     "image/jpg" = "org.gnome.eog.desktop";
-        #     "image/png" = "org.gnome.eog.desktop";
-        #     "image/tiff" = "org.gnome.eog.desktop";
-        #     "image/webp" = "org.gnome.eog.desktop";
-        #
-        #     # Web-related
-        #     "text/html" = "zen-beta.desktop";
-        #     "x-scheme-handler/http" = "zen-beta.desktop";
-        #     "x-scheme-handler/https" = "zen-beta.desktop";
-        #     "x-scheme-handler/chrome" = "zen-beta.desktop";
-        #
-        #     # HTML extensions
-        #     "application/x-extension-htm" = "zen-beta.desktop";
-        #     "application/x-extension-html" = "zen-beta.desktop";
-        #     "application/x-extension-shtml" = "zen-beta.desktop";
-        #     "application/xhtml+xml" = "zen-beta.desktop";
-        #     "application/x-extension-xhtml" = "zen-beta.desktop";
-        #     "application/x-extension-xht" = "zen-beta.desktop";
-        #   };
-        # };
-
-      };
     };
     # This allows specific host configurations to override home-manager settings
     useGlobalPkgs = true;
@@ -85,6 +97,7 @@ in {
   };
 
   main-user.enable = true;
+
   main-user.userName = "n3rsti";
   programs.zsh.enable = true;
 
@@ -103,7 +116,9 @@ in {
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.interfaces.enp34s0 = { wakeOnLan.enable = true; };
+  networking.interfaces.enp34s0 = {
+    wakeOnLan.enable = true;
+  };
 
   programs.hyprland = {
     enable = true;
@@ -113,8 +128,7 @@ in {
   environment.sessionVariables = {
     #WLR_NO_HARDWARE_CURSOR = "1";
     NIXOS_OZONE_WL = "1";
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS =
-      "\${HOME}/.steam/root/compatibilitytools.d";
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
     LM_LICENSE_FILE = "\${HOME}/Downloads/license.dat";
   };
   # Set your time zone.
@@ -183,11 +197,15 @@ in {
   users.users.n3rsti = {
     isNormalUser = true;
     description = "n3rsti";
-    extraGroups = [ "networkmanager" "wheel" "networkmanager" "ydotool" ];
-    packages = with pkgs;
-      [
-        #  thunderbird
-      ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "networkmanager"
+      "ydotool"
+    ];
+    packages = with pkgs; [
+      #  thunderbird
+    ];
   };
 
   # Install firefox.
@@ -226,8 +244,8 @@ in {
     pkgs.lua-language-server
     pkgs.ripgrep
     pkgs.cargo
-    pkgs.rustup
     pkgs.rust-analyzer
+    pkgs.rustup
     pkgs.bitwarden-desktop
     pkgs.waybar
     pkgs.nixd
@@ -256,7 +274,7 @@ in {
     pkgs.bear
     pkgs.package-version-server
     pkgs.nil
-    pkgs.nixfmt-classic
+    pkgs.nixfmt-rfc-style
     pkgs.path-of-building
     pkgs.lutris
     pkgs.wget
@@ -345,6 +363,15 @@ in {
     pkgs.wine64
     pkgs.netcat-gnu
     pkgs.rofimoji
+    pkgs.trayscale
+    pkgs.gh
+    lua51Packages.tiktoken_core
+    pkgs.lynx
+    pkgs.postman
+    pkgs.go-blueprint
+    pkgs.chromium
+    pkgs.jq
+    pkgs.rippkgs
   ];
 
   fonts.packages = with pkgs; [
@@ -359,7 +386,10 @@ in {
     pkgs.icomoon-feather
   ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
