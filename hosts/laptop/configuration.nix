@@ -1,5 +1,12 @@
-{ config, pkgs, inputs, ... }: {
-  imports = [ # Include the results of the hardware scan.
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+{
+  imports = [
+    # Include the results of the hardware scan.
     # This expects hardware-configuration.nix to be present in this directory
     # Generate it using: sudo nixos-generate-config --show-hardware-config > hardware-configuration.nix
     ./hardware-configuration.nix
@@ -9,7 +16,11 @@
   ];
 
   # Override home-manager configuration for this specific host
-  home-manager = { users = { "n3rsti" = import ./home.nix; }; };
+  home-manager = {
+    users = {
+      "n3rsti" = import ./home.nix;
+    };
+  };
 
   # Laptop-specific settings
   networking.hostName = "laptop"; # Override default hostname
@@ -25,11 +36,11 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true;
 
-
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     pkgs.moonlight-qt
-];
+    pkgs.brightnessctl
+  ];
   # services.blueman.enable = true;
 
   # programs.light.enable = true;

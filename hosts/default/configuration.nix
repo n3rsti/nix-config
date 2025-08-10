@@ -291,7 +291,6 @@ in
     pkgs.overskride
     pkgs.blueberry
     # pkgs.hyprshade
-    pkgs.brightnessctl
     pkgs.networkmanager_dmenu
     python3Packages.pygobject3
     pkgs.pinentry-gnome3
@@ -372,6 +371,9 @@ in
     pkgs.chromium
     pkgs.jq
     pkgs.rippkgs
+    pkgs.quickshell
+    pkgs.qt5.full
+    pkgs.kdePackages.qtdeclarative
   ];
 
   fonts.packages = with pkgs; [
