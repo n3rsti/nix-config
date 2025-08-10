@@ -153,8 +153,8 @@ in
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  # services.displayManager.gdm.enable = true;
+  # services.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -230,7 +230,6 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     pkgs.neovim
     pkgs.kitty
     pkgs.rofi-wayland
@@ -374,6 +373,7 @@ in
     pkgs.quickshell
     pkgs.qt5.full
     pkgs.kdePackages.qtdeclarative
+    pkgs.nautilus
   ];
 
   fonts.packages = with pkgs; [
