@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ../../modules/nixos/main-user.nix
       inputs.home-manager.nixosModules.default
+
     ];
 
   # Bootloader.
@@ -55,6 +56,39 @@
   main-user.userName = "n3rsti";
 
 
+  services.tailscale.enable = true;
+
+
+
+services.nextcloud = {
+  enable = true;
+  https = true;
+  package = pkgs.nextcloud31;
+  hostName = "server.tail3ce7af.ts.net";
+  config.adminpassFile = "/etc/nextcloud-admin-pass";
+  config.dbtype = "sqlite";
+  settings.trusted_domains = [
+    "localhost"
+    "server.tail3ce7af.ts.net"
+    "100.72.98.44"
+  ];
+  extraApps = {
+    inherit (config.services.nextcloud.package.packages.apps) contacts calendar tasks;
+  };
+  extraAppsEnable = true;
+  configureRedis = true;
+};
+
+services.nginx = {
+  enable = true;
+
+  virtualHosts."server.tail3ce7af.ts.net" = {
+    forceSSL = true;
+    enableACME = false;
+    sslCertificate = "/etc/ssl/server.tail3ce7af.ts.net.crt";
+    sslCertificateKey = "/etc/ssl/server.tail3ce7af.ts.net.key";
+  };
+};
 
   services.openssh = {
     enable = true;
@@ -158,6 +192,8 @@
   jellyfin-ffmpeg
   qbittorrent-nox
   wakeonlan
+  makemkv
+  nextcloud31
   #  wget
   ];
 
@@ -175,11 +211,12 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 25565 8096 8082 ];
+  networking.firewall.allowedTCPPorts = [ 25565 8096 8082 80 443 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
+boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
