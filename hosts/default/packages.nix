@@ -1,0 +1,159 @@
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}:
+let
+  pkgs_stable = (
+    import inputs.nixpkgs_25_05 {
+      inherit (pkgs) system;
+      config = config.nixpkgs.config;
+    }
+  );
+in
+{
+  environment.systemPackages = with pkgs; [
+    # dev tools
+    pkgs.neovim
+    pkgs.gcc
+    pkgs.gopls
+    pkgs.stylua
+    pkgs.clang-tools
+    pkgs.lua-language-server
+    pkgs.cargo
+    pkgs.rust-analyzer
+    pkgs.rustup
+    pkgs.prettierd
+    pkgs.package-version-server
+    pkgs.nil
+    pkgs.nixfmt-rfc-style
+    pkgs.bear
+    pkgs.python3
+    pkgs.python3Packages.pygobject3
+    pkgs.R
+    pkgs.rPackages.languageserversetup
+    pkgs.rPackages.languageserver
+    pkgs.air-formatter
+    pkgs.typescript-language-server
+    pkgs.glsl_analyzer
+    pkgs.vhdl-ls
+    pkgs.nodePackages.vscode-json-languageserver
+    pkgs.vscode-langservers-extracted
+    pkgs.fixjson
+    pkgs.tailwindcss-language-server
+    pkgs.nixd
+    pkgs.go
+    pkgs.gnumake
+    pkgs.glew
+    pkgs.glfw
+    pkgs.pkg-config
+    pkgs.glm
+    pkgs.nodejs_24
+    pkgs.zed-editor-fhs_git
+    pkgs.typescript
+    pkgs.jdt-language-server
+    pkgs.lombok
+    pkgs.gh
+    pkgs.lua51Packages.tiktoken_core
+    pkgs.postman
+    pkgs.go-blueprint
+    pkgs.python313Packages.pip
+    pkgs.nix-ld
+
+    # apps
+    pkgs.kitty
+    pkgs.rofi-wayland
+    pkgs.firefox
+    pkgs.signal-desktop
+    pkgs.bitwarden-desktop
+    pkgs.freetube
+    pkgs.spotify
+    pkgs.discord
+    pkgs.copyq
+    pkgs_stable.gimp
+    pkgs.legcord
+    pkgs.path-of-building
+    pkgs.lutris
+    pkgs.obs-studio
+    pkgs_stable.prismlauncher
+    pkgs.slack
+    pkgs.qbittorrent
+    pkgs.ghostty
+    pkgs.brave
+    pkgs.jellyfin-media-player
+    pkgs.feather
+    pkgs.vlc
+    pkgs.libreoffice-qt6-fresh
+    pkgs.eog
+    pkgs.resources
+    inputs.zen-browser.packages."${system}".default
+    pkgs.hoppscotch
+    pkgs.nextcloud-client
+    pkgs.wine
+    pkgs.wine64
+    pkgs.rofimoji
+    pkgs.trayscale
+    pkgs.lynx
+    pkgs.chromium
+    pkgs.quickshell
+    pkgs.nautilus
+
+    # system
+    pkgs.hyprpaper
+    pkgs.ripgrep
+    pkgs.waybar
+    pkgs.television
+    pkgs.zsh-autosuggestions
+    pkgs.kitty-themes
+    pkgs.pavucontrol
+    pkgs.wl-clipboard
+    pkgs.nwg-look
+    pkgs.dmidecode
+    pkgs.protonup
+    pkgs.wget
+    pkgs.dunst
+    pkgs.libnotify
+    pkgs.networkmanagerapplet
+    pkgs.tree
+    pkgs.acpi
+    pkgs.btop
+    pkgs.overskride
+    pkgs.blueberry
+    pkgs.networkmanager_dmenu
+    pkgs.pinentry-gnome3
+    pkgs.hyprpicker
+    pkgs.grim
+    pkgs.slurp
+    pkgs.fzf
+    pkgs.tmux-sessionizer
+    pkgs.tmux
+    pkgs.unzip
+    pkgs.fastfetch
+    pkgs.imagemagick
+    pkgs.chafa
+    pkgs.nmap
+    pkgs.zip
+    pkgs.hyprsunset
+    pkgs.ddcutil
+    pkgs.yt-dlp
+    pkgs.cava
+    pkgs.lolcat
+    pkgs.pipes
+    pkgs.cmatrix
+    pkgs.firejail
+    pkgs.gif-for-cli
+    pkgs.tty-clock
+    pkgs.grimblast
+    pkgs.altserver-linux
+    pkgs.libimobiledevice
+    pkgs.avahi
+    pkgs.lsof
+    pkgs.evtest
+    pkgs.netcat-gnu
+    pkgs.jq
+    pkgs.rippkgs
+    pkgs.qt5.full
+    pkgs.kdePackages.qtdeclarative
+  ];
+}

@@ -1,50 +1,23 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# and in the NixOS manual (accessible by running 'nixos-help').
 
 {
-  config,
   pkgs,
   inputs,
   lib,
   ...
 }:
-let
-  pkgs_stable = (
-    import inputs.nixpkgs_25_05 {
-      inherit (pkgs) system;
-      config = config.nixpkgs.config;
-    }
-  );
-in
 {
   imports = [
     # Include the results of the hardware scan.
     ../../modules/nixos/main-user.nix
+    ./packages.nix
     inputs.home-manager.nixosModules.default
   ];
 
-  services.resolved.enable = true;
-  services.mullvad-vpn.enable = true;
-  services.mullvad-vpn.package = pkgs.mullvad-vpn;
-
-  services.zerotierone = {
-    enable = true;
-    joinNetworks = [ "56374ac9a42a3c0f" ];
-  };
-
-  virtualisation.docker.enable = true;
-
-  services.usbmuxd.enable = true;
-  services.tailscale.enable = true;
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-  };
-
-  programs.gamemode.enable = true;
+  main-user.enable = true;
+  main-user.userName = "n3rsti";
 
   home-manager = {
     # also pass inputs to home-manager modules
@@ -94,14 +67,23 @@ in
     # This allows specific host configurations to override home-manager settings
     useGlobalPkgs = true;
     useUserPackages = true;
+    backupFileExtension = "backup";
   };
 
-  main-user.enable = true;
-
-  main-user.userName = "n3rsti";
-  programs.zsh.enable = true;
-
-  home-manager.backupFileExtension = "backup";
+  # Define a user account. Don't forget to set a password with 'passwd'.
+  users.users.n3rsti = {
+    isNormalUser = true;
+    description = "n3rsti";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "networkmanager"
+      "ydotool"
+    ];
+    packages = with pkgs; [
+      #  thunderbird
+    ];
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -120,17 +102,12 @@ in
     wakeOnLan.enable = true;
   };
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedUDPPorts = [ 9993 ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
 
-  environment.sessionVariables = {
-    #WLR_NO_HARDWARE_CURSOR = "1";
-    NIXOS_OZONE_WL = "1";
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
-    LM_LICENSE_FILE = "\${HOME}/Downloads/license.dat";
-  };
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
@@ -149,6 +126,11 @@ in
     LC_TIME = "pl_PL.UTF-8";
   };
 
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -162,18 +144,8 @@ in
     variant = "";
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
-
-  services.pulseaudio.enable = false;
-
-  nix.settings.max-jobs = lib.mkDefault 8;
-  nix.settings.cores = 0;
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.xserver.libinput.enable = true;
 
   # Enable sound with pipewire.
   security.rtkit.enable = true;
@@ -190,191 +162,67 @@ in
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.pulseaudio.enable = false;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.n3rsti = {
-    isNormalUser = true;
-    description = "n3rsti";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "networkmanager"
-      "ydotool"
-    ];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
   };
+
+  services.resolved.enable = true;
+  services.mullvad-vpn.enable = true;
+  services.mullvad-vpn.package = pkgs.mullvad-vpn;
+
+  services.zerotierone = {
+    enable = true;
+    joinNetworks = [ "56374ac9a42a3c0f" ];
+  };
+
+  services.usbmuxd.enable = true;
+  services.tailscale.enable = true;
+
+  virtualisation.docker.enable = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+
+  programs.gamemode.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  programs.zsh.enable = true;
 
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
 
   programs.nix-ld.enable = true;
 
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.dates = "weekly";
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  nix.settings.max-jobs = lib.mkDefault 8;
+  nix.settings.cores = 0;
+
+  nix.settings.auto-optimise-store = true;
 
   nix.gc.automatic = true;
   nix.gc.dates = "daily";
   nix.gc.options = "--delete-older-than 7d";
-  nix.settings.auto-optimise-store = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    pkgs.neovim
-    pkgs.kitty
-    pkgs.rofi-wayland
-    pkgs.firefox
-    pkgs.hyprpaper
-    pkgs.signal-desktop
-    pkgs.gcc
-    pkgs.gopls
-    pkgs.stylua
-    pkgs.clang-tools
-    pkgs.lua-language-server
-    pkgs.ripgrep
-    pkgs.cargo
-    pkgs.rust-analyzer
-    pkgs.rustup
-    pkgs.bitwarden-desktop
-    pkgs.waybar
-    pkgs.nixd
-    pkgs.television
-    pkgs.zsh-autosuggestions
-    pkgs.kitty-themes
-    pkgs.arduino-ide
-    pkgs.pavucontrol
-    pkgs.freetube
-    pkgs.spotify
-    pkgs.discord
-    pkgs.copyq
-    pkgs.wl-clipboard
-    pkgs.nwg-look
-    pkgs.prettierd
-    pkgs_stable.gimp
-    pkgs.go
-    pkgs.dmidecode
-    pkgs.protonup
-    pkgs.legcord
-    pkgs.gnumake
-    pkgs.glew
-    pkgs.glfw
-    pkgs.pkg-config
-    pkgs.glm
-    pkgs.bear
-    pkgs.package-version-server
-    pkgs.nil
-    pkgs.nixfmt-rfc-style
-    pkgs.path-of-building
-    pkgs.lutris
-    pkgs.wget
-    pkgs.obs-studio
-    pkgs_stable.prismlauncher
-    pkgs.slack
-    pkgs.dunst
-    pkgs.libnotify
-    pkgs.networkmanagerapplet
-    pkgs.tree
-    pkgs.acpi
-    pkgs.python3
-    pkgs.btop
-    pkgs.overskride
-    pkgs.blueberry
-    # pkgs.hyprshade
-    pkgs.networkmanager_dmenu
-    python3Packages.pygobject3
-    pkgs.pinentry-gnome3
-    pkgs.qbittorrent
-    pkgs.hyprpicker
-    pkgs.grim
-    pkgs.slurp
-    pkgs.R
-    pkgs.rPackages.languageserversetup
-    pkgs.rPackages.languageserver
-    pkgs.air-formatter
-    pkgs.rstudio
-    pkgs.nodejs_24
-    pkgs.fzf
-    pkgs.tmux-sessionizer
-    pkgs.tmux
-    pkgs.ghostty
-    pkgs.unzip
-    pkgs.typescript-language-server
-    # pkgs_stable.quartus-prime-lite
-    pkgs.vhdl-ls
-    pkgs.fastfetch
-    pkgs.imagemagick
-    pkgs.chafa
-    pkgs.nmap
-    pkgs.zip
-    pkgs.glsl_analyzer
-    pkgs.hyprsunset
-    pkgs.ddcutil
-    nodePackages.vscode-json-languageserver
-    vscode-langservers-extracted
-    pkgs.fixjson
-    pkgs.brave
-    pkgs.yt-dlp
-    # pkgs.vue-language-server
-    pkgs.tailwindcss-language-server
-    pkgs.cava
-    pkgs.lolcat
-    pkgs.pipes
-    pkgs.cmatrix
-    pkgs.firejail
-    pkgs.bambu-studio
-    pkgs.jellyfin-media-player
-    # pkgs_stable.jdk
-    pkgs.gif-for-cli
-    pkgs.feather
-    pkgs.tty-clock
-    pkgs.grimblast
-    pkgs.vlc
-    pkgs.libreoffice-qt6-fresh
-    pkgs.eog
-    pkgs.resources
-    pkgs.altserver-linux
-    pkgs.libimobiledevice
-    pkgs.avahi
-    python313Packages.pip
-    pkgs.nix-ld
-    inputs.zen-browser.packages."${system}".default
-    pkgs.zed-editor-fhs_git
-    # pkgs.vtsls
-    pkgs.typescript
-    pkgs.jdt-language-server
-    pkgs.hoppscotch
-    pkgs.lsof
-    pkgs.lombok
-    pkgs.evtest
-    pkgs.nextcloud-client
-    pkgs.wine
-    pkgs.wine64
-    pkgs.netcat-gnu
-    pkgs.rofimoji
-    pkgs.trayscale
-    pkgs.gh
-    lua51Packages.tiktoken_core
-    pkgs.lynx
-    pkgs.postman
-    pkgs.go-blueprint
-    pkgs.chromium
-    pkgs.jq
-    pkgs.rippkgs
-    pkgs.quickshell
-    pkgs.qt5.full
-    pkgs.kdePackages.qtdeclarative
-    pkgs.nautilus
-  ];
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.dates = "weekly";
 
   fonts.packages = with pkgs; [
     pkgs.nerd-fonts.iosevka
@@ -388,10 +236,12 @@ in
     pkgs.icomoon-feather
   ];
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  environment.sessionVariables = {
+    #WLR_NO_HARDWARE_CURSOR = "1";
+    NIXOS_OZONE_WL = "1";
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
+    LM_LICENSE_FILE = "\${HOME}/Downloads/license.dat";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -406,15 +256,9 @@ in
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  networking.firewall.allowedUDPPorts = [ 9993 ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # on your system were taken. It's perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
