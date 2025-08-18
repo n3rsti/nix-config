@@ -60,10 +60,16 @@ in
     pkgs.go-blueprint
     pkgs.python313Packages.pip
     pkgs.nix-ld
+    pkgs.python313Packages.cssbeautifier
+    pkgs.python313Packages.jsbeautifier
 
     # apps
     pkgs.kitty
-    pkgs.rofi-wayland
+    # pkgs.rofi-wayland
+    (pkgs.rofi-wayland.override {
+      plugins = [ rofi-file-browser ];
+    })
+    pkgs.wiremix
     pkgs.firefox
     pkgs.signal-desktop
     pkgs.bitwarden-desktop
@@ -155,5 +161,7 @@ in
     pkgs.rippkgs
     pkgs.qt5.full
     pkgs.kdePackages.qtdeclarative
+    pkgs.bc
+    pkgs.playerctl
   ];
 }

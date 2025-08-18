@@ -186,6 +186,8 @@
   services.usbmuxd.enable = true;
   services.tailscale.enable = true;
 
+  services.playerctld.enable = true;
+
   virtualisation.docker.enable = true;
 
   programs.steam = {
@@ -235,6 +237,7 @@
     pkgs.nerd-fonts.fira-code
     pkgs.nerd-fonts.fira-mono
     pkgs.nerd-fonts.jetbrains-mono
+    pkgs.nerd-fonts.adwaita-mono
     pkgs.icomoon-feather
   ];
 
