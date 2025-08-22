@@ -69,6 +69,7 @@ in
     (pkgs.rofi-wayland.override {
       plugins = [ rofi-file-browser ];
     })
+    pkgs.walker
     pkgs.wiremix
     pkgs.firefox
     pkgs.signal-desktop
@@ -104,11 +105,12 @@ in
     pkgs.chromium
     pkgs.quickshell
     pkgs.nautilus
+    pkgs.monero-gui
 
     # system
     pkgs.hyprpaper
     pkgs.ripgrep
-    pkgs.waybar
+    pkgs_stable.waybar
     pkgs.television
     pkgs.zsh-autosuggestions
     pkgs.kitty-themes
@@ -152,7 +154,7 @@ in
     pkgs.tty-clock
     pkgs.grimblast
     pkgs.altserver-linux
-    pkgs.libimobiledevice
+    pkgs_stable.libimobiledevice
     pkgs.avahi
     pkgs.lsof
     pkgs.evtest
@@ -163,5 +165,10 @@ in
     pkgs.kdePackages.qtdeclarative
     pkgs.bc
     pkgs.playerctl
+    pkgs.fd
+    pkgs.parted
+    pkgs.exfatprogs
+    pkgs.gnome-disk-utility
+    pkgs.home-manager
   ];
 }

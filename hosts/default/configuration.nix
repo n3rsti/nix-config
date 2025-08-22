@@ -164,6 +164,27 @@
     #media-session.enable = true;
   };
 
+  services.pipewire.wireplumber.enable = true;
+
+  # services.pipewire.wireplumber.extraConfig = {
+  #   "bluez-monitor.conf" = {
+  #     "properties" = {
+  #       "bluez5.enable-msbc" = true;
+  #       "bluez5.enable-hw-volume" = true;
+  #       "bluez5.codecs" = [
+  #         "ldac"
+  #         "aac"
+  #         "sbc"
+  #         "sbc_xq"
+  #       ];
+  #       "bluez5.roles" = [
+  #         "a2dp_sink"
+  #         "hfp_hf"
+  #       ];
+  #     };
+  #   };
+  # };
+  #
   services.pulseaudio.enable = false;
 
   # Enable CUPS to print documents.
@@ -183,10 +204,15 @@
     joinNetworks = [ "56374ac9a42a3c0f" ];
   };
 
-  services.usbmuxd.enable = true;
+  services.usbmuxd = {
+    enable = true;
+    package = pkgs.usbmuxd2;
+  };
   services.tailscale.enable = true;
 
   services.playerctld.enable = true;
+
+  services.udisks2.enable = true;
 
   virtualisation.docker.enable = true;
 
@@ -239,6 +265,7 @@
     pkgs.nerd-fonts.jetbrains-mono
     pkgs.nerd-fonts.adwaita-mono
     pkgs.icomoon-feather
+    pkgs.adwaita-fonts
   ];
 
   environment.sessionVariables = {
