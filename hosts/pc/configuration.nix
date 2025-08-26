@@ -1,5 +1,12 @@
-{ config, pkgs, inputs, ... }: {
-  imports = [ # Include the results of the hardware scan.
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+{
+  imports = [
+    # Include the results of the hardware scan.
     # This expects hardware-configuration.nix to be present in this directory
     # Generate it using: sudo nixos-generate-config --show-hardware-config > hardware-configuration.nix
     ./hardware-configuration.nix
@@ -23,6 +30,11 @@
     enable = true;
     group = "users";
   };
+
+  services.openssh.enable = true;
+
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "n3rsti";
 
   hardware.opentabletdriver.enable = true;
 

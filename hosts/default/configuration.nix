@@ -214,6 +214,9 @@
 
   services.udisks2.enable = true;
 
+  services.gvfs.enable = true; # for nautilus
+  programs.dconf.enable = true;
+
   virtualisation.docker.enable = true;
 
   programs.steam = {

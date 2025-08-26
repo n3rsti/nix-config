@@ -16,6 +16,7 @@ in
   environment.systemPackages = with pkgs; [
     # dev tools
     pkgs.neovim
+    pkgs.deno
     pkgs.gcc
     pkgs.gopls
     pkgs.stylua
@@ -96,7 +97,6 @@ in
     pkgs.resources
     inputs.zen-browser.packages."${system}".default
     pkgs.hoppscotch
-    pkgs.nextcloud-client
     pkgs.wine
     pkgs.wine64
     pkgs.rofimoji
