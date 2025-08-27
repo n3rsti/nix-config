@@ -67,6 +67,8 @@ in
     # apps
     pkgs.kitty
     pkgs.gnome-calendar
+    pkgs.gnome-online-accounts
+    gnome-online-accounts-gtk
     # pkgs.rofi-wayland
     (pkgs.rofi-wayland.override {
       plugins = [ rofi-file-browser ];
