@@ -25,6 +25,8 @@
   # Laptop-specific settings
   networking.hostName = "laptop"; # Override default hostname
 
+  networking.wireless.iwd.enable = true;
+
   services.power-profiles-daemon.enable = false;
   services.libinput = {
     enable = true;
@@ -49,6 +51,7 @@
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     pkgs.moonlight-qt
     pkgs.brightnessctl
+    pkgs.impala
   ];
   # services.blueman.enable = true;
 

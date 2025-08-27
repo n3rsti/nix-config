@@ -1,7 +1,13 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  imports = [ # Include modules common to all configurations
+  imports = [
+    # Include modules common to all configurations
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/kitty.nix
@@ -20,6 +26,8 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
+
+  services.swayosd.enable = true;
 
   # The home.packages option allows you to install Nix packages into your
   # environment.

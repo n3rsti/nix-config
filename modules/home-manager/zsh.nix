@@ -31,7 +31,7 @@
          nix-test_func() {
            sudo nixos-rebuild test --flake ~/nixos#"$1"
          }
-         bindkey -s ^F "~/repo/dotfiles/scripts/tmux-sessionizer.sh\n"
+         bindkey -s ^F "~/.config/dotfiles/scripts/tmux-sessionizer.sh\n"
 
          eval $(ssh-agent) > /dev/null
          find ~/.ssh -type f ! -name '*.pub' -exec ssh-add {} \; > /dev/null 2>&1

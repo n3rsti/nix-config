@@ -105,6 +105,7 @@
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   networking.firewall.allowedUDPPorts = [ 9993 ];
+
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
@@ -215,6 +216,10 @@
   services.udisks2.enable = true;
 
   services.gvfs.enable = true; # for nautilus
+
+  services.gnome.evolution-data-server.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+
   programs.dconf.enable = true;
 
   virtualisation.docker.enable = true;

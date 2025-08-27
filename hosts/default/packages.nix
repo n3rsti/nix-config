@@ -66,6 +66,7 @@ in
 
     # apps
     pkgs.kitty
+    pkgs.gnome-calendar
     # pkgs.rofi-wayland
     (pkgs.rofi-wayland.override {
       plugins = [ rofi-file-browser ];
@@ -89,14 +90,13 @@ in
     pkgs.qbittorrent
     pkgs.ghostty
     pkgs.brave
-    pkgs.jellyfin-media-player
+    # pkgs.jellyfin-media-player
     pkgs.feather
     pkgs.vlc
     pkgs.libreoffice-qt6-fresh
     pkgs.eog
     pkgs.resources
     inputs.zen-browser.packages."${system}".default
-    pkgs.hoppscotch
     pkgs.wine
     pkgs.wine64
     pkgs.rofimoji
@@ -108,6 +108,7 @@ in
     pkgs.monero-gui
 
     # system
+    pkgs.swayosd
     pkgs.hyprpaper
     pkgs.ripgrep
     pkgs_stable.waybar
@@ -126,15 +127,13 @@ in
     pkgs.tree
     pkgs.acpi
     pkgs.btop
-    pkgs.overskride
     pkgs.blueberry
     pkgs.networkmanager_dmenu
     pkgs.pinentry-gnome3
     pkgs.hyprpicker
     pkgs.grim
-    pkgs.slurp
     pkgs.fzf
-    pkgs.tmux-sessionizer
+    # pkgs.tmux-sessionizer
     pkgs.tmux
     pkgs.unzip
     pkgs.fastfetch
@@ -143,7 +142,6 @@ in
     pkgs.nmap
     pkgs.zip
     pkgs.hyprsunset
-    pkgs.ddcutil
     pkgs.yt-dlp
     pkgs.cava
     pkgs.lolcat
@@ -152,23 +150,20 @@ in
     pkgs.firejail
     pkgs.gif-for-cli
     pkgs.tty-clock
-    pkgs.grimblast
-    pkgs.altserver-linux
-    pkgs_stable.libimobiledevice
-    pkgs.avahi
+    pkgs.grimblast # screenshot utility
     pkgs.lsof
-    pkgs.evtest
     pkgs.netcat-gnu
     pkgs.jq
     pkgs.rippkgs
-    pkgs.qt5.full
-    pkgs.kdePackages.qtdeclarative
+    # pkgs.qt5.full
+    # pkgs.kdePackages.qtdeclarative
     pkgs.bc
     pkgs.playerctl
+
+    # disk formatting, used for microsd
     pkgs.fd
     pkgs.parted
     pkgs.exfatprogs
     pkgs.gnome-disk-utility
-    pkgs.home-manager
   ];
 }
