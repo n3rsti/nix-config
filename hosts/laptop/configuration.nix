@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 {
@@ -25,7 +26,15 @@
   # Laptop-specific settings
   networking.hostName = "laptop"; # Override default hostname
 
-  networking.wireless.iwd.enable = true;
+  networking = {
+    # Don’t enable NetworkManager or wpa_supplicant
+    networkmanager.enable = false;
+    wireless.enable = false;
+
+    # Use iwd directly
+    wireless.iwd.enable = true;
+    # networkmanager.wifi.backend = "iwd";
+  };
 
   services.power-profiles-daemon.enable = false;
   services.libinput = {
@@ -47,11 +56,14 @@
     };
   };
 
+  hardware.acpilight.enable = true;
+
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     pkgs.moonlight-qt
     pkgs.brightnessctl
     pkgs.impala
+    pkgs.acpilight
   ];
   # services.blueman.enable = true;
 

@@ -66,6 +66,10 @@ in
 
     # apps
     pkgs.kitty
+    pkgs.eza
+    pkgs.thunderbird
+    pkgs.evince # pdf viewer
+    pkgs.gnome-weather
     pkgs.gnome-calendar
     pkgs.gnome-online-accounts
     gnome-online-accounts-gtk
@@ -73,7 +77,8 @@ in
     (pkgs.rofi-wayland.override {
       plugins = [ rofi-file-browser ];
     })
-    pkgs.walker
+    inputs.walker.packages."${system}".default
+    inputs.elephant.packages."${system}".default
     pkgs.wiremix
     pkgs.firefox
     pkgs.signal-desktop
@@ -111,6 +116,10 @@ in
 
     # system
     pkgs.swayosd
+    pkgs.cairo
+    pkgs.poppler_gi
+    pkgs.gtk4-layer-shell
+    pkgs.wev
     pkgs.hyprpaper
     pkgs.ripgrep
     pkgs_stable.waybar

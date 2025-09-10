@@ -19,6 +19,8 @@
       nix-test = "'nix-test_func'";
       zed = "zeditor";
       vim = "nvim";
+      ls = "eza -h --group-directories-first --icons=auto";
+      lt = "eza --tree --level=2 --icons --git";
     };
 
     # Use initExtra for functions that need arguments

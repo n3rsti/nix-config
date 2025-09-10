@@ -33,35 +33,6 @@
             name = "Bibata-Modern-Classic";
             size = 16;
           };
-
-          # xdg.mimeApps = {
-          #   enable = true;
-          #   defaultApplications = {
-          #     # Image MIME types for Eye of GNOME
-          #     "image/bmp" = "org.gnome.eog.desktop";
-          #     "image/gif" = "org.gnome.eog.desktop";
-          #     "image/jpeg" = "org.gnome.eog.desktop";
-          #     "image/jpg" = "org.gnome.eog.desktop";
-          #     "image/png" = "org.gnome.eog.desktop";
-          #     "image/tiff" = "org.gnome.eog.desktop";
-          #     "image/webp" = "org.gnome.eog.desktop";
-          #
-          #     # Web-related
-          #     "text/html" = "zen-beta.desktop";
-          #     "x-scheme-handler/http" = "zen-beta.desktop";
-          #     "x-scheme-handler/https" = "zen-beta.desktop";
-          #     "x-scheme-handler/chrome" = "zen-beta.desktop";
-          #
-          #     # HTML extensions
-          #     "application/x-extension-htm" = "zen-beta.desktop";
-          #     "application/x-extension-html" = "zen-beta.desktop";
-          #     "application/x-extension-shtml" = "zen-beta.desktop";
-          #     "application/xhtml+xml" = "zen-beta.desktop";
-          #     "application/x-extension-xhtml" = "zen-beta.desktop";
-          #     "application/x-extension-xht" = "zen-beta.desktop";
-          #   };
-          # };
-
         };
     };
     # This allows specific host configurations to override home-manager settings
@@ -89,6 +60,36 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot = {
+
+    plymouth = {
+      enable = true;
+      theme = "red_loader";
+      themePackages = with pkgs; [
+        # By default we would install all themes
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "red_loader" ];
+        })
+      ];
+    };
+
+    # Enable "Silent boot"
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+    ];
+    # Hide the OS choice for bootloaders.
+    # It's still possible to open the bootloader list by pressing any key
+    # It will just not appear on screen unless a key is pressed
+    loader.timeout = 0;
+
+  };
+
   networking.hostName = lib.mkDefault "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -97,10 +98,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
-  networking.interfaces.enp34s0 = {
-    wakeOnLan.enable = true;
-  };
+  networking.networkmanager.enable = lib.mkDefault true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -133,6 +131,12 @@
   };
 
   services.displayManager.gdm.enable = true;
+
+  environment.etc."gdm/greeter.dconf-defaults".text = ''
+    [org/gnome/desktop/background]
+    picture-uri='file:///home/n3rsti/.config/dotfiles/wallpapers/current.jpg'
+    picture-options='zoom'
+  '';
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;

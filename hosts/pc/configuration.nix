@@ -17,6 +17,11 @@
 
   # PC-specific settings
   networking.hostName = "pc"; # Override default hostname
+
+  networking.interfaces.enp34s0 = {
+    wakeOnLan.enable = true;
+  };
+
   services.xserver.videoDrivers = [ "nvidia" ];
 
   services.sunshine = {
