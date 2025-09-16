@@ -13,12 +13,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nixpkgs_25_05.url = "github:nixos/nixpkgs/25.05";
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
-      # to have it up-to-date or simply don't specify the nixpkgs input
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     walker.url = "github:abenz1267/walker";
     elephant = {

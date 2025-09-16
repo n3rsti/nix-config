@@ -16,6 +16,8 @@ in
   environment.systemPackages = with pkgs; [
     # dev tools
     pkgs.neovim
+    pkgs.pyright
+    pkgs.black
     pkgs.deno
     pkgs.gcc
     pkgs.gopls
@@ -65,6 +67,7 @@ in
     pkgs.python313Packages.jsbeautifier
 
     # apps
+    pkgs.gdm-settings
     pkgs.kitty
     pkgs.eza
     pkgs.thunderbird
@@ -73,7 +76,6 @@ in
     pkgs.gnome-calendar
     pkgs.gnome-online-accounts
     gnome-online-accounts-gtk
-    # pkgs.rofi-wayland
     (pkgs.rofi-wayland.override {
       plugins = [ rofi-file-browser ];
     })
@@ -97,13 +99,12 @@ in
     pkgs.qbittorrent
     pkgs.ghostty
     pkgs.brave
-    # pkgs.jellyfin-media-player
+    pkgs_stable.jellyfin-media-player
     pkgs.feather
     pkgs.vlc
     pkgs.libreoffice-qt6-fresh
     pkgs.eog
     pkgs.resources
-    inputs.zen-browser.packages."${system}".default
     pkgs.wine
     pkgs.wine64
     pkgs.rofimoji
@@ -144,7 +145,6 @@ in
     pkgs.hyprpicker
     pkgs.grim
     pkgs.fzf
-    # pkgs.tmux-sessionizer
     pkgs.tmux
     pkgs.unzip
     pkgs.fastfetch
@@ -166,8 +166,8 @@ in
     pkgs.netcat-gnu
     pkgs.jq
     pkgs.rippkgs
-    # pkgs.qt5.full
-    # pkgs.kdePackages.qtdeclarative
+    pkgs.qt6.full
+    pkgs.kdePackages.qtdeclarative
     pkgs.bc
     pkgs.playerctl
 
