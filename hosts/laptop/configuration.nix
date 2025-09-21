@@ -1,8 +1,6 @@
 {
-  config,
   pkgs,
   inputs,
-  lib,
   ...
 }:
 {
@@ -16,36 +14,30 @@
     inputs.home-manager.nixosModules.default
   ];
 
-  # Override home-manager configuration for this specific host
   home-manager = {
     users = {
       "n3rsti" = import ./home.nix;
     };
   };
 
-  # Laptop-specific settings
-  networking.hostName = "laptop"; # Override default hostname
+  networking.hostName = "laptop";
 
   networking = {
-    # Don’t enable NetworkManager or wpa_supplicant
     networkmanager.enable = false;
     wireless.enable = false;
 
-    # Use iwd directly
     wireless.iwd.enable = true;
-    # networkmanager.wifi.backend = "iwd";
+    firewall.checkReversePath = "loose";
   };
 
   services.power-profiles-daemon.enable = false;
   services.libinput = {
     enable = true;
     touchpad = {
-      disableWhileTyping = false; # Disable touchpad while typing
+      disableWhileTyping = false;
     };
   };
 
-  # hardware.bluetooth.enable = true; # enables support for Bluetooth
-  # hardware.bluetooth.powerOnBoot = true;
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -59,28 +51,14 @@
   hardware.acpilight.enable = true;
 
   environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     pkgs.moonlight-qt
     pkgs.brightnessctl
     pkgs.impala
     pkgs.acpilight
+    pkgs.gnome-bluetooth
   ];
-  # services.blueman.enable = true;
 
-  # programs.light.enable = true;
-
-  # Example laptop-specific configurations
   powerManagement.enable = true;
   services.tlp.enable = true; # Power management
   services.thermald.enable = true;
-  # services.auto-cpufreq.enable = true;
-
-  # Example display/backlight configuration
-  # services.actkbd = {
-  #   enable = true;
-  #   bindings = [
-  #     { keys = [ 224 ]; events = [ "key" ]; command = "${pkgs.light}/bin/light -U 10"; }
-  #     { keys = [ 225 ]; events = [ "key" ]; command = "${pkgs.light}/bin/light -A 10"; }
-  #   ];
-  # };
 }

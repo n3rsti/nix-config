@@ -55,6 +55,8 @@ in
     pkgs.nodejs_24
     pkgs.zed-editor-fhs_git
     pkgs.typescript
+    pkgs.jdk
+    pkgs.maven
     pkgs.jdt-language-server
     pkgs.lombok
     pkgs.gh
@@ -67,6 +69,7 @@ in
     pkgs.python313Packages.jsbeautifier
 
     # apps
+    pkgs.freecad-wayland
     pkgs.gdm-settings
     pkgs.kitty
     pkgs.eza
@@ -76,7 +79,7 @@ in
     pkgs.gnome-calendar
     pkgs.gnome-online-accounts
     gnome-online-accounts-gtk
-    (pkgs.rofi-wayland.override {
+    (pkgs.rofi.override {
       plugins = [ rofi-file-browser ];
     })
     inputs.walker.packages."${system}".default

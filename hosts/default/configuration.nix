@@ -102,7 +102,9 @@
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
-  networking.firewall.allowedUDPPorts = [ 9993 ];
+  networking.firewall.allowedUDPPorts = [
+    9993
+  ];
 
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
@@ -199,10 +201,6 @@
     nssmdns4 = true;
     openFirewall = true;
   };
-
-  services.resolved.enable = true;
-  services.mullvad-vpn.enable = true;
-  services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
   services.zerotierone = {
     enable = true;
