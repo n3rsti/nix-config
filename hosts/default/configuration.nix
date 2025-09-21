@@ -10,7 +10,6 @@
 }:
 {
   imports = [
-    # Include the results of the hardware scan.
     ../../modules/nixos/main-user.nix
     ./packages.nix
     inputs.home-manager.nixosModules.default
@@ -51,12 +50,8 @@
       "networkmanager"
       "ydotool"
     ];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
   };
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -110,7 +105,7 @@
   # networking.firewall.enable = false;
 
   # Set your time zone.
-  time.timeZone = "Europe/Warsaw";
+  time.timeZone = lib.mkDefault "Europe/Warsaw";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -134,18 +129,8 @@
 
   services.displayManager.gdm.enable = true;
 
-  environment.etc."gdm/greeter.dconf-defaults".text = ''
-    [org/gnome/desktop/background]
-    picture-uri='file:///home/n3rsti/.config/dotfiles/wallpapers/current.jpg'
-    picture-options='zoom'
-  '';
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  # services.displayManager.gdm.enable = true;
-  # services.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -173,25 +158,6 @@
 
   services.pipewire.wireplumber.enable = true;
 
-  # services.pipewire.wireplumber.extraConfig = {
-  #   "bluez-monitor.conf" = {
-  #     "properties" = {
-  #       "bluez5.enable-msbc" = true;
-  #       "bluez5.enable-hw-volume" = true;
-  #       "bluez5.codecs" = [
-  #         "ldac"
-  #         "aac"
-  #         "sbc"
-  #         "sbc_xq"
-  #       ];
-  #       "bluez5.roles" = [
-  #         "a2dp_sink"
-  #         "hfp_hf"
-  #       ];
-  #     };
-  #   };
-  # };
-  #
   services.pulseaudio.enable = false;
 
   # Enable CUPS to print documents.
@@ -235,9 +201,6 @@
 
   programs.gamemode.enable = true;
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   programs.zsh.enable = true;
 
   programs.appimage.enable = true;
@@ -280,7 +243,6 @@
   ];
 
   environment.sessionVariables = {
-    #WLR_NO_HARDWARE_CURSOR = "1";
     NIXOS_OZONE_WL = "1";
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
     LM_LICENSE_FILE = "\${HOME}/Downloads/license.dat";

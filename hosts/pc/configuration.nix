@@ -15,8 +15,7 @@
     inputs.home-manager.nixosModules.default
   ];
 
-  # PC-specific settings
-  networking.hostName = "pc"; # Override default hostname
+  networking.hostName = "pc";
 
   networking.interfaces.enp34s0 = {
     wakeOnLan.enable = true;
