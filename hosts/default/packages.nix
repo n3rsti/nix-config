@@ -69,6 +69,7 @@ in
     pkgs.python313Packages.jsbeautifier
 
     # apps
+    pkgs.arkenfox-userjs
     pkgs.freecad-wayland
     pkgs.gdm-settings
     pkgs.kitty

@@ -25,36 +25,17 @@
 
     # Use initExtra for functions that need arguments
     initContent = ''
-         export PATH="$PATH:$HOME/.npm-global/bin"
-         nix-switch_func() {
-           sudo nixos-rebuild switch --flake ~/nixos#"$1"
-         }
-
-         nix-test_func() {
-           sudo nixos-rebuild test --flake ~/nixos#"$1"
-         }
-         bindkey -s ^F "~/.config/dotfiles/scripts/tmux-sessionizer.sh\n"
-
-         eval $(ssh-agent) > /dev/null
-         find ~/.ssh -type f ! -name '*.pub' -exec ssh-add {} \; > /dev/null 2>&1
-
-
-        # create environment variable from jdtls and lombok
-      autoload -Uz add-zsh-hook
-
-      add-zsh-hook precmd update_jdtls_env
-
-      update_jdtls_env() {
-        # Only run if cache doesn't exist (or make your own condition)
-        [[ -f ~/.cache/jdtls_env ]] && return
-
-        {
-          path="$(nix eval --raw nixpkgs#lombok 2>/dev/null)/share/java/lombok.jar"
-          echo "export JDTLS_JVM_ARGS='-javaagent:$path -Xbootclasspath/a:$path'" > ~/.cache/jdtls_env
-        } &!
+      export PATH="$PATH:$HOME/.npm-global/bin"
+      nix-switch_func() {
+        sudo nixos-rebuild switch --flake ~/nixos#"$1"
       }
 
-      [[ -f ~/.cache/jdtls_env ]] && source ~/.cache/jdtls_env
+      nix-test_func() {
+        sudo nixos-rebuild test --flake ~/nixos#"$1"
+      }
+      bindkey -s ^F "~/.config/dotfiles/scripts/tmux-sessionizer.sh\n"
+
+      find ~/.ssh -type f ! -name '*.pub' -exec ssh-add {} \; > /dev/null 2>&1
     '';
   };
 }
