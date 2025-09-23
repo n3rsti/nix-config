@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   pkgs_stable = (
     import inputs.nixpkgs_25_05 {
@@ -12,19 +17,22 @@ let
   );
 in
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../modules/nixos/main-user.nix
-      inputs.home-manager.nixosModules.default
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../../modules/nixos/main-user.nix
+    inputs.home-manager.nixosModules.default
 
-    ];
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   systemd.user.services.qbittorrent-nox = {
     description = "qBittorrent-nox Web UI";
@@ -37,6 +45,7 @@ in
   virtualisation.docker.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
+  networking.firewall.checkReversePath = "loose";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -50,9 +59,11 @@ in
     # also pass inputs to home-manager modules
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "n3rsti" = { pkgs, ... }: {
-        imports = [ ./home.nix ];
-      };
+      "n3rsti" =
+        { pkgs, ... }:
+        {
+          imports = [ ./home.nix ];
+        };
     };
     # This allows specific host configurations to override home-manager settings
     useGlobalPkgs = true;
@@ -62,40 +73,37 @@ in
   main-user.enable = true;
   main-user.userName = "n3rsti";
 
-
   services.tailscale.enable = true;
 
-
-
-services.nextcloud = {
-  enable = true;
-  https = true;
-  package = pkgs.nextcloud31;
-  hostName = "server.tail3ce7af.ts.net";
-  config.adminpassFile = "/etc/nextcloud-admin-pass";
-  config.dbtype = "sqlite";
-  settings.trusted_domains = [
-    "localhost"
-    "server.tail3ce7af.ts.net"
-    "100.72.98.44"
-  ];
-  extraApps = {
-    inherit (config.services.nextcloud.package.packages.apps) contacts calendar tasks;
+  services.nextcloud = {
+    enable = true;
+    https = true;
+    package = pkgs.nextcloud31;
+    hostName = "server.tail3ce7af.ts.net";
+    config.adminpassFile = "/etc/nextcloud-admin-pass";
+    config.dbtype = "sqlite";
+    settings.trusted_domains = [
+      "localhost"
+      "server.tail3ce7af.ts.net"
+      "100.72.98.44"
+    ];
+    extraApps = {
+      inherit (config.services.nextcloud.package.packages.apps) contacts calendar tasks;
+    };
+    extraAppsEnable = true;
+    configureRedis = true;
   };
-  extraAppsEnable = true;
-  configureRedis = true;
-};
 
-services.nginx = {
-  enable = true;
+  services.nginx = {
+    enable = true;
 
-  virtualHosts."server.tail3ce7af.ts.net" = {
-    forceSSL = true;
-    enableACME = false;
-    sslCertificate = "/etc/ssl/server.tail3ce7af.ts.net.crt";
-    sslCertificateKey = "/etc/ssl/server.tail3ce7af.ts.net.key";
+    virtualHosts."server.tail3ce7af.ts.net" = {
+      forceSSL = true;
+      enableACME = false;
+      sslCertificate = "/etc/ssl/server.tail3ce7af.ts.net.crt";
+      sslCertificateKey = "/etc/ssl/server.tail3ce7af.ts.net.key";
+    };
   };
-};
 
   services.openssh = {
     enable = true;
@@ -159,7 +167,6 @@ services.nginx = {
     openFirewall = true;
   };
 
-
   services.sonarr = {
     enable = true;
     openFirewall = true;
@@ -168,13 +175,16 @@ services.nginx = {
     dataDir = "/home/n3rsti/sonarr";
   };
 
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.n3rsti = {
     isNormalUser = true;
     description = "n3rsti";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
+    packages = with pkgs; [ ];
   };
 
   # Allow unfree packages
@@ -183,26 +193,26 @@ services.nginx = {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  vim
-  nano
-  kitty
-  neovim
-  git
-  ghostty
-  jdk
-  btop
-  tmux
-  go
-  docker
-  jellyfin
-  jellyfin-web
-  jellyfin-ffmpeg
-  qbittorrent-nox
-  wakeonlan
-  makemkv
-  nextcloud31
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
+    nano
+    kitty
+    neovim
+    git
+    ghostty
+    jdk
+    btop
+    tmux
+    go
+    docker
+    jellyfin
+    jellyfin-web
+    jellyfin-ffmpeg
+    qbittorrent-nox
+    wakeonlan
+    makemkv
+    nextcloud31
+    #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -219,12 +229,18 @@ services.nginx = {
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 25565 8096 8082 80 443 ];
+  networking.firewall.allowedTCPPorts = [
+    25565
+    8096
+    8082
+    80
+    443
+  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
-boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
+  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+  boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
