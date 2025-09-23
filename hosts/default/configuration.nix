@@ -225,8 +225,11 @@
   nix.gc.dates = "daily";
   nix.gc.options = "--delete-older-than 7d";
 
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.dates = "weekly";
+  system.autoUpgrade = {
+    enable = true;
+    dates = "weekly";
+    flake = inputs.self.outPath;
+  };
 
   fonts.packages = with pkgs; [
     pkgs.nerd-fonts.iosevka
