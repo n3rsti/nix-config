@@ -16,7 +16,10 @@ in
   environment.systemPackages = with pkgs; [
     # dev tools
     pkgs.neovim
-    pkgs.pyright
+    pkgs_stable.roslyn-ls
+    pkgs.maven
+    pkgs.basedpyright
+    pkgs.opencode
     pkgs.black
     pkgs.deno
     pkgs.gcc
@@ -25,6 +28,14 @@ in
     pkgs.clang-tools
     pkgs.lua-language-server
     pkgs.cargo
+    # pkgs.ltex-ls-plus
+    pkgs_stable.dotnetCorePackages.dotnet_9.sdk
+    pkgs_stable.mono
+    pkgs.duf
+    pkgs_stable.dotnet-sdk_9
+    pkgs_stable.csharp-ls
+    pkgs.texlab
+    pkgs.texliveFull
     pkgs.rust-analyzer
     pkgs.rustup
     pkgs.prettierd
@@ -53,7 +64,7 @@ in
     pkgs.pkg-config
     pkgs.glm
     pkgs.nodejs_24
-    pkgs.zed-editor-fhs_git
+    # pkgs.zed-editor-fhs_git
     pkgs.typescript
     pkgs.jdk
     pkgs.maven
@@ -67,12 +78,21 @@ in
     pkgs.nix-ld
     pkgs.python313Packages.cssbeautifier
     pkgs.python313Packages.jsbeautifier
+    pkgs.python313Packages.dbus-python
+    pkgs.lua54Packages.luarocks
+    pkgs.tree-sitter
+    pkgs.lua
+    pkgs.lazygit
 
     # apps
+    pkgs.invidious
+    pkgs.blender
     pkgs.arkenfox-userjs
+    # pkgs.kitty
+    pkgs.iwgtk
+    pkgs.jellyfin-web
     pkgs.freecad-wayland
     pkgs.gdm-settings
-    pkgs.kitty
     pkgs.eza
     pkgs.thunderbird
     pkgs.evince # pdf viewer
@@ -80,18 +100,15 @@ in
     pkgs.gnome-calendar
     pkgs.gnome-online-accounts
     gnome-online-accounts-gtk
-    (pkgs.rofi.override {
-      plugins = [ rofi-file-browser ];
+    (pkgs_stable.rofi.override {
+      plugins = [ pkgs_stable.rofi-file-browser ];
     })
-    inputs.walker.packages."${system}".default
-    inputs.elephant.packages."${system}".default
     pkgs.wiremix
     pkgs.firefox
     pkgs.signal-desktop
     pkgs.bitwarden-desktop
     pkgs.freetube
     pkgs.spotify
-    pkgs.discord
     pkgs.copyq
     pkgs_stable.gimp
     pkgs.legcord
@@ -130,7 +147,6 @@ in
     pkgs_stable.waybar
     pkgs.television
     pkgs.zsh-autosuggestions
-    pkgs.kitty-themes
     pkgs.pavucontrol
     pkgs.wl-clipboard
     pkgs.nwg-look
@@ -140,6 +156,7 @@ in
     pkgs.dunst
     pkgs.libnotify
     pkgs.networkmanagerapplet
+    pkgs.nmgui
     pkgs.tree
     pkgs.acpi
     pkgs.btop

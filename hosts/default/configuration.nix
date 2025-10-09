@@ -6,8 +6,17 @@
   pkgs,
   inputs,
   lib,
+  config,
   ...
 }:
+let
+  pkgs_stable = (
+    import inputs.nixpkgs_25_05 {
+      inherit (pkgs) system;
+      config = config.nixpkgs.config;
+    }
+  );
+in
 {
   imports = [
     ../../modules/nixos/main-user.nix
@@ -207,6 +216,33 @@
   programs.appimage.binfmt = true;
 
   programs.nix-ld.enable = true;
+
+  programs.walker = {
+    enable = true;
+    runAsService = false;
+
+    config = {
+      hotreload_theme = true;
+      theme = "default";
+      force_keyboard_focus = true;
+      timeout = 60;
+      debug = true;
+
+      keybinds = {
+        next = [ "Tab" ];
+        previous = [ "shift ISO_Left_Tab" ];
+      };
+
+      providers = {
+        default = [
+          "desktopapplications"
+          "calc"
+          "menus"
+          "websearch"
+        ];
+      };
+    };
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

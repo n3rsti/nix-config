@@ -1,7 +1,14 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
-let cfg = config.main-user;
-in {
+let
+  cfg = config.main-user;
+in
+{
   options.main-user = {
     enable = lib.mkEnableOption "enable user module";
     userName = lib.mkOption {
@@ -14,12 +21,17 @@ in {
   config = lib.mkIf cfg.enable {
     users.users.${cfg.userName} = {
       isNormalUser = true;
-      extraGroups = [ "networkmanager" "wheel" "input" "dialout" "docker" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "input"
+        "dialout"
+        "docker"
+      ];
       shell = pkgs.zsh;
-      packages = with pkgs;
-        [
-          #  thunderbird
-        ];
+      packages = with pkgs; [
+        #  thunderbird
+      ];
     };
   };
 }

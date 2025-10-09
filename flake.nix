@@ -14,10 +14,11 @@
 
     nixpkgs_25_05.url = "github:nixos/nixpkgs/25.05";
 
-    walker.url = "github:abenz1267/walker";
-    elephant = {
-      url = "github:abenz1267/elephant";
-      inputs.nixpkgs.follows = "nixpkgs";
+    elephant.url = "github:abenz1267/elephant";
+
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
     };
 
   };
@@ -38,6 +39,7 @@
             ./hosts/default/configuration.nix
             inputs.home-manager.nixosModules.default
             chaotic.nixosModules.default
+            inputs.walker.nixosModules.default
           ];
         };
 
@@ -48,6 +50,7 @@
             ./hosts/pc/configuration.nix
             inputs.home-manager.nixosModules.default
             chaotic.nixosModules.default
+            inputs.walker.nixosModules.default
           ];
         };
 
@@ -58,6 +61,7 @@
             ./hosts/laptop/configuration.nix
             inputs.home-manager.nixosModules.default
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
+            inputs.walker.nixosModules.default
             chaotic.nixosModules.default
           ];
         };

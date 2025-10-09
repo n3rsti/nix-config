@@ -1,9 +1,19 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }:
+let
+  pkgs_stable = (
+    import inputs.nixpkgs_25_05 {
+      inherit (pkgs) system;
+      config = config.nixpkgs.config;
+    }
+  );
+in
 {
+
   imports = [
     # Include the results of the hardware scan.
     # This expects hardware-configuration.nix to be present in this directory
@@ -23,11 +33,7 @@
   networking.hostName = "laptop";
 
   networking = {
-    networkmanager.enable = false;
-    wireless.enable = false;
-
-    wireless.iwd.enable = true;
-    firewall.checkReversePath = "loose";
+    networkmanager.enable = true;
   };
 
   services.power-profiles-daemon.enable = false;
@@ -53,7 +59,6 @@
   environment.systemPackages = with pkgs; [
     pkgs.moonlight-qt
     pkgs.brightnessctl
-    pkgs.impala
     pkgs.acpilight
     pkgs.gnome-bluetooth
   ];
@@ -61,4 +66,21 @@
   powerManagement.enable = true;
   services.tlp.enable = true; # Power management
   services.thermald.enable = true;
+
+  hardware.graphics = {
+    package = pkgs_stable.mesa;
+    enable = true;
+    extraPackages = pkgs.lib.mkForce (
+      with pkgs_stable;
+      [
+        intel-media-driver
+        intel-compute-runtime
+      ]
+    );
+  };
+
+  hardware.cpu.intel.updateMicrocode = true;
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  };
 }
