@@ -16,6 +16,7 @@ in
   environment.systemPackages = with pkgs; [
     # dev tools
     pkgs.neovim
+    pkgs.gradle
     pkgs_stable.roslyn-ls
     pkgs.maven
     pkgs.basedpyright
@@ -28,10 +29,8 @@ in
     pkgs.clang-tools
     pkgs.lua-language-server
     pkgs.cargo
-    # pkgs.ltex-ls-plus
     pkgs_stable.dotnetCorePackages.dotnet_9.sdk
     pkgs_stable.mono
-    pkgs.duf
     pkgs_stable.dotnet-sdk_9
     pkgs_stable.csharp-ls
     pkgs.texlab
@@ -64,9 +63,11 @@ in
     pkgs.pkg-config
     pkgs.glm
     pkgs.nodejs_24
-    # pkgs.zed-editor-fhs_git
+    pkgs.eslint
+    pkgs.zed-editor
     pkgs.typescript
     pkgs.jdk
+    pkgs.jdk25
     pkgs.maven
     pkgs.jdt-language-server
     pkgs.lombok
@@ -88,9 +89,7 @@ in
     pkgs.invidious
     pkgs.blender
     pkgs.arkenfox-userjs
-    # pkgs.kitty
     pkgs.iwgtk
-    pkgs.jellyfin-web
     pkgs.freecad-wayland
     pkgs.gdm-settings
     pkgs.eza
@@ -108,11 +107,9 @@ in
     pkgs.signal-desktop
     pkgs.bitwarden-desktop
     pkgs.freetube
-    pkgs.spotify
     pkgs.copyq
     pkgs_stable.gimp
     pkgs.legcord
-    pkgs.path-of-building
     pkgs.lutris
     pkgs.obs-studio
     pkgs_stable.prismlauncher
@@ -130,13 +127,14 @@ in
     pkgs.wine64
     pkgs.rofimoji
     pkgs.trayscale
-    pkgs.lynx
     pkgs.chromium
     pkgs.quickshell
     pkgs.nautilus
-    pkgs.monero-gui
 
     # system
+    pkgs.duf
+    pkgs.libimobiledevice
+    pkgs.hyprlock
     pkgs.swayosd
     pkgs.cairo
     pkgs.poppler_gi

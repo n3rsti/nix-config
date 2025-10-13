@@ -21,8 +21,6 @@
     wakeOnLan.enable = true;
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
-
   services.sunshine = {
     enable = true;
     autoStart = true;

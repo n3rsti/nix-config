@@ -15,14 +15,13 @@ in
 {
 
   imports = [
-    # Include the results of the hardware scan.
-    # This expects hardware-configuration.nix to be present in this directory
-    # Generate it using: sudo nixos-generate-config --show-hardware-config > hardware-configuration.nix
     ./hardware-configuration.nix
     ../../modules/nixos/main-user.nix
     ../default/configuration.nix
     inputs.home-manager.nixosModules.default
   ];
+
+  boot.kernelParams = [ "psmouse.synaptics_intertouch=1" ];
 
   home-manager = {
     users = {
@@ -30,19 +29,12 @@ in
     };
   };
 
-  networking.hostName = "laptop";
-
   networking = {
-    networkmanager.enable = true;
+    hostName = "laptop";
+    firewall.checkReversePath = "loose";
   };
 
   services.power-profiles-daemon.enable = false;
-  services.libinput = {
-    enable = true;
-    touchpad = {
-      disableWhileTyping = false;
-    };
-  };
 
   hardware.bluetooth = {
     enable = true;
@@ -59,12 +51,11 @@ in
   environment.systemPackages = with pkgs; [
     pkgs.moonlight-qt
     pkgs.brightnessctl
-    pkgs.acpilight
     pkgs.gnome-bluetooth
   ];
 
   powerManagement.enable = true;
-  services.tlp.enable = true; # Power management
+  services.tlp.enable = true;
   services.thermald.enable = true;
 
   hardware.graphics = {
