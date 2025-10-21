@@ -16,11 +16,13 @@ in
   environment.systemPackages = with pkgs; [
     # dev tools
     pkgs.neovim
+    pkgs.kdePackages.dolphin
+    pkgs.typst
+    pkgs.tinymist
     pkgs.gradle
     pkgs_stable.roslyn-ls
     pkgs.maven
     pkgs.basedpyright
-    pkgs.opencode
     pkgs.black
     pkgs.deno
     pkgs.gcc
@@ -33,8 +35,6 @@ in
     pkgs_stable.mono
     pkgs_stable.dotnet-sdk_9
     pkgs_stable.csharp-ls
-    pkgs.texlab
-    pkgs.texliveFull
     pkgs.rust-analyzer
     pkgs.rustup
     pkgs.prettierd
@@ -44,10 +44,6 @@ in
     pkgs.bear
     pkgs.python3
     pkgs.python3Packages.pygobject3
-    pkgs.R
-    pkgs.rPackages.languageserversetup
-    pkgs.rPackages.languageserver
-    pkgs.air-formatter
     pkgs.typescript-language-server
     pkgs.glsl_analyzer
     pkgs.vhdl-ls
@@ -84,10 +80,12 @@ in
     pkgs.tree-sitter
     pkgs.lua
     pkgs.lazygit
+    pkgs.postgres-lsp
 
     # apps
-    pkgs.invidious
-    pkgs.blender
+    pkgs.figma-linux
+    pkgs_stable.blender
+    pkgs.drawio
     pkgs.arkenfox-userjs
     pkgs.iwgtk
     pkgs.freecad-wayland
@@ -119,6 +117,7 @@ in
     pkgs.brave
     pkgs_stable.jellyfin-media-player
     pkgs.feather
+    pkgs.spotify
     pkgs.vlc
     pkgs.libreoffice-qt6-fresh
     pkgs.eog
@@ -129,7 +128,7 @@ in
     pkgs.trayscale
     pkgs.chromium
     pkgs.quickshell
-    pkgs.nautilus
+    pkgs_stable.nautilus
 
     # system
     pkgs.duf

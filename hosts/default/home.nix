@@ -26,7 +26,21 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
-  gtk.enable = true;
+  gtk = {
+    enable = true;
+    theme = {
+      name = "catppuccin-frappe-blue-standard";
+      package = pkgs.catppuccin-gtk;
+    };
+  };
+
+  qt = {
+    enable = true;
+    # style = {
+    #   name = "breeze";
+    #   package = pkgs.kdePackages.breeze;
+    # };
+  };
 
   services.swayosd.enable = true;
 

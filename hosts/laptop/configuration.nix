@@ -59,15 +59,12 @@ in
   services.thermald.enable = true;
 
   hardware.graphics = {
-    package = pkgs_stable.mesa;
     enable = true;
-    extraPackages = pkgs.lib.mkForce (
-      with pkgs_stable;
-      [
-        intel-media-driver
-        intel-compute-runtime
-      ]
-    );
+    extraPackages = with pkgs; [
+      intel-media-driver
+      vpl-gpu-rt
+      intel-compute-runtime
+    ];
   };
 
   hardware.cpu.intel.updateMicrocode = true;
