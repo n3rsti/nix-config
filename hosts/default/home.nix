@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 
@@ -10,6 +11,7 @@
     # Include modules common to all configurations
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/zsh.nix
+    inputs.walker.homeManagerModules.default
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -107,6 +109,33 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.walker = {
+    enable = true;
+    runAsService = true;
+
+    config = {
+      hotreload_theme = true;
+      theme = "default";
+      force_keyboard_focus = true;
+      timeout = 60;
+      debug = true;
+
+      keybinds = {
+        next = [ "Tab" ];
+        previous = [ "shift ISO_Left_Tab" ];
+      };
+
+      providers = {
+        default = [
+          "desktopapplications"
+          "calc"
+          "menus"
+          "websearch"
+        ];
+      };
+    };
+  };
 
   # Home Manager will use the global nixpkgs config since useGlobalPkgs is enabled
   # We don't need to set nixpkgs.config here

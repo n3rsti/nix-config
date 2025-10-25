@@ -27,6 +27,11 @@ in
   main-user.enable = true;
   main-user.userName = "n3rsti";
 
+  nix.settings.trusted-users = [
+    "root"
+    "n3rsti"
+  ];
+
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
@@ -96,6 +101,10 @@ in
     9993
   ];
 
+  networking.firewall.allowedTCPPorts = [
+    8080
+  ];
+
   time.timeZone = lib.mkDefault "Europe/Warsaw";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -115,6 +124,7 @@ in
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    withUWSM = true;
   };
 
   services.displayManager.gdm.enable = true;
@@ -177,33 +187,6 @@ in
   programs.appimage.binfmt = true;
 
   programs.nix-ld.enable = true;
-
-  programs.walker = {
-    enable = true;
-    runAsService = false;
-
-    config = {
-      hotreload_theme = true;
-      theme = "default";
-      force_keyboard_focus = true;
-      timeout = 60;
-      debug = true;
-
-      keybinds = {
-        next = [ "Tab" ];
-        previous = [ "shift ISO_Left_Tab" ];
-      };
-
-      providers = {
-        default = [
-          "desktopapplications"
-          "calc"
-          "menus"
-          "websearch"
-        ];
-      };
-    };
-  };
 
   nixpkgs.config.allowUnfree = true;
 

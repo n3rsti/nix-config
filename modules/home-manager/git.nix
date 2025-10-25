@@ -3,9 +3,11 @@
 {
   programs.git = {
     enable = true;
-    userName = "Krzysztof Witucki";
-    userEmail = "n3rsti@protonmail.com";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Krzysztof Witucki";
+        email = "n3rsti@protonmail.com";
+      };
       core.editor = "nvim";
     };
   };

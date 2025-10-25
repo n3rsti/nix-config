@@ -61,7 +61,6 @@
             ./hosts/laptop/configuration.nix
             inputs.home-manager.nixosModules.default
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
-            inputs.walker.nixosModules.default
             chaotic.nixosModules.default
           ];
         };

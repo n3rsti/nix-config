@@ -16,6 +16,9 @@ in
   environment.systemPackages = with pkgs; [
     # dev tools
     pkgs.neovim
+    pkgs.devenv
+    pkgs.insomnia
+    pkgs.bun
     pkgs.kdePackages.dolphin
     pkgs.typst
     pkgs.tinymist
@@ -85,9 +88,7 @@ in
     # apps
     pkgs.figma-linux
     pkgs_stable.blender
-    pkgs.drawio
     pkgs.arkenfox-userjs
-    pkgs.iwgtk
     pkgs.freecad-wayland
     pkgs.gdm-settings
     pkgs.eza
@@ -105,10 +106,10 @@ in
     pkgs.signal-desktop
     pkgs.bitwarden-desktop
     pkgs.freetube
-    pkgs.copyq
+    pkgs_stable.copyq
     pkgs_stable.gimp
     pkgs.legcord
-    pkgs.lutris
+    pkgs_stable.lutris
     pkgs.obs-studio
     pkgs_stable.prismlauncher
     pkgs.slack
@@ -184,7 +185,6 @@ in
     pkgs.netcat-gnu
     pkgs.jq
     pkgs.rippkgs
-    pkgs.qt6.full
     pkgs.kdePackages.qtdeclarative
     pkgs.bc
     pkgs.playerctl
