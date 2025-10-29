@@ -28,11 +28,6 @@
     openFirewall = true;
   };
 
-  programs.ydotool = {
-    enable = true;
-    group = "users";
-  };
-
   services.openssh.enable = true;
 
   services.displayManager.autoLogin.enable = true;

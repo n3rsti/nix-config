@@ -39,12 +39,6 @@ in
         { pkgs, ... }:
         {
           imports = [ ./home.nix ];
-          home.pointerCursor = {
-            gtk.enable = true;
-            package = pkgs.bibata-cursors;
-            name = "Bibata-Modern-Classic";
-            size = 16;
-          };
         };
     };
     useGlobalPkgs = true;
@@ -238,6 +232,11 @@ in
     '';
   };
   services.gnome.gcr-ssh-agent.enable = false;
+
+  programs.ydotool = {
+    enable = true;
+    group = "users";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
