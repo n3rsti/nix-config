@@ -99,6 +99,13 @@ in
     enable = true;
   };
 
+  programs.ssh = {
+    startAgent = true;
+    extraConfig = ''
+      AddKeysToAgent yes
+    '';
+  };
+
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
