@@ -2,7 +2,7 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     home-manager = {
@@ -12,7 +12,7 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    nixpkgs_25_05.url = "github:nixos/nixpkgs/25.05";
+    nixpkgs_25_05.url = "github:nixos/nixpkgs/nixos-25.05";
 
     elephant.url = "github:abenz1267/elephant";
 
