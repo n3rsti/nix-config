@@ -151,7 +151,14 @@ in
     enable = true;
     package = pkgs.usbmuxd2;
   };
-  services.tailscale.enable = true;
+  services.tailscale = {
+    enable = true;
+    extraSetFlags = [
+      "--accept-dns"
+      "--accept-routes"
+      "--exit-node-allow-lan-access"
+    ];
+  };
 
   services.playerctld.enable = true;
 

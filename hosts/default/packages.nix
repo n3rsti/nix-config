@@ -83,7 +83,7 @@ in
     pkgs.tree-sitter
     pkgs.lua
     pkgs.lazygit
-    pkgs.postgres-lsp
+    pkgs.postgres-language-server
 
     # apps
     pkgs.figma-linux
@@ -149,7 +149,7 @@ in
     pkgs.wl-clipboard
     pkgs.nwg-look
     pkgs.dmidecode
-    pkgs.protonup
+    pkgs.protonup-ng
     pkgs.wget
     pkgs.dunst
     pkgs.libnotify
