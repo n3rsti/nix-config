@@ -78,13 +78,14 @@ in
   services.nextcloud = {
     enable = true;
     https = true;
-    package = pkgs.nextcloud31;
+    package = pkgs.nextcloud32;
     hostName = "server.tail3ce7af.ts.net";
     config.adminpassFile = "/etc/nextcloud-admin-pass";
     config.dbtype = "sqlite";
     settings.trusted_domains = [
       "localhost"
       "server.tail3ce7af.ts.net"
+      "nextcloud.tail3ce7af.ts.net"
       "100.72.98.44"
     ];
     extraApps = {
@@ -92,17 +93,6 @@ in
     };
     extraAppsEnable = true;
     configureRedis = true;
-  };
-
-  services.nginx = {
-    enable = true;
-
-    virtualHosts."server.tail3ce7af.ts.net" = {
-      forceSSL = true;
-      enableACME = false;
-      sslCertificate = "/etc/ssl/server.tail3ce7af.ts.net.crt";
-      sslCertificateKey = "/etc/ssl/server.tail3ce7af.ts.net.key";
-    };
   };
 
   services.openssh = {
@@ -212,6 +202,8 @@ in
     wakeonlan
     makemkv
     nextcloud31
+    nmap
+    eza
     #  wget
   ];
 
