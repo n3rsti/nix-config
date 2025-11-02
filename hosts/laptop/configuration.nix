@@ -58,6 +58,8 @@ in
   services.tlp.enable = true;
   services.thermald.enable = true;
 
+  nix.settings.cores = 3;
+
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [

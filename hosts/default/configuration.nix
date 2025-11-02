@@ -188,6 +188,7 @@ in
   programs.appimage.binfmt = true;
 
   programs.nix-ld.enable = true;
+  programs.direnv.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -197,7 +198,7 @@ in
   ];
 
   nix.settings.max-jobs = lib.mkDefault 8;
-  nix.settings.cores = 0;
+  nix.settings.cores = lib.mkDefault 0;
 
   nix.settings.auto-optimise-store = true;
 

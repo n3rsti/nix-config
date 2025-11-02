@@ -25,17 +25,19 @@
 
     # Use initExtra for functions that need arguments
     initContent = ''
-      export PATH="$PATH:$HOME/.npm-global/bin"
-      nix-switch_func() {
-        sudo nixos-rebuild switch --flake ~/nixos#"$1"
-      }
+            export PATH="$PATH:$HOME/.npm-global/bin"
+            nix-switch_func() {
+              sudo nixos-rebuild switch --flake ~/nixos#"$1"
+            }
 
-      nix-test_func() {
-        sudo nixos-rebuild test --flake ~/nixos#"$1"
-      }
-      bindkey -s ^F "~/.config/dotfiles/scripts/tmux-sessionizer.sh\n"
+            nix-test_func() {
+              sudo nixos-rebuild test --flake ~/nixos#"$1"
+            }
+            bindkey -s ^F "~/.config/dotfiles/scripts/tmux-sessionizer.sh\n"
 
-      find ~/.ssh -type f ! -name '*.pub' -exec ssh-add {} \; > /dev/null 2>&1
+            find ~/.ssh -type f ! -name '*.pub' -exec ssh-add {} \; > /dev/null 2>&1
+
+      eval "$(direnv hook zsh)"
     '';
   };
 }
