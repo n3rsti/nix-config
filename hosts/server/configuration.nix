@@ -133,7 +133,7 @@ in
   programs.zsh.enable = true;
   services.jellyfin = {
     user = "n3rsti";
-    enable = true;
+    enable = false;
     openFirewall = true;
   };
   services.radarr = {
@@ -202,9 +202,9 @@ in
     tmux
     go
     docker
-    jellyfin
-    jellyfin-web
-    jellyfin-ffmpeg
+    # jellyfin
+    # jellyfin-web
+    # jellyfin-ffmpeg
     qbittorrent-nox
     wakeonlan
     makemkv
@@ -234,6 +234,7 @@ in
     8082
     80
     443
+    47990
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.

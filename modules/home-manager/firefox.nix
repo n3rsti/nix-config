@@ -4,6 +4,24 @@
   programs.firefox = {
     enable = true;
     profiles = {
+      n3rsti = {
+        isDefault = true;
+        preConfig = builtins.readFile "${pkgs.arkenfox-userjs}/user.js";
+        extraConfig = ''
+          user_pref("browser.startup.page", 1);
+          user_pref("browser.startup.homepage", "https://github.com/n3rsti|https://mail.proton.me/u/0/inbox|https://chatgpt.com|https://ekursy.put.poznan.pl/");
+
+          user_pref("privacy.sanitize.sanitizeOnShutdown", false);
+          user_pref("sidebar.verticalTabs", true);
+        '';
+        extensions = {
+          packages = with pkgs.nur.repos.rycee.firefox-addons; [
+            ublock-origin
+            sponsorblock
+            darkreader
+          ];
+        };
+      };
 
     };
   };

@@ -16,6 +16,7 @@ in
   environment.systemPackages = with pkgs; [
     # dev tools
     pkgs.neovim
+    inputs.caelestia-shell.packages.${pkgs.system}.with-cli
     pkgs.devenv
     pkgs.insomnia
     pkgs.bun
@@ -35,7 +36,6 @@ in
     pkgs.lua-language-server
     pkgs.cargo
     pkgs_stable.dotnetCorePackages.dotnet_9.sdk
-    pkgs_stable.mono
     pkgs_stable.dotnet-sdk_9
     pkgs_stable.csharp-ls
     pkgs.rust-analyzer
@@ -53,7 +53,7 @@ in
     pkgs.nodePackages.vscode-json-languageserver
     pkgs.vscode-langservers-extracted
     pkgs.fixjson
-    pkgs.tailwindcss-language-server
+    # pkgs.tailwindcss-language-server
     pkgs.nixd
     pkgs.go
     pkgs.gnumake
@@ -86,11 +86,12 @@ in
     pkgs.postgres-language-server
 
     # apps
+    pkgs.ashell
     pkgs.figma-linux
+    pkgs.ffmpeg_6-full
     pkgs_stable.blender
     pkgs.arkenfox-userjs
     pkgs.freecad-wayland
-    pkgs.gdm-settings
     pkgs.eza
     pkgs.thunderbird
     pkgs.evince # pdf viewer
@@ -109,6 +110,7 @@ in
     pkgs_stable.copyq
     pkgs_stable.gimp
     pkgs.legcord
+    pkgs.discord
     pkgs_stable.lutris
     pkgs.obs-studio
     pkgs_stable.prismlauncher
@@ -188,6 +190,8 @@ in
     pkgs.kdePackages.qtdeclarative
     pkgs.bc
     pkgs.playerctl
+
+    pkgs.adwaita-qt6
 
     # disk formatting, used for microsd
     pkgs.fd

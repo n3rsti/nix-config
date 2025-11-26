@@ -10,6 +10,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    caelestia-shell.inputs.quickshell = {
+      url = "github:outfoxxed/quickshell/1ddb355121484bcac70f49edd4bd006b1d3a753e";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     nixpkgs_25_05.url = "github:nixos/nixpkgs/nixos-25.05";
@@ -40,7 +54,9 @@
             inputs.home-manager.nixosModules.default
             chaotic.nixosModules.default
             inputs.walker.nixosModules.default
+            inputs.nur.modules.nixos.default
           ];
+
         };
 
         # PC-specific configuration
@@ -51,6 +67,7 @@
             inputs.home-manager.nixosModules.default
             chaotic.nixosModules.default
             inputs.walker.nixosModules.default
+            inputs.nur.modules.nixos.default
           ];
         };
 
@@ -62,6 +79,7 @@
             inputs.home-manager.nixosModules.default
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
             chaotic.nixosModules.default
+            inputs.nur.modules.nixos.default
           ];
         };
 
