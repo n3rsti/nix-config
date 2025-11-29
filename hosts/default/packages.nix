@@ -35,7 +35,6 @@ in
     pkgs.clang-tools
     pkgs.lua-language-server
     pkgs.cargo
-    pkgs_stable.dotnetCorePackages.dotnet_9.sdk
     pkgs_stable.dotnet-sdk_9
     pkgs_stable.csharp-ls
     pkgs.rust-analyzer
@@ -86,6 +85,7 @@ in
     pkgs.postgres-language-server
 
     # apps
+    pkgs.r2modman
     pkgs.ashell
     pkgs.figma-linux
     pkgs.ffmpeg_6-full
