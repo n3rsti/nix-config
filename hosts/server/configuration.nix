@@ -21,6 +21,7 @@ in
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/nixos/main-user.nix
+    ../../modules/minecraft/minecraft.nix
     inputs.home-manager.nixosModules.default
 
   ];
@@ -135,6 +136,7 @@ in
     user = "n3rsti";
     enable = false;
     openFirewall = true;
+    package = pkgs_stable.jellyfin;
   };
   services.radarr = {
     enable = true;
@@ -197,7 +199,7 @@ in
     neovim
     git
     ghostty
-    jdk
+    jdk25
     btop
     tmux
     go
@@ -235,6 +237,7 @@ in
     80
     443
     47990
+    8443
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.

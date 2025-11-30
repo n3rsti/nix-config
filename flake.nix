@@ -9,7 +9,7 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,6 +42,7 @@
       self,
       nixpkgs,
       chaotic,
+      nix-minecraft,
       ...
     }@inputs:
     {
@@ -87,6 +88,10 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/server/configuration.nix
+	     nix-minecraft.nixosModules.minecraft-servers
+          {
+            nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+          }
             #inputs.home-manager.nixosModules.default
           ];
         };
