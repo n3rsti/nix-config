@@ -35,9 +35,14 @@
 
   qt = {
     enable = true;
+    platformTheme.name = "gtk3";
     style = {
       name = "adwaita-dark";
       package = pkgs.adwaita-qt;
     };
   };
+
+  # Fix spotify icon for quickshell tray menu
+  home.file.".local/share/icons/hicolor/32x32/apps/spotify-linux-32.png".source =
+    "${pkgs.spotify}/share/spotify/icons/spotify-linux-32.png";
 }

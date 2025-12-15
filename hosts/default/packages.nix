@@ -16,7 +16,6 @@ in
   environment.systemPackages = with pkgs; [
     # dev tools
     pkgs.neovim
-    inputs.caelestia-shell.packages.${pkgs.system}.with-cli
     pkgs.devenv
     pkgs.insomnia
     pkgs.bun
@@ -85,6 +84,8 @@ in
     pkgs.postgres-language-server
 
     # apps
+    pkgs.opencode
+    pkgs_stable.clickup
     pkgs.r2modman
     pkgs.ashell
     pkgs.figma-linux
