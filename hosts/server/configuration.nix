@@ -213,6 +213,9 @@ in
     nextcloud31
     nmap
     eza
+    zip
+    unzip
+    tree
     #  wget
   ];
 

@@ -19,6 +19,8 @@ in
     openFirewall = true;
     servers.fabric = {
       enable = true;
+      jvmOpts = "-Xmx12G -Xms12G -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+AlwaysActAsServerClassMachine -XX:+AlwaysPreTouch -XX:+DisableExplicitGC -XX:+UseNUMA -XX:NmethodSweepActivity=1 -XX:ReservedCodeCacheSize=400M -XX:NonNMethodCodeHeapSize=12M -XX:ProfiledCodeHeapSize=194M -XX:NonProfiledCodeHeapSize=194M -XX:-DontCompileHugeMethods -XX:MaxNodeLimit=240000 -XX:NodeLimitFudgeFactor=8000 -XX:+UseVectorCmov -XX:+PerfDisableSharedMem -XX:+UseFastUnorderedTimeStamps -XX:+UseCriticalJavaThreadPriority -XX:ThreadPriorityPolicy=1 -XX:AllocatePrefetchStyle=3 -XX:+UseG1GC -XX:MaxGCPauseMillis=37 -XX:+PerfDisableSharedMem -XX:G1HeapRegionSize=16M -XX:G1NewSizePercent=23 -XX:G1ReservePercent=20 -XX:SurvivorRatio=32 -XX:G1MixedGCCountTarget=3 -XX:G1HeapWastePercent=20 -XX:InitiatingHeapOccupancyPercent=10 -XX:G1RSetUpdatingPauseTimePercent=0 -XX:MaxTenuringThreshold=1 -XX:G1SATBBufferEnqueueingThresholdPercent=30 -XX:G1ConcMarkStepDurationMillis=5.0 -XX:G1ConcRSHotCardLimit=16 -XX:G1ConcRefinementServiceIntervalMillis=150 -XX:GCTimeRatio=99";
+      # jvmOpts = "-Xmx12G -Xms12G";
 
       # Specify the custom minecraft server package
       package = pkgs.fabricServers.fabric-1_21_10.override {
@@ -33,7 +35,10 @@ in
 
       symlinks = {
         mods = pkgs.linkFarmFromDrvs "mods" (
-          builtins.attrValues {
+	  builtins.attrValues {
+	   DistantHorizons = pkgs.runCommand "DistantHorizons-2.3.7.jar" {} ''
+	     cp ${./DistantHorizons-fabric-2.3.7-b-dev-1.21.10.jar} $out
+	   '';
             Fabric-API = pkgs.fetchurl {
               url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/dQ3p80zK/fabric-api-0.138.3%2B1.21.10.jar";
               sha512 = "sha512-3HOjZTwplHbR9wy2ksTjWsP2lLOwhz49C3KelS6ZK4eNGo4LHRBJpEKg1IPTBoBzGU8Vr1LqmThURhbiBDPMOA==";
@@ -49,10 +54,6 @@ in
             Cristellib = pkgs.fetchurl {
               url = "https://cdn.modrinth.com/data/cl223EMc/versions/ZvMKpvgf/cristellib-fabric-1.21.10-3.0.3.jar";
               sha512 = "sha512-hQbQyvBexFZb8wHckZBzPkBh8KT3l0uFqhP7NdLbdbBEh0bQQneifjChaJEXnKdFA7EppdfojMEZSnJJxqrbnA==";
-            };
-            DistantHorizons = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/uCdwusMi/versions/9Y10ZuWP/DistantHorizons-2.3.6-b-1.21.10-fabric-neoforge.jar";
-              sha512 = "sha512-Gxtwt+xikNFSpfn6Py5o6niV9AfFYbVukauj/a3vJ3zSWYeWdhmNZIHcx2oib/GqhXwBrpxBvj6WO1lUYHSh/A==";
             };
             DungeonsAndTaverns = pkgs.fetchurl {
               url = "https://cdn.modrinth.com/data/tpehi7ww/versions/Fp3HZr0m/dungeons-and-taverns-v5.0.4.jar";
