@@ -10,7 +10,7 @@
 }:
 let
   pkgs_stable = (
-    import inputs.nixpkgs_25_05 {
+    import inputs.nixpkgs_stable {
       inherit (pkgs) system;
       config = config.nixpkgs.config;
     }

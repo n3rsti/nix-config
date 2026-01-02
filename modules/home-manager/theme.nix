@@ -7,8 +7,8 @@
   gtk = {
     enable = true;
     theme = {
-      name = "catppuccin-frappe-blue-standard";
-      package = pkgs.catppuccin-gtk;
+      name = "Tokyonight-Dark";
+      package = pkgs.tokyonight-gtk-theme;
     };
     font = {
       name = "Adwaita Sans Regular";

@@ -7,6 +7,10 @@
       n3rsti = {
         isDefault = true;
         preConfig = builtins.readFile "${pkgs.arkenfox-userjs}/user.js";
+        search = {
+          default = "ddg";
+          privateDefault = "ddg";
+        };
         extraConfig = ''
           user_pref("browser.startup.page", 1);
           user_pref("browser.startup.homepage", "https://github.com/n3rsti|https://mail.proton.me/u/0/inbox|https://chatgpt.com|https://ekursy.put.poznan.pl/");
