@@ -6,7 +6,7 @@
 }:
 let
   pkgs_stable = (
-    import inputs.nixpkgs_25_05 {
+    import inputs.nixpkgs_stable {
       inherit (pkgs) system;
       config = config.nixpkgs.config;
     }
@@ -16,7 +16,6 @@ in
   environment.systemPackages = with pkgs; [
     # dev tools
     pkgs.neovim
-    inputs.caelestia-shell.packages.${pkgs.system}.with-cli
     pkgs.devenv
     pkgs.insomnia
     pkgs.bun
@@ -31,6 +30,7 @@ in
     pkgs.deno
     pkgs.gcc
     pkgs.gopls
+    pkgs.delve # go debugger
     pkgs.stylua
     pkgs.clang-tools
     pkgs.lua-language-server
@@ -85,11 +85,12 @@ in
     pkgs.postgres-language-server
 
     # apps
+    pkgs.opencode
+    pkgs_stable.clickup
     pkgs.r2modman
     pkgs.ashell
     pkgs.figma-linux
     pkgs.ffmpeg_6-full
-    pkgs_stable.blender
     pkgs.arkenfox-userjs
     pkgs.freecad-wayland
     pkgs.eza
@@ -118,7 +119,6 @@ in
     pkgs.qbittorrent
     pkgs.ghostty
     pkgs.brave
-    pkgs_stable.jellyfin-media-player
     pkgs.feather
     pkgs.spotify
     pkgs.vlc
@@ -134,6 +134,7 @@ in
     pkgs_stable.nautilus
 
     # system
+    pkgs.swaynotificationcenter
     pkgs.duf
     pkgs.libimobiledevice
     pkgs.hyprlock
@@ -149,7 +150,6 @@ in
     pkgs.zsh-autosuggestions
     pkgs.pavucontrol
     pkgs.wl-clipboard
-    pkgs.nwg-look
     pkgs.dmidecode
     pkgs.protonup-ng
     pkgs.wget
@@ -161,7 +161,6 @@ in
     pkgs.acpi
     pkgs.btop
     pkgs.blueberry
-    pkgs.networkmanager_dmenu
     pkgs.pinentry-gnome3
     pkgs.hyprpicker
     pkgs.grim

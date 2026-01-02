@@ -3,30 +3,20 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    nixpkgs_stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    caelestia-shell.inputs.quickshell = {
-      url = "github:outfoxxed/quickshell/1ddb355121484bcac70f49edd4bd006b1d3a753e";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    nixpkgs_25_05.url = "github:nixos/nixpkgs/nixos-25.05";
 
     elephant.url = "github:abenz1267/elephant";
 
@@ -35,6 +25,7 @@
       inputs.elephant.follows = "elephant";
     };
 
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
   outputs =
@@ -88,10 +79,10 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/server/configuration.nix
-	     nix-minecraft.nixosModules.minecraft-servers
-          {
-            nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
-          }
+            nix-minecraft.nixosModules.minecraft-servers
+            {
+              nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+            }
             #inputs.home-manager.nixosModules.default
           ];
         };
