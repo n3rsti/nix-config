@@ -76,6 +76,14 @@ in
 
   services.tailscale.enable = true;
 
+
+  services.paperless = {
+    enable = true;
+  settings = {
+    PAPERLESS_URL = "https://paperless.tail3ce7af.ts.net";
+  };
+  };
+
   services.nextcloud = {
     enable = true;
     https = true;
@@ -241,6 +249,7 @@ in
     443
     47990
     8443
+    28981
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.

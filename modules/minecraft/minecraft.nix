@@ -35,10 +35,11 @@ in
 
       symlinks = {
         mods = pkgs.linkFarmFromDrvs "mods" (
-	  builtins.attrValues {
-	   DistantHorizons = pkgs.runCommand "DistantHorizons-2.3.7.jar" {} ''
-	     cp ${./DistantHorizons-fabric-2.3.7-b-dev-1.21.10.jar} $out
-	   '';
+		  builtins.attrValues {
+            DistantHorizons = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/uCdwusMi/versions/CKJFSOC6/DistantHorizons-2.4.5-b-1.21.10-fabric-neoforge.jar";
+              sha512 = "sha512-gut6fVsHGvkWQcqipvu7HNznWkGjYU24VBhnGxgWrxC1l86DFbBLnK1JS1varEFfXK60eEiUc3/Xg2MB9ae++A==";
+            };
             Fabric-API = pkgs.fetchurl {
               url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/dQ3p80zK/fabric-api-0.138.3%2B1.21.10.jar";
               sha512 = "sha512-3HOjZTwplHbR9wy2ksTjWsP2lLOwhz49C3KelS6ZK4eNGo4LHRBJpEKg1IPTBoBzGU8Vr1LqmThURhbiBDPMOA==";
