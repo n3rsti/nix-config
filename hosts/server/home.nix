@@ -1,7 +1,13 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  imports = [ # Include modules common to all configurations
+  imports = [
+    # Include modules common to all configurations
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/kitty.nix
@@ -86,4 +92,3 @@
   # Home Manager will use the global nixpkgs config since useGlobalPkgs is enabled
   # We don't need to set nixpkgs.config here
 }
-

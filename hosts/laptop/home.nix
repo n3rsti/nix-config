@@ -26,4 +26,3 @@
   # Example of laptop-specific power management settings
   # services.battery-notifier.enable = true;
 }
-

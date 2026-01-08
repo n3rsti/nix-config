@@ -52,7 +52,7 @@ in
     pkgs.nodePackages.vscode-json-languageserver
     pkgs.vscode-langservers-extracted
     pkgs.fixjson
-    # pkgs.tailwindcss-language-server
+    pkgs.tailwindcss-language-server
     pkgs.nixd
     pkgs.go
     pkgs.gnumake
@@ -85,6 +85,7 @@ in
     pkgs.postgres-language-server
 
     # apps
+    pkgs.jellyfin-media-player
     pkgs.opencode
     pkgs_stable.clickup
     pkgs.r2modman

@@ -76,12 +76,11 @@ in
 
   services.tailscale.enable = true;
 
-
   services.paperless = {
     enable = true;
-  settings = {
-    PAPERLESS_URL = "https://paperless.tail3ce7af.ts.net";
-  };
+    settings = {
+      PAPERLESS_URL = "https://paperless.tail3ce7af.ts.net";
+    };
   };
 
   services.nextcloud = {
@@ -142,7 +141,7 @@ in
   programs.zsh.enable = true;
   services.jellyfin = {
     user = "n3rsti";
-    enable = false;
+    enable = true;
     openFirewall = true;
     package = pkgs_stable.jellyfin;
   };
@@ -212,9 +211,6 @@ in
     tmux
     go
     docker
-    # jellyfin
-    # jellyfin-web
-    # jellyfin-ffmpeg
     qbittorrent-nox
     wakeonlan
     makemkv
