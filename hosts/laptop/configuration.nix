@@ -18,6 +18,7 @@ in
     ./hardware-configuration.nix
     ../../modules/nixos/main-user.nix
     ../default/configuration.nix
+    ./distributed-builds.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -48,7 +49,7 @@ in
   services.tlp.enable = true;
   services.thermald.enable = true;
 
-  nix.settings.cores = 3;
+  nix.settings.cores = 0;
 
   hardware.graphics = {
     enable = true;

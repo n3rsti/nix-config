@@ -34,7 +34,6 @@ in
     pkgs.stylua
     pkgs.clang-tools
     pkgs.lua-language-server
-    pkgs.cargo
     pkgs_stable.dotnet-sdk_9
     pkgs_stable.csharp-ls
     pkgs.rust-analyzer

@@ -6,6 +6,8 @@
     nixpkgs_stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +27,12 @@
       inputs.elephant.follows = "elephant";
     };
 
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
@@ -34,6 +42,7 @@
       nixpkgs,
       chaotic,
       nix-minecraft,
+      nix-flatpak,
       ...
     }@inputs:
     {
@@ -47,6 +56,7 @@
             chaotic.nixosModules.default
             inputs.walker.nixosModules.default
             inputs.nur.modules.nixos.default
+            nix-flatpak.nixosModules.nix-flatpak
           ];
 
         };
@@ -60,6 +70,7 @@
             chaotic.nixosModules.default
             inputs.walker.nixosModules.default
             inputs.nur.modules.nixos.default
+            nix-flatpak.nixosModules.nix-flatpak
           ];
         };
 
@@ -72,6 +83,7 @@
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
             chaotic.nixosModules.default
             inputs.nur.modules.nixos.default
+            nix-flatpak.nixosModules.nix-flatpak
           ];
         };
 

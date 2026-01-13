@@ -9,14 +9,17 @@
   config,
   ...
 }:
+with lib;
 let
-  pkgs_stable = (
-    import inputs.nixpkgs_stable {
-      inherit (pkgs) system;
-      config = config.nixpkgs.config;
-    }
-  );
+  hyprPluginPkgs = inputs.hyprland-plugins.packages.${pkgs.system};
+  hypr-plugin-dir = pkgs.symlinkJoin {
+    name = "hyrpland-plugins";
+    paths = with hyprPluginPkgs; [
+      #...plugins
+    ];
+  };
 in
+
 {
   imports = [
     ../../modules/nixos/main-user.nix
@@ -44,6 +47,7 @@ in
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
+    overwriteBackup = true;
   };
 
   users.users.n3rsti = {
@@ -170,6 +174,13 @@ in
   services.gnome.gnome-keyring.enable = true;
   services.gnome.gnome-online-accounts.enable = true;
 
+  services.flatpak = {
+    enable = true;
+    packages = [
+      "org.vinegarhq.Sober"
+    ];
+  };
+
   programs.dconf.enable = true;
 
   virtualisation.docker.enable = true;
@@ -231,6 +242,7 @@ in
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
     LM_LICENSE_FILE = "\${HOME}/Downloads/license.dat";
     JDTLS_JVM_ARGS = "-javaagent:${pkgs.lombok}/share/java/lombok.jar";
+    HYPR_PLUGIN_DIR = hypr-plugin-dir;
   };
 
   programs.ssh = {
