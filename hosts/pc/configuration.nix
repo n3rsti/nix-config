@@ -20,6 +20,7 @@ in
     ./hardware-configuration.nix
     ../../modules/nixos/main-user.nix
     ../default/configuration.nix
+    ../../modules/builder/remote-builder.nix
     inputs.home-manager.nixosModules.default
   ];
 

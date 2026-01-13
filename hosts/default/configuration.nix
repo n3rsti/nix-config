@@ -15,6 +15,7 @@ let
   hypr-plugin-dir = pkgs.symlinkJoin {
     name = "hyrpland-plugins";
     paths = with hyprPluginPkgs; [
+      hyprbars
       #...plugins
     ];
   };

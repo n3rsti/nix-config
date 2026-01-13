@@ -18,7 +18,7 @@ in
     ./hardware-configuration.nix
     ../../modules/nixos/main-user.nix
     ../default/configuration.nix
-    ./distributed-builds.nix
+    ../../modules/builder/distributed-builds.nix
     inputs.home-manager.nixosModules.default
   ];
 

@@ -22,7 +22,7 @@ in
     ./hardware-configuration.nix
     ../../modules/nixos/main-user.nix
     ../../modules/minecraft/minecraft.nix
-    ./remote-builder.nix
+    ../../modules/builder/remote-builder.nix
     inputs.home-manager.nixosModules.default
 
   ];
