@@ -40,7 +40,7 @@ in
     pkgs.prettierd
     pkgs.package-version-server
     pkgs.nil
-    pkgs.nixfmt-rfc-style
+    pkgs.nixfmt
     pkgs.bear
     pkgs.python3
     pkgs.python3Packages.pygobject3
@@ -86,7 +86,7 @@ in
     pkgs.figma-linux
     pkgs.ffmpeg_6-full
     pkgs.arkenfox-userjs
-    pkgs.freecad-wayland
+    pkgs_stable.freecad
     pkgs.eza
     pkgs.thunderbird
     pkgs.evince # pdf viewer
