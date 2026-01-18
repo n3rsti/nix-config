@@ -17,11 +17,10 @@ in
     # dev tools
     pkgs.neovim
     pkgs.devenv
-    pkgs.insomnia
     pkgs.bun
-    pkgs.kdePackages.dolphin
     pkgs.typst
     pkgs.tinymist
+    pkgs.websocat
     pkgs.gradle
     pkgs_stable.roslyn-ls
     pkgs.maven
@@ -55,10 +54,7 @@ in
     pkgs.nixd
     pkgs.go
     pkgs.gnumake
-    pkgs.glew
-    pkgs.glfw
     pkgs.pkg-config
-    pkgs.glm
     pkgs.nodejs_24
     pkgs.eslint
     pkgs.zed-editor
@@ -85,10 +81,8 @@ in
 
     # apps
     pkgs.jellyfin-media-player
-    pkgs.opencode
     pkgs_stable.clickup
-    pkgs.r2modman
-    pkgs.ashell
+    pkgs.r2modman # mod manager for games
     pkgs.figma-linux
     pkgs.ffmpeg_6-full
     pkgs.arkenfox-userjs
@@ -166,12 +160,12 @@ in
     pkgs.grim
     pkgs.fzf
     pkgs.tmux
-    pkgs.unzip
     pkgs.fastfetch
     pkgs.imagemagick
     pkgs.chafa
     pkgs.nmap
     pkgs.zip
+    pkgs.unzip
     pkgs.hyprsunset
     pkgs.yt-dlp
     pkgs.cava
@@ -187,6 +181,7 @@ in
     pkgs.jq
     pkgs.rippkgs
     pkgs.kdePackages.qtdeclarative
+    kdePackages.kdeconnect-kde
     pkgs.bc
     pkgs.playerctl
 

@@ -14,6 +14,7 @@
     ../../modules/home-manager/theme.nix
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/walker.nix
+    ../../modules/home-manager/dotfiles.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

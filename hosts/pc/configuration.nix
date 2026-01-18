@@ -44,9 +44,6 @@ in
 
   services.openssh.enable = true;
 
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "n3rsti";
-
   hardware.opentabletdriver.enable = true;
 
   hardware = {
