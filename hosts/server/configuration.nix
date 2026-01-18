@@ -139,34 +139,34 @@ in
     variant = "";
   };
 
+  users.groups.media = { };
+
   programs.zsh.enable = true;
   services.jellyfin = {
-    user = "n3rsti";
     enable = true;
     openFirewall = true;
     package = pkgs_stable.jellyfin;
+    group = "media";
   };
+
   services.radarr = {
     enable = true;
     openFirewall = true;
-    user = "n3rsti";
-    group = "users";
-    dataDir = "/home/n3rsti/radarr";
+    group = "media";
   };
 
   services.ombi = {
     enable = true;
     openFirewall = true;
-    user = "n3rsti";
-    group = "users";
-    dataDir = "/home/n3rsti/ombi";
+    group = "media";
   };
 
   services.prowlarr = {
     enable = true;
     openFirewall = true;
-    dataDir = "/home/n3rsti/prowlarr";
   };
+
+  users.users.prowlarr.extraGroups = [ "media" ];
 
   services.flaresolverr = {
     package = pkgs_stable.flaresolverr;
@@ -177,9 +177,7 @@ in
   services.sonarr = {
     enable = true;
     openFirewall = true;
-    user = "n3rsti";
-    group = "users";
-    dataDir = "/home/n3rsti/sonarr";
+    group = "media";
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -190,6 +188,7 @@ in
       "networkmanager"
       "wheel"
       "docker"
+      "media"
     ];
     packages = with pkgs; [ ];
   };
