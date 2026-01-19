@@ -23,13 +23,9 @@ in
 
 {
   imports = [
-    ../../modules/nixos/main-user.nix
     ./packages.nix
     inputs.home-manager.nixosModules.default
   ];
-
-  main-user.enable = true;
-  main-user.userName = "n3rsti";
 
   nix.settings.trusted-users = [
     "root"
@@ -54,11 +50,14 @@ in
   users.users.n3rsti = {
     isNormalUser = true;
     description = "n3rsti";
+    shell = pkgs.zsh;
     extraGroups = [
       "networkmanager"
       "wheel"
-      "networkmanager"
       "ydotool"
+      "docker"
+      "dialout"
+      "input"
     ];
   };
 

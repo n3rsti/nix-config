@@ -72,9 +72,6 @@ in
     useUserPackages = true;
   };
 
-  main-user.enable = true;
-  main-user.userName = "n3rsti";
-
   services.tailscale.enable = true;
 
   services.paperless = {
@@ -166,8 +163,6 @@ in
     openFirewall = true;
   };
 
-  users.users.prowlarr.extraGroups = [ "media" ];
-
   services.flaresolverr = {
     package = pkgs_stable.flaresolverr;
     enable = true;
@@ -178,6 +173,11 @@ in
     enable = true;
     openFirewall = true;
     group = "media";
+  };
+
+  services.jellyseerr = {
+    enable = true;
+    openFirewall = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -195,6 +195,12 @@ in
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  nix.settings.auto-optimise-store = true;
+
+  nix.gc.automatic = true;
+  nix.gc.dates = "daily";
+  nix.gc.options = "--delete-older-than 7d";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -220,7 +226,6 @@ in
     zip
     unzip
     tree
-    #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
