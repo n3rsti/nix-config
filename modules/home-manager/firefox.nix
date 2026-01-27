@@ -24,6 +24,7 @@
             sponsorblock
             darkreader
             bitwarden
+            return-youtube-dislikes
           ];
         };
       };

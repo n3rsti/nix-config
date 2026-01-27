@@ -59,7 +59,6 @@ in
     pkgs.eslint
     pkgs.zed-editor
     pkgs.typescript
-    pkgs.jdk
     pkgs.jdk25
     pkgs.maven
     pkgs.jdt-language-server
@@ -78,6 +77,7 @@ in
     pkgs.lua
     pkgs.lazygit
     pkgs.postgres-language-server
+    pkgs.blueprint-compiler
 
     # apps
     pkgs.jellyfin-media-player
@@ -183,7 +183,7 @@ in
     pkgs.kdePackages.qtdeclarative
     kdePackages.kdeconnect-kde
     pkgs.bc
-    pkgs.playerctl
+    # pkgs.playerctl
 
     pkgs.adwaita-qt6
 
