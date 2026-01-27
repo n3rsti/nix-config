@@ -184,6 +184,7 @@ in
   users.users.n3rsti = {
     isNormalUser = true;
     description = "n3rsti";
+    shell = pkgs.zsh;
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -226,6 +227,7 @@ in
     zip
     unzip
     tree
+    nixfmt
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -6,10 +6,12 @@
 }:
 let
   # This is the same mkOutOfStoreSymlink used by Home-Manager
-  mkOutOfStoreSymlink = path: builtins.path {
-    path = path;
-    name = baseNameOf path;
-  };
+  mkOutOfStoreSymlink =
+    path:
+    builtins.path {
+      path = path;
+      name = baseNameOf path;
+    };
 in
 {
   # Minecraft server settings
@@ -18,6 +20,9 @@ in
     eula = true;
     openFirewall = true;
     servers.fabric = {
+      serverProperties = {
+        spawn-protection = 0;
+      };
       enable = true;
       jvmOpts = "-Xmx12G -Xms12G -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+AlwaysActAsServerClassMachine -XX:+AlwaysPreTouch -XX:+DisableExplicitGC -XX:+UseNUMA -XX:NmethodSweepActivity=1 -XX:ReservedCodeCacheSize=400M -XX:NonNMethodCodeHeapSize=12M -XX:ProfiledCodeHeapSize=194M -XX:NonProfiledCodeHeapSize=194M -XX:-DontCompileHugeMethods -XX:MaxNodeLimit=240000 -XX:NodeLimitFudgeFactor=8000 -XX:+UseVectorCmov -XX:+PerfDisableSharedMem -XX:+UseFastUnorderedTimeStamps -XX:+UseCriticalJavaThreadPriority -XX:ThreadPriorityPolicy=1 -XX:AllocatePrefetchStyle=3 -XX:+UseG1GC -XX:MaxGCPauseMillis=37 -XX:+PerfDisableSharedMem -XX:G1HeapRegionSize=16M -XX:G1NewSizePercent=23 -XX:G1ReservePercent=20 -XX:SurvivorRatio=32 -XX:G1MixedGCCountTarget=3 -XX:G1HeapWastePercent=20 -XX:InitiatingHeapOccupancyPercent=10 -XX:G1RSetUpdatingPauseTimePercent=0 -XX:MaxTenuringThreshold=1 -XX:G1SATBBufferEnqueueingThresholdPercent=30 -XX:G1ConcMarkStepDurationMillis=5.0 -XX:G1ConcRSHotCardLimit=16 -XX:G1ConcRefinementServiceIntervalMillis=150 -XX:GCTimeRatio=99";
       # jvmOpts = "-Xmx12G -Xms12G";
@@ -28,14 +33,18 @@ in
       }; # Specific fabric loader version
 
       operators = {
-          n3rsti = "65ab77f9-70d1-4407-b7e1-6daced14599a";
+        n3rsti = "65ab77f9-70d1-4407-b7e1-6daced14599a";
       };
 
       symlinks."config/sparsestructures.json5" = ./sparsestructures.json5;
 
+      files."config/DistantHorizons.toml" = ./DistantHorizons.toml;
+
+      symlinks."allowed_symlinks.txt" = pkgs.writeText "allowed_symlinks.txt" "/nix/store";
+
       symlinks = {
         mods = pkgs.linkFarmFromDrvs "mods" (
-		  builtins.attrValues {
+          builtins.attrValues {
             DistantHorizons = pkgs.fetchurl {
               url = "https://cdn.modrinth.com/data/uCdwusMi/versions/CKJFSOC6/DistantHorizons-2.4.5-b-1.21.10-fabric-neoforge.jar";
               sha512 = "sha512-gut6fVsHGvkWQcqipvu7HNznWkGjYU24VBhnGxgWrxC1l86DFbBLnK1JS1varEFfXK60eEiUc3/Xg2MB9ae++A==";
@@ -48,7 +57,7 @@ in
               url = "https://cdn.modrinth.com/data/VSNURh3q/versions/uNick7oj/c2me-fabric-mc1.21.10-0.3.5.1.0.jar";
               sha512 = "sha512-TQechyq5EP1lpsnocJxwUBeGJvcSXISTico4OI4ZmVvYdOBx6G5qz2+++qLylP2+vsua+ERKkIuaPeiU2AfE2w==";
             };
-            Cloth-config= pkgs.fetchurl {
+            Cloth-config = pkgs.fetchurl {
               url = "https://cdn.modrinth.com/data/9s6osm5g/versions/qMxkrrmq/cloth-config-20.0.149-fabric.jar";
               sha512 = "sha512-3x2eA0ncZPwIWfF7ZbZ7DXdFomtJBeh/wUjd68AoXeUaMlWEhZnw1e4k9qqwD7rEhJ1Au5BSk26qRS0hbHraYg==";
             };
@@ -72,7 +81,7 @@ in
               url = "https://cdn.modrinth.com/data/lWDHr9jE/versions/kL6i6vRY/tectonic-3.0.17-fabric-1.21.10.jar";
               sha512 = "sha512-GyPvj1lmHtmp6ORcce+im6h5soYUgtr3x+xByjTUrNLqDs5OcfFrvkYIPH1bxAtNjoKX1LAUKkEzNHw58iOzcg==";
             };
-            Terralith= pkgs.fetchurl {
+            Terralith = pkgs.fetchurl {
               url = "https://cdn.modrinth.com/data/8oi3bsk5/versions/JKg71Gq0/Terralith_1.21.x_v2.5.13.jar";
               sha512 = "sha512-MQOHnvOQ1Hpo8QvUvxudQGOWkFr6ZAuMFcOkTIwVu8PG/cTqtalGtr4ViFExQI9s1pjEqNIGUUSyqxxG+nEM2w==";
             };
@@ -100,7 +109,7 @@ in
               url = "https://cdn.modrinth.com/data/qpPoAL6m/versions/bWRFCmCA/trade-cycling-fabric-1.21.10-1.0.19.jar";
               sha512 = "sha512-rO1Mlv5vauflgSHSP5mx0S4FzxOcWiFd8p4GXKxK4AVmA2ELrlxw+jYErCT+Ls8SPRQRg7q7BetiNnS/QkqADg==";
             };
-            Lithostiched= pkgs.fetchurl {
+            Lithostiched = pkgs.fetchurl {
               url = "https://cdn.modrinth.com/data/XaDC71GB/versions/OHVYggvo/lithostitched-1.5.1-fabric-1.21.9.jar";
               sha512 = "sha512-6Xt7zZi8JjB1iYIsmOJOSgx7hZ8EYe2BBAElBobHugDtfp6JhCuXFM4NyB2jMELFY9nxGn4D2pA2hUCF835RYw==";
             };
@@ -108,7 +117,11 @@ in
               url = "https://cdn.modrinth.com/data/II7t6llZ/versions/qCxyIvl0/wwoo-fabric-2.6.0.jar";
               sha512 = "sha512-LcoEtdd0DqXGtuzTUc/4hYGI2iZbzNZHeFxfq7UfYWYbq5Zm3KoNeJB5DxXI5L6eaYcel6z9nJCA6yK/W0Co5w==";
             };
-	    
+            Sleep = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/fUtpj4ud/sleep-v4.3.13-mc1.21.6%2B.jar";
+              sha512 = "sha512-KM71/MhHVNQ+X43ZFomrvQWtpjGEvdvxILB8UQ5wanaVGvTo1BdumVQ4rLsjKyapQ0T18A6cVZCV3aGOK0W+ZA==";
+            };
+
           }
         );
       };
