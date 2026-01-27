@@ -9,18 +9,6 @@
   config,
   ...
 }:
-with lib;
-let
-  hyprPluginPkgs = inputs.hyprland-plugins.packages.${pkgs.system};
-  hypr-plugin-dir = pkgs.symlinkJoin {
-    name = "hyrpland-plugins";
-    paths = with hyprPluginPkgs; [
-      hyprbars
-      #...plugins
-    ];
-  };
-in
-
 {
   imports = [
     ./packages.nix
@@ -58,6 +46,7 @@ in
       "docker"
       "dialout"
       "input"
+      "gamemode"
     ];
   };
 
@@ -121,11 +110,25 @@ in
 
   programs.hyprland = {
     enable = true;
-    xwayland.enable = true;
     withUWSM = true;
+    xwayland.enable = true;
   };
 
-  services.displayManager.gdm.enable = true;
+  services.displayManager.gdm = {
+    enable = true;
+    wayland = true;
+  };
+
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors = {
+      hyprland = {
+        prettyName = "Hyprland";
+        comment = "Hyprland compositor managed by UWSM";
+        binPath = "/run/current-system/sw/bin/start-hyprland";
+      };
+    };
+  };
 
   security.rtkit.enable = true;
   services.pipewire = {
@@ -164,7 +167,7 @@ in
     ];
   };
 
-  services.playerctld.enable = true;
+  services.playerctld.enable = false;
 
   services.udisks2.enable = true;
 
@@ -242,7 +245,6 @@ in
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
     LM_LICENSE_FILE = "\${HOME}/Downloads/license.dat";
     JDTLS_JVM_ARGS = "-javaagent:${pkgs.lombok}/share/java/lombok.jar";
-    HYPR_PLUGIN_DIR = hypr-plugin-dir;
   };
 
   programs.ssh = {
