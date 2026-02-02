@@ -24,6 +24,16 @@ in
     inputs.home-manager.nixosModules.default
   ];
 
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 32 * 1024;
+    }
+  ];
+
+  nix.settings.cores = 3;
+  nix.settings.max-jobs = 3;
+
   networking.hostName = "pc";
 
   networking.interfaces.enp34s0 = {
