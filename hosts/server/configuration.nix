@@ -36,14 +36,14 @@ in
     "flakes"
   ];
 
-  systemd.user.services.qbittorrent-nox = {
-    description = "qBittorrent-nox Web UI";
-    wantedBy = [ "default.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox";
-      Restart = "on-failure";
-    };
-  };
+  # systemd.user.services.qbittorrent-nox = {
+  #   description = "qBittorrent-nox Web UI";
+  #   wantedBy = [ "default.target" ];
+  #   serviceConfig = {
+  #     ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox";
+  #     Restart = "on-failure";
+  #   };
+  # };
   virtualisation.docker.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -79,6 +79,11 @@ in
     settings = {
       PAPERLESS_URL = "https://paperless.tail3ce7af.ts.net";
     };
+  };
+
+  services.qbittorrent = {
+    enable = true;
+    openFirewall = true;
   };
 
   services.nextcloud = {

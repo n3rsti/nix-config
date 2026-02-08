@@ -114,6 +114,10 @@
     xwayland.enable = true;
   };
 
+  users.extraGroups.vboxusers.members = [ "n3rsti" ];
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+
   services.displayManager.gdm = {
     enable = true;
     wayland = true;
@@ -167,7 +171,7 @@
     ];
   };
 
-  services.playerctld.enable = false;
+  services.playerctld.enable = true;
 
   services.udisks2.enable = true;
 
