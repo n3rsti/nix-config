@@ -15,6 +15,7 @@ in
 {
   environment.systemPackages = with pkgs; [
     # dev tools
+    pkgs.opencode
     pkgs.neovim
     pkgs.devenv
     pkgs.bun
