@@ -13,6 +13,7 @@
     ./packages.nix
     ../../modules/dev/default.nix
     ./networking.nix
+    ./desktop.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -28,22 +29,36 @@
     javascript.enable = true;
   };
 
-  nix.settings.trusted-users = [
-    "root"
-    "n3rsti"
-  ];
+  nix.settings = {
+    trusted-users = [
+      "root"
+      "n3rsti"
+    ];
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    accept-flake-config = true;
 
-  nix.settings.accept-flake-config = true;
+    max-jobs = lib.mkDefault 8;
+    cores = lib.mkDefault 0;
+    auto-optimise-store = true;
+  };
 
-  nix.settings.max-jobs = lib.mkDefault 8;
-  nix.settings.cores = lib.mkDefault 0;
+  nixpkgs.config.allowUnfree = true;
 
-  nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 7d";
+  };
+
+  system.autoUpgrade = {
+    enable = true;
+    dates = "weekly";
+    flake = inputs.self.outPath;
+  };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -105,47 +120,13 @@
 
   };
 
-  time.timeZone = lib.mkDefault "Europe/Warsaw";
+  virtualisation = {
+    docker.enable = true;
 
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pl_PL.UTF-8";
-    LC_IDENTIFICATION = "pl_PL.UTF-8";
-    LC_MEASUREMENT = "pl_PL.UTF-8";
-    LC_MONETARY = "pl_PL.UTF-8";
-    LC_NAME = "pl_PL.UTF-8";
-    LC_NUMERIC = "pl_PL.UTF-8";
-    LC_PAPER = "pl_PL.UTF-8";
-    LC_TELEPHONE = "pl_PL.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+    virtualbox.host.enable = true;
+    virtualbox.host.enableExtensionPack = true;
   };
-
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-    xwayland.enable = true;
-  };
-
   users.extraGroups.vboxusers.members = [ "n3rsti" ];
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-
-  services.displayManager.gdm = {
-    enable = true;
-    wayland = true;
-  };
-
-  programs.uwsm = {
-    enable = true;
-    waylandCompositors = {
-      hyprland = {
-        prettyName = "Hyprland";
-        comment = "Hyprland compositor managed by UWSM";
-        binPath = "/run/current-system/sw/bin/start-hyprland";
-      };
-    };
-  };
 
   security.rtkit.enable = true;
   services.pipewire = {
@@ -156,8 +137,6 @@
   };
 
   services.pipewire.wireplumber.enable = true;
-
-  services.pulseaudio.enable = false;
 
   services.printing.enable = true;
   services.avahi = {
@@ -177,9 +156,11 @@
 
   services.gvfs.enable = true; # for nautilus
 
-  services.gnome.evolution-data-server.enable = true;
-  services.gnome.gnome-keyring.enable = true;
-  services.gnome.gnome-online-accounts.enable = true;
+  services.gnome = {
+    evolution-data-server.enable = true;
+    gnome-keyring.enable = true;
+    gnome-online-accounts.enable = true;
+  };
 
   services.flatpak = {
     enable = true;
@@ -189,8 +170,6 @@
   };
 
   programs.dconf.enable = true;
-
-  virtualisation.docker.enable = true;
 
   programs.steam = {
     enable = true;
@@ -208,16 +187,9 @@
   programs.nix-ld.enable = true;
   programs.direnv.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
-
-  nix.gc.automatic = true;
-  nix.gc.dates = "daily";
-  nix.gc.options = "--delete-older-than 7d";
-
-  system.autoUpgrade = {
+  programs.ydotool = {
     enable = true;
-    dates = "weekly";
-    flake = inputs.self.outPath;
+    group = "users";
   };
 
   fonts.packages = with pkgs; [
@@ -240,11 +212,6 @@
     LM_LICENSE_FILE = "\${HOME}/Downloads/license.dat";
   };
 
-  programs.ydotool = {
-    enable = true;
-    group = "users";
-  };
-
   hardware.bluetooth = {
     enable = lib.mkDefault true;
     powerOnBoot = true;
@@ -253,6 +220,22 @@
         Experimental = true;
       };
     };
+  };
+
+  time.timeZone = lib.mkDefault "Europe/Warsaw";
+
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "pl_PL.UTF-8";
+    LC_IDENTIFICATION = "pl_PL.UTF-8";
+    LC_MEASUREMENT = "pl_PL.UTF-8";
+    LC_MONETARY = "pl_PL.UTF-8";
+    LC_NAME = "pl_PL.UTF-8";
+    LC_NUMERIC = "pl_PL.UTF-8";
+    LC_PAPER = "pl_PL.UTF-8";
+    LC_TELEPHONE = "pl_PL.UTF-8";
+    LC_TIME = "en_US.UTF-8";
   };
 
   # This value determines the NixOS release from which the default
