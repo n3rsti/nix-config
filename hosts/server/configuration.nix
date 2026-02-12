@@ -35,14 +35,6 @@ in
     "flakes"
   ];
 
-  # systemd.user.services.qbittorrent-nox = {
-  #   description = "qBittorrent-nox Web UI";
-  #   wantedBy = [ "default.target" ];
-  #   serviceConfig = {
-  #     ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox";
-  #     Restart = "on-failure";
-  #   };
-  # };
   virtualisation.docker.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -83,6 +75,7 @@ in
   services.qbittorrent = {
     enable = true;
     openFirewall = true;
+    webuiPort = 8082;
   };
 
   services.nextcloud = {
@@ -108,6 +101,8 @@ in
   services.openssh = {
     enable = true;
   };
+
+  services.immich.enable = true;
 
   programs.ssh = {
     startAgent = true;
