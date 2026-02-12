@@ -11,8 +11,22 @@
 {
   imports = [
     ./packages.nix
+    ../../modules/dev/default.nix
+    ./networking.nix
     inputs.home-manager.nixosModules.default
   ];
+
+  dev = {
+    java.enable = true;
+    c.enable = true;
+    python.enable = true;
+    rust.enable = true;
+    go.enable = true;
+    nix.enable = true;
+    lua.enable = true;
+    typst.enable = true;
+    javascript.enable = true;
+  };
 
   nix.settings.trusted-users = [
     "root"
@@ -91,18 +105,6 @@
 
   };
 
-  networking.hostName = lib.mkDefault "nixos";
-
-  networking.networkmanager.enable = lib.mkDefault true;
-
-  networking.firewall.allowedUDPPorts = [
-    9993
-  ];
-
-  networking.firewall.allowedTCPPorts = [
-    8080
-  ];
-
   time.timeZone = lib.mkDefault "Europe/Warsaw";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -164,22 +166,9 @@
     openFirewall = true;
   };
 
-  services.zerotierone = {
-    enable = true;
-    joinNetworks = [ "56374ac9a42a3c0f" ];
-  };
-
   services.usbmuxd = {
     enable = true;
     package = pkgs.usbmuxd2;
-  };
-  services.tailscale = {
-    enable = true;
-    extraSetFlags = [
-      "--accept-dns"
-      "--accept-routes"
-      "--exit-node-allow-lan-access"
-    ];
   };
 
   services.playerctld.enable = true;
@@ -250,14 +239,6 @@
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
     LM_LICENSE_FILE = "\${HOME}/Downloads/license.dat";
   };
-
-  programs.ssh = {
-    startAgent = true;
-    extraConfig = ''
-      AddKeysToAgent yes
-    '';
-  };
-  services.gnome.gcr-ssh-agent.enable = false;
 
   programs.ydotool = {
     enable = true;

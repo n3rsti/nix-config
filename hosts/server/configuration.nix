@@ -20,7 +20,6 @@ in
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../modules/nixos/main-user.nix
     ../../modules/minecraft/minecraft.nix
     ../../modules/builder/remote-builder.nix
     inputs.home-manager.nixosModules.default

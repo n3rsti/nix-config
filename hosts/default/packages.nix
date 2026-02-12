@@ -16,65 +16,20 @@ in
   environment.systemPackages = with pkgs; [
     # dev tools
     opencode
-    neovim
     devenv
-    bun
-    typst
-    tinymist
     websocat
-    pkgs_stable.roslyn-ls
-    basedpyright
-    black
-    deno
-    gcc
-    gopls
-    delve # go debugger
-    stylua
-    clang-tools
-    lua-language-server
-    pkgs_stable.dotnet-sdk_9
-    pkgs_stable.csharp-ls
-    rust-analyzer
-    rustup
-    prettierd
     package-version-server
-    nil
-    nixfmt
-    bear
-    python3
-    python3Packages.pygobject3
-    typescript-language-server
-    glsl_analyzer
     vhdl-ls
-    nodePackages.vscode-json-languageserver
-    vscode-langservers-extracted
     fixjson
-    tailwindcss-language-server
-    nixd
-    go
-    gnumake
-    pkg-config
-    nodejs_24
-    eslint
-    zed-editor
-    typescript
     gh
-    lua51Packages.tiktoken_core
     postman
-    go-blueprint
-    python313Packages.pip
-    nix-ld
-    python313Packages.cssbeautifier
-    python313Packages.jsbeautifier
-    python313Packages.dbus-python
-    lua54Packages.luarocks
     tree-sitter
-    lua
     lazygit
-    postgres-language-server
     blueprint-compiler
 
     # apps
+    neovim
+    zed-editor
     jellyfin-media-player
     pkgs_stable.clickup
     r2modman # mod manager for games

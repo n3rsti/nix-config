@@ -18,7 +18,6 @@ in
     # This expects hardware-configuration.nix to be present in this directory
     # Generate it using: sudo nixos-generate-config --show-hardware-config > hardware-configuration.nix
     ./hardware-configuration.nix
-    ../../modules/nixos/main-user.nix
     ../default/configuration.nix
     ../../modules/builder/remote-builder.nix
     inputs.home-manager.nixosModules.default
