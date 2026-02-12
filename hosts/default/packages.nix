@@ -7,7 +7,7 @@
 let
   pkgs_stable = (
     import inputs.nixpkgs_stable {
-      inherit (pkgs) system;
+      inherit (pkgs.stdenv.hostPlatform) system;
       config = config.nixpkgs.config;
     }
   );
@@ -15,183 +15,176 @@ in
 {
   environment.systemPackages = with pkgs; [
     # dev tools
-    pkgs.opencode
-    pkgs.neovim
-    pkgs.devenv
-    pkgs.bun
-    pkgs.typst
-    pkgs.tinymist
-    pkgs.websocat
-    pkgs.gradle
+    opencode
+    neovim
+    devenv
+    bun
+    typst
+    tinymist
+    websocat
     pkgs_stable.roslyn-ls
-    pkgs.maven
-    pkgs.basedpyright
-    pkgs.black
-    pkgs.deno
-    pkgs.gcc
-    pkgs.gopls
-    pkgs.delve # go debugger
-    pkgs.stylua
-    pkgs.clang-tools
-    pkgs.lua-language-server
+    basedpyright
+    black
+    deno
+    gcc
+    gopls
+    delve # go debugger
+    stylua
+    clang-tools
+    lua-language-server
     pkgs_stable.dotnet-sdk_9
     pkgs_stable.csharp-ls
-    pkgs.rust-analyzer
-    pkgs.rustup
-    pkgs.prettierd
-    pkgs.package-version-server
-    pkgs.nil
-    pkgs.nixfmt
-    pkgs.bear
-    pkgs.python3
-    pkgs.python3Packages.pygobject3
-    pkgs.typescript-language-server
-    pkgs.glsl_analyzer
-    pkgs.vhdl-ls
-    pkgs.nodePackages.vscode-json-languageserver
-    pkgs.vscode-langservers-extracted
-    pkgs.fixjson
-    pkgs.tailwindcss-language-server
-    pkgs.nixd
-    pkgs.go
-    pkgs.gnumake
-    pkgs.pkg-config
-    pkgs.nodejs_24
-    pkgs.eslint
-    pkgs.zed-editor
-    pkgs.typescript
-    pkgs.jdk25
-    pkgs.maven
-    pkgs.jdt-language-server
-    pkgs.lombok
-    pkgs.gh
-    pkgs.lua51Packages.tiktoken_core
-    pkgs.postman
-    pkgs.go-blueprint
-    pkgs.python313Packages.pip
-    pkgs.nix-ld
-    pkgs.python313Packages.cssbeautifier
-    pkgs.python313Packages.jsbeautifier
-    pkgs.python313Packages.dbus-python
-    pkgs.lua54Packages.luarocks
-    pkgs.tree-sitter
-    pkgs.lua
-    pkgs.lazygit
-    pkgs.postgres-language-server
-    pkgs.blueprint-compiler
+    rust-analyzer
+    rustup
+    prettierd
+    package-version-server
+    nil
+    nixfmt
+    bear
+    python3
+    python3Packages.pygobject3
+    typescript-language-server
+    glsl_analyzer
+    vhdl-ls
+    nodePackages.vscode-json-languageserver
+    vscode-langservers-extracted
+    fixjson
+    tailwindcss-language-server
+    nixd
+    go
+    gnumake
+    pkg-config
+    nodejs_24
+    eslint
+    zed-editor
+    typescript
+    gh
+    lua51Packages.tiktoken_core
+    postman
+    go-blueprint
+    python313Packages.pip
+    nix-ld
+    python313Packages.cssbeautifier
+    python313Packages.jsbeautifier
+    python313Packages.dbus-python
+    lua54Packages.luarocks
+    tree-sitter
+    lua
+    lazygit
+    postgres-language-server
+    blueprint-compiler
 
     # apps
-    pkgs.jellyfin-media-player
+    jellyfin-media-player
     pkgs_stable.clickup
-    pkgs.r2modman # mod manager for games
-    pkgs.figma-linux
-    pkgs.ffmpeg_6-full
-    pkgs.arkenfox-userjs
+    r2modman # mod manager for games
+    figma-linux
+    ffmpeg_6-full
+    arkenfox-userjs
     pkgs_stable.freecad
-    pkgs.eza
-    pkgs.thunderbird
-    pkgs.evince # pdf viewer
-    pkgs.gnome-weather
-    pkgs.gnome-calendar
-    pkgs.gnome-online-accounts
+    eza
+    thunderbird
+    evince # pdf viewer
+    gnome-weather
+    gnome-calendar
+    gnome-online-accounts
     gnome-online-accounts-gtk
     (pkgs_stable.rofi.override {
       plugins = [ pkgs_stable.rofi-file-browser ];
     })
-    pkgs.wiremix
-    pkgs.firefox
-    pkgs.signal-desktop
-    pkgs.bitwarden-desktop
-    pkgs.freetube
+    wiremix
+    firefox
+    signal-desktop
+    bitwarden-desktop
+    freetube
     pkgs_stable.copyq
     pkgs_stable.gimp
-    pkgs.legcord
-    pkgs.discord
+    legcord
+    discord
     pkgs_stable.lutris
-    pkgs.obs-studio
+    obs-studio
     pkgs_stable.prismlauncher
-    pkgs.slack
-    pkgs.qbittorrent
-    pkgs.ghostty
-    pkgs.brave
-    pkgs.feather
-    pkgs.spotify
-    pkgs.vlc
-    pkgs.libreoffice-qt6-fresh
-    pkgs.eog
-    pkgs.resources
-    pkgs.wine
-    pkgs.wine64
-    pkgs.rofimoji
-    pkgs.trayscale
-    pkgs.chromium
-    pkgs.quickshell
+    slack
+    qbittorrent
+    ghostty
+    brave
+    feather
+    spotify
+    vlc
+    libreoffice-qt6-fresh
+    eog
+    resources
+    wine
+    wine64
+    rofimoji
+    trayscale
+    chromium
+    quickshell
     pkgs_stable.nautilus
 
     # system
-    pkgs.swaynotificationcenter
-    pkgs.duf
-    pkgs.libimobiledevice
-    pkgs.hyprlock
-    pkgs.swayosd
-    pkgs.cairo
-    pkgs.poppler_gi
-    pkgs.gtk4-layer-shell
-    pkgs.wev
-    pkgs.hyprpaper
-    pkgs.ripgrep
+    swaynotificationcenter
+    duf
+    libimobiledevice
+    hyprlock
+    swayosd
+    cairo
+    poppler_gi
+    gtk4-layer-shell
+    wev
+    hyprpaper
+    ripgrep
     pkgs_stable.waybar
-    pkgs.television
-    pkgs.zsh-autosuggestions
-    pkgs.pavucontrol
-    pkgs.wl-clipboard
-    pkgs.dmidecode
-    pkgs.protonup-ng
-    pkgs.wget
-    pkgs.dunst
-    pkgs.libnotify
-    pkgs.networkmanagerapplet
-    pkgs.nmgui
-    pkgs.tree
-    pkgs.acpi
-    pkgs.btop
-    pkgs.blueberry
-    pkgs.pinentry-gnome3
-    pkgs.hyprpicker
-    pkgs.grim
-    pkgs.fzf
-    pkgs.tmux
-    pkgs.fastfetch
-    pkgs.imagemagick
-    pkgs.chafa
-    pkgs.nmap
-    pkgs.zip
-    pkgs.unzip
-    pkgs.hyprsunset
-    pkgs.yt-dlp
-    pkgs.cava
-    pkgs.lolcat
-    pkgs.pipes
-    pkgs.cmatrix
-    pkgs.firejail
-    pkgs.gif-for-cli
-    pkgs.tty-clock
-    pkgs.grimblast # screenshot utility
-    pkgs.lsof
-    pkgs.netcat-gnu
-    pkgs.jq
-    pkgs.rippkgs
-    pkgs.kdePackages.qtdeclarative
+    television
+    zsh-autosuggestions
+    pavucontrol
+    wl-clipboard
+    dmidecode
+    protonup-ng
+    wget
+    dunst
+    libnotify
+    networkmanagerapplet
+    nmgui
+    tree
+    acpi
+    btop
+    blueberry
+    pinentry-gnome3
+    hyprpicker
+    grim
+    fzf
+    tmux
+    fastfetch
+    imagemagick
+    chafa
+    nmap
+    zip
+    unzip
+    hyprsunset
+    yt-dlp
+    cava
+    lolcat
+    pipes
+    cmatrix
+    firejail
+    gif-for-cli
+    tty-clock
+    grimblast # screenshot utility
+    lsof
+    netcat-gnu
+    jq
+    rippkgs
+    kdePackages.qtdeclarative
     kdePackages.kdeconnect-kde
-    pkgs.bc
-    # pkgs.playerctl
+    bc
 
-    pkgs.adwaita-qt6
+    adwaita-qt6
 
     # disk formatting, used for microsd
-    pkgs.fd
-    pkgs.parted
-    pkgs.exfatprogs
-    pkgs.gnome-disk-utility
+    fd
+    parted
+    exfatprogs
+    gnome-disk-utility
   ];
 }

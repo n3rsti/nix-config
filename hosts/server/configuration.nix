@@ -11,7 +11,7 @@
 let
   pkgs_stable = (
     import inputs.nixpkgs_stable {
-      inherit (pkgs) system;
+      inherit (pkgs.stdenv.hostPlatform) system;
       config = config.nixpkgs.config;
     }
   );

@@ -6,7 +6,6 @@
   pkgs,
   inputs,
   lib,
-  config,
   ...
 }:
 {
@@ -19,6 +18,18 @@
     "root"
     "n3rsti"
   ];
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  nix.settings.accept-flake-config = true;
+
+  nix.settings.max-jobs = lib.mkDefault 8;
+  nix.settings.cores = lib.mkDefault 0;
+
+  nix.settings.auto-optimise-store = true;
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -210,16 +221,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  nix.settings.max-jobs = lib.mkDefault 8;
-  nix.settings.cores = lib.mkDefault 0;
-
-  nix.settings.auto-optimise-store = true;
-
   nix.gc.automatic = true;
   nix.gc.dates = "daily";
   nix.gc.options = "--delete-older-than 7d";
@@ -231,24 +232,23 @@
   };
 
   fonts.packages = with pkgs; [
-    pkgs.nerd-fonts.iosevka
-    pkgs.font-awesome
-    pkgs.nerd-fonts.space-mono
-    pkgs.nerd-fonts.zed-mono
-    pkgs.nerd-fonts.im-writing
-    pkgs.nerd-fonts.fira-code
-    pkgs.nerd-fonts.fira-mono
-    pkgs.nerd-fonts.jetbrains-mono
-    pkgs.nerd-fonts.adwaita-mono
-    pkgs.icomoon-feather
-    pkgs.adwaita-fonts
+    nerd-fonts.iosevka
+    font-awesome
+    nerd-fonts.space-mono
+    nerd-fonts.zed-mono
+    nerd-fonts.im-writing
+    nerd-fonts.fira-code
+    nerd-fonts.fira-mono
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.adwaita-mono
+    icomoon-feather
+    adwaita-fonts
   ];
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
     LM_LICENSE_FILE = "\${HOME}/Downloads/license.dat";
-    JDTLS_JVM_ARGS = "-javaagent:${pkgs.lombok}/share/java/lombok.jar";
   };
 
   programs.ssh = {

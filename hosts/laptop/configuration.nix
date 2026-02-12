@@ -1,17 +1,8 @@
 {
   pkgs,
   inputs,
-  config,
   ...
 }:
-let
-  pkgs_stable = (
-    import inputs.nixpkgs_stable {
-      inherit (pkgs) system;
-      config = config.nixpkgs.config;
-    }
-  );
-in
 {
 
   imports = [
