@@ -38,7 +38,8 @@
   services.tlp.enable = true;
   services.thermald.enable = true;
 
-  nix.settings.cores = 0;
+  nix.settings.cores = 4;
+  nix.settings.max-jobs = 4;
 
   hardware.graphics = {
     enable = true;

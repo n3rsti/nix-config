@@ -4,10 +4,19 @@
 
 {
   pkgs,
+  config,
   inputs,
   lib,
   ...
 }:
+let
+  pkgs_stable = (
+    import inputs.nixpkgs_stable {
+      inherit (pkgs.stdenv.hostPlatform) system;
+      config = config.nixpkgs.config;
+    }
+  );
+in
 {
   imports = [
     ./packages.nix
@@ -41,9 +50,10 @@
     ];
     accept-flake-config = true;
 
-    max-jobs = lib.mkDefault 8;
-    cores = lib.mkDefault 0;
+    max-jobs = lib.mkDefault 4;
+    cores = lib.mkDefault 4;
     auto-optimise-store = true;
+    download-buffer-size = 1024 * 1024 * 1024; # 1 GiB
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -58,6 +68,8 @@
     enable = true;
     dates = "weekly";
     flake = inputs.self.outPath;
+    randomizedDelaySec = "45min";
+    allowReboot = false;
   };
 
   home-manager = {
@@ -123,8 +135,12 @@
   virtualisation = {
     docker.enable = true;
 
-    virtualbox.host.enable = true;
-    virtualbox.host.enableExtensionPack = true;
+    virtualbox.host = {
+      enable = true;
+      enableExtensionPack = true;
+      package = pkgs_stable.virtualbox;
+
+    };
   };
   users.extraGroups.vboxusers.members = [ "n3rsti" ];
 

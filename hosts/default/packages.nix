@@ -22,19 +22,19 @@ in
     vhdl-ls
     fixjson
     gh
-    postman
+    pkgs_stable.postman
     tree-sitter
     lazygit
     blueprint-compiler
 
     # apps
     neovim
-    zed-editor
+    pkgs_stable.zed-editor
     jellyfin-media-player
     pkgs_stable.clickup
     r2modman # mod manager for games
     figma-linux
-    ffmpeg_6-full
+    pkgs_stable.ffmpeg_6-full
     arkenfox-userjs
     pkgs_stable.freecad
     eza
@@ -48,32 +48,30 @@ in
       plugins = [ pkgs_stable.rofi-file-browser ];
     })
     wiremix
-    firefox
+    pkgs_stable.firefox
     signal-desktop
     bitwarden-desktop
-    freetube
+    pkgs_stable.freetube
     pkgs_stable.copyq
     pkgs_stable.gimp
-    legcord
-    discord
+    pkgs_stable.discord
     pkgs_stable.lutris
     obs-studio
     pkgs_stable.prismlauncher
-    slack
-    qbittorrent
+    pkgs_stable.slack
+    pkgs_stable.qbittorrent
     ghostty
-    brave
+    pkgs_stable.brave
     feather
-    spotify
+    pkgs_stable.spotify
     vlc
     libreoffice-qt6-fresh
     eog
     resources
-    wine
-    wine64
+    pkgs_stable.wine
+    pkgs_stable.wine64
     rofimoji
     trayscale
-    chromium
     quickshell
     pkgs_stable.nautilus
 
