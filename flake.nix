@@ -54,7 +54,6 @@
             ./hosts/default/configuration.nix
             inputs.home-manager.nixosModules.default
             chaotic.nixosModules.default
-            inputs.walker.nixosModules.default
             inputs.nur.modules.nixos.default
             nix-flatpak.nixosModules.nix-flatpak
           ];
@@ -68,7 +67,6 @@
             ./hosts/pc/configuration.nix
             inputs.home-manager.nixosModules.default
             chaotic.nixosModules.default
-            inputs.walker.nixosModules.default
             inputs.nur.modules.nixos.default
             nix-flatpak.nixosModules.nix-flatpak
           ];

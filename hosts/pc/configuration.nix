@@ -30,8 +30,8 @@ in
     }
   ];
 
-  nix.settings.cores = 3;
-  nix.settings.max-jobs = 3;
+  nix.settings.cores = 4;
+  nix.settings.max-jobs = 4;
 
   networking.hostName = "pc";
 

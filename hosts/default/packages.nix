@@ -55,7 +55,7 @@ in
     pkgs_stable.copyq
     pkgs_stable.gimp
     pkgs_stable.discord
-    pkgs_stable.lutris
+    lutris
     obs-studio
     pkgs_stable.prismlauncher
     pkgs_stable.slack
@@ -139,5 +139,6 @@ in
     parted
     exfatprogs
     gnome-disk-utility
+    usbutils
   ];
 }
