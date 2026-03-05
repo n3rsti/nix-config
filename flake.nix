@@ -34,6 +34,7 @@
     };
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    awww.url = "git+https://codeberg.org/LGFae/awww";
   };
 
   outputs =

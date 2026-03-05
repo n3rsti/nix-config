@@ -134,15 +134,7 @@ in
 
   virtualisation = {
     docker.enable = true;
-
-    virtualbox.host = {
-      enable = true;
-      enableExtensionPack = true;
-      package = pkgs_stable.virtualbox;
-
-    };
   };
-  users.extraGroups.vboxusers.members = [ "n3rsti" ];
 
   security.rtkit.enable = true;
   services.pipewire = {

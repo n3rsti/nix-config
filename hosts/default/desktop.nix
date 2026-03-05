@@ -14,5 +14,7 @@
     wayland = true;
   };
 
+  services.hypridle.enable = true;
+
   systemd.services.display-manager.path = [ pkgs.uwsm ];
 }

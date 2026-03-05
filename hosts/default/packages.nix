@@ -85,7 +85,6 @@ in
     poppler_gi
     gtk4-layer-shell
     wev
-    hyprpaper
     ripgrep
     pkgs_stable.waybar
     television
@@ -133,6 +132,7 @@ in
     bc
 
     adwaita-qt6
+    gnome-clocks
 
     # disk formatting, used for microsd
     fd
@@ -140,5 +140,8 @@ in
     exfatprogs
     gnome-disk-utility
     usbutils
+
+    easyeffects
+    inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
   ];
 }
