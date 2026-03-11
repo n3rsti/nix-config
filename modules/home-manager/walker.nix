@@ -22,8 +22,14 @@
       debug = true;
 
       keybinds = {
-        next = [ "Tab" ];
-        previous = [ "shift ISO_Left_Tab" ];
+        next = [
+          "Tab"
+          "Down"
+        ];
+        previous = [
+          "shift ISO_Left_Tab"
+          "Up"
+        ];
       };
 
       providers = {

@@ -143,5 +143,7 @@ in
 
     easyeffects
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
+
+    polkit_gnome
   ];
 }
