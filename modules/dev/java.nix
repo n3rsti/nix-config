@@ -20,6 +20,9 @@ in
       jdk25
       jdt-language-server
       lombok
+      kotlin
+      kotlin-language-server
+      ktlint
     ];
 
     environment.sessionVariables = {

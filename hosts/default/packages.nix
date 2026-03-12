@@ -145,5 +145,7 @@ in
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
 
     polkit_gnome
+    snx-rs # vpn
+    remmina # rdp client
   ];
 }
