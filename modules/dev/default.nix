@@ -11,5 +11,6 @@
     ./typst.nix
     ./python.nix
     ./rust.nix
+    ./kotlin.nix
   ];
 }

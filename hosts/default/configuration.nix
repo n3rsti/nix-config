@@ -36,6 +36,7 @@ in
     lua.enable = true;
     typst.enable = true;
     javascript.enable = true;
+    kotlin.enable = true;
   };
 
   nix.settings = {
@@ -99,6 +100,7 @@ in
       "dialout"
       "input"
       "gamemode"
+      "kvm"
     ];
   };
 
