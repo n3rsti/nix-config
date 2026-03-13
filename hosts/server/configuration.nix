@@ -179,6 +179,29 @@ in
     openFirewall = true;
   };
 
+
+  services.borgbackup.jobs.minecraft-backup = {
+    paths = "/srv/minecraft/fabric";
+    encryption.mode = "none";
+    environment.BORG_RSH = "ssh -p 23 -i /run/keys/hetzner_storagebox";
+    repo = "u557087@u557087.your-storagebox.de:./backups/fabric";
+    compression = "auto,zstd";
+    startAt = "daily";
+  };
+
+
+  services.borgbackup.jobs.immich-backup = {
+    paths = "/var/lib/immich";
+    encryption = {
+    	mode = "repokey-blake2";
+	passCommand = "cat /run/keys/borgbackup_passphrase_immich";
+    };
+    environment.BORG_RSH = "ssh -p 23 -i /run/keys/hetzner_storagebox";
+    repo = "u557087@u557087.your-storagebox.de:./backups/immich";
+    compression = "auto,zstd";
+    startAt = "daily";
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.n3rsti = {
     isNormalUser = true;
