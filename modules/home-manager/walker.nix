@@ -18,8 +18,6 @@
       hotreload_theme = true;
       theme = "default";
       force_keyboard_focus = true;
-      timeout = 60;
-      debug = true;
 
       keybinds = {
         next = [

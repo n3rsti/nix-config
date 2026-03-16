@@ -147,5 +147,6 @@ in
     polkit_gnome
     snx-rs # vpn
     remmina # rdp client
+    system-config-printer
   ];
 }
