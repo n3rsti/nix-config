@@ -187,6 +187,11 @@ in
     repo = "u557087@u557087.your-storagebox.de:./backups/fabric";
     compression = "auto,zstd";
     startAt = "daily";
+    prune.keep = {
+    	within = "3d";
+	daily = 7;
+	weekly = 2;
+    };
   };
 
 
@@ -200,6 +205,13 @@ in
     repo = "u557087@u557087.your-storagebox.de:./backups/immich";
     compression = "auto,zstd";
     startAt = "daily";
+    prune.keep = {
+    	within = "7d";
+	daily = 7;
+	weekly = 4;
+	monthly = 3;
+	yearly = 1;
+    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -242,8 +254,7 @@ in
     docker
     qbittorrent-nox
     wakeonlan
-    makemkv
-    nextcloud31
+    # makemkv
     nmap
     eza
     zip
