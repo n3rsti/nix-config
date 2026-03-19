@@ -66,6 +66,6 @@ in
     pkgs.osu-lazer
     # pkgs.opentabletdriver
 
-    (pkgs.heroic.override { extraPkgs = pkgs: [ pkgs.gamescope ]; })
+    (pkgs_stable.heroic.override { extraPkgs = pkgs: [ pkgs.gamescope ]; })
   ];
 }

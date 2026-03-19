@@ -50,7 +50,7 @@ in
     wiremix
     pkgs_stable.firefox
     signal-desktop
-    bitwarden-desktop
+    pkgs_stable.bitwarden-desktop
     pkgs_stable.freetube
     pkgs_stable.copyq
     pkgs_stable.gimp
@@ -101,7 +101,7 @@ in
     tree
     acpi
     btop
-    blueberry
+    pkgs_stable.overskride
     pinentry-gnome3
     hyprpicker
     grim

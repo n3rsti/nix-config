@@ -27,12 +27,6 @@
       inputs.elephant.follows = "elephant";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     awww.url = "git+https://codeberg.org/LGFae/awww";
   };

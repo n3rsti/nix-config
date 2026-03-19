@@ -2,11 +2,18 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
 let
   cfg = config.dev.java;
+  pkgs_stable = (
+    import inputs.nixpkgs_stable {
+      inherit (pkgs.stdenv.hostPlatform) system;
+      config = config.nixpkgs.config;
+    }
+  );
 in
 {
   options.dev.java = {
@@ -14,15 +21,12 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs_stable; [
       maven
       gradle
       jdk25
       jdt-language-server
       lombok
-      kotlin
-      kotlin-language-server
-      ktlint
     ];
 
     environment.sessionVariables = {

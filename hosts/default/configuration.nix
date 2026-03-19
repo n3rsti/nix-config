@@ -9,14 +9,6 @@
   lib,
   ...
 }:
-let
-  pkgs_stable = (
-    import inputs.nixpkgs_stable {
-      inherit (pkgs.stdenv.hostPlatform) system;
-      config = config.nixpkgs.config;
-    }
-  );
-in
 {
   imports = [
     ./packages.nix
@@ -226,7 +218,6 @@ in
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
-    LM_LICENSE_FILE = "\${HOME}/Downloads/license.dat";
   };
 
   hardware.bluetooth = {
