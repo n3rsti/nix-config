@@ -8,14 +8,6 @@
   inputs,
   ...
 }:
-let
-  pkgs_stable = (
-    import inputs.nixpkgs_stable {
-      inherit (pkgs.stdenv.hostPlatform) system;
-      config = config.nixpkgs.config;
-    }
-  );
-in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -141,7 +133,7 @@ in
   services.jellyfin = {
     enable = true;
     openFirewall = true;
-    package = pkgs_stable.jellyfin;
+    package = pkgs.jellyfin;
     group = "media";
   };
 
@@ -163,7 +155,7 @@ in
   };
 
   services.flaresolverr = {
-    package = pkgs_stable.flaresolverr;
+    package = pkgs.flaresolverr;
     enable = true;
     openFirewall = true;
   };
@@ -179,7 +171,6 @@ in
     openFirewall = true;
   };
 
-
   services.borgbackup.jobs.minecraft-backup = {
     paths = "/srv/minecraft/fabric";
     encryption.mode = "none";
@@ -188,29 +179,28 @@ in
     compression = "auto,zstd";
     startAt = "daily";
     prune.keep = {
-    	within = "3d";
-	daily = 7;
-	weekly = 2;
+      within = "3d";
+      daily = 7;
+      weekly = 2;
     };
   };
-
 
   services.borgbackup.jobs.immich-backup = {
     paths = "/var/lib/immich";
     encryption = {
-    	mode = "repokey-blake2";
-	passCommand = "cat /run/keys/borgbackup_passphrase_immich";
+      mode = "repokey-blake2";
+      passCommand = "cat /run/keys/borgbackup_passphrase_immich";
     };
     environment.BORG_RSH = "ssh -p 23 -i /run/keys/hetzner_storagebox";
     repo = "u557087@u557087.your-storagebox.de:./backups/immich";
     compression = "auto,zstd";
     startAt = "daily";
     prune.keep = {
-    	within = "7d";
-	daily = 7;
-	weekly = 4;
-	monthly = 3;
-	yearly = 1;
+      within = "7d";
+      daily = 7;
+      weekly = 4;
+      monthly = 3;
+      yearly = 1;
     };
   };
 

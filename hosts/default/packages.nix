@@ -5,8 +5,8 @@
   ...
 }:
 let
-  pkgs_stable = (
-    import inputs.nixpkgs_stable {
+  pkgs_unstable = (
+    import inputs.nixpkgs_unstable {
       inherit (pkgs.stdenv.hostPlatform) system;
       config = config.nixpkgs.config;
     }
@@ -22,21 +22,20 @@ in
     vhdl-ls
     fixjson
     gh
-    pkgs_stable.postman
-    tree-sitter
+    postman
+    pkgs_unstable.tree-sitter
     lazygit
     blueprint-compiler
 
     # apps
-    neovim
-    pkgs_stable.zed-editor
-    jellyfin-media-player
-    pkgs_stable.clickup
+    pkgs_unstable.neovim
+    zed-editor
+    pkgs_unstable.jellyfin-media-player
+    clickup
     r2modman # mod manager for games
     figma-linux
-    pkgs_stable.ffmpeg_6-full
-    arkenfox-userjs
-    pkgs_stable.freecad
+    ffmpeg_6-full
+    pkgs_unstable.freecad
     eza
     thunderbird
     evince # pdf viewer
@@ -44,36 +43,37 @@ in
     gnome-calendar
     gnome-online-accounts
     gnome-online-accounts-gtk
-    (pkgs_stable.rofi.override {
-      plugins = [ pkgs_stable.rofi-file-browser ];
+    (rofi.override {
+      plugins = [ rofi-file-browser ];
     })
     wiremix
-    pkgs_stable.firefox
-    signal-desktop
-    pkgs_stable.bitwarden-desktop
-    pkgs_stable.freetube
-    pkgs_stable.copyq
-    pkgs_stable.gimp
-    pkgs_stable.discord
-    lutris
+    pkgs_unstable.firefox
+    pkgs_unstable.arkenfox-userjs
+    pkgs_unstable.signal-desktop
+    bitwarden-desktop
+    freetube
+    copyq
+    gimp
+    pkgs_unstable.discord
+    pkgs_unstable.lutris
     obs-studio
-    pkgs_stable.prismlauncher
-    pkgs_stable.slack
-    pkgs_stable.qbittorrent
-    ghostty
-    pkgs_stable.brave
+    pkgs_unstable.prismlauncher
+    slack
+    qbittorrent
+    pkgs_unstable.ghostty
+    pkgs_unstable.brave
     feather
-    pkgs_stable.spotify
+    spotify
     vlc
-    libreoffice-qt6-fresh
+    pkgs_unstable.libreoffice-qt6-fresh
     eog
     resources
-    pkgs_stable.wine
-    pkgs_stable.wine64
+    wine
+    wine64
     rofimoji
     trayscale
     quickshell
-    pkgs_stable.nautilus
+    nautilus
 
     # system
     swaynotificationcenter
@@ -86,7 +86,7 @@ in
     gtk4-layer-shell
     wev
     ripgrep
-    pkgs_stable.waybar
+    waybar
     television
     zsh-autosuggestions
     pavucontrol
@@ -101,7 +101,7 @@ in
     tree
     acpi
     btop
-    pkgs_stable.overskride
+    overskride
     pinentry-gnome3
     hyprpicker
     grim

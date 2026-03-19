@@ -15,11 +15,9 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-
-      pkgs_stable.dotnet-sdk_9
-      pkgs_stable.csharp-ls
-      pkgs_stable.roslyn-ls
-
+      dotnet-sdk_9
+      csharp-ls
+      roslyn-ls
     ];
 
   };

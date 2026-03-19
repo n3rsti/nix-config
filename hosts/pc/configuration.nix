@@ -4,14 +4,6 @@
   inputs,
   ...
 }:
-let
-  pkgs_stable = (
-    import inputs.nixpkgs_stable {
-      inherit (pkgs.stdenv.hostPlatform) system;
-      config = config.nixpkgs.config;
-    }
-  );
-in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -41,7 +33,6 @@ in
 
   services.input-remapper = {
     enable = true;
-    package = pkgs_stable.input-remapper;
   };
 
   services.sunshine = {
@@ -66,6 +57,6 @@ in
     pkgs.osu-lazer
     # pkgs.opentabletdriver
 
-    (pkgs_stable.heroic.override { extraPkgs = pkgs: [ pkgs.gamescope ]; })
+    (pkgs.heroic.override { extraPkgs = pkgs: [ pkgs.gamescope ]; })
   ];
 }
