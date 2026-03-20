@@ -19,6 +19,8 @@
       "--exit-node-allow-lan-access"
     ];
   };
+  # fix tailscale dns after suspend
+  services.resolved.enable = true;
 
   services.zerotierone = {
     enable = true;
