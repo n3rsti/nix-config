@@ -39,5 +39,8 @@
       };
     };
   };
+  home.activation.elephant-restart = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ${pkgs.systemd}/bin/systemctl --user restart elephant
+  '';
 
 }

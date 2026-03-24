@@ -57,12 +57,14 @@
     options = "--delete-older-than 7d";
   };
 
-  system.autoUpgrade = {
-    enable = true;
-    dates = "weekly";
-    flake = inputs.self.outPath;
-    randomizedDelaySec = "45min";
-    allowReboot = false;
+  system = {
+    autoUpgrade = {
+      enable = true;
+      dates = "weekly";
+      flake = inputs.self.outPath;
+      randomizedDelaySec = "45min";
+      allowReboot = false;
+    };
   };
 
   home-manager = {
@@ -96,9 +98,6 @@
     ];
   };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   boot = {
     plymouth = {
       enable = true;
@@ -122,7 +121,11 @@
     # Hide the OS choice for bootloaders.
     # It's still possible to open the bootloader list by pressing any key
     # It will just not appear on screen unless a key is pressed
-    loader.timeout = 0;
+    loader = {
+      timeout = 0;
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
 
   };
 
@@ -131,74 +134,78 @@
   };
 
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+
+  services = {
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+    pipewire.wireplumber.enable = true;
+
+    printing = {
+      enable = true;
+      drivers = with pkgs; [
+        cups-filters
+        cups-browsed
+      ];
+    };
+
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+
+    usbmuxd = {
+      enable = true;
+      package = pkgs.usbmuxd2;
+    };
+
+    playerctld.enable = true;
+
+    udisks2.enable = true;
+    gvfs.enable = true; # for nautilus
+
+    gnome = {
+      evolution-data-server.enable = true;
+      gnome-keyring.enable = true;
+      gnome-online-accounts.enable = true;
+    };
+
+    flatpak = {
+      enable = true;
+      packages = [
+        "org.vinegarhq.Sober"
+      ];
+    };
+
   };
 
-  services.pipewire.wireplumber.enable = true;
+  programs = {
+    dconf.enable = true;
 
-  services.printing = {
-    enable = true;
-    drivers = with pkgs; [
-      cups-filters
-      cups-browsed
-    ];
-  };
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    };
 
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
+    gamemode.enable = true;
 
-  services.usbmuxd = {
-    enable = true;
-    package = pkgs.usbmuxd2;
-  };
+    zsh.enable = true;
 
-  services.playerctld.enable = true;
+    appimage.enable = true;
+    appimage.binfmt = true;
 
-  services.udisks2.enable = true;
+    nix-ld.enable = true;
+    direnv.enable = true;
 
-  services.gvfs.enable = true; # for nautilus
-
-  services.gnome = {
-    evolution-data-server.enable = true;
-    gnome-keyring.enable = true;
-    gnome-online-accounts.enable = true;
-  };
-
-  services.flatpak = {
-    enable = true;
-    packages = [
-      "org.vinegarhq.Sober"
-    ];
-  };
-
-  programs.dconf.enable = true;
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-  };
-
-  programs.gamemode.enable = true;
-
-  programs.zsh.enable = true;
-
-  programs.appimage.enable = true;
-  programs.appimage.binfmt = true;
-
-  programs.nix-ld.enable = true;
-  programs.direnv.enable = true;
-
-  programs.ydotool = {
-    enable = true;
-    group = "users";
+    ydotool = {
+      enable = true;
+      group = "users";
+    };
   };
 
   fonts.packages = with pkgs; [

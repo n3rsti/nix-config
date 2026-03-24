@@ -25,6 +25,7 @@
             darkreader
             bitwarden
             return-youtube-dislikes
+            youtube-shorts-block
           ];
         };
       };

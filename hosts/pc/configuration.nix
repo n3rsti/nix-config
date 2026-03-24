@@ -51,6 +51,7 @@
       enable = true;
       enable32Bit = true;
     };
+    amdgpu.opencl.enable = true;
   };
 
   environment.systemPackages = with pkgs; [

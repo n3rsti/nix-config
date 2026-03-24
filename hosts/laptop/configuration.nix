@@ -22,7 +22,6 @@
 
   networking = {
     hostName = "laptop";
-    firewall.checkReversePath = "loose";
   };
 
   services.power-profiles-daemon.enable = false;
