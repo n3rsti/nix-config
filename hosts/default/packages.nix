@@ -51,7 +51,7 @@ in
     pkgs_unstable.arkenfox-userjs
     pkgs_unstable.signal-desktop
     bitwarden-desktop
-    freetube
+    pkgs_unstable.freetube
     copyq
     gimp
     pkgs_unstable.discord
@@ -68,8 +68,7 @@ in
     pkgs_unstable.libreoffice-qt6-fresh
     eog
     resources
-    wine
-    wine64
+    wineWow64Packages.stable
     rofimoji
     trayscale
     quickshell
@@ -148,5 +147,6 @@ in
     snx-rs # vpn
     remmina # rdp client
     system-config-printer
+    vulkan-tools
   ];
 }
