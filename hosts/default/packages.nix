@@ -148,5 +148,7 @@ in
     remmina # rdp client
     system-config-printer
     vulkan-tools
+    mangohud
+    mangojuice
   ];
 }

@@ -27,7 +27,7 @@ in
       kotlin
       kotlin-language-server
       ktlint
-      pkgs_unstable.android-studio-full
+      android-studio-full
       androidenv.androidPkgs.platform-tools
       androidenv.androidPkgs.emulator
     ];
