@@ -236,6 +236,7 @@
       };
     };
   };
+  services.blueman.enable = true;
 
   time.timeZone = lib.mkDefault "Europe/Warsaw";
 

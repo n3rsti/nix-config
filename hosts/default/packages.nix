@@ -100,7 +100,6 @@ in
     tree
     acpi
     btop
-    overskride
     pinentry-gnome3
     hyprpicker
     grim
