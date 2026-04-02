@@ -28,7 +28,7 @@ in
     blueprint-compiler
 
     # apps
-    pkgs_unstable.neovim
+    neovim
     zed-editor
     pkgs_unstable.jellyfin-media-player
     clickup
