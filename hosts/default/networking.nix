@@ -30,6 +30,7 @@
   networking.hostName = lib.mkDefault "nixos";
 
   networking.networkmanager.enable = lib.mkDefault true;
+  programs.nm-applet.enable = lib.mkDefault true;
   networking.firewall.checkReversePath = "loose";
 
   networking.firewall.allowedUDPPorts = [

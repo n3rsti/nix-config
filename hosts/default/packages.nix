@@ -31,23 +31,20 @@ in
     neovim
     zed-editor
     pkgs_unstable.jellyfin-media-player
-    clickup
     r2modman # mod manager for games
     figma-linux
     ffmpeg_6-full
     pkgs_unstable.freecad
-    eza
+    eza # ls replacement
     thunderbird
     evince # pdf viewer
     gnome-weather
     gnome-calendar
-    gnome-online-accounts
     gnome-online-accounts-gtk
     (rofi.override {
       plugins = [ rofi-file-browser ];
     })
     wiremix
-    pkgs_unstable.firefox
     pkgs_unstable.arkenfox-userjs
     pkgs_unstable.signal-desktop
     bitwarden-desktop
@@ -69,7 +66,6 @@ in
     eog
     resources
     wineWow64Packages.stable
-    rofimoji
     trayscale
     quickshell
     nautilus
@@ -87,7 +83,6 @@ in
     ripgrep
     waybar
     television
-    zsh-autosuggestions
     pavucontrol
     wl-clipboard
     dmidecode
@@ -95,7 +90,6 @@ in
     wget
     dunst
     libnotify
-    networkmanagerapplet
     nmgui
     tree
     acpi

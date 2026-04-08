@@ -1,8 +1,19 @@
-{ config, pkgs, ... }:
-
+{
+  pkgs,
+  inputs,
+  ...
+}:
+let
+  pkgs_unstable = (
+    import inputs.nixpkgs_unstable {
+      inherit (pkgs.stdenv.hostPlatform) system;
+    }
+  );
+in
 {
   programs.firefox = {
     enable = true;
+    package = pkgs_unstable.firefox;
     profiles = {
       n3rsti = {
         isDefault = true;
