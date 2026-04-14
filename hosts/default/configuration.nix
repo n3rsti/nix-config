@@ -200,7 +200,10 @@
     appimage.binfmt = true;
 
     nix-ld.enable = true;
-    direnv.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
 
     ydotool = {
       enable = true;

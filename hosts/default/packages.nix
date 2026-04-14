@@ -14,6 +14,7 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
+    chromium
     # dev tools
     opencode
     devenv
@@ -78,6 +79,7 @@ in
     swayosd
     cairo
     poppler_gi
+    poppler-utils # pdftotext
     gtk4-layer-shell
     wev
     ripgrep

@@ -33,11 +33,16 @@
             nix-test_func() {
               sudo nixos-rebuild test --flake ~/nixos#"$1"
             }
+            
+            open() {
+              xdg-open "$@" >/dev/null 2>&1 &
+            }
+
             bindkey -s ^F "~/.config/dotfiles/scripts/tmux-sessionizer.sh\n"
 
             find ~/.ssh -type f ! -name '*.pub' -exec ssh-add {} \; > /dev/null 2>&1
 
-      eval "$(direnv hook zsh)"
+      # eval "$(direnv hook zsh)"
     '';
   };
 }

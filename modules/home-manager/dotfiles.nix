@@ -11,6 +11,7 @@ let
     "hyprland-logo.png"
     "neovim-logo.png"
     "nixos-logo-white.png"
+    "jakdojade.png"
   ];
 
   apps = [
@@ -19,6 +20,7 @@ let
     "hyprland-wiki"
     "nix-packages"
     "nixos-options"
+    "jakdojade"
   ];
 
   iconLinks = builtins.listToAttrs (
