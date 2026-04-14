@@ -14,7 +14,7 @@
 
     # Use shellAliases for simple no-argument aliases only
     shellAliases = {
-      nix-update = "sudo nix flake update --flake ~/nixos";
+      nix-update = "sudo nix flake update --flake /etc/nixos";
       nix-switch = "'nix-switch_func'";
       nix-test = "'nix-test_func'";
       zed = "zeditor";
@@ -27,11 +27,11 @@
     initContent = ''
             export PATH="$PATH:$HOME/.npm-global/bin"
             nix-switch_func() {
-              sudo nixos-rebuild switch --flake ~/nixos#"$1"
+              sudo nixos-rebuild switch --flake /etc/nixos#"$1"
             }
 
             nix-test_func() {
-              sudo nixos-rebuild test --flake ~/nixos#"$1"
+              sudo nixos-rebuild test --flake /etc/nixos#"$1"
             }
             
             open() {
