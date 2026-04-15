@@ -184,6 +184,7 @@
   };
 
   programs = {
+    nh.enable = true;
     dconf.enable = true;
 
     steam = {

@@ -29,6 +29,7 @@ in
     blueprint-compiler
 
     # apps
+    bambu-studio
     neovim
     zed-editor
     pkgs_unstable.jellyfin-media-player

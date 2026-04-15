@@ -27,6 +27,7 @@ in
       nodePackages.vscode-json-languageserver
       tailwindcss-language-server
       prettierd
+      emmet-language-server
     ];
 
   };
