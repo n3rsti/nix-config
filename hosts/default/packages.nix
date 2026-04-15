@@ -30,6 +30,7 @@ in
 
     # apps
     bambu-studio
+    orca-slicer
     neovim
     zed-editor
     pkgs_unstable.jellyfin-media-player
