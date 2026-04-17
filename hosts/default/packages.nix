@@ -29,6 +29,9 @@ in
     blueprint-compiler
 
     # apps
+    cheese
+    gnome-text-editor
+    gedit
     bambu-studio
     orca-slicer
     neovim
@@ -40,7 +43,7 @@ in
     pkgs_unstable.freecad
     eza # ls replacement
     thunderbird
-    evince # pdf viewer
+    papers # pdf viewer
     gnome-weather
     gnome-calendar
     gnome-online-accounts-gtk
@@ -69,7 +72,6 @@ in
     eog
     resources
     wineWow64Packages.stable
-    trayscale
     quickshell
     nautilus
 
@@ -112,19 +114,12 @@ in
     hyprsunset
     yt-dlp
     cava
-    lolcat
-    pipes
-    cmatrix
-    firejail
-    gif-for-cli
-    tty-clock
     grimblast # screenshot utility
     lsof
     netcat-gnu
     jq
     rippkgs
     kdePackages.qtdeclarative
-    kdePackages.kdeconnect-kde
     bc
 
     adwaita-qt6

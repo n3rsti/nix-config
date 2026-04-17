@@ -151,6 +151,7 @@
         cups-browsed
       ];
     };
+    ipp-usb.enable = true; # printers autodiscovery
 
     avahi = {
       enable = true;
