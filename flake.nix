@@ -40,55 +40,60 @@
       nix-flatpak,
       ...
     }@inputs:
+    let
+      unstableOverlay = final: prev: {
+        unstable = import inputs.nixpkgs_unstable {
+          system = final.stdenv.hostPlatform.system;
+          config.allowUnfree = true;
+        };
+      };
+
+      mkNixosConfiguration =
+        {
+          system ? "x86_64-linux",
+          baseModules ? [
+
+            inputs.home-manager.nixosModules.default
+            chaotic.nixosModules.default
+            inputs.nur.modules.nixos.default
+            nix-flatpak.nixosModules.nix-flatpak
+            { nixpkgs.overlays = [ unstableOverlay ]; }
+
+          ],
+          extraModules ? [ ],
+        }:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = baseModules ++ extraModules;
+        };
+    in
     {
-      # Default configuration (can be used for testing or as a base)
       nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/default/configuration.nix
-            inputs.home-manager.nixosModules.default
-            chaotic.nixosModules.default
-            inputs.nur.modules.nixos.default
-            nix-flatpak.nixosModules.nix-flatpak
-          ];
-
-        };
-
-        # PC-specific configuration
-        pc = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
+        pc = mkNixosConfiguration {
+          extraModules = [
             ./hosts/pc/configuration.nix
-            inputs.home-manager.nixosModules.default
-            chaotic.nixosModules.default
-            inputs.nur.modules.nixos.default
-            nix-flatpak.nixosModules.nix-flatpak
           ];
         };
 
-        # Laptop-specific configuration
-        laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
+        laptop = mkNixosConfiguration {
+          extraModules = [
             ./hosts/laptop/configuration.nix
-            inputs.home-manager.nixosModules.default
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
-            chaotic.nixosModules.default
-            inputs.nur.modules.nixos.default
-            nix-flatpak.nixosModules.nix-flatpak
           ];
         };
 
-        server = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/server/configuration.nix
+        server = mkNixosConfiguration {
+          baseModules = [
             nix-minecraft.nixosModules.minecraft-servers
             {
-              nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+              nixpkgs.overlays = [
+                inputs.nix-minecraft.overlay
+              ];
             }
-            #inputs.home-manager.nixosModules.default
+          ];
+          extraModules = [
+            ./hosts/server/configuration.nix
           ];
         };
       };

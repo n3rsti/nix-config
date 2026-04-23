@@ -1,18 +1,6 @@
 {
-  config,
-  pkgs,
-  lib,
-  inputs,
   ...
 }:
-let
-  pkgs_unstable = import inputs.nixpkgs_unstable {
-    inherit (pkgs.stdenv.hostPlatform) system;
-    config = {
-      allowUnfree = true;
-    };
-  };
-in
 {
   imports = [
     # Include modules common to all configurations

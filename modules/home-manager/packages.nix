@@ -3,14 +3,6 @@
   pkgs,
   ...
 }:
-let
-  pkgs_unstable = import inputs.nixpkgs_unstable {
-    inherit (pkgs.stdenv.hostPlatform) system;
-    config = {
-      allowUnfree = true;
-    };
-  };
-in
 {
 
   home.packages = with pkgs; [
@@ -20,26 +12,26 @@ in
 
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
 
-    pkgs_unstable.signal-desktop
+    unstable.signal-desktop
     bitwarden-desktop
-    pkgs_unstable.freetube
+    unstable.freetube
 
     # dev tools
     opencode
-    pkgs_unstable.devenv
+    unstable.devenv
     websocat
     package-version-server
     vhdl-ls
     fixjson
     gh
     postman
-    pkgs_unstable.tree-sitter
+    unstable.tree-sitter
 
     cheese
     gnome-text-editor
     orca-slicer
     zed-editor
-    pkgs_unstable.jellyfin-media-player
+    unstable.jellyfin-media-player
     r2modman # mod manager for games
     figma-linux
 
@@ -54,18 +46,18 @@ in
     wiremix
 
     gimp
-    pkgs_unstable.discord
-    pkgs_unstable.lutris
+    unstable.discord
+    unstable.lutris
     obs-studio
-    pkgs_unstable.prismlauncher
+    unstable.prismlauncher
     slack
     qbittorrent
-    pkgs_unstable.ghostty
-    pkgs_unstable.brave
+    unstable.ghostty
+    unstable.brave
     feather
     spotify
     vlc
-    pkgs_unstable.libreoffice-qt6-fresh
+    unstable.libreoffice-qt6-fresh
     eog
     resources
     wineWow64Packages.stable
