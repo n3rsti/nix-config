@@ -17,7 +17,7 @@ in
     chromium
     # dev tools
     opencode
-    devenv
+    pkgs_unstable.devenv
     websocat
     package-version-server
     vhdl-ls
@@ -32,7 +32,6 @@ in
     cheese
     gnome-text-editor
     gedit
-    bambu-studio
     orca-slicer
     neovim
     zed-editor
@@ -40,7 +39,6 @@ in
     r2modman # mod manager for games
     figma-linux
     ffmpeg_6-full
-    pkgs_unstable.freecad
     eza # ls replacement
     thunderbird
     papers # pdf viewer

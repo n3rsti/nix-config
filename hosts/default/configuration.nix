@@ -57,16 +57,6 @@
     options = "--delete-older-than 7d";
   };
 
-  system = {
-    autoUpgrade = {
-      enable = true;
-      dates = "weekly";
-      flake = inputs.self.outPath;
-      randomizedDelaySec = "45min";
-      allowReboot = false;
-    };
-  };
-
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
@@ -179,6 +169,8 @@
       enable = true;
       packages = [
         "org.vinegarhq.Sober"
+        "com.bambulab.BambuStudio"
+        "org.freecad.FreeCAD"
       ];
     };
 

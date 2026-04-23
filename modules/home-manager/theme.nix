@@ -20,17 +20,17 @@
       package = pkgs.adwaita-icon-theme;
     };
     cursorTheme = {
-      name = "Bibata-Modern-Classic";
-      package = pkgs.bibata-cursors;
-      size = 16;
+      name = "macOS";
+      package = pkgs.apple-cursor;
+      size = 24;
     };
   };
 
   home.pointerCursor = {
     gtk.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
-    size = 16;
+    package = pkgs.apple-cursor;
+    name = "macOS";
+    size = 24;
   };
 
   qt = {
@@ -50,4 +50,9 @@
   # Fix spotify icon for quickshell tray menu
   home.file.".local/share/icons/hicolor/32x32/apps/spotify-linux-32.png".source =
     "${pkgs.spotify}/share/spotify/icons/spotify-linux-32.png";
+
+  home.sessionVariables = {
+    XCURSOR_SIZE = 32;
+    HYPRCURSOR_SIZE = 32;
+  };
 }
