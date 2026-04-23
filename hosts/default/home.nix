@@ -5,7 +5,14 @@
   inputs,
   ...
 }:
-
+let
+  pkgs_unstable = import inputs.nixpkgs_unstable {
+    inherit (pkgs.stdenv.hostPlatform) system;
+    config = {
+      allowUnfree = true;
+    };
+  };
+in
 {
   imports = [
     # Include modules common to all configurations
@@ -15,6 +22,8 @@
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/walker.nix
     ../../modules/home-manager/dotfiles.nix
+    ../../modules/home-manager/desktop.nix
+    ../../modules/home-manager/packages.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -22,57 +31,9 @@
   home.username = "n3rsti";
   home.homeDirectory = "/home/n3rsti";
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "24.11"; # Please read the comment before changing.
-
   services.swayosd.enable = true;
+  services.tailscale-systray.enable = true;
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  # Allow host-specific configurations to merge with these packages
-  home.packages = with pkgs; [
-    zsh
-    catppuccin
-    catppuccin-gtk
-  ];
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/n3rsti/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
     # EDITOR = "emacs";
     #GTK_THEME = "catppuccin-frappe-blue-standard";
@@ -83,4 +44,13 @@
 
   # Home Manager will use the global nixpkgs config since useGlobalPkgs is enabled
   # We don't need to set nixpkgs.config here
+
+  # This value determines the Home Manager release that your configuration is
+  # compatible with. This helps avoid breakage when a new Home Manager release
+  # introduces backwards incompatible changes.
+  #
+  # You should not change this value, even if you update Home Manager. If you do
+  # want to update the value, then make sure to first check the Home Manager
+  # release notes.
+  home.stateVersion = "24.11"; # Please read the comment before changing.
 }
