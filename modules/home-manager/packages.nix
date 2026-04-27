@@ -30,7 +30,8 @@
     cheese
     gnome-text-editor
     orca-slicer
-    zed-editor
+    zed-editor-fhs
+    vscode-fhs
     unstable.jellyfin-media-player
     r2modman # mod manager for games
     figma-linux
@@ -97,5 +98,10 @@
     mangohud
     mangojuice
     imagemagick
+
+    errands
+    unstable.protonmail-desktop
+    arduino-ide
+    stlink
   ];
 }

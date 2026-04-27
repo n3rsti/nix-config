@@ -31,9 +31,5 @@ in
       androidenv.androidPkgs.platform-tools
       androidenv.androidPkgs.emulator
     ];
-
-    environment.sessionVariables = {
-      JDTLS_JVM_ARGS = "-javaagent:${pkgs.lombok}/share/java/lombok.jar";
-    };
   };
 }

@@ -15,8 +15,8 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      rust-analyzer
       rustup
+      probe-rs-tools
     ];
 
   };

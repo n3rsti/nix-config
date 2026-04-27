@@ -84,6 +84,7 @@
       "input"
       "gamemode"
       "kvm"
+      "stlink"
     ];
   };
 
@@ -125,6 +126,11 @@
   security.rtkit.enable = true;
 
   services = {
+    udev.packages = [
+      pkgs.openocd
+      pkgs.stlink
+    ];
+
     pipewire = {
       enable = true;
       alsa.enable = true;
