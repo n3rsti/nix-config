@@ -30,31 +30,33 @@
     kotlin.enable = true;
   };
 
-  nix.settings = {
-    trusted-users = [
-      "root"
-      "n3rsti"
-    ];
+  nix = {
+    settings = {
+      trusted-users = [
+        "root"
+        "n3rsti"
+      ];
 
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-    accept-flake-config = true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      accept-flake-config = true;
 
-    max-jobs = lib.mkDefault 4;
-    cores = lib.mkDefault 4;
-    auto-optimise-store = true;
-    download-buffer-size = 1024 * 1024 * 1024; # 1 GiB
+      max-jobs = lib.mkDefault 4;
+      cores = lib.mkDefault 4;
+      auto-optimise-store = true;
+      download-buffer-size = 1024 * 1024 * 1024; # 1 GiB
+    };
+
+    gc = {
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-than 7d";
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
-
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 7d";
-  };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -223,11 +225,6 @@
     icomoon-feather
     adwaita-fonts
   ];
-
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
-  };
 
   hardware.bluetooth = {
     enable = lib.mkDefault true;

@@ -87,7 +87,6 @@
     libnotify
     hyprpicker
     grim
-    hyprsunset
     yt-dlp
     cava
     grimblast

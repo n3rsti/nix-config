@@ -1,4 +1,5 @@
 {
+  osConfig,
   ...
 }:
 {
@@ -19,7 +20,7 @@
   home.username = "n3rsti";
   home.homeDirectory = "/home/n3rsti";
 
-  services.swayosd.enable = true;
+  services.swayosd.enable = osConfig.programs.hyprland.enable;
   services.tailscale-systray.enable = true;
 
   home.sessionVariables = {

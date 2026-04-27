@@ -2,6 +2,7 @@
   pkgs,
   config,
   inputs,
+  lib,
   ...
 }:
 
@@ -20,27 +21,19 @@ in
     xwayland.enable = true;
     package = pkgs_unstable.hyprland;
   };
+
   programs.uwsm.waylandCompositors = {
     hyprland-uwsm = {
-      prettyName = "Hyprland (UWSM)";
+      prettyName = "Hyprland (start-hyprland)";
       comment = "Hyprland compositor managed by UWSM";
       binPath = "/run/current-system/sw/bin/start-hyprland";
     };
-  };
-
-  environment.sessionVariables = {
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_DESKTOP = "Hyprland";
   };
 
   services.displayManager.gdm = {
     enable = true;
     wayland = true;
   };
-
-  services.hypridle.enable = true;
-
-  systemd.services.display-manager.path = [ pkgs.uwsm ];
 
   security.polkit.enable = true;
 }
