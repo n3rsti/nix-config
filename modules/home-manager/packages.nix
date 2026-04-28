@@ -48,7 +48,7 @@
 
     gimp
     unstable.discord
-    unstable.lutris
+    lutris
     obs-studio
     unstable.prismlauncher
     slack

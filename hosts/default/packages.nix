@@ -14,7 +14,7 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    neovim
+    pkgs_unstable.neovim
     duf
     poppler-utils
     ripgrep

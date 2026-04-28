@@ -23,7 +23,7 @@ in
     ];
 
     environment.sessionVariables = {
-      JDTLS_JVM_ARGS = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms256m -javaagent:${pkgs.lombok}/share/java/lombok.jar";
+      JDTLS_JVM_ARGS = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx8G -Xms512m -javaagent:${pkgs.lombok}/share/java/lombok.jar";
     };
   };
 }

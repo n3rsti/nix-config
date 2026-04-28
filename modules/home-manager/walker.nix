@@ -16,7 +16,7 @@
 
     config = {
       hotreload_theme = true;
-      theme = "default";
+      theme = "launcher";
       force_keyboard_focus = true;
 
       keybinds = {
@@ -28,6 +28,14 @@
           "shift ISO_Left_Tab"
           "Up"
         ];
+        left = [
+          "shift ISO_Left_Tab"
+          "Left"
+        ];
+        right = [
+          "Tab"
+          "Right"
+        ];
       };
 
       providers = {
@@ -35,6 +43,7 @@
           "desktopapplications"
           "calc"
           "menus"
+          "symbols"
         ];
       };
     };
