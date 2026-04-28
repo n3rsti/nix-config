@@ -105,6 +105,10 @@
 
   services.openssh = {
     enable = true;
+    settings.PasswordAuthentication = false;
+    authorizedKeysFiles = [
+      ../../keys/id_pc.pub
+    ];
   };
 
   services.immich.enable = true;
@@ -216,7 +220,6 @@
       yearly = 1;
     };
   };
-
 
   services.borgbackup.jobs.nextcloud-backup = {
     paths = "/var/lib/nextcloud";
