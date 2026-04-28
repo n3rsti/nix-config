@@ -106,9 +106,6 @@
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
-    authorizedKeysFiles = [
-      ../../keys/id_pc.pub
-    ];
   };
 
   services.immich.enable = true;
@@ -252,6 +249,10 @@
       "media"
     ];
     packages = with pkgs; [ ];
+
+    openssh.authorizedKeys.keyFiles = [
+      ../../keys/id_pc.pub
+    ];
   };
 
   # Allow unfree packages
