@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   inputs,
   ...
@@ -14,6 +13,12 @@
     ../../modules/builder/remote-builder.nix
     inputs.home-manager.nixosModules.default
   ];
+
+  home-manager = {
+    users = {
+      "n3rsti" = import ./home.nix;
+    };
+  };
 
   swapDevices = [
     {

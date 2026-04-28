@@ -1,5 +1,6 @@
 {
   osConfig,
+  config,
   ...
 }:
 {
@@ -14,6 +15,10 @@
     ../../modules/home-manager/desktop.nix
     ../../modules/home-manager/packages.nix
   ];
+
+  sops.defaultSopsFile = ../../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
