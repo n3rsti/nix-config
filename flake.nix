@@ -29,6 +29,11 @@
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     awww.url = "git+https://codeberg.org/LGFae/awww";
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -38,6 +43,7 @@
       chaotic,
       nix-minecraft,
       nix-flatpak,
+      sops-nix,
       ...
     }@inputs:
     let
@@ -58,6 +64,7 @@
             inputs.nur.modules.nixos.default
             nix-flatpak.nixosModules.nix-flatpak
             { nixpkgs.overlays = [ unstableOverlay ]; }
+            sops-nix.nixosModules.sops
 
           ],
           extraModules ? [ ],

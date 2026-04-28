@@ -47,5 +47,7 @@ in
     poppler-utils
     acpi
     vulkan-tools
+    age
+    sops
   ];
 }

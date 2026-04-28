@@ -24,7 +24,7 @@
   services.tailscale-systray.enable = true;
 
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
     #GTK_THEME = "catppuccin-frappe-blue-standard";
   };
 

@@ -15,7 +15,12 @@
     ../../modules/minecraft/minecraft.nix
     ../../modules/builder/remote-builder.nix
     inputs.home-manager.nixosModules.default
+    inputs.sops-nix.nixosModules.sops
+  ];
 
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.age.sshKeyPaths = [
+    "/etc/ssh/ssh_host_ed25519_key"
   ];
 
   # Bootloader.
@@ -251,6 +256,8 @@
     unzip
     tree
     nixfmt
+    age
+    sops
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
