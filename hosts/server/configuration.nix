@@ -87,7 +87,7 @@
     enable = true;
     https = true;
     package = pkgs.nextcloud33;
-    hostName = "server.tail3ce7af.ts.net";
+    hostName = "nextcloud.tail3ce7af.ts.net";
     config.adminpassFile = "/etc/nextcloud-admin-pass";
     config.dbtype = "sqlite";
     settings.trusted_domains = [
