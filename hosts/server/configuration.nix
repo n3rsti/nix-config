@@ -180,6 +180,12 @@
     group = "media";
   };
 
+  services.bazarr = {
+    enable = true;
+    openFirewall = true;
+    group = "media";
+  };
+
   services.jellyseerr = {
     enable = true;
     openFirewall = true;
@@ -290,6 +296,7 @@
     nixfmt
     age
     sops
+    ripgrep
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
