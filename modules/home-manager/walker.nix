@@ -43,7 +43,6 @@
           "desktopapplications"
           "calc"
           "menus"
-          "symbols"
         ];
       };
     };
