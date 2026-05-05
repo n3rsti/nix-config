@@ -49,5 +49,6 @@ in
     vulkan-tools
     age
     sops
+    sshfs
   ];
 }
