@@ -1,28 +1,41 @@
 # NixOS Configuration
 
-This repository contains NixOS configurations for multiple hosts with shared modules.
+![Desktop showcase](./assets/desktop.png)
+
+## Key features:
+### Work machines:
+- modular configuration for laptop and pc
+- hyprland wm
+- home-manager
+- sops-nix integration
+- default stable channel
+- walker app launcher
+- bluetooth / wifi / gpu drivers setup
+- functional waybar + swaync bar configuration
+- separate dev setups for multiple languages
+- [Dotfiles](https://github.com/n3rsti/dotfiles)
+
+### Server:
+- nextcloud (cloud, calendar, contacts, tasks sync between all machines)
+- arr stack
+- paperless-ngx
+- minecraft server
+- immich
+- tailscale
+- borgbackup
 
 ## Structure
 
 - `flake.nix`: Entry point defining all system configurations
 - `hosts/`: Host-specific configurations
-  - `default/`: Base configuration shared by all hosts
+  - `default/`: Base configuration shared by all hosts except for server
   - `pc/`: Desktop-specific configuration
   - `laptop/`: Laptop-specific configuration
+  - `server/`: Server configuration
 - `modules/`: Reusable modules
   - `nixos/`: System-level modules
   - `home-manager/`: User-level modules
 
-## Design Philosophy
-
-This configuration follows a modular approach:
-
-1. The `default` host contains universal settings applicable to all machines
-2. Specific hosts (`pc`, `laptop`) import and extend the default configuration
-3. Each host can:
-   - Add new settings
-   - Override default settings
-   - Use specialized hardware configuration
 
 ## Usage
 

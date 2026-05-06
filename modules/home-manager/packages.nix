@@ -6,7 +6,6 @@
 {
 
   home.packages = with pkgs; [
-    zsh
     catppuccin
     catppuccin-gtk
 
@@ -34,11 +33,9 @@
     vscode-fhs
     unstable.jellyfin-media-player
     r2modman # mod manager for games
-    figma-linux
 
     thunderbird
     papers # pdf viewer
-    gnome-weather
     gnome-calendar
     gnome-online-accounts-gtk
     (rofi.override {
@@ -48,7 +45,6 @@
 
     gimp
     unstable.discord
-    lutris
     obs-studio
     unstable.prismlauncher
     slack
@@ -93,8 +89,7 @@
     rippkgs
     gnome-clocks
     easyeffects
-    remmina
-    mangohud
+    remmina # Remote Desktop client
     mangojuice
     imagemagick
 
@@ -102,5 +97,9 @@
     unstable.protonmail-desktop
     arduino-ide
     stlink
+    hunspell
+    hunspellDicts.pl_PL
+    hunspellDicts.en_US
+    leetgo # Leetcode local practice
   ];
 }

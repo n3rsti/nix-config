@@ -89,6 +89,7 @@
       "input"
       "gamemode"
       "kvm"
+      "libvirtd"
       "stlink"
     ];
   };
@@ -125,8 +126,16 @@
   };
 
   virtualisation = {
+    libvirtd = {
+      qemu = {
+        swtpm.enable = true; # Enable TPM emulation
+      };
+      enable = true;
+    };
     docker.enable = true;
+    spiceUSBRedirection.enable = true;
   };
+  programs.virt-manager.enable = true;
 
   security.rtkit.enable = true;
 

@@ -5,7 +5,6 @@
 }:
 {
   imports = [
-    # Include modules common to all configurations
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/theme.nix
@@ -20,8 +19,6 @@
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
   home.username = "n3rsti";
   home.homeDirectory = "/home/n3rsti";
 
@@ -30,14 +27,14 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    #GTK_THEME = "catppuccin-frappe-blue-standard";
   };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
 
-  # Home Manager will use the global nixpkgs config since useGlobalPkgs is enabled
-  # We don't need to set nixpkgs.config here
+    mangohud.enable = true;
+    lutris.enable = true;
+  };
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release

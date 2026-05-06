@@ -10,7 +10,6 @@
     # Include modules common to all configurations
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/zsh.nix
-    ../../modules/home-manager/kitty.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

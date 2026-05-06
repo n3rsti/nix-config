@@ -50,5 +50,6 @@ in
     age
     sops
     sshfs
+    efibootmgr
   ];
 }
