@@ -12,6 +12,7 @@ let
     "neovim-logo.png"
     "nixos-logo-white.png"
     "jakdojade.png"
+    "monitor.png"
   ];
 
   apps = [
@@ -21,6 +22,7 @@ let
     "nix-packages"
     "nixos-options"
     "jakdojade"
+    "monitor-settings"
   ];
 
   iconLinks = builtins.listToAttrs (

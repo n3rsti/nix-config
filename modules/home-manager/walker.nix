@@ -18,14 +18,17 @@
       hotreload_theme = true;
       theme = "launcher";
       force_keyboard_focus = true;
+      selection_wrap = true;
 
       keybinds = {
         next = [
           "Tab"
           "Down"
+          "alt Tab"
         ];
         previous = [
           "shift ISO_Left_Tab"
+          "alt shift ISO_Left_Tab"
           "Up"
         ];
         left = [

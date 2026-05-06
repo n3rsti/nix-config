@@ -101,5 +101,11 @@
     hunspellDicts.pl_PL
     hunspellDicts.en_US
     leetgo # Leetcode local practice
+
+    # Simple screen recording
+    wf-recorder
+    slurp
+    bash-language-server
+    beautysh
   ];
 }
