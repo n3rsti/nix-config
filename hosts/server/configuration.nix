@@ -14,6 +14,7 @@
     ./hardware-configuration.nix
     ../../modules/minecraft/minecraft.nix
     ../../modules/builder/remote-builder.nix
+    ./backups.nix
     inputs.home-manager.nixosModules.default
     inputs.sops-nix.nixosModules.sops
   ];
@@ -26,6 +27,7 @@
   sops.secrets.hetzner_storagebox = { };
   sops.secrets.borgbackup_passphrase_immich = { };
   sops.secrets.borgbackup_passphrase_nextcloud = { };
+  sops.secrets.borgbackup_passphrase_paperless = { };
 
   environment.sessionVariables = {
     SOPS_AGE_KEY_FILE = "/var/lib/sops-nix/key.txt";
@@ -189,58 +191,6 @@
   services.jellyseerr = {
     enable = true;
     openFirewall = true;
-  };
-
-  services.borgbackup.jobs.minecraft-backup = {
-    paths = "/srv/minecraft/fabric";
-    encryption.mode = "none";
-    environment.BORG_RSH = "ssh -p 23 -i /run/secrets/hetzner_storagebox";
-    repo = "u557087@u557087.your-storagebox.de:./backups/fabric";
-    compression = "auto,zstd";
-    startAt = "daily";
-    prune.keep = {
-      within = "3d";
-      daily = 7;
-      weekly = 2;
-    };
-  };
-
-  services.borgbackup.jobs.immich-backup = {
-    paths = "/var/lib/immich";
-    encryption = {
-      mode = "repokey-blake2";
-      passCommand = "cat /run/secrets/borgbackup_passphrase_immich";
-    };
-    environment.BORG_RSH = "ssh -p 23 -i /run/secrets/hetzner_storagebox";
-    repo = "u557087@u557087.your-storagebox.de:./backups/immich";
-    compression = "auto,zstd";
-    startAt = "daily";
-    prune.keep = {
-      within = "7d";
-      daily = 7;
-      weekly = 4;
-      monthly = 3;
-      yearly = 1;
-    };
-  };
-
-  services.borgbackup.jobs.nextcloud-backup = {
-    paths = "/var/lib/nextcloud";
-    encryption = {
-      mode = "repokey-blake2";
-      passCommand = "cat /run/secrets/borgbackup_passphrase_nextcloud";
-    };
-    environment.BORG_RSH = "ssh -p 23 -i /run/secrets/hetzner_storagebox";
-    repo = "u557087@u557087.your-storagebox.de:./backups/nextcloud";
-    compression = "auto,zstd";
-    startAt = "daily";
-    prune.keep = {
-      within = "7d";
-      daily = 7;
-      weekly = 4;
-      monthly = 3;
-      yearly = 1;
-    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
