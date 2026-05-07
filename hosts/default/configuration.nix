@@ -30,6 +30,13 @@
     kotlin.enable = true;
   };
 
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 32 * 1024;
+    }
+  ];
+
   nix = {
     settings = {
       trusted-users = [
