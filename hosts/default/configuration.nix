@@ -259,6 +259,7 @@
   time.timeZone = lib.mkDefault "Europe/Warsaw";
 
   i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocales = [ "pl_PL.UTF-8/UTF-8" ];
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "pl_PL.UTF-8";
@@ -269,7 +270,7 @@
     LC_NUMERIC = "pl_PL.UTF-8";
     LC_PAPER = "pl_PL.UTF-8";
     LC_TELEPHONE = "pl_PL.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+    LC_TIME = "pl_PL.UTF-8";
   };
 
   # This value determines the NixOS release from which the default

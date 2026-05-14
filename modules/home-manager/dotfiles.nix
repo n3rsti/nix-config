@@ -13,6 +13,7 @@ let
     "nixos-logo-white.png"
     "jakdojade.png"
     "monitor.png"
+    "eye-dropper-solid.png"
   ];
 
   apps = [
@@ -23,6 +24,7 @@ let
     "nixos-options"
     "jakdojade"
     "monitor-settings"
+    "color-picker"
   ];
 
   iconLinks = builtins.listToAttrs (

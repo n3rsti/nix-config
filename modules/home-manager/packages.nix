@@ -34,7 +34,6 @@
     unstable.jellyfin-media-player
     r2modman # mod manager for games
 
-    thunderbird
     papers # pdf viewer
     gnome-calendar
     gnome-online-accounts-gtk
@@ -107,5 +106,8 @@
     slurp
     bash-language-server
     beautysh
+
+    gnome-weather
+    glib # Needed for gapplication launching like with gnome-weather
   ];
 }
