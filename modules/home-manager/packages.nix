@@ -114,5 +114,8 @@
     localsend
     switcheroo # Converting image formats
     foliate # Ebook reader
+
+    pkgs.unstable.quickshell
+
   ];
 }
