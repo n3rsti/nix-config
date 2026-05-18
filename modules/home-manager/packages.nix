@@ -109,5 +109,10 @@
 
     gnome-weather
     glib # Needed for gapplication launching like with gnome-weather
+
+    caligula # Flashing ISOs
+    localsend
+    switcheroo # Converting image formats
+    foliate # Ebook reader
   ];
 }
