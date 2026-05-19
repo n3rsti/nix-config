@@ -89,6 +89,7 @@ in
     };
   };
   home.file.".tmux.conf".source = link "${symlinkRoot}/tmux/tmux.conf";
+  home.file.".config/elephant/websearch.toml".source = link "${symlinkRoot}/elephant/websearch.toml";
 
   xdg.dataFile = iconLinks // appLinks;
 

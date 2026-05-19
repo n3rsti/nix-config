@@ -57,6 +57,7 @@
     eog
     resources
     wineWow64Packages.stable
+    winetricks
 
     nautilus
 
