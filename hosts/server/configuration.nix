@@ -1,62 +1,59 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
-  config,
   pkgs,
   inputs,
   ...
 }:
 {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/minecraft/minecraft.nix
     ../../modules/builder/remote-builder.nix
     ./backups.nix
+    ./sops.nix
+    ./services.nix
     inputs.home-manager.nixosModules.default
     inputs.sops-nix.nixosModules.sops
   ];
 
-  sops.defaultSopsFile = ../../secrets/secrets.yaml;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
 
-  sops.age.keyFile = "/var/lib/sops-nix/key.txt";
-  sops.age.generateKey = true;
-
-  sops.secrets.hetzner_storagebox = { };
-  sops.secrets.borgbackup_passphrase_immich = { };
-  sops.secrets.borgbackup_passphrase_nextcloud = { };
-  sops.secrets.borgbackup_passphrase_paperless = { };
-
-  environment.sessionVariables = {
-    SOPS_AGE_KEY_FILE = "/var/lib/sops-nix/key.txt";
+    kernel = {
+      sysctl."net.ipv4.ip_forward" = 1;
+      sysctl."net.ipv6.conf.all.forwarding" = 1;
+    };
   };
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  nix = {
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+      trusted-users = [
+        "root"
+        "n3rsti"
+      ];
 
+      auto-optimise-store = true;
+    };
+
+    gc = {
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-than 7d";
+    };
+
+  };
+
+  nixpkgs.config.allowUnfree = true;
   virtualisation.docker.enable = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
-  networking.firewall.checkReversePath = "loose";
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
   home-manager = {
-    # also pass inputs to home-manager modules
     extraSpecialArgs = { inherit inputs; };
     users = {
       "n3rsti" =
@@ -65,64 +62,23 @@
           imports = [ ./home.nix ];
         };
     };
-    # This allows specific host configurations to override home-manager settings
     useGlobalPkgs = true;
     useUserPackages = true;
   };
 
-  services.tailscale.enable = true;
-
-  services.paperless = {
-    enable = true;
-    settings = {
-      PAPERLESS_URL = "https://paperless.tail3ce7af.ts.net";
+  programs = {
+    ssh = {
+      startAgent = true;
+      extraConfig = ''
+        AddKeysToAgent yes
+      '';
     };
+
+    zsh.enable = true;
   };
 
-  services.qbittorrent = {
-    enable = true;
-    openFirewall = true;
-    webuiPort = 8082;
-  };
-
-  services.nextcloud = {
-    enable = true;
-    https = true;
-    package = pkgs.nextcloud33;
-    hostName = "nextcloud.tail3ce7af.ts.net";
-    config.adminpassFile = "/etc/nextcloud-admin-pass";
-    config.dbtype = "sqlite";
-    settings.trusted_domains = [
-      "localhost"
-      "server.tail3ce7af.ts.net"
-      "nextcloud.tail3ce7af.ts.net"
-      "100.72.98.44"
-    ];
-    extraApps = {
-      inherit (config.services.nextcloud.package.packages.apps) contacts calendar tasks;
-    };
-    extraAppsEnable = true;
-    configureRedis = true;
-  };
-
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = false;
-  };
-
-  services.immich.enable = true;
-
-  programs.ssh = {
-    startAgent = true;
-    extraConfig = ''
-      AddKeysToAgent yes
-    '';
-  };
-
-  # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -137,93 +93,27 @@
     LC_TIME = "pl_PL.UTF-8";
   };
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  users = {
+    users.n3rsti = {
+      isNormalUser = true;
+      description = "n3rsti";
+      shell = pkgs.zsh;
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "docker"
+        "media"
+      ];
+
+      openssh.authorizedKeys.keyFiles = [
+        ../../keys/id_pc.pub
+      ];
+    };
+
+    groups.media = { };
   };
 
-  users.groups.media = { };
-
-  programs.zsh.enable = true;
-  services.jellyfin = {
-    enable = true;
-    openFirewall = true;
-    package = pkgs.jellyfin;
-    group = "media";
-  };
-
-  services.radarr = {
-    enable = true;
-    openFirewall = true;
-    group = "media";
-  };
-
-  services.ombi = {
-    enable = true;
-    openFirewall = true;
-    group = "media";
-  };
-
-  services.prowlarr = {
-    enable = true;
-    openFirewall = true;
-  };
-
-  services.flaresolverr = {
-    package = pkgs.flaresolverr;
-    enable = true;
-    openFirewall = true;
-  };
-
-  services.sonarr = {
-    enable = true;
-    openFirewall = true;
-    group = "media";
-  };
-
-  services.bazarr = {
-    enable = true;
-    openFirewall = true;
-    group = "media";
-  };
-
-  services.jellyseerr = {
-    enable = true;
-    openFirewall = true;
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.n3rsti = {
-    isNormalUser = true;
-    description = "n3rsti";
-    shell = pkgs.zsh;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "docker"
-      "media"
-    ];
-    packages = with pkgs; [ ];
-
-    openssh.authorizedKeys.keyFiles = [
-      ../../keys/id_pc.pub
-    ];
-  };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  nix.settings.auto-optimise-store = true;
-
-  nix.gc.automatic = true;
-  nix.gc.dates = "daily";
-  nix.gc.options = "--delete-older-than 7d";
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     vim
     nano
     neovim
@@ -236,7 +126,6 @@
     docker
     qbittorrent-nox
     wakeonlan
-    # makemkv
     nmap
     eza
     zip
@@ -246,37 +135,27 @@
     age
     sops
     ripgrep
+    devenv
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  networking = {
+    networkmanager.enable = true;
+    hostName = "nixos";
+    firewall = {
+      checkReversePath = "loose"; # Tailscale issue fix
+      allowedTCPPorts = [
+        25565
+        8096
+        8082
+        80
+        443
+        47990
+        8443
+        28981
+      ];
+    };
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [
-    25565
-    8096
-    8082
-    80
-    443
-    47990
-    8443
-    28981
-  ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
-  boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
+  };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
