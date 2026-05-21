@@ -197,6 +197,7 @@
         "org.vinegarhq.Sober"
         "com.bambulab.BambuStudio"
         "org.freecad.FreeCAD"
+        "sh.ppy.osu"
       ];
     };
 

@@ -115,5 +115,7 @@
     unstable.quickshell
     blanket # Sounds
     baobab # Disk usage analyzer
+
+    (heroic.override { extraPkgs = pkgs: [ pkgs.gamescope ]; })
   ];
 }
