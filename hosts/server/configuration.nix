@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }:
 {
@@ -139,23 +140,36 @@
   ];
 
   networking = {
+    nftables.enable = true;
     networkmanager.enable = true;
     hostName = "nixos";
     firewall = {
       checkReversePath = "loose"; # Tailscale issue fix
       allowedTCPPorts = [
-        25565
-        8096
-        8082
         80
         443
-        47990
-        8443
-        28981
+        28981 # Paperless
       ];
+
+      # Always allow traffic from your Tailscale network
+      trustedInterfaces = [ config.services.tailscale.interfaceName ];
+      # Allow the Tailscale UDP port through the firewall
+      allowedUDPPorts = [ config.services.tailscale.port ];
     };
 
   };
+
+  # Force tailscaled to use nftables (Critical for clean nftables-only systems)
+  # This avoids the "iptables-compat" translation layer issues.
+  systemd.services.tailscaled.serviceConfig.Environment = [
+    "TS_DEBUG_FIREWALL_MODE=nftables"
+  ];
+
+  # Optimization: Prevent systemd from waiting for network online
+  # (Optional but recommended for faster boot with VPNs)
+  systemd.network.wait-online.enable = false;
+  boot.initrd.systemd.network.wait-online.enable = false;
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
