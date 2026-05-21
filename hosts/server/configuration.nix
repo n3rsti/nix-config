@@ -108,6 +108,7 @@
 
       openssh.authorizedKeys.keyFiles = [
         ../../keys/id_pc.pub
+        ../../keys/id_laptop.pub
       ];
     };
 
@@ -115,7 +116,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    vim
     nano
     neovim
     git
@@ -125,7 +125,6 @@
     tmux
     go
     docker
-    qbittorrent-nox
     wakeonlan
     nmap
     eza
@@ -137,6 +136,7 @@
     sops
     ripgrep
     devenv
+    jq
   ];
 
   networking = {
