@@ -17,7 +17,6 @@
 
     qbittorrent = {
       enable = true;
-      openFirewall = true;
       webuiPort = 8082;
     };
 
@@ -55,49 +54,40 @@
 
     jellyfin = {
       enable = true;
-      openFirewall = true;
       package = pkgs.jellyfin;
       group = "media";
     };
 
     radarr = {
       enable = true;
-      openFirewall = true;
-      group = "media";
-    };
-
-    ombi = {
-      enable = true;
-      openFirewall = true;
       group = "media";
     };
 
     prowlarr = {
       enable = true;
-      openFirewall = true;
     };
 
     flaresolverr = {
       package = pkgs.flaresolverr;
       enable = true;
-      openFirewall = true;
     };
 
     sonarr = {
       enable = true;
-      openFirewall = true;
       group = "media";
     };
 
     bazarr = {
       enable = true;
-      openFirewall = true;
       group = "media";
     };
 
     jellyseerr = {
       enable = true;
-      openFirewall = true;
+    };
+
+    uptime-kuma = {
+      enable = true;
     };
   };
 }
