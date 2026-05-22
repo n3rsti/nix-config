@@ -26,7 +26,7 @@ in
         white-list = true;
       };
       enable = true;
-      jvmOpts = "-Xmx12G -Xms12G -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+AlwaysActAsServerClassMachine -XX:+AlwaysPreTouch -XX:+DisableExplicitGC -XX:+UseNUMA -XX:NmethodSweepActivity=1 -XX:ReservedCodeCacheSize=400M -XX:NonNMethodCodeHeapSize=12M -XX:ProfiledCodeHeapSize=194M -XX:NonProfiledCodeHeapSize=194M -XX:-DontCompileHugeMethods -XX:MaxNodeLimit=240000 -XX:NodeLimitFudgeFactor=8000 -XX:+UseVectorCmov -XX:+PerfDisableSharedMem -XX:+UseFastUnorderedTimeStamps -XX:+UseCriticalJavaThreadPriority -XX:ThreadPriorityPolicy=1 -XX:AllocatePrefetchStyle=3 -XX:+UseG1GC -XX:MaxGCPauseMillis=37 -XX:+PerfDisableSharedMem -XX:G1HeapRegionSize=16M -XX:G1NewSizePercent=23 -XX:G1ReservePercent=20 -XX:SurvivorRatio=32 -XX:G1MixedGCCountTarget=3 -XX:G1HeapWastePercent=20 -XX:InitiatingHeapOccupancyPercent=10 -XX:G1RSetUpdatingPauseTimePercent=0 -XX:MaxTenuringThreshold=1 -XX:G1SATBBufferEnqueueingThresholdPercent=30 -XX:G1ConcMarkStepDurationMillis=5.0 -XX:G1ConcRSHotCardLimit=16 -XX:G1ConcRefinementServiceIntervalMillis=150 -XX:GCTimeRatio=99";
+      jvmOpts = "-Xms8G -Xmx8G -XX:+UseZGC -XX:+AlwaysPreTouch -XX:+DisableExplicitGC";
       # jvmOpts = "-Xmx12G -Xms12G";
 
       # Specify the custom minecraft server package
@@ -48,8 +48,8 @@ in
         mods = pkgs.linkFarmFromDrvs "mods" (
           builtins.attrValues {
             DistantHorizons = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/uCdwusMi/versions/CKJFSOC6/DistantHorizons-2.4.5-b-1.21.10-fabric-neoforge.jar";
-              sha512 = "sha512-gut6fVsHGvkWQcqipvu7HNznWkGjYU24VBhnGxgWrxC1l86DFbBLnK1JS1varEFfXK60eEiUc3/Xg2MB9ae++A==";
+              url = "https://cdn.modrinth.com/data/uCdwusMi/versions/rKh9HEXg/DistantHorizons-3.0.3-b-1.21.10-fabric-neoforge.jar";
+              sha512 = "sha512-Df6z38fmK/0ksHB6cATqQ61rjT7o24ItWCufYypTl3nIH24Sau5voT+Fx89LKxj+8phA6pLkE3MLQ280dEFQVQ==";
             };
             Fabric-API = pkgs.fetchurl {
               url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/dQ3p80zK/fabric-api-0.138.3%2B1.21.10.jar";

@@ -6,11 +6,7 @@
 {
 
   home.packages = with pkgs; [
-    catppuccin
-    catppuccin-gtk
-
-    inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
-
+    inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww # Wallpaper daemon
     unstable.signal-desktop
     bitwarden-desktop
     unstable.freetube
@@ -25,12 +21,14 @@
     gh
     postman
     unstable.tree-sitter
-
-    cheese
-    gnome-text-editor
-    orca-slicer
+    bash-language-server # Bash lsp
+    beautysh # Bash formatter
     zed-editor-fhs
     vscode-fhs
+
+    cheese # Camera
+    gnome-text-editor
+    orca-slicer
     unstable.jellyfin-media-player
     r2modman # mod manager for games
 
@@ -56,7 +54,8 @@
     unstable.libreoffice-qt6-fresh
     eog
     resources
-    wineWow64Packages.stable
+    wineWow64Packages.staging
+    winetricks
 
     nautilus
 
@@ -66,56 +65,57 @@
     swayosd
 
     waybar
-    television
-    pavucontrol
+    television # tv
+    pavucontrol # Sound gui
 
-    nmgui
+    nmgui # Wifi gui
     dunst
 
     chromium
     ffmpeg_6-full
-    eza
+    eza # better ls
     copyq
-    wev
-    wl-clipboard
-    protonup-ng
-    libnotify
-    hyprpicker
-    grim
-    yt-dlp
-    cava
-    grimblast
-    rippkgs
+    wev # Mouse / keyboard input analyzer
+    wl-clipboard # wl-copy
+    protonup-ng # Proton utilities
+    libnotify # Notification utilities
+    hyprpicker # Color picker
+    yt-dlp # Downloading videos
+    cava # Music visualizer
+    grimblast # Screenshot utility
+    grim # Utility for grimblast i think
     gnome-clocks
-    easyeffects
+    easyeffects # Sound effects for input/output
     remmina # Remote Desktop client
-    mangojuice
-    imagemagick
+    mangojuice # Control mangohud
+    imagemagick # To show images in neovim
 
-    errands
+    errands # Task manager
     unstable.protonmail-desktop
     arduino-ide
-    stlink
+    stlink # Something for flashing programs to microcontrollers
+    # Dictionaries
     hunspell
     hunspellDicts.pl_PL
     hunspellDicts.en_US
+
     leetgo # Leetcode local practice
 
-    # Simple screen recording
-    wf-recorder
-    slurp
-    bash-language-server
-    beautysh
+    wf-recorder # Simple screen recording
+    slurp # Area picker for screen recording
 
-    gnome-weather
+    gnome-weather # Weather app
     glib # Needed for gapplication launching like with gnome-weather
 
     caligula # Flashing ISOs
-    localsend
+    localsend # Sending files in local network
     switcheroo # Converting image formats
     foliate # Ebook reader
 
-    pkgs.unstable.quickshell
+    unstable.quickshell
+    blanket # Sounds
+    baobab # Disk usage analyzer
 
+    (heroic.override { extraPkgs = pkgs: [ pkgs.gamescope ]; })
   ];
 }

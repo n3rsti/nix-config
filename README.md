@@ -11,7 +11,7 @@
 - default stable channel
 - walker app launcher
 - bluetooth / wifi / gpu drivers setup
-- functional waybar + swaync bar configuration
+- functional quickshell bar configuration
 - separate dev setups for multiple languages
 - [Dotfiles](https://github.com/n3rsti/dotfiles)
 

@@ -12,6 +12,11 @@
     inputs.home-manager.nixosModules.default
   ];
 
+  nix.settings = {
+    cores = 4;
+    max-jobs = 4;
+  };
+
   boot.kernelParams = [ "psmouse.synaptics_intertouch=1" ];
 
   home-manager = {
@@ -30,28 +35,31 @@
   hardware.acpilight.enable = true;
 
   environment.systemPackages = with pkgs; [
-    pkgs.moonlight-qt
-    pkgs.brightnessctl
-    pkgs.gnome-bluetooth
+    moonlight-qt
+    brightnessctl
   ];
 
   powerManagement.enable = true;
-  services.tlp.enable = true;
-  services.thermald.enable = true;
 
-  nix.settings.cores = 4;
-  nix.settings.max-jobs = 4;
-
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-      vpl-gpu-rt
-      intel-compute-runtime
-    ];
+  services = {
+    tlp.enable = true;
+    thermald.enable = true;
+    power-profiles-daemon.enable = false;
   };
 
-  hardware.cpu.intel.updateMicrocode = true;
+  hardware = {
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+        vpl-gpu-rt
+        intel-compute-runtime
+      ];
+    };
+    cpu.intel.updateMicrocode = true;
+    acpilight.enable = true;
+  };
+
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "iHD";
   };

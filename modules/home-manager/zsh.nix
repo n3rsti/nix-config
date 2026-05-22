@@ -15,34 +15,47 @@
     # Use shellAliases for simple no-argument aliases only
     shellAliases = {
       nix-update = "sudo nix flake update --flake /etc/nixos";
-      nix-switch = "'nix-switch_func'";
-      nix-test = "'nix-test_func'";
       zed = "zeditor";
       vim = "nvim";
       ls = "eza -h --group-directories-first --icons=auto";
       lt = "eza --tree --level=2 --icons --git";
     };
 
-    # Use initExtra for functions that need arguments
     initContent = ''
-            export PATH="$PATH:$HOME/.npm-global/bin"
-            nix-switch_func() {
-              sudo nixos-rebuild switch --flake /etc/nixos#"$1"
-            }
+      export PATH="$PATH:$HOME/.npm-global/bin"
 
-            nix-test_func() {
-              sudo nixos-rebuild test --flake /etc/nixos#"$1"
-            }
-            
-            open() {
-              xdg-open "$@" >/dev/null 2>&1 &
-            }
+      nix-switch() {
+        sudo nixos-rebuild switch --flake /etc/nixos#"$1"
+      }
 
-            bindkey -s ^F "~/.config/dotfiles/scripts/tmux-sessionizer.sh\n"
+      nix-test() {
+        sudo nixos-rebuild test --flake /etc/nixos#"$1"
+      }
 
-            find ~/.ssh -type f ! -name '*.pub' -exec ssh-add {} \; > /dev/null 2>&1
+      open() {
+        xdg-open "$@" >/dev/null 2>&1 &
+      }
 
-      # eval "$(direnv hook zsh)"
+      nix-eval() {
+        if (( $# != 1 )); then
+          print -u2 "usage: nix-eval <attr-path>"
+          print -u2 "example: nix-eval config.services.openssh.enable"
+          return 2
+        fi
+
+        nix eval "/etc/nixos#nixosConfigurations.$(hostname).$1"
+      }
+
+      bindkey -s ^F "~/.config/dotfiles/scripts/tmux-sessionizer.sh\n"
+
+      if ! ssh-add -l >/dev/null 2>&1; then
+          for key in "$HOME"/.ssh/*(.N); do
+            [[ "$key" != *.pub ]] || continue
+
+            ssh-keygen -y -f "$key" -P "" >/dev/null 2>&1 &&
+              ssh-add -q -- "$key" >/dev/null 2>&1
+          done
+      fi
     '';
   };
 }

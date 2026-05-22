@@ -46,7 +46,11 @@
           "desktopapplications"
           "calc"
           "menus"
+          "websearch"
         ];
+        max_results_provider = {
+          symbols = 100;
+        };
       };
     };
   };

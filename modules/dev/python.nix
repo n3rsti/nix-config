@@ -15,13 +15,16 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      python3
+      (python3.withPackages (
+        ps: with ps; [
+          debugpy
+          pip
+          pygobject3
+          dbus-python
+        ]
+      ))
       basedpyright
       black
-
-      python313Packages.pip
-      python3Packages.pygobject3
-      python313Packages.dbus-python
     ];
 
   };
