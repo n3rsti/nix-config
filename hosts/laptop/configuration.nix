@@ -25,6 +25,7 @@
   };
 
   services.power-profiles-daemon.enable = false;
+  services.upower.enable = true;
 
   hardware.acpilight.enable = true;
 
