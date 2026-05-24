@@ -29,11 +29,6 @@
     hostName = "laptop";
   };
 
-  services.power-profiles-daemon.enable = false;
-  services.upower.enable = true;
-
-  hardware.acpilight.enable = true;
-
   environment.systemPackages = with pkgs; [
     moonlight-qt
     brightnessctl
@@ -45,6 +40,7 @@
     tlp.enable = true;
     thermald.enable = true;
     power-profiles-daemon.enable = false;
+    upower.enable = true;
   };
 
   hardware = {

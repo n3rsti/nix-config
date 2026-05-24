@@ -1,5 +1,4 @@
 {
-  osConfig,
   config,
   lib,
   ...
@@ -24,7 +23,6 @@
   home.homeDirectory = "/home/n3rsti";
 
   services = {
-    swayosd.enable = osConfig.programs.hyprland.enable;
     tailscale-systray.enable = true;
     protonmail-bridge.enable = true;
     network-manager-applet.enable = lib.mkDefault true;
