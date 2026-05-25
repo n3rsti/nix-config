@@ -36,7 +36,6 @@
       ];
 
       trusted-users = [
-        "root"
         "n3rsti"
       ];
 
@@ -145,11 +144,7 @@
     hostName = "nixos";
     firewall = {
       checkReversePath = "loose"; # Tailscale issue fix
-      allowedTCPPorts = [
-        80
-        443
-        28981 # Paperless
-      ];
+      allowedTCPPorts = [ ];
 
       # Always allow traffic from your Tailscale network
       trustedInterfaces = [ config.services.tailscale.interfaceName ];

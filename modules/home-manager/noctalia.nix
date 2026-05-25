@@ -46,6 +46,16 @@
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
+
+        timer = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+
+        screen-recorder = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
       };
       version = 2;
     };
@@ -153,6 +163,12 @@
               textColor = "none";
               useFixedWidth = false;
               visualizerType = "linear";
+            }
+            {
+              id = "plugin:timer";
+            }
+            {
+              id = "plugin:screen-recorder";
             }
           ];
           right = [
@@ -321,7 +337,7 @@ mm";
         settingsPanelSideBarCardStyle = false;
       };
       location = {
-        name = "Poznan";
+        name = "Warsaw";
         weatherEnabled = true;
         weatherShowEffects = false;
         weatherTaliaMascotAlways = false;
@@ -437,19 +453,52 @@ mm";
             {
               id = "Bluetooth";
             }
-          ];
-          right = [
             {
               id = "Notifications";
             }
             {
+              id = "NightLight";
+            }
+          ];
+          right = [
+            {
               id = "KeepAwake";
             }
             {
-              id = "NightLight";
+              id = "WallpaperSelector";
             }
             {
-              id = "WallpaperSelector";
+              defaultSettings = {
+                compactMode = false;
+                defaultDuration = 0;
+                iconColor = "none";
+                textColor = "none";
+              };
+              id = "plugin:timer";
+            }
+            {
+              defaultSettings = {
+                audioCodec = "opus";
+                audioSource = "default_output";
+                colorRange = "limited";
+                copyToClipboard = false;
+                customReplayDuration = "30";
+                directory = "";
+                filenamePattern = "recording_yyyyMMdd_HHmmss";
+                frameRate = "60";
+                hideInactive = false;
+                iconColor = "none";
+                quality = "very_high";
+                replayDuration = "30";
+                replayEnabled = false;
+                replayStorage = "ram";
+                resolution = "original";
+                restorePortalSession = false;
+                showCursor = true;
+                videoCodec = "h264";
+                videoSource = "portal";
+              };
+              id = "plugin:screen-recorder";
             }
           ];
         };

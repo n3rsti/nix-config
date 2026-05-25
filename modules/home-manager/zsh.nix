@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   programs.zsh = {
@@ -12,7 +12,6 @@
       theme = "fwalch";
     };
 
-    # Use shellAliases for simple no-argument aliases only
     shellAliases = {
       nix-update = "sudo nix flake update --flake /etc/nixos";
       zed = "zeditor";

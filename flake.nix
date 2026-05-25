@@ -13,8 +13,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,7 +41,6 @@
     {
       self,
       nixpkgs,
-      chaotic,
       nix-minecraft,
       nix-flatpak,
       sops-nix,
@@ -63,7 +60,6 @@
           baseModules ? [
 
             inputs.home-manager.nixosModules.default
-            chaotic.nixosModules.default
             inputs.nur.modules.nixos.default
             nix-flatpak.nixosModules.nix-flatpak
             { nixpkgs.overlays = [ unstableOverlay ]; }

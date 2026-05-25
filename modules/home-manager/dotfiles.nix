@@ -18,7 +18,6 @@ let
 
   apps = [
     "awakened-poe-trade"
-    "change-wallpaper"
     "hyprland-wiki"
     "nix-packages"
     "nixos-options"
@@ -68,25 +67,6 @@ in
       recursive = true;
     };
 
-    "rofi" = {
-      source = link "${symlinkRoot}/rofi";
-      recursive = true;
-    };
-
-    "swayosd" = {
-      source = link "${symlinkRoot}/swayosd";
-      recursive = true;
-    };
-
-    "swaync" = {
-      source = link "${symlinkRoot}/swaync";
-      recursive = true;
-    };
-
-    "quickshell" = {
-      source = link "${symlinkRoot}/quickshell";
-      recursive = true;
-    };
   };
   home.file.".tmux.conf".source = link "${symlinkRoot}/tmux/tmux.conf";
   home.file.".config/elephant/websearch.toml".source = link "${symlinkRoot}/elephant/websearch.toml";

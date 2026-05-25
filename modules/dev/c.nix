@@ -19,10 +19,8 @@ in
       clang-tools
       gnumake
       pkg-config
-
       glsl_analyzer
       bear
-
     ];
 
   };

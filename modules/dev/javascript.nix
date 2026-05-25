@@ -29,6 +29,5 @@ in
       prettierd
       emmet-language-server
     ];
-
   };
 }

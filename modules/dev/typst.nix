@@ -18,6 +18,5 @@ in
       typst
       tinymist
     ];
-
   };
 }

@@ -18,7 +18,6 @@ in
       lua
       stylua
       lua-language-server
-
       lua54Packages.luarocks
       lua51Packages.tiktoken_core
     ];

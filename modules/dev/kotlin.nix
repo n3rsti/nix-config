@@ -2,18 +2,11 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }:
 
 let
   cfg = config.dev.kotlin;
-  pkgs_unstable = (
-    import inputs.nixpkgs_unstable {
-      inherit (pkgs.stdenv.hostPlatform) system;
-      config = config.nixpkgs.config;
-    }
-  );
 in
 {
   options.dev.kotlin = {

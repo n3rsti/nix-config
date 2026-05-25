@@ -2,42 +2,18 @@
   pkgs,
   ...
 }:
-{
-
-  home.packages = with pkgs; [
+let
+  apps = with pkgs; [
     unstable.signal-desktop
     bitwarden-desktop
-    unstable.freetube
-
-    # dev tools
-    opencode
-    unstable.devenv
-    websocat
-    package-version-server
-    vhdl-ls
-    fixjson
-    gh
     postman
-    unstable.tree-sitter
-    bash-language-server # Bash lsp
-    beautysh # Bash formatter
-    zed-editor-fhs
-    vscode-fhs
-
     cheese # Camera
     gnome-text-editor
     orca-slicer
     unstable.jellyfin-media-player
     r2modman # mod manager for games
-
     papers # pdf viewer
     gnome-calendar
-    gnome-online-accounts-gtk
-    (rofi.override {
-      plugins = [ rofi-file-browser ];
-    })
-    wiremix
-
     gimp
     unstable.discord
     obs-studio
@@ -52,27 +28,41 @@
     unstable.libreoffice-qt6-fresh
     eog
     resources
-    wineWow64Packages.staging
-    winetricks
-
     nautilus
-
-    swaynotificationcenter
-
-    hyprlock
-    swayosd
-
-    waybar
-    television # tv
-    pavucontrol # Sound gui
-
-    nmgui # Wifi gui
-    dunst
-
     chromium
+    copyq
+    easyeffects # Sound effects for input/output
+    remmina # Remote Desktop client
+    errands # Task manager
+    unstable.protonmail-desktop
+    arduino-ide
+    gnome-weather # Weather app
+    localsend # Sending files in local network
+    switcheroo # Converting image formats
+    foliate # Ebook reader
+    blanket # Sounds
+    baobab # Disk usage analyzer
+    gnome-clocks
+    (heroic.override { extraPkgs = pkgs: [ pkgs.gamescope ]; })
+    pavucontrol # Sound gui
+    gnome-online-accounts-gtk
+    networkmanagerapplet # For nm-connection-editor
+  ];
+
+  cliTools = with pkgs; [
+    # dev tools
+    unstable.opencode
+    unstable.devenv
+    websocat
+    package-version-server
+    vhdl-ls
+    fixjson
+    gh
+    unstable.tree-sitter
+    bash-language-server # Bash lsp
+    beautysh # Bash formatter
     ffmpeg_6-full
     eza # better ls
-    copyq
     wev # Mouse / keyboard input analyzer
     wl-clipboard # wl-copy
     protonup-ng # Proton utilities
@@ -82,15 +72,10 @@
     cava # Music visualizer
     grimblast # Screenshot utility
     grim # Utility for grimblast i think
-    gnome-clocks
-    easyeffects # Sound effects for input/output
-    remmina # Remote Desktop client
     mangojuice # Control mangohud
     imagemagick # To show images in neovim
-
-    errands # Task manager
-    unstable.protonmail-desktop
-    arduino-ide
+    wineWow64Packages.staging
+    winetricks
     stlink # Something for flashing programs to microcontrollers
     # Dictionaries
     hunspell
@@ -98,22 +83,19 @@
     hunspellDicts.en_US
 
     leetgo # Leetcode local practice
-
     wf-recorder # Simple screen recording
     slurp # Area picker for screen recording
-
-    gnome-weather # Weather app
-    glib # Needed for gapplication launching like with gnome-weather
-
     caligula # Flashing ISOs
-    localsend # Sending files in local network
-    switcheroo # Converting image formats
-    foliate # Ebook reader
-
-    unstable.quickshell
-    blanket # Sounds
-    baobab # Disk usage analyzer
-
-    (heroic.override { extraPkgs = pkgs: [ pkgs.gamescope ]; })
   ];
+
+  desktopIntegration = with pkgs; [
+    waybar
+    television # tv
+    nmgui # Wifi gui
+    glib # Needed for gapplication launching like with gnome-weather
+    gpu-screen-recorder # For noctalia-shell
+  ];
+in
+{
+  home.packages = apps ++ cliTools ++ desktopIntegration;
 }

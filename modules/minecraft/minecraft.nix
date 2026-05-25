@@ -1,18 +1,7 @@
 {
-  config,
   pkgs,
-  lib,
   ...
 }:
-let
-  # This is the same mkOutOfStoreSymlink used by Home-Manager
-  mkOutOfStoreSymlink =
-    path:
-    builtins.path {
-      path = path;
-      name = baseNameOf path;
-    };
-in
 {
   # Minecraft server settings
   services.minecraft-servers = {
@@ -27,12 +16,10 @@ in
       };
       enable = true;
       jvmOpts = "-Xms8G -Xmx8G -XX:+UseZGC -XX:+AlwaysPreTouch -XX:+DisableExplicitGC";
-      # jvmOpts = "-Xmx12G -Xms12G";
 
-      # Specify the custom minecraft server package
       package = pkgs.fabricServers.fabric-1_21_10.override {
         loaderVersion = "0.18.1";
-      }; # Specific fabric loader version
+      };
 
       operators = {
         n3rsti = "65ab77f9-70d1-4407-b7e1-6daced14599a";
@@ -123,7 +110,6 @@ in
               url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/fUtpj4ud/sleep-v4.3.13-mc1.21.6%2B.jar";
               sha512 = "sha512-KM71/MhHVNQ+X43ZFomrvQWtpjGEvdvxILB8UQ5wanaVGvTo1BdumVQ4rLsjKyapQ0T18A6cVZCV3aGOK0W+ZA==";
             };
-
           }
         );
       };

@@ -18,6 +18,5 @@ in
       rustup
       probe-rs-tools
     ];
-
   };
 }
