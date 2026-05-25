@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   ...
 }:
 {
@@ -13,6 +12,7 @@
     ../../modules/home-manager/dotfiles.nix
     ../../modules/home-manager/desktop.nix
     ../../modules/home-manager/packages.nix
+    ../../modules/home-manager/noctalia.nix
   ];
 
   sops.defaultSopsFile = ../../secrets/secrets.yaml;
@@ -25,7 +25,6 @@
   services = {
     tailscale-systray.enable = true;
     protonmail-bridge.enable = true;
-    network-manager-applet.enable = lib.mkDefault true;
   };
 
   home.sessionVariables = {

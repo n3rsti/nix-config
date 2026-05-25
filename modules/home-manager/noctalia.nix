@@ -8,6 +8,31 @@
   ];
   programs.noctalia-shell = {
     enable = true;
+    colors = {
+      mError = "#ffff453a";
+      mOnError = "#ffffffff";
+
+      mPrimary = "#e6f2f2f7";
+      mOnPrimary = "#ff1c1c1e";
+
+      mSecondary = "#ffd0d0d4";
+      mOnSecondary = "#ff1c1c1e";
+
+      mTertiary = "#ff0a84ff";
+      mOnTertiary = "#ffffffff";
+
+      mSurface = "#d91c1c1e";
+      mOnSurface = "#fff5f5f7";
+
+      mSurfaceVariant = "#d92c2c2e";
+      mOnSurfaceVariant = "#ffd1d1d6";
+
+      mOutline = "#80545458";
+      mShadow = "#ff000000";
+
+      mHover = "#20ffffff";
+      mOnHover = "#ffffffff";
+    };
     plugins = {
       sources = [
         {
@@ -58,7 +83,7 @@
         contentPadding = 6;
         fontScale = 1;
         enableExclusionZoneInset = true;
-        backgroundOpacity = 0.62;
+        backgroundOpacity = 0.35;
         useSeparateOpacity = true;
         marginVertical = 7;
         marginHorizontal = 4;
@@ -75,9 +100,9 @@
             {
               characterCount = 2;
               colorizeIcons = false;
-              emptyColor = "secondary";
+              emptyColor = "none";
               enableScrollWheel = false;
-              focusedColor = "primary";
+              focusedColor = "tertiary";
               followFocusedScreen = false;
               fontWeight = "bold";
               groupedBorderOpacity = 1;
@@ -85,8 +110,8 @@
               iconScale = 0.8;
               id = "Workspace";
               labelMode = "index";
-              occupiedColor = "secondary";
-              pillSize = 0.55;
+              occupiedColor = "none";
+              pillSize = 0.71;
               showApplications = false;
               showApplicationsHover = false;
               showBadge = true;
@@ -114,7 +139,7 @@
               useCustomFont = false;
             }
             {
-              compactMode = false;
+              compactMode = true;
               hideMode = "hidden";
               hideWhenIdle = false;
               id = "MediaMini";
@@ -132,10 +157,27 @@
           ];
           right = [
             {
+              defaultSettings = {
+                compactMode = false;
+                defaultPeerAction = "copy-ip";
+                hideDisconnected = false;
+                hideMullvadExitNodes = true;
+                loginServer = "";
+                pingCount = 5;
+                refreshInterval = 5000;
+                showIpAddress = true;
+                showPeerCount = true;
+                showSearchBar = false;
+                sshUsername = "";
+                taildropDownloadDir = "~/Downloads";
+                taildropEnabled = true;
+                taildropReceiveMode = "operator";
+                terminalCommand = "";
+              };
               id = "plugin:tailscale";
             }
             {
-              displayMode = "onhover";
+              displayMode = "alwaysHide";
               iconColor = "none";
               id = "Volume";
               middleClickCommand = "pwvucontrol || pavucontrol";
@@ -205,23 +247,23 @@
         showScreenCorners = false;
         forceBlackScreenCorners = false;
         scaleRatio = 1;
-        radiusRatio = 1;
+        radiusRatio = 0.6;
         iRadiusRatio = 1;
         boxRadiusRatio = 1;
         screenRadiusRatio = 1;
         animationSpeed = 1;
         animationDisabled = false;
         compactLockScreen = false;
-        lockScreenAnimations = false;
+        lockScreenAnimations = true;
         lockOnSuspend = true;
         showSessionButtonsOnLockScreen = true;
         showHibernateOnLockScreen = false;
-        enableLockScreenMediaControls = false;
-        enableShadows = false;
+        enableLockScreenMediaControls = true;
+        enableShadows = true;
         enableBlurBehind = true;
-        shadowDirection = "bottom_right";
-        shadowOffsetX = 2;
-        shadowOffsetY = 3;
+        shadowDirection = "top";
+        shadowOffsetX = 0;
+        shadowOffsetY = -3;
         language = "";
         allowPanelsOnScreenWithoutBar = true;
         showChangelogOnStartup = true;
@@ -231,10 +273,11 @@
         autoStartAuth = false;
         allowPasswordWithFprintd = false;
         clockStyle = "custom";
-        clockFormat = "hh\\nmm";
+        clockFormat = "hh
+mm";
         passwordChars = false;
         lockScreenMonitors = [ ];
-        lockScreenBlur = 0;
+        lockScreenBlur = 0.7000000000000001;
         lockScreenTint = 0;
         keybinds = {
           keyUp = [
@@ -265,20 +308,20 @@
       };
       ui = {
         fontDefault = "Adwaita Sans";
-        fontFixed = "AdwaitaMono Nerd Font Mono";
-        fontDefaultScale = 1;
+        fontFixed = "Adwaita Sans";
+        fontDefaultScale = 0.93;
         fontFixedScale = 1;
         tooltipsEnabled = true;
-        scrollbarAlwaysVisible = true;
-        boxBorderEnabled = true;
-        panelBackgroundOpacity = 0.93;
-        translucentWidgets = false;
+        scrollbarAlwaysVisible = false;
+        boxBorderEnabled = false;
+        panelBackgroundOpacity = 0.6;
+        translucentWidgets = true;
         panelsAttachedToBar = true;
         settingsPanelMode = "attached";
         settingsPanelSideBarCardStyle = false;
       };
       location = {
-        name = "Warsaw";
+        name = "Poznan";
         weatherEnabled = true;
         weatherShowEffects = false;
         weatherTaliaMascotAlways = false;
@@ -310,9 +353,9 @@
         ];
       };
       wallpaper = {
-        enabled = false;
+        enabled = true;
         overviewEnabled = false;
-        directory = "/home/n3rsti/Pictures/Wallpapers";
+        directory = "~/.config/dotfiles/wallpapers";
         monitorDirectories = [ ];
         enableMultiMonitorDirectories = false;
         showHiddenFiles = false;
@@ -405,6 +448,9 @@
             {
               id = "NightLight";
             }
+            {
+              id = "WallpaperSelector";
+            }
           ];
         };
         cards = [
@@ -423,14 +469,6 @@
           {
             enabled = false;
             id = "brightness-card";
-          }
-          {
-            enabled = true;
-            id = "weather-card";
-          }
-          {
-            enabled = true;
-            id = "media-sysmon-card";
           }
         ];
       };
@@ -576,7 +614,7 @@
         monitors = [ ];
         location = "top_right";
         overlayLayer = true;
-        backgroundOpacity = 0.84;
+        backgroundOpacity = 0.35;
         respectExpireTimeout = false;
         lowUrgencyDuration = 3;
         normalUrgencyDuration = 8;
@@ -615,7 +653,7 @@
       };
       audio = {
         volumeStep = 5;
-        volumeOverdrive = false;
+        volumeOverdrive = true;
         spectrumFrameRate = 30;
         visualizerType = "linear";
         spectrumMirrored = true;
@@ -631,7 +669,7 @@
         backlightDeviceMappings = [ ];
       };
       colorSchemes = {
-        useWallpaperColors = true;
+        useWallpaperColors = false;
         predefinedScheme = "Tokyo Night";
         darkMode = true;
         schedulingMode = "off";
@@ -646,23 +684,23 @@
         enableUserTheming = false;
       };
       nightLight = {
-        enabled = false;
+        enabled = true;
         forced = false;
         autoSchedule = true;
-        nightTemp = "4000";
+        nightTemp = "4396";
         dayTemp = "6500";
         manualSunrise = "06:30";
         manualSunset = "18:30";
       };
       hooks = {
-        enabled = false;
+        enabled = true;
         wallpaperChange = "";
         darkModeChange = "";
         screenLock = "";
         screenUnlock = "";
         performanceModeEnabled = "";
         performanceModeDisabled = "";
-        startup = "";
+        startup = "signal-desktop & bitwarden & easyeffects";
         session = "";
         colorGeneration = "";
       };
@@ -671,8 +709,8 @@
         notifyUpdates = true;
       };
       idle = {
-        enabled = false;
-        screenOffTimeout = 600;
+        enabled = true;
+        screenOffTimeout = 1200;
         lockTimeout = 660;
         suspendTimeout = 1800;
         fadeDuration = 5;

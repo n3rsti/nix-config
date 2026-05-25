@@ -1,12 +1,10 @@
 {
-  inputs,
   pkgs,
   ...
 }:
 {
 
   home.packages = with pkgs; [
-    inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww # Wallpaper daemon
     unstable.signal-desktop
     bitwarden-desktop
     unstable.freetube
