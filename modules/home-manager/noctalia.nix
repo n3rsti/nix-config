@@ -63,19 +63,47 @@
       tailscale = {
         refreshInterval = 5000;
         compactMode = true;
-        showIpAddress = false;
+        showIpAddress = true;
         showPeerCount = false;
         hideDisconnected = false;
         hideMullvadExitNodes = true;
         showSearchBar = false;
         terminalCommand = "ghostty";
-        sshUsername = "";
+        sshUsername = "n3rsti";
         pingCount = 5;
         defaultPeerAction = "copy-ip";
         taildropEnabled = true;
         taildropDownloadDir = "~/Downloads";
         taildropReceiveMode = "operator";
         loginServer = "";
+      };
+
+      screen-recorder = {
+        audioCodec = "opus";
+        audioSource = "default_output";
+        colorRange = "limited";
+        copyToClipboard = false;
+        customReplayDuration = "30";
+        directory = "~/Videos";
+        filenamePattern = "recording_yyyyMMdd_HHmmss";
+        frameRate = "60";
+        hideInactive = true;
+        iconColor = "none";
+        quality = "very_high";
+        replayDuration = "30";
+        replayEnabled = false;
+        replayStorage = "ram";
+        resolution = "original";
+        restorePortalSession = false;
+        showCursor = true;
+        videoCodec = "h264";
+        videoSource = "portal";
+      };
+      timer = {
+        compactMode = true;
+        defaultDuration = 0;
+        iconColor = "none";
+        textColor = "none";
       };
     };
     settings = {
@@ -173,23 +201,6 @@
           ];
           right = [
             {
-              defaultSettings = {
-                compactMode = false;
-                defaultPeerAction = "copy-ip";
-                hideDisconnected = false;
-                hideMullvadExitNodes = true;
-                loginServer = "";
-                pingCount = 5;
-                refreshInterval = 5000;
-                showIpAddress = true;
-                showPeerCount = true;
-                showSearchBar = false;
-                sshUsername = "";
-                taildropDownloadDir = "~/Downloads";
-                taildropEnabled = true;
-                taildropReceiveMode = "operator";
-                terminalCommand = "";
-              };
               id = "plugin:tailscale";
             }
             {
@@ -468,36 +479,9 @@ mm";
               id = "WallpaperSelector";
             }
             {
-              defaultSettings = {
-                compactMode = false;
-                defaultDuration = 0;
-                iconColor = "none";
-                textColor = "none";
-              };
               id = "plugin:timer";
             }
             {
-              defaultSettings = {
-                audioCodec = "opus";
-                audioSource = "default_output";
-                colorRange = "limited";
-                copyToClipboard = false;
-                customReplayDuration = "30";
-                directory = "";
-                filenamePattern = "recording_yyyyMMdd_HHmmss";
-                frameRate = "60";
-                hideInactive = false;
-                iconColor = "none";
-                quality = "very_high";
-                replayDuration = "30";
-                replayEnabled = false;
-                replayStorage = "ram";
-                resolution = "original";
-                restorePortalSession = false;
-                showCursor = true;
-                videoCodec = "h264";
-                videoSource = "portal";
-              };
               id = "plugin:screen-recorder";
             }
           ];
@@ -749,7 +733,7 @@ mm";
         screenUnlock = "";
         performanceModeEnabled = "";
         performanceModeDisabled = "";
-        startup = "signal-desktop & bitwarden & easyeffects";
+        startup = "signal-desktop & bitwarden & easyeffects & pkill nm-applet";
         session = "";
         colorGeneration = "";
       };
