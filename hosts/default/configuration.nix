@@ -26,7 +26,7 @@
     kotlin.enable = true;
   };
 
-  swapDevices = [
+  swapDevices = lib.mkForce [
     {
       device = "/var/lib/swapfile";
       size = 32 * 1024;
