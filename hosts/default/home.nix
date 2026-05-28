@@ -13,6 +13,7 @@
     ../../modules/home-manager/desktop.nix
     ../../modules/home-manager/packages.nix
     ../../modules/home-manager/noctalia.nix
+    ../../modules/home-manager/gaming.nix
   ];
 
   sops.defaultSopsFile = ../../secrets/secrets.yaml;
@@ -37,9 +38,6 @@
       enable = true;
       profiles.default.isDefault = true;
     };
-
-    mangohud.enable = true;
-    lutris.enable = true;
   };
 
   accounts.email.accounts = {

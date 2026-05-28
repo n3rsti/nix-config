@@ -1,11 +1,21 @@
 {
   inputs,
+  pkgs,
   ...
 }:
 {
+
   imports = [
     inputs.noctalia.homeModules.default
   ];
+
+  home.packages = with pkgs; [
+    tesseract # OCR Engine
+    zbar # QR/barcode scanning
+    translate-shell # OCR Translation
+    gpu-screen-recorder # For noctalia-shell
+  ];
+
   programs.noctalia-shell = {
     enable = true;
     colors = {
@@ -46,13 +56,19 @@
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
-
         timer = {
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
-
         screen-recorder = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        screen-toolkit = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        privacy-indicator = {
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
@@ -105,6 +121,17 @@
         iconColor = "none";
         textColor = "none";
       };
+      privacy-indicator = {
+        hideInactive = true;
+        enableToast = false;
+        removeMargins = true;
+        iconSpacing = 6;
+        activeColor = "error";
+        inactiveColor = "none";
+        micFilterRegex = "";
+        camFilterRegex = "";
+      };
+
     };
     settings = {
       settingsVersion = 59;
@@ -192,14 +219,17 @@
               useFixedWidth = false;
               visualizerType = "linear";
             }
+          ];
+          right = [
             {
-              id = "plugin:timer";
+              id = "plugin:privacy-indicator";
             }
             {
               id = "plugin:screen-recorder";
             }
-          ];
-          right = [
+            {
+              id = "plugin:timer";
+            }
             {
               id = "plugin:tailscale";
             }
@@ -236,11 +266,6 @@
               id = "NotificationHistory";
               showUnreadBadge = true;
               unreadBadgeColor = "primary";
-            }
-            {
-              iconColor = "none";
-              id = "KeepAwake";
-              textColor = "none";
             }
             {
               deviceNativePath = "__default__";
@@ -483,6 +508,9 @@ mm";
             }
             {
               id = "plugin:screen-recorder";
+            }
+            {
+              id = "plugin:screen-toolkit";
             }
           ];
         };

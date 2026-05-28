@@ -11,13 +11,11 @@ let
     gnome-text-editor
     orca-slicer
     unstable.jellyfin-media-player
-    r2modman # mod manager for games
     papers # pdf viewer
     gnome-calendar
     gimp
     unstable.discord
     obs-studio
-    unstable.prismlauncher
     slack
     qbittorrent
     unstable.ghostty
@@ -43,7 +41,6 @@ let
     blanket # Sounds
     baobab # Disk usage analyzer
     gnome-clocks
-    (heroic.override { extraPkgs = pkgs: [ pkgs.gamescope ]; })
     pavucontrol # Sound gui
     gnome-online-accounts-gtk
     networkmanagerapplet # For nm-connection-editor
@@ -54,10 +51,7 @@ let
     unstable.opencode
     unstable.devenv
     websocat
-    package-version-server
-    vhdl-ls
     fixjson
-    gh
     unstable.tree-sitter
     bash-language-server # Bash lsp
     beautysh # Bash formatter
@@ -65,17 +59,13 @@ let
     eza # better ls
     wev # Mouse / keyboard input analyzer
     wl-clipboard # wl-copy
-    protonup-ng # Proton utilities
     libnotify # Notification utilities
     hyprpicker # Color picker
     yt-dlp # Downloading videos
     cava # Music visualizer
     grimblast # Screenshot utility
     grim # Utility for grimblast i think
-    mangojuice # Control mangohud
     imagemagick # To show images in neovim
-    wineWow64Packages.staging
-    winetricks
     stlink # Something for flashing programs to microcontrollers
     # Dictionaries
     hunspell
@@ -89,11 +79,9 @@ let
   ];
 
   desktopIntegration = with pkgs; [
-    waybar
     television # tv
     nmgui # Wifi gui
     glib # Needed for gapplication launching like with gnome-weather
-    gpu-screen-recorder # For noctalia-shell
   ];
 in
 {

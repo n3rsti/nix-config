@@ -42,11 +42,6 @@ let
 in
 {
   xdg.configFile = {
-    "waybar" = {
-      source = link "${symlinkRoot}/waybar";
-      recursive = true;
-    };
-
     "hypr" = {
       source = link "${symlinkRoot}/hypr";
       recursive = true;
@@ -66,7 +61,6 @@ in
       source = link "${symlinkRoot}/zed";
       recursive = true;
     };
-
   };
   home.file.".tmux.conf".source = link "${symlinkRoot}/tmux/tmux.conf";
   home.file.".config/elephant/websearch.toml".source = link "${symlinkRoot}/elephant/websearch.toml";
