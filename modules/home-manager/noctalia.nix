@@ -726,7 +726,7 @@ mm";
       brightness = {
         brightnessStep = 5;
         enforceMinimum = true;
-        enableDdcSupport = false;
+        enableDdcSupport = true;
         backlightDeviceMappings = [ ];
       };
       colorSchemes = {

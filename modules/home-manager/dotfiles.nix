@@ -18,6 +18,7 @@ let
 
   apps = [
     "awakened-poe-trade"
+    "exiled-exchange"
     "hyprland-wiki"
     "nix-packages"
     "nixos-options"

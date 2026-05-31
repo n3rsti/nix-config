@@ -76,6 +76,7 @@ let
     wf-recorder # Simple screen recording
     slurp # Area picker for screen recording
     caligula # Flashing ISOs
+    ddcutil # Monitor brightness
   ];
 
   desktopIntegration = with pkgs; [

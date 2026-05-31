@@ -97,6 +97,7 @@
       "kvm"
       "libvirtd"
       "stlink"
+      "i2c"
     ];
   };
 
@@ -245,14 +246,17 @@
     adwaita-fonts
   ];
 
-  hardware.bluetooth = {
-    enable = lib.mkDefault true;
-    powerOnBoot = true;
-    settings = {
-      General = {
-        Experimental = true;
+  hardware = {
+    bluetooth = {
+      enable = lib.mkDefault true;
+      powerOnBoot = true;
+      settings = {
+        General = {
+          Experimental = true;
+        };
       };
     };
+    i2c.enable = true; # For monitor brightness control
   };
 
   time.timeZone = lib.mkDefault "Europe/Warsaw";

@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ../default/configuration.nix
     ../../modules/builder/remote-builder.nix
+    ../../modules/nixos/autologin.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -31,7 +32,7 @@
 
   services = {
     sunshine = {
-      enable = false;
+      enable = true;
       autoStart = true;
       capSysAdmin = true;
       openFirewall = true;
