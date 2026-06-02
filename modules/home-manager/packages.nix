@@ -78,6 +78,9 @@ let
     caligula # Flashing ISOs
     ddcutil # Monitor brightness
     pdfgrep # PDF grepping utility for opencode
+    ocrmypdf # OCR for pdfs
+    qpdf
+    mupdf
   ];
 
   desktopIntegration = with pkgs; [
