@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }:
 
@@ -25,6 +26,8 @@
       size = 24;
     };
   };
+
+  gtk.gtk4.theme = config.gtk.theme;
 
   home.pointerCursor = {
     gtk.enable = true;

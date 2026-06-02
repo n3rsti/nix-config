@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }:
 let
@@ -14,6 +15,8 @@ in
   programs.firefox = {
     enable = true;
     package = pkgs_unstable.firefox;
+
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     profiles = {
       n3rsti = {
         isDefault = true;

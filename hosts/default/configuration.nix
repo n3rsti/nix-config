@@ -23,7 +23,7 @@
     lua.enable = true;
     typst.enable = true;
     javascript.enable = true;
-    kotlin.enable = true;
+    kotlin.enable = false;
   };
 
   swapDevices = lib.mkForce [

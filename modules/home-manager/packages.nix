@@ -5,7 +5,7 @@
 let
   apps = with pkgs; [
     unstable.signal-desktop
-    bitwarden-desktop
+    unstable.bitwarden-desktop
     postman
     cheese # Camera
     gnome-text-editor
@@ -77,6 +77,7 @@ let
     slurp # Area picker for screen recording
     caligula # Flashing ISOs
     ddcutil # Monitor brightness
+    pdfgrep # PDF grepping utility for opencode
   ];
 
   desktopIntegration = with pkgs; [

@@ -24,7 +24,7 @@ in
       vscode-langservers-extracted
       python313Packages.cssbeautifier
       python313Packages.jsbeautifier
-      nodePackages.vscode-json-languageserver
+      vscode-json-languageserver
       tailwindcss-language-server
       prettierd
       emmet-language-server

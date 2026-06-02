@@ -6,7 +6,70 @@
 {
 
   services = {
-    tailscale.enable = true;
+    tailscale = {
+      enable = true;
+      serve = {
+        enable = true;
+        services = {
+          bazarr = {
+            endpoints = {
+              "tcp:443" = "http://localhost:6767";
+            };
+          };
+          immich = {
+            endpoints = {
+              "tcp:443" = "http://localhost:2283";
+            };
+          };
+          jellyfin = {
+            endpoints = {
+              "tcp:443" = "http://localhost:8096";
+            };
+          };
+          jellyseerr = {
+            endpoints = {
+              "tcp:443" = "http://localhost:5055";
+            };
+          };
+          nextcloud = {
+            endpoints = {
+              "tcp:443" = "http://localhost:80";
+            };
+          };
+          paperless = {
+            endpoints = {
+              "tcp:443" = "http://localhost:28981";
+            };
+          };
+          prowlarr = {
+            endpoints = {
+              "tcp:443" = "http://localhost:9696";
+            };
+          };
+          qbittorrent = {
+            endpoints = {
+              "tcp:443" = "http://localhost:8082";
+            };
+          };
+          radarr = {
+            endpoints = {
+              "tcp:443" = "http://localhost:7878";
+            };
+          };
+          sonarr = {
+            endpoints = {
+              "tcp:443" = "http://localhost:8989";
+            };
+          };
+          uptime-kuma = {
+            endpoints = {
+              "tcp:443" = "http://localhost:3001";
+            };
+          };
+        };
+      };
+
+    };
 
     paperless = {
       enable = true;
