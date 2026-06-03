@@ -12,8 +12,13 @@
     ../../modules/nixos/sops.nix
     ../../modules/nixos/locale.nix
     ../../modules/nixos/networking/tailscale/default.nix
+    ../../modules/nixos/services/arr.nix
+    ../../modules/nixos/services/nextcloud.nix
+    ../../modules/nixos/services/immich.nix
+    ../../modules/nixos/services/paperless.nix
+    ../../modules/nixos/services/uptime-kuma.nix
+    ../../modules/nixos/openssh.nix
     ./sops.nix
-    ./services.nix
     inputs.home-manager.nixosModules.default
     inputs.sops-nix.nixosModules.sops
   ];
@@ -125,13 +130,19 @@
   ];
 
   networking = {
-    nftables.enable = true;
     networkmanager.enable = true;
     hostName = "nixos";
     firewall = {
       allowedTCPPorts = [ ];
     };
 
+  };
+
+  services = {
+    xserver.xkb = {
+      layout = "us";
+      variant = "";
+    };
   };
 
   # This value determines the NixOS release from which the default
