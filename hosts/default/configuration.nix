@@ -10,7 +10,7 @@
     ../../modules/nixos/dev/default.nix
     ../../modules/nixos/desktop/hyprland.nix
     ../../modules/nixos/desktop-manager/sddm.nix
-    ../../modules/nixos/gaming.nix
+    ../../modules/nixos/gaming/gaming.nix
     ../../modules/nixos/boot/boot.nix
     ../../modules/nixos/boot/plymouth.nix
     ../../modules/nixos/virtualisation.nix

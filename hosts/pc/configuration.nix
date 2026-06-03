@@ -9,6 +9,7 @@
     ../../modules/builder/remote-builder.nix
     ../../modules/nixos/autologin.nix
     ../../modules/nixos/bluetooth.nix
+    ../../modules/nixos/gaming/sunshine.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -32,13 +33,6 @@
   };
 
   services = {
-    sunshine = {
-      enable = true;
-      autoStart = true;
-      capSysAdmin = true;
-      openFirewall = true;
-    };
-
     openssh.enable = true;
 
     input-remapper = {
