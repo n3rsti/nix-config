@@ -14,6 +14,7 @@
     ../../modules/home-manager/packages.nix
     ../../modules/home-manager/noctalia.nix
     ../../modules/home-manager/gaming.nix
+    ../../modules/home-manager/opencode.nix
   ];
 
   sops.defaultSopsFile = ../../secrets/secrets.yaml;

@@ -48,7 +48,6 @@ let
 
   cliTools = with pkgs; [
     # dev tools
-    unstable.opencode
     unstable.devenv
     websocat
     fixjson
@@ -77,10 +76,6 @@ let
     slurp # Area picker for screen recording
     caligula # Flashing ISOs
     ddcutil # Monitor brightness
-    pdfgrep # PDF grepping utility for opencode
-    ocrmypdf # OCR for pdfs
-    qpdf
-    mupdf
   ];
 
   desktopIntegration = with pkgs; [

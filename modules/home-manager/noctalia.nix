@@ -670,7 +670,7 @@ mm";
       };
       notifications = {
         enabled = true;
-        enableMarkdown = false;
+        enableMarkdown = true;
         density = "default";
         monitors = [ ];
         location = "top_right";
