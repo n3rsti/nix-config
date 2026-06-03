@@ -11,6 +11,9 @@
     ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/gaming/sunshine.nix
     ../../modules/nixos/swap.nix
+    ../../modules/nixos/openssh.nix
+    ../../modules/nixos/hardware/gpu/amd.nix
+    ../../modules/nixos/hardware/tablet.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -18,11 +21,6 @@
     users = {
       "n3rsti" = import ./home.nix;
     };
-  };
-
-  nix.settings = {
-    cores = 4;
-    max-jobs = 4;
   };
 
   networking = {
@@ -34,23 +32,10 @@
   };
 
   services = {
-    openssh.enable = true;
-
     input-remapper = {
       enable = true;
     };
   };
 
-  hardware = {
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
-    amdgpu = {
-      opencl.enable = true;
-      initrd.enable = true;
-    };
-    opentabletdriver.enable = true;
-    i2c.enable = true; # For monitor brightness control
-  };
+  hardware.i2c.enable = true; # For monitor brightness control
 }

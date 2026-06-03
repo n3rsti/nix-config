@@ -17,11 +17,6 @@
     inputs.home-manager.nixosModules.default
   ];
 
-  nix.settings = {
-    cores = 4;
-    max-jobs = 4;
-  };
-
   boot.kernelParams = [ "psmouse.synaptics_intertouch=1" ];
 
   home-manager = {
@@ -30,9 +25,7 @@
     };
   };
 
-  networking = {
-    hostName = "laptop";
-  };
+  networking.hostName = "laptop";
 
   environment.systemPackages = with pkgs; [
     moonlight-qt
