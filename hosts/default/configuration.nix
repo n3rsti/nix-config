@@ -18,6 +18,8 @@
     ../../modules/nixos/networking/tailscale.nix
     ../../modules/nixos/networking/zerotier.nix
     ../../modules/nixos/audio.nix
+    ../../modules/nixos/printing.nix
+    ../../modules/nixos/locale.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -119,15 +121,6 @@
       pkgs.stlink
     ];
 
-    printing = {
-      enable = true;
-      drivers = with pkgs; [
-        cups-filters
-        cups-browsed
-      ];
-    };
-    ipp-usb.enable = true; # printers autodiscovery
-
     avahi = {
       enable = true;
       nssmdns4 = true;
@@ -194,27 +187,6 @@
     icomoon-feather
     adwaita-fonts
   ];
-
-  hardware = {
-    i2c.enable = true; # For monitor brightness control
-  };
-
-  time.timeZone = lib.mkDefault "Europe/Warsaw";
-
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocales = [ "pl_PL.UTF-8/UTF-8" ];
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pl_PL.UTF-8";
-    LC_IDENTIFICATION = "pl_PL.UTF-8";
-    LC_MEASUREMENT = "pl_PL.UTF-8";
-    LC_MONETARY = "pl_PL.UTF-8";
-    LC_NAME = "pl_PL.UTF-8";
-    LC_NUMERIC = "pl_PL.UTF-8";
-    LC_PAPER = "pl_PL.UTF-8";
-    LC_TELEPHONE = "pl_PL.UTF-8";
-    LC_TIME = "pl_PL.UTF-8";
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

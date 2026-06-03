@@ -50,5 +50,6 @@
       initrd.enable = true;
     };
     opentabletdriver.enable = true;
+    i2c.enable = true; # For monitor brightness control
   };
 }
