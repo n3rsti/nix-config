@@ -7,7 +7,7 @@
 {
   imports = [
     ./packages.nix
-    ../../modules/dev/default.nix
+    ../../modules/nixos/dev/default.nix
     ./networking.nix
     ./desktop.nix
     inputs.home-manager.nixosModules.default
