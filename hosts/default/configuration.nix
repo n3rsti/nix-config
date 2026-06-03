@@ -10,8 +10,10 @@
     ../../modules/nixos/dev/default.nix
     ../../modules/nixos/desktop/hyprland.nix
     ../../modules/nixos/desktop-manager/sddm.nix
+    ../../modules/nixos/gaming.nix
+    ../../modules/nixos/boot/boot.nix
+    ../../modules/nixos/boot/plymouth.nix
     ./networking.nix
-    ./desktop.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -103,37 +105,6 @@
     ];
   };
 
-  boot = {
-    plymouth = {
-      enable = true;
-      theme = "red_loader";
-      themePackages = with pkgs; [
-        (adi1090x-plymouth-themes.override {
-          selected_themes = [ "red_loader" ];
-        })
-      ];
-    };
-
-    consoleLogLevel = 3;
-    initrd.verbose = false;
-    kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "udev.log_priority=3"
-      "rd.systemd.show_status=auto"
-    ];
-    # Hide the OS choice for bootloaders.
-    # It's still possible to open the bootloader list by pressing any key
-    # It will just not appear on screen unless a key is pressed
-    loader = {
-      timeout = 0;
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-
-  };
-
   virtualisation = {
     libvirtd = {
       qemu = {
@@ -208,14 +179,6 @@
   programs = {
     nh.enable = true;
     dconf.enable = true;
-
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-    };
-
-    gamemode.enable = true;
 
     zsh.enable = true;
 
