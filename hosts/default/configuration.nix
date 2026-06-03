@@ -8,6 +8,8 @@
   imports = [
     ./packages.nix
     ../../modules/nixos/dev/default.nix
+    ../../modules/nixos/desktop/hyprland.nix
+    ../../modules/nixos/desktop-manager/sddm.nix
     ./networking.nix
     ./desktop.nix
     inputs.home-manager.nixosModules.default
