@@ -6,7 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ../default/configuration.nix
-    ../../modules/builder/remote-builder.nix
+    ../../modules/nixos/builder/remote-builder.nix
     ../../modules/nixos/autologin.nix
     ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/gaming/sunshine.nix

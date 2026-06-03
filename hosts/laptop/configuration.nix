@@ -8,7 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ../default/configuration.nix
-    ../../modules/builder/distributed-builds.nix
+    ../../modules/nixos/builder/distributed-builds.nix
     ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/swap.nix
     ../../modules/nixos/hardware/gpu/intel.nix
