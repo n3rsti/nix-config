@@ -11,6 +11,9 @@
     ../../modules/builder/distributed-builds.nix
     ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/swap.nix
+    ../../modules/nixos/hardware/gpu/intel.nix
+    ../../modules/nixos/hardware/backlight.nix
+    ../../modules/nixos/hardware/power_management.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -33,43 +36,6 @@
 
   environment.systemPackages = with pkgs; [
     moonlight-qt
-    brightnessctl
   ];
 
-  powerManagement.enable = true;
-
-  services = {
-    tlp = {
-      enable = true;
-      settings = {
-        CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_performance";
-        PLATFORM_PROFILE_ON_AC = "performance";
-        PLATFORM_PROFILE_ON_BAT = "balanced";
-        CPU_BOOST_ON_AC = 1;
-        CPU_BOOST_ON_BAT = 1;
-        CPU_HWP_DYN_BOOST_ON_AC = 1;
-        CPU_HWP_DYN_BOOST_ON_BAT = 1;
-      };
-    };
-    power-profiles-daemon.enable = false;
-    upower.enable = true;
-  };
-
-  hardware = {
-    graphics = {
-      enable = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-        vpl-gpu-rt
-        intel-compute-runtime
-      ];
-    };
-    cpu.intel.updateMicrocode = true;
-    acpilight.enable = true;
-  };
-
-  environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "iHD";
-  };
 }
