@@ -20,6 +20,7 @@
     ../../modules/nixos/audio.nix
     ../../modules/nixos/printing.nix
     ../../modules/nixos/locale.nix
+    ../../modules/nixos/fonts.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -35,13 +36,6 @@
     javascript.enable = true;
     kotlin.enable = false;
   };
-
-  swapDevices = lib.mkForce [
-    {
-      device = "/var/lib/swapfile";
-      size = 32 * 1024;
-    }
-  ];
 
   nix = {
     settings = {
@@ -113,8 +107,6 @@
 
   virtualisation.docker.enable = true;
 
-  security.rtkit.enable = true;
-
   services = {
     udev.packages = [
       pkgs.openocd
@@ -173,20 +165,6 @@
       group = "users";
     };
   };
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.iosevka
-    font-awesome
-    nerd-fonts.space-mono
-    nerd-fonts.zed-mono
-    nerd-fonts.im-writing
-    nerd-fonts.fira-code
-    nerd-fonts.fira-mono
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.adwaita-mono
-    icomoon-feather
-    adwaita-fonts
-  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

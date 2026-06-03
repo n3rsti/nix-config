@@ -13,4 +13,6 @@
 
     playerctld.enable = true;
   };
+
+  security.rtkit.enable = true;
 }

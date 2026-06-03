@@ -10,6 +10,7 @@
     ../../modules/nixos/autologin.nix
     ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/gaming/sunshine.nix
+    ../../modules/nixos/swap.nix
     inputs.home-manager.nixosModules.default
   ];
 
