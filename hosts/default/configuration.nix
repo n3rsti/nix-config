@@ -15,7 +15,7 @@
     ../../modules/nixos/boot/plymouth.nix
     ../../modules/nixos/virtualisation.nix
     ../../modules/nixos/networking/networking.nix
-    ../../modules/nixos/networking/tailscale.nix
+    ../../modules/nixos/networking/tailscale/client.nix
     ../../modules/nixos/networking/zerotier.nix
     ../../modules/nixos/audio.nix
     ../../modules/nixos/printing.nix

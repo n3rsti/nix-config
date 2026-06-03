@@ -2,9 +2,11 @@
   ...
 }:
 {
+  imports = [
+    ./default.nix
+  ];
   services = {
     tailscale = {
-      enable = true;
       extraSetFlags = [
         "--accept-dns"
         "--accept-routes"
@@ -13,6 +15,4 @@
     };
     resolved.enable = true; # fix tailscale dns after suspend
   };
-
-  networking.firewall.checkReversePath = "loose";
 }

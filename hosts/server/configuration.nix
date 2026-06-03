@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  config,
   ...
 }:
 {
@@ -10,6 +9,9 @@
     ../../modules/minecraft/minecraft.nix
     ../../modules/builder/remote-builder.nix
     ./backups.nix
+    ../../modules/nixos/sops.nix
+    ../../modules/nixos/locale.nix
+    ../../modules/nixos/networking/tailscale/default.nix
     ./sops.nix
     ./services.nix
     inputs.home-manager.nixosModules.default
@@ -77,22 +79,6 @@
     zsh.enable = true;
   };
 
-  time.timeZone = "Europe/Warsaw";
-
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pl_PL.UTF-8";
-    LC_IDENTIFICATION = "pl_PL.UTF-8";
-    LC_MEASUREMENT = "pl_PL.UTF-8";
-    LC_MONETARY = "pl_PL.UTF-8";
-    LC_NAME = "pl_PL.UTF-8";
-    LC_NUMERIC = "pl_PL.UTF-8";
-    LC_PAPER = "pl_PL.UTF-8";
-    LC_TELEPHONE = "pl_PL.UTF-8";
-    LC_TIME = "pl_PL.UTF-8";
-  };
-
   users = {
     users.n3rsti = {
       isNormalUser = true;
@@ -143,27 +129,10 @@
     networkmanager.enable = true;
     hostName = "nixos";
     firewall = {
-      checkReversePath = "loose"; # Tailscale issue fix
       allowedTCPPorts = [ ];
-
-      # Always allow traffic from your Tailscale network
-      trustedInterfaces = [ config.services.tailscale.interfaceName ];
-      # Allow the Tailscale UDP port through the firewall
-      allowedUDPPorts = [ config.services.tailscale.port ];
     };
 
   };
-
-  # Force tailscaled to use nftables (Critical for clean nftables-only systems)
-  # This avoids the "iptables-compat" translation layer issues.
-  systemd.services.tailscaled.serviceConfig.Environment = [
-    "TS_DEBUG_FIREWALL_MODE=nftables"
-  ];
-
-  # Optimization: Prevent systemd from waiting for network online
-  # (Optional but recommended for faster boot with VPNs)
-  systemd.network.wait-online.enable = false;
-  boot.initrd.systemd.network.wait-online.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
