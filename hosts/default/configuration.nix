@@ -14,7 +14,9 @@
     ../../modules/nixos/boot/boot.nix
     ../../modules/nixos/boot/plymouth.nix
     ../../modules/nixos/virtualisation.nix
-    ./networking.nix
+    ../../modules/nixos/networking/networking.nix
+    ../../modules/nixos/networking/tailscale.nix
+    ../../modules/nixos/networking/zerotier.nix
     inputs.home-manager.nixosModules.default
   ];
 
