@@ -13,6 +13,7 @@
     ../../modules/nixos/gaming.nix
     ../../modules/nixos/boot/boot.nix
     ../../modules/nixos/boot/plymouth.nix
+    ../../modules/nixos/virtualisation.nix
     ./networking.nix
     inputs.home-manager.nixosModules.default
   ];
@@ -105,17 +106,7 @@
     ];
   };
 
-  virtualisation = {
-    libvirtd = {
-      qemu = {
-        swtpm.enable = true; # Enable TPM emulation
-      };
-      enable = true;
-    };
-    docker.enable = true;
-    spiceUSBRedirection.enable = true;
-  };
-  programs.virt-manager.enable = true;
+  virtualisation.docker.enable = true;
 
   security.rtkit.enable = true;
 
