@@ -11,10 +11,8 @@
         "--exit-node-allow-lan-access"
       ];
     };
-    resolved.enable = true;
+    resolved.enable = true; # fix tailscale dns after suspend
   };
 
   networking.firewall.checkReversePath = "loose";
-
-  # fix tailscale dns after suspend
 }

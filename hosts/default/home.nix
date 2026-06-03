@@ -1,5 +1,4 @@
 {
-  config,
   ...
 }:
 {
@@ -15,18 +14,15 @@
     ../../modules/home-manager/noctalia.nix
     ../../modules/home-manager/gaming.nix
     ../../modules/home-manager/opencode.nix
+    ../../modules/home-manager/email/protonmail.nix
+    ../../modules/home-manager/email/zimbra.nix
   ];
-
-  sops.defaultSopsFile = ../../secrets/secrets.yaml;
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 
   home.username = "n3rsti";
   home.homeDirectory = "/home/n3rsti";
 
   services = {
     tailscale-systray.enable = true;
-    protonmail-bridge.enable = true;
   };
 
   home.sessionVariables = {
@@ -38,61 +34,6 @@
     thunderbird = {
       enable = true;
       profiles.default.isDefault = true;
-    };
-  };
-
-  accounts.email.accounts = {
-    protonmail = {
-      primary = true;
-      address = "n3rsti@protonmail.com";
-      userName = "n3rsti@protonmail.com";
-      realName = "Krzysztof Witucki";
-      aliases = [
-        "n3rsti@pm.me"
-        "kwitucki@protonmail.com"
-      ];
-      imap = {
-        host = "127.0.0.1";
-        port = 1143;
-        authentication = "plain";
-        tls.useStartTls = true;
-      };
-
-      smtp = {
-        host = "127.0.0.1";
-        port = 1025;
-        authentication = "plain";
-        tls.useStartTls = true;
-      };
-
-      thunderbird = {
-        enable = true;
-        profiles = [ "default" ];
-      };
-    };
-
-    zimbra = {
-      address = "krzysztof.witucki@student.put.poznan.pl";
-      userName = "krzysztof.witucki@student.put.poznan.pl";
-      realName = "Krzysztof Witucki";
-      imap = {
-        host = "poczta.student.put.poznan.pl";
-        port = 143;
-        authentication = "plain";
-        tls.useStartTls = true;
-      };
-
-      smtp = {
-        host = "poczta.student.put.poznan.pl";
-        port = 587;
-        authentication = "plain";
-        tls.useStartTls = true;
-      };
-
-      thunderbird = {
-        enable = true;
-        profiles = [ "default" ];
-      };
     };
   };
 
