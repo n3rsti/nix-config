@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     ../default/configuration.nix
     ../../modules/builder/distributed-builds.nix
+    ../../modules/nixos/bluetooth.nix
     inputs.home-manager.nixosModules.default
   ];
 

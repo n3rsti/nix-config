@@ -8,6 +8,7 @@
     ../default/configuration.nix
     ../../modules/builder/remote-builder.nix
     ../../modules/nixos/autologin.nix
+    ../../modules/nixos/bluetooth.nix
     inputs.home-manager.nixosModules.default
   ];
 

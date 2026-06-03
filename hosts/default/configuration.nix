@@ -17,6 +17,7 @@
     ../../modules/nixos/networking/networking.nix
     ../../modules/nixos/networking/tailscale.nix
     ../../modules/nixos/networking/zerotier.nix
+    ../../modules/nixos/audio.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -118,14 +119,6 @@
       pkgs.stlink
     ];
 
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
-    pipewire.wireplumber.enable = true;
-
     printing = {
       enable = true;
       drivers = with pkgs; [
@@ -145,8 +138,6 @@
       enable = true;
       package = pkgs.usbmuxd2;
     };
-
-    playerctld.enable = true;
 
     udisks2.enable = true;
     gvfs.enable = true; # for nautilus
@@ -205,15 +196,6 @@
   ];
 
   hardware = {
-    bluetooth = {
-      enable = lib.mkDefault true;
-      powerOnBoot = true;
-      settings = {
-        General = {
-          Experimental = true;
-        };
-      };
-    };
     i2c.enable = true; # For monitor brightness control
   };
 
