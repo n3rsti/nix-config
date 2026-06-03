@@ -3,12 +3,14 @@
   ...
 }:
 {
-  services.printing = {
-    enable = true;
-    drivers = with pkgs; [
-      cups-filters
-      cups-browsed
-    ];
+  services = {
+    printing = {
+      enable = true;
+      drivers = with pkgs; [
+        cups-filters
+        cups-browsed
+      ];
+    };
+    ipp-usb.enable = true; # printers autodiscovery
   };
-  ipp-usb.enable = true; # printers autodiscovery
 }
