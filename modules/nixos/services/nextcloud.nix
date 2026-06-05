@@ -1,11 +1,9 @@
 {
   pkgs,
   config,
-  lib,
   ...
 }:
 {
-
   services.nextcloud = {
     enable = true;
     https = true;
@@ -24,18 +22,5 @@
     };
     extraAppsEnable = true;
     configureRedis = true;
-  };
-
-  services.tailscale = lib.mkIf config.services.tailscale.enable {
-    serve = {
-      enable = true;
-      services = {
-        nextcloud = {
-          endpoints = {
-            "tcp:443" = "http://localhost:80";
-          };
-        };
-      };
-    };
   };
 }
