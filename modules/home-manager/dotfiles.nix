@@ -8,6 +8,7 @@ let
   icons = [
     "nixos-logo.png"
     "awakened.png"
+    "exiled-exchange.png"
     "hyprland-logo.png"
     "neovim-logo.png"
     "nixos-logo-white.png"

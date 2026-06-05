@@ -6,6 +6,7 @@
   imports = [
     ../default/home.nix
     ../../modules/home-manager/sops.nix
+    ../../modules/home-manager/performance.nix
   ];
 
   sops.secrets.id_laptop = {
