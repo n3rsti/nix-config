@@ -21,6 +21,8 @@
     ../../modules/nixos/printing.nix
     ../../modules/nixos/locale.nix
     ../../modules/nixos/fonts.nix
+    ../../modules/nixos/localsend.nix
+    ../../modules/nixos/kdeconnect.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -34,7 +36,7 @@
     lua.enable = true;
     typst.enable = true;
     javascript.enable = true;
-    kotlin.enable = false;
+    kotlin.enable = true;
   };
 
   nix = {

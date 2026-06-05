@@ -35,7 +35,6 @@ let
     unstable.protonmail-desktop
     arduino-ide
     gnome-weather # Weather app
-    localsend # Sending files in local network
     switcheroo # Converting image formats
     foliate # Ebook reader
     blanket # Sounds

@@ -21,6 +21,8 @@ in
     package = pkgs_unstable.hyprland;
   };
 
+  services.displayManager.defaultSession = "hyprland-uwsm";
+
   # programs.uwsm.waylandCompositors = {
   #   hyprland-uwsm = {
   #     prettyName = "Hyprland (start-hyprland)";

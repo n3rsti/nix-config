@@ -14,6 +14,7 @@
     ../../modules/nixos/openssh.nix
     ../../modules/nixos/hardware/gpu/amd.nix
     ../../modules/nixos/hardware/tablet.nix
+    ../../modules/nixos/hardware/rgb.nix
     inputs.home-manager.nixosModules.default
   ];
 

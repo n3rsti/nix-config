@@ -761,7 +761,7 @@ mm";
         screenUnlock = "";
         performanceModeEnabled = "";
         performanceModeDisabled = "";
-        startup = "signal-desktop & bitwarden & easyeffects & pkill nm-applet";
+        startup = "bash /etc/nixos/modules/home-manager/noctalia/startup.sh";
         session = "";
         colorGeneration = "";
       };

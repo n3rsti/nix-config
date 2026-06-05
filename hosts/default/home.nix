@@ -11,9 +11,10 @@
     ../../modules/home-manager/dotfiles.nix
     ../../modules/home-manager/desktop.nix
     ../../modules/home-manager/packages.nix
-    ../../modules/home-manager/noctalia.nix
+    ../../modules/home-manager/noctalia/noctalia.nix
     ../../modules/home-manager/gaming.nix
     ../../modules/home-manager/opencode.nix
+    ../../modules/home-manager/kdeconnect.nix
     ../../modules/home-manager/email/protonmail.nix
     ../../modules/home-manager/email/zimbra.nix
   ];
