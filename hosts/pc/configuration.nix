@@ -15,6 +15,7 @@
     ../../modules/nixos/hardware/gpu/amd.nix
     ../../modules/nixos/hardware/tablet.nix
     ../../modules/nixos/hardware/rgb.nix
+    ../../modules/nixos/virtualisation.nix
     inputs.home-manager.nixosModules.default
   ];
 

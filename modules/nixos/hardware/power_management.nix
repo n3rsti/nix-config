@@ -16,6 +16,9 @@
         CPU_BOOST_ON_BAT = 1;
         CPU_HWP_DYN_BOOST_ON_AC = 1;
         CPU_HWP_DYN_BOOST_ON_BAT = 1;
+
+        DISK_APM_LEVEL_ON_AC = "254";
+        DISK_APM_LEVEL_ON_BAT = "254";
       };
     };
     power-profiles-daemon.enable = false;

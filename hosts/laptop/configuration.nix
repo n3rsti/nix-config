@@ -17,6 +17,8 @@
     inputs.home-manager.nixosModules.default
   ];
 
+  dev.kotlin.enable = false;
+
   boot.kernelParams = [ "psmouse.synaptics_intertouch=1" ];
 
   home-manager = {

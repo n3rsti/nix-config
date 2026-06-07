@@ -13,7 +13,6 @@
     ../../modules/nixos/gaming/gaming.nix
     ../../modules/nixos/boot/boot.nix
     ../../modules/nixos/boot/plymouth.nix
-    ../../modules/nixos/virtualisation.nix
     ../../modules/nixos/networking/networking.nix
     ../../modules/nixos/networking/tailscale/client.nix
     ../../modules/nixos/networking/zerotier.nix
@@ -36,7 +35,7 @@
     lua.enable = true;
     typst.enable = true;
     javascript.enable = true;
-    kotlin.enable = true;
+    kotlin.enable = lib.mkDefault true; # TODO: find a better solution
   };
 
   nix = {
