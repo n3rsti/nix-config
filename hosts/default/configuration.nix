@@ -23,7 +23,6 @@
     ../../modules/nixos/localsend.nix
     ../../modules/nixos/kdeconnect.nix
     ../../users/n3rsti.nix
-    inputs.home-manager.nixosModules.default
   ];
 
   dev = {

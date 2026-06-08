@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   ...
 }:
 {
@@ -14,17 +13,16 @@
     ../../modules/nixos/hardware/gpu/intel.nix
     ../../modules/nixos/hardware/backlight.nix
     ../../modules/nixos/hardware/power_management.nix
-    inputs.home-manager.nixosModules.default
   ];
 
   dev.kotlin.enable = false;
 
   boot.kernelParams = [ "psmouse.synaptics_intertouch=1" ];
 
-  home-manager = {
-    users = {
-      "n3rsti" = import ./home.nix;
-    };
+  home-manager.users.n3rsti = {
+    imports = [
+      ./home.nix
+    ];
   };
 
   networking.hostName = "laptop";
