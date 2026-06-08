@@ -14,7 +14,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
+    home.packages = with pkgs; [
       (python3.withPackages (
         ps: with ps; [
           debugpy

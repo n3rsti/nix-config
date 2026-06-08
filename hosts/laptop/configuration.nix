@@ -15,8 +15,6 @@
     ../../modules/nixos/hardware/power_management.nix
   ];
 
-  dev.kotlin.enable = false;
-
   boot.kernelParams = [ "psmouse.synaptics_intertouch=1" ];
 
   home-manager.users.n3rsti = {

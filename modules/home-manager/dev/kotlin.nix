@@ -14,9 +14,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    nixpkgs.config.android_sdk.accept_license = true;
-
-    environment.systemPackages = with pkgs; [
+    home.packages = with pkgs; [
       kotlin
       kotlin-language-server
       ktlint

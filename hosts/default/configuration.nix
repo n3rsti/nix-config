@@ -7,7 +7,6 @@
 {
   imports = [
     ./packages.nix
-    ../../modules/nixos/dev/default.nix
     ../../modules/nixos/desktop/hyprland.nix
     ../../modules/nixos/desktop-manager/sddm.nix
     ../../modules/nixos/gaming/gaming.nix
@@ -25,19 +24,7 @@
     ../../users/n3rsti.nix
   ];
 
-  dev = {
-    java.enable = true;
-    c.enable = true;
-    python.enable = true;
-    rust.enable = true;
-    go.enable = true;
-    nix.enable = true;
-    lua.enable = true;
-    typst.enable = true;
-    javascript.enable = true;
-    kotlin.enable = lib.mkDefault true; # TODO: find a better solution
-  };
-
+  nixpkgs.config.android_sdk.accept_license = true;
   nix = {
     settings = {
       extra-substituters = [ "https://noctalia.cachix.org" ];

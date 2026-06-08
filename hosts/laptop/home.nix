@@ -11,4 +11,6 @@
     path = "${config.home.homeDirectory}/.ssh/id_ed25519";
     mode = "0600";
   };
+
+  dev.kotlin.enable = false;
 }

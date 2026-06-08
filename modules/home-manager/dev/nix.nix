@@ -14,12 +14,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      nix-ld
+    home.packages = with pkgs; [
       nil
       nixfmt
       nixd
     ];
-
   };
 }

@@ -14,7 +14,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
+    home.packages = with pkgs; [
       bun
       deno
       nodejs_24
@@ -24,7 +24,6 @@ in
       vscode-langservers-extracted
       python313Packages.cssbeautifier
       python313Packages.jsbeautifier
-      vscode-json-languageserver
       tailwindcss-language-server
       prettierd
       emmet-language-server

@@ -17,6 +17,7 @@
     ../modules/home-manager/kdeconnect.nix
     ../modules/home-manager/email/protonmail.nix
     ../modules/home-manager/email/zimbra.nix
+    ../modules/home-manager/dev/default.nix
   ];
 
   home.username = "n3rsti";
