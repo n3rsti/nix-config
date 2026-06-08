@@ -4,6 +4,7 @@
 }:
 let
   apps = with pkgs; [
+    unstable.neovim
     unstable.signal-desktop
     unstable.bitwarden-desktop
     postman
@@ -43,6 +44,7 @@ let
     pavucontrol # Sound gui
     gnome-online-accounts-gtk
     networkmanagerapplet # For nm-connection-editor
+    gnome-disk-utility # Disks
   ];
 
   cliTools = with pkgs; [
@@ -75,6 +77,25 @@ let
     slurp # Area picker for screen recording
     caligula # Flashing ISOs
     ddcutil # Monitor brightness
+    duf
+    ripgrep
+    wget
+    tree
+    btop
+    fzf
+    tmux
+    fastfetch
+    imagemagick
+    zip
+    unzip
+    lsof
+    jq
+    bc
+    fd
+    poppler-utils
+    sshfs
+    nmap
+    netcat-gnu
   ];
 
   desktopIntegration = with pkgs; [

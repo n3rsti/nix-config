@@ -6,7 +6,6 @@
 }:
 {
   imports = [
-    ./packages.nix
     ../../modules/nixos/desktop/hyprland.nix
     ../../modules/nixos/desktop-manager/sddm.nix
     ../../modules/nixos/gaming/gaming.nix
@@ -25,6 +24,19 @@
   ];
 
   nixpkgs.config.android_sdk.accept_license = true;
+
+  environment.systemPackages = with pkgs; [
+    dmidecode
+    acpi
+    parted
+    exfatprogs
+    usbutils
+    libimobiledevice
+    snx-rs
+    vulkan-tools
+    efibootmgr
+  ];
+
   nix = {
     settings = {
       extra-substituters = [ "https://noctalia.cachix.org" ];

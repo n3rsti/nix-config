@@ -15,15 +15,15 @@
   ];
 
   dev = {
-    java.enable = true;
-    c.enable = true;
-    python.enable = true;
-    rust.enable = true;
-    go.enable = true;
-    nix.enable = true;
-    lua.enable = true;
-    typst.enable = true;
-    javascript.enable = true;
-    kotlin.enable = lib.mkDefault true; # TODO: find a better solution
+    java.enable = lib.mkDefault true;
+    c.enable = lib.mkDefault true;
+    python.enable = lib.mkDefault true;
+    rust.enable = lib.mkDefault true;
+    go.enable = lib.mkDefault true;
+    nix.enable = lib.mkDefault true;
+    lua.enable = lib.mkDefault true;
+    typst.enable = lib.mkDefault true;
+    javascript.enable = lib.mkDefault true;
+    kotlin.enable = lib.mkDefault true;
   };
 }

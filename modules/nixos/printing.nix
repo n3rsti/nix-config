@@ -13,4 +13,8 @@
     };
     ipp-usb.enable = true; # printers autodiscovery
   };
+
+  environment.systemPackages = with pkgs; [
+    system-config-printer
+  ];
 }
