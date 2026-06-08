@@ -22,6 +22,7 @@
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/localsend.nix
     ../../modules/nixos/kdeconnect.nix
+    ../../users/n3rsti.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -71,38 +72,12 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users = {
-      "n3rsti" =
-        { pkgs, ... }:
-        {
-          imports = [ ./home.nix ];
-        };
-    };
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
     overwriteBackup = true;
     sharedModules = [
       inputs.sops-nix.homeManagerModules.sops
-    ];
-  };
-
-  users.users.n3rsti = {
-    isNormalUser = true;
-    description = "n3rsti";
-    shell = pkgs.zsh;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "ydotool"
-      "docker"
-      "dialout"
-      "input"
-      "gamemode"
-      "kvm"
-      "libvirtd"
-      "stlink"
-      "i2c"
     ];
   };
 

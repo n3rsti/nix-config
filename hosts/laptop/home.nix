@@ -4,7 +4,6 @@
 }:
 {
   imports = [
-    ../default/home.nix
     ../../modules/home-manager/sops.nix
   ];
 

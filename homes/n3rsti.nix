@@ -3,20 +3,20 @@
 }:
 {
   imports = [
-    ../../modules/home-manager/git.nix
-    ../../modules/home-manager/zsh.nix
-    ../../modules/home-manager/theme.nix
-    ../../modules/home-manager/firefox.nix
-    ../../modules/home-manager/walker.nix
-    ../../modules/home-manager/dotfiles.nix
-    ../../modules/home-manager/desktop.nix
-    ../../modules/home-manager/packages.nix
-    ../../modules/home-manager/noctalia/noctalia.nix
-    ../../modules/home-manager/gaming.nix
-    ../../modules/home-manager/opencode.nix
-    ../../modules/home-manager/kdeconnect.nix
-    ../../modules/home-manager/email/protonmail.nix
-    ../../modules/home-manager/email/zimbra.nix
+    ../modules/home-manager/git.nix
+    ../modules/home-manager/zsh.nix
+    ../modules/home-manager/theme.nix
+    ../modules/home-manager/firefox.nix
+    ../modules/home-manager/walker.nix
+    ../modules/home-manager/dotfiles.nix
+    ../modules/home-manager/desktop.nix
+    ../modules/home-manager/packages.nix
+    ../modules/home-manager/noctalia/noctalia.nix
+    ../modules/home-manager/gaming.nix
+    ../modules/home-manager/opencode.nix
+    ../modules/home-manager/kdeconnect.nix
+    ../modules/home-manager/email/protonmail.nix
+    ../modules/home-manager/email/zimbra.nix
   ];
 
   home.username = "n3rsti";
