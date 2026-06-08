@@ -7,6 +7,7 @@
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/theme.nix
     ../../modules/home-manager/firefox.nix
+    ./firefox.nix
     ../../modules/home-manager/walker.nix
     ../../modules/home-manager/dotfiles.nix
     ../../modules/home-manager/desktop.nix
