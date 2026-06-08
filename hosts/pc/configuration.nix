@@ -35,6 +35,9 @@
     input-remapper = {
       enable = true;
     };
+    flatpak.packages = [
+      "sh.ppy.osu"
+    ];
   };
 
   hardware.i2c.enable = true; # For monitor brightness control

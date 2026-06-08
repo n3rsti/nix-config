@@ -1,24 +1,13 @@
 {
   pkgs,
-  config,
-  inputs,
   ...
 }:
-
-let
-  pkgs_unstable = (
-    import inputs.nixpkgs_unstable {
-      inherit (pkgs.stdenv.hostPlatform) system;
-      config = config.nixpkgs.config;
-    }
-  );
-in
 {
   programs.hyprland = {
     enable = true;
     withUWSM = true;
     xwayland.enable = true;
-    package = pkgs_unstable.hyprland;
+    package = pkgs.unstable.hyprland;
   };
 
   services.displayManager.defaultSession = "hyprland-uwsm";

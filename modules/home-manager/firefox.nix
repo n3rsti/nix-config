@@ -1,29 +1,22 @@
 {
   pkgs,
-  inputs,
+  lib,
   config,
   ...
 }:
-let
-  pkgs_unstable = (
-    import inputs.nixpkgs_unstable {
-      inherit (pkgs.stdenv.hostPlatform) system;
-    }
-  );
-in
 {
   programs.firefox = {
     enable = true;
-    package = pkgs_unstable.firefox;
+    package = pkgs.unstable.firefox;
 
     configPath = "${config.xdg.configHome}/mozilla/firefox";
     profiles = {
-      n3rsti = {
+      default = {
         isDefault = true;
-        preConfig = builtins.readFile "${pkgs.arkenfox-userjs}/user.js";
+        preConfig = builtins.readFile "${pkgs.unstable.arkenfox-userjs}/user.js";
         search = {
-          default = "ddg";
-          privateDefault = "ddg";
+          default = lib.mkDefault "ddg";
+          privateDefault = lib.mkDefault "ddg";
         };
         extraConfig = ''
           user_pref("browser.startup.page", 1);

@@ -23,6 +23,6 @@
   };
 
   home-manager.users.n3rsti = {
-    imports = [ ../homes/n3rsti.nix ];
+    imports = [ ../homes/n3rsti/n3rsti.nix ];
   };
 }

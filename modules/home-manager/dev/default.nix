@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./java.nix
@@ -26,4 +26,12 @@
     javascript.enable = lib.mkDefault true;
     kotlin.enable = lib.mkDefault true;
   };
+
+  home.packages = with pkgs; [
+    unstable.devenv
+    fixjson
+    unstable.tree-sitter
+    bash-language-server # Bash lsp
+    beautysh # Bash formatter
+  ];
 }

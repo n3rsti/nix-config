@@ -45,16 +45,11 @@ let
     gnome-online-accounts-gtk
     networkmanagerapplet # For nm-connection-editor
     gnome-disk-utility # Disks
+    nmgui # Wifi gui
   ];
 
   cliTools = with pkgs; [
-    # dev tools
-    unstable.devenv
     websocat
-    fixjson
-    unstable.tree-sitter
-    bash-language-server # Bash lsp
-    beautysh # Bash formatter
     ffmpeg_6-full
     eza # better ls
     wev # Mouse / keyboard input analyzer
@@ -71,8 +66,6 @@ let
     hunspell
     hunspellDicts.pl_PL
     hunspellDicts.en_US
-
-    leetgo # Leetcode local practice
     wf-recorder # Simple screen recording
     slurp # Area picker for screen recording
     caligula # Flashing ISOs
@@ -96,14 +89,10 @@ let
     sshfs
     nmap
     netcat-gnu
-  ];
-
-  desktopIntegration = with pkgs; [
     television # tv
-    nmgui # Wifi gui
     glib # Needed for gapplication launching like with gnome-weather
   ];
 in
 {
-  home.packages = apps ++ cliTools ++ desktopIntegration;
+  home.packages = apps ++ cliTools;
 }
