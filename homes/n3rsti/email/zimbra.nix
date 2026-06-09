@@ -1,6 +1,4 @@
-{
-  ...
-}:
+_:
 {
   accounts.email.accounts = {
     zimbra = {

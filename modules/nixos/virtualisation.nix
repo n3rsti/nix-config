@@ -1,7 +1,4 @@
-{
-  ...
-}:
-{
+_: {
   virtualisation = {
     libvirtd = {
       qemu = {

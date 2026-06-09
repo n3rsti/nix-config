@@ -1,6 +1,4 @@
-{
-  ...
-}:
+_:
 {
 
   services.borgbackup.jobs.minecraft-backup = {

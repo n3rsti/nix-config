@@ -6,6 +6,13 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
     home-manager = {
@@ -31,78 +38,113 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     pixie-sddm.url = "github:xCaptaiN09/pixie-sddm";
   };
 
   outputs =
-    {
-      self,
+    inputs@{
       nixpkgs,
       nix-minecraft,
       nix-flatpak,
       sops-nix,
+      flake-parts,
+      treefmt-nix,
       ...
-    }@inputs:
-    let
-      unstableOverlay = final: prev: {
-        unstable = import inputs.nixpkgs_unstable {
-          system = final.stdenv.hostPlatform.system;
-          config.allowUnfree = true;
+    }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+      ];
+
+      imports = [
+        treefmt-nix.flakeModule
+      ];
+
+      perSystem = _: {
+        treefmt = {
+          projectRootFile = "flake.nix";
+
+          programs.nixfmt.enable = true;
+          programs.deadnix.enable = true;
+          programs.statix.enable = true;
         };
       };
 
-      mkNixosConfiguration =
-        {
-          system ? "x86_64-linux",
-          baseModules ? [
+      flake =
+        let
+          unstableOverlay = final: _prev: {
+            unstable = import inputs.nixpkgs_unstable {
+              system = final.stdenv.hostPlatform.system;
+              config.allowUnfree = true;
+            };
+          };
 
+          defaultBaseModules = [
             inputs.home-manager.nixosModules.default
             inputs.nur.modules.nixos.default
             nix-flatpak.nixosModules.nix-flatpak
-            { nixpkgs.overlays = [ unstableOverlay ]; }
             sops-nix.nixosModules.sops
 
-          ],
-          extraModules ? [ ],
-        }:
-        nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = baseModules ++ extraModules;
-        };
-    in
-    {
-      nixosConfigurations = {
-        pc = mkNixosConfiguration {
-          extraModules = [
-            ./hosts/pc/configuration.nix
-          ];
-        };
-
-        laptop = mkNixosConfiguration {
-          extraModules = [
-            ./hosts/laptop/configuration.nix
-            inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
-          ];
-        };
-
-        server = mkNixosConfiguration {
-          baseModules = [
-            nix-minecraft.nixosModules.minecraft-servers
             {
               nixpkgs.overlays = [
-                inputs.nix-minecraft.overlay
+                unstableOverlay
               ];
             }
           ];
-          extraModules = [
-            ./hosts/server/configuration.nix
-          ];
+
+          mkNixosConfiguration =
+            {
+              system ? "x86_64-linux",
+              extraBaseModules ? [ ],
+              extraModules ? [ ],
+            }:
+            nixpkgs.lib.nixosSystem {
+              inherit system;
+
+              specialArgs = {
+                inherit inputs;
+              };
+
+              modules = defaultBaseModules ++ extraBaseModules ++ extraModules;
+            };
+        in
+        {
+          nixosConfigurations = {
+            pc = mkNixosConfiguration {
+              extraModules = [
+                ./hosts/pc/configuration.nix
+              ];
+            };
+
+            laptop = mkNixosConfiguration {
+              extraModules = [
+                ./hosts/laptop/configuration.nix
+                inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
+              ];
+            };
+
+            server = mkNixosConfiguration {
+              extraBaseModules = [
+                nix-minecraft.nixosModules.minecraft-servers
+
+                {
+                  nixpkgs.overlays = [
+                    inputs.nix-minecraft.overlay
+                  ];
+                }
+              ];
+
+              extraModules = [
+                ./hosts/server/configuration.nix
+              ];
+            };
+          };
         };
-      };
     };
 }

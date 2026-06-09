@@ -6,20 +6,20 @@
 }:
 {
   imports = [
-    ../../modules/nixos/desktop/hyprland.nix
-    ../../modules/nixos/desktop-manager/sddm.nix
-    ../../modules/nixos/gaming/gaming.nix
-    ../../modules/nixos/boot/boot.nix
-    ../../modules/nixos/boot/plymouth.nix
-    ../../modules/nixos/networking/networking.nix
-    ../../modules/nixos/networking/tailscale/client.nix
-    ../../modules/nixos/networking/zerotier.nix
-    ../../modules/nixos/audio.nix
-    ../../modules/nixos/printing.nix
-    ../../modules/nixos/locale.nix
-    ../../modules/nixos/fonts.nix
-    ../../modules/nixos/localsend.nix
-    ../../modules/nixos/kdeconnect.nix
+    ./desktop/hyprland.nix
+    ./desktop-manager/sddm.nix
+    ./gaming/gaming.nix
+    ./boot/boot.nix
+    ./boot/plymouth.nix
+    ./networking/networking.nix
+    ./networking/tailscale/client.nix
+    ./networking/zerotier.nix
+    ./audio.nix
+    ./printing.nix
+    ./locale.nix
+    ./fonts.nix
+    ./localsend.nix
+    ./kdeconnect.nix
     ../../users/n3rsti.nix
   ];
 

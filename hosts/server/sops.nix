@@ -1,6 +1,4 @@
-{
-  ...
-}:
+_:
 {
   sops.secrets = {
     hetzner_storagebox = { };

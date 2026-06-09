@@ -64,7 +64,7 @@
     extraSpecialArgs = { inherit inputs; };
     users = {
       "n3rsti" =
-        { pkgs, ... }:
+        { ... }:
         {
           imports = [ ./home.nix ];
         };
