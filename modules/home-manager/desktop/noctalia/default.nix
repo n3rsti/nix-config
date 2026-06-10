@@ -10,6 +10,7 @@
   ];
 
   home.packages = with pkgs; [
+    ddcutil # Monitor brightness
     tesseract # OCR Engine
     zbar # QR/barcode scanning
     translate-shell # OCR Translation
@@ -761,7 +762,7 @@ mm";
         screenUnlock = "";
         performanceModeEnabled = "";
         performanceModeDisabled = "";
-        startup = "bash /etc/nixos/modules/home-manager/noctalia/startup.sh";
+        startup = "bash /etc/nixos/modules/home-manager/desktop/noctalia/startup.sh";
         session = "";
         colorGeneration = "";
       };

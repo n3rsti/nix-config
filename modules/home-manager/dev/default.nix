@@ -1,17 +1,22 @@
 { lib, pkgs, ... }:
 {
   imports = [
-    ./java.nix
-    ./c.nix
-    ./csharp.nix
-    ./go.nix
-    ./javascript.nix
-    ./lua.nix
-    ./nix.nix
-    ./typst.nix
-    ./python.nix
-    ./rust.nix
-    ./kotlin.nix
+    ./editor.nix
+    ./lang/java.nix
+    ./lang/c.nix
+    ./lang/csharp.nix
+    ./lang/go.nix
+    ./lang/javascript.nix
+    ./lang/lua.nix
+    ./lang/nix.nix
+    ./lang/typst.nix
+    ./lang/python.nix
+    ./lang/rust.nix
+    ./lang/kotlin.nix
+    ./opencode.nix
+    ./git.nix
+    ./tools.nix
+    ./terminal
   ];
 
   dev = {
@@ -30,8 +35,9 @@
   home.packages = with pkgs; [
     unstable.devenv
     fixjson
-    unstable.tree-sitter
+    arduino-ide
     bash-language-server # Bash lsp
     beautysh # Bash formatter
+    stlink # Something for flashing programs to microcontrollers
   ];
 }

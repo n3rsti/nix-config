@@ -1,23 +1,14 @@
 {
-  pkgs,
   ...
 }:
 
 {
   imports = [
-    ../../modules/home-manager/git.nix
-    ../../modules/home-manager/zsh.nix
+    ../../modules/home-manager/profiles/minimal.nix
   ];
 
   home.username = "n3rsti";
   home.homeDirectory = "/home/n3rsti";
-
-  home.packages = with pkgs; [
-    zsh
-  ];
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release

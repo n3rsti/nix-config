@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   programs = {
     mangohud.enable = true;
@@ -17,5 +14,4 @@
     unstable.prismlauncher
     r2modman # mod manager for games
   ];
-
 }

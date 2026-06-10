@@ -4,7 +4,7 @@
 }:
 {
   imports = [
-    ../../modules/home-manager/sops.nix
+    ../../modules/home-manager/secrets/sops.nix
   ];
 
   sops.secrets.id_laptop = {
@@ -12,5 +12,4 @@
     mode = "0600";
   };
 
-  dev.kotlin.enable = false;
 }

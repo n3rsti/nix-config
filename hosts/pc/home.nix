@@ -1,7 +1,7 @@
 { config, ... }:
 {
   imports = [
-    ../../modules/home-manager/sops.nix
+    ../../modules/home-manager/secrets/sops.nix
   ];
 
   sops.secrets.id_pc = {
