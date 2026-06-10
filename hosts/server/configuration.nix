@@ -6,7 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos/profiles/server.nix
-    ../../modules/nixos/minecraft-server/minecraft.nix
+    ../../modules/nixos/services/minecraft
     ../../modules/nixos/builder/remote-builder.nix
     ./backups.nix
     ../../modules/nixos/services/arr.nix
