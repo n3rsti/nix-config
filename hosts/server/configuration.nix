@@ -1,26 +1,20 @@
 {
   pkgs,
-  inputs,
   ...
 }:
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/nixos/profiles/server.nix
     ../../modules/nixos/minecraft-server/minecraft.nix
     ../../modules/nixos/builder/remote-builder.nix
     ./backups.nix
-    ../../modules/nixos/sops.nix
-    ../../modules/nixos/locale.nix
-    ../../modules/nixos/networking/tailscale/default.nix
     ../../modules/nixos/services/arr.nix
     ../../modules/nixos/services/nextcloud.nix
     ../../modules/nixos/services/immich.nix
     ../../modules/nixos/services/paperless.nix
     ../../modules/nixos/services/uptime-kuma.nix
-    ../../modules/nixos/openssh.nix
-    ./sops.nix
-    inputs.home-manager.nixosModules.default
-    inputs.sops-nix.nixosModules.sops
+    ./secrets.nix
   ];
 
   boot = {
@@ -35,43 +29,11 @@
     };
   };
 
-  nix = {
-    settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-
-      trusted-users = [
-        "n3rsti"
-      ];
-
-      auto-optimise-store = true;
+  home-manager.users."n3rsti" =
+    { ... }:
+    {
+      imports = [ ./home.nix ];
     };
-
-    gc = {
-      automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 7d";
-    };
-
-  };
-
-  nixpkgs.config.allowUnfree = true;
-  virtualisation.docker.enable = true;
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "n3rsti" =
-        { ... }:
-        {
-          imports = [ ./home.nix ];
-        };
-    };
-    useGlobalPkgs = true;
-    useUserPackages = true;
-  };
 
   programs = {
     ssh = {
@@ -80,8 +42,6 @@
         AddKeysToAgent yes
       '';
     };
-
-    zsh.enable = true;
   };
 
   users = {

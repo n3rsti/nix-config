@@ -6,13 +6,13 @@
 
   imports = [
     ./hardware-configuration.nix
-    ../../modules/nixos/base.nix
+    ../../modules/nixos/profiles/workstation.nix
+    ../../users/n3rsti.nix
     ../../modules/nixos/builder/distributed-builds.nix
-    ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/swap.nix
     ../../modules/nixos/hardware/gpu/intel.nix
-    ../../modules/nixos/hardware/backlight.nix
-    ../../modules/nixos/hardware/power_management.nix
+    ../../modules/nixos/hardware/laptop/backlight.nix
+    ../../modules/nixos/hardware/laptop/power-management.nix
   ];
 
   boot.kernelParams = [ "psmouse.synaptics_intertouch=1" ];

@@ -1,5 +1,4 @@
-_:
-{
+_: {
   programs.kdeconnect = {
     enable = true;
   };

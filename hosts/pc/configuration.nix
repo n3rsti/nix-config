@@ -4,17 +4,17 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/nixos/base.nix
+    ../../modules/nixos/profiles/workstation.nix
+    ../../users/n3rsti.nix
     ../../modules/nixos/builder/remote-builder.nix
     ../../modules/nixos/autologin.nix
-    ../../modules/nixos/bluetooth.nix
     ../../modules/nixos/gaming/sunshine.nix
     ../../modules/nixos/swap.nix
-    ../../modules/nixos/openssh.nix
+    ../../modules/nixos/networking/openssh.nix
     ../../modules/nixos/hardware/gpu/amd.nix
     ../../modules/nixos/hardware/tablet.nix
     ../../modules/nixos/hardware/rgb.nix
-    ../../modules/nixos/virtualisation.nix
+    ../../modules/nixos/virtualisation/libvirt.nix
   ];
 
   home-manager.users.n3rsti = {
