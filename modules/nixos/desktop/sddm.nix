@@ -31,8 +31,8 @@
     # Install and customize the theme. All fields are optional and will
     # fall back to theme defaults if not set.
     (inputs.pixie-sddm.packages.${pkgs.stdenv.hostPlatform.system}.pixie-sddm.override {
-      background = ../desktop-manager/wallpaper.jpg; # Nix path or absolute path
-      avatar = ../desktop-manager/avatar.png; # Nix path or absolute path
+      background = ./wallpaper.jpg; # Nix path or absolute path
+      avatar = ./avatar.png; # Nix path or absolute path
       primaryColor = "#B3C8FF"; # Hex color code
       accentColor = "#3F5F91"; # Hex color code
       autoColor = true; # true/false

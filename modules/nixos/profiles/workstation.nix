@@ -14,6 +14,7 @@
     ../system/packages.nix
     ../system/workstation-tools.nix
     ../virtualisation/docker.nix
+    ../hardware/librepods.nix
   ];
 
   nixpkgs.config.android_sdk.accept_license = true;

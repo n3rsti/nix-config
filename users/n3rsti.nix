@@ -19,6 +19,7 @@
       "libvirtd"
       "stlink"
       "i2c"
+      "librepods"
     ];
   };
 
