@@ -1,5 +1,4 @@
-_:
-{
+_: {
   services.protonmail-bridge.enable = true;
 
   accounts.email.accounts = {

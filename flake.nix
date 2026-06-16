@@ -40,7 +40,7 @@
     };
 
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia-shell/v4.7.7";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -81,7 +81,12 @@
           unstableOverlay = final: _prev: {
             unstable = import inputs.nixpkgs_unstable {
               system = final.stdenv.hostPlatform.system;
-              config.allowUnfree = true;
+              config = {
+                allowUnfree = true;
+                permittedInsecurePackages = [
+                  "electron-39.8.10"
+                ];
+              };
             };
           };
 

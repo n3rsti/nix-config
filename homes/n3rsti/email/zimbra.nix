@@ -1,5 +1,4 @@
-_:
-{
+_: {
   accounts.email.accounts = {
     zimbra = {
       address = "krzysztof.witucki@student.put.poznan.pl";

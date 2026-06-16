@@ -21,9 +21,9 @@
       package = pkgs.adwaita-icon-theme;
     };
     cursorTheme = {
-      name = "macOS";
-      package = pkgs.apple-cursor;
-      size = 24;
+      name = "Bibata-Modern-Classic";
+      package = pkgs.bibata-cursors;
+      size = 16;
     };
   };
 
@@ -31,9 +31,9 @@
 
   home.pointerCursor = {
     gtk.enable = true;
-    package = pkgs.apple-cursor;
-    name = "macOS";
-    size = 24;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 16;
   };
 
   qt = {

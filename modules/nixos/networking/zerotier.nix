@@ -1,5 +1,4 @@
-_:
-{
+_: {
   services.zerotierone = {
     enable = true;
     joinNetworks = [ "56374ac9a42a3c0f" ];

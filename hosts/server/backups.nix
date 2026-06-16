@@ -1,5 +1,4 @@
-_:
-{
+_: {
 
   services.borgbackup.jobs.minecraft-backup = {
     paths = "/srv/minecraft/fabric";

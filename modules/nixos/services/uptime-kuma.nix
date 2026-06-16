@@ -1,5 +1,4 @@
-_:
-{
+_: {
   services.uptime-kuma = {
     enable = true;
   };

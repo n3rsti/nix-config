@@ -30,7 +30,16 @@ in
       gnome-disk-utility # Disks
       gnome-online-accounts-gtk
       gnome-text-editor
-      nautilus
+      (nautilus.overrideAttrs (old: {
+        buildInputs =
+          old.buildInputs
+          ++ (with gst_all_1; [
+            gst-plugins-good
+            gst-plugins-bad
+            gst-plugins-ugly
+            gst-libav
+          ]);
+      }))
       networkmanagerapplet # For nm-connection-editor
       nmgui # Wifi gui
       resources

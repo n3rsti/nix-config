@@ -1,5 +1,4 @@
-_:
-{
+_: {
   hardware = {
     graphics = {
       enable = true;

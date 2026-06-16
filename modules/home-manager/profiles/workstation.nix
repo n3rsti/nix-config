@@ -7,6 +7,8 @@
     ./gaming.nix
   ];
 
+  dev.kotlin.enable = false;
+
   profile.programs = {
     cli = {
       core.enable = lib.mkDefault true;

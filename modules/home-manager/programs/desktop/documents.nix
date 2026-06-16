@@ -23,6 +23,7 @@ in
       papers # pdf viewer
       poppler-utils
       unstable.libreoffice-qt6-fresh
+      onlyoffice-desktopeditors
     ];
   };
 }

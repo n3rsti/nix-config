@@ -4,10 +4,11 @@
   ...
 }:
 {
+  services.xserver.enable = true;
   services.displayManager.sddm = {
     enable = true;
     theme = "pixie";
-    wayland.enable = true; # Optional: for Wayland sessions
+    wayland.enable = false; # Optional: for Wayland sessions
     settings = {
       Theme = {
         CursorTheme = "Adwaita";

@@ -7,7 +7,6 @@
     ../../modules/nixos/profiles/workstation.nix
     ../../users/n3rsti.nix
     ../../modules/nixos/builder/remote-builder.nix
-    ../../modules/nixos/autologin.nix
     ../../modules/nixos/gaming/sunshine.nix
     ../../modules/nixos/swap.nix
     ../../modules/nixos/networking/openssh.nix

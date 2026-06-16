@@ -7,6 +7,6 @@
     ./hyprland.nix
     ./input.nix
     ./printing.nix
-    ./sddm.nix
+    ./gdm.nix
   ];
 }
