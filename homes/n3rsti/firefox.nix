@@ -11,6 +11,8 @@
 
       user_pref("sidebar.verticalTabs", true);
       user_pref("privacy.clearOnShutdown_v2.browsingHistoryAndDownloads", false); // [DEFAULT: true]
+      user_pref("services.sync.engine.prefs", true);
+      user_pref("services.sync.prefs.sync.browser.uiCustomization.state", true);
     '';
   };
 }

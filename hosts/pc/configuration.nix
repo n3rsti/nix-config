@@ -34,9 +34,16 @@
     input-remapper = {
       enable = true;
     };
-    flatpak.packages = [
-      "sh.ppy.osu"
-    ];
+
+    flatpak = {
+      packages = [
+        "sh.ppy.osu"
+      ];
+
+    };
+  };
+  services.flatpak.overrides = {
+    files = [ ./org.freecad.FreeCAD ];
   };
 
   hardware.i2c.enable = true; # For monitor brightness control

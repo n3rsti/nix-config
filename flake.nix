@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=main";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
