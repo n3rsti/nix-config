@@ -1,0 +1,25 @@
+{
+  flake.nixosModules.n3rsti =
+    { pkgs, ... }:
+    {
+      users.users.n3rsti = {
+        isNormalUser = true;
+        description = "n3rsti";
+        shell = pkgs.zsh;
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+          "ydotool"
+          "docker"
+          "dialout"
+          "input"
+          "gamemode"
+          "kvm"
+          "libvirtd"
+          "stlink"
+          "i2c"
+          "librepods"
+        ];
+      };
+    };
+}

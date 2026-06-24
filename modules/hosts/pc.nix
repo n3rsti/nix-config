@@ -1,0 +1,62 @@
+{ inputs, self, ... }:
+{
+  flake.nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
+    system = "x86_64-linux";
+
+    modules = [
+      self.nixosModules.workstation
+      self.nixosModules.n3rsti
+      self.nixosModules.remote-builder
+      self.nixosModules.sunshine
+      self.nixosModules.swap
+      self.nixosModules.openssh
+      self.nixosModules.amd
+      self.nixosModules.tablet
+      self.nixosModules.rgb
+      self.nixosModules.libvirt
+      ./pc/_hardware-configuration.nix
+
+      (_: {
+        home-manager.users.n3rsti =
+          { config, ... }:
+          {
+            imports = [
+              self.homeModules.n3rsti
+              self.homeModules.home-sops
+            ];
+
+            sops.secrets.id_pc = {
+              path = "${config.home.homeDirectory}/.ssh/id_ed25519";
+              mode = "0600";
+            };
+
+            programs.firefox.profiles.default.settings."widget.wayland.fractional-scale.enabled" = false;
+          };
+
+        networking = {
+          hostName = "pc";
+
+          interfaces.enp34s0 = {
+            wakeOnLan.enable = true;
+          };
+        };
+
+        services = {
+          input-remapper.enable = true;
+
+          flatpak.packages = [
+            "sh.ppy.osu"
+          ];
+        };
+
+        services.flatpak.overrides = {
+          files = [ ./pc/_org.freecad.FreeCAD ];
+        };
+
+        hardware.i2c.enable = true;
+
+        system.stateVersion = "24.11";
+      })
+    ];
+  };
+}
