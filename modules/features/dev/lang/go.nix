@@ -17,11 +17,16 @@
 
       config = lib.mkIf cfg.enable {
         home.packages = with pkgs; [
-          go
           gopls
           delve
         ];
 
+        programs = {
+          go = {
+            enable = true;
+            telemetry.mode = "off";
+          };
+        };
       };
     };
 }

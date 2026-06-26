@@ -18,6 +18,10 @@
       programs = {
         mangohud.enable = true;
         lutris.enable = true;
+        prismlauncher = {
+          enable = true;
+          package = pkgs.unstable.prismlauncher;
+        };
       };
 
       home.packages = with pkgs; [
@@ -26,7 +30,6 @@
         unstable.winetricks
         protonup-ng # Proton utilities
         (heroic.override { extraPkgs = pkgs: [ pkgs.gamescope ]; })
-        unstable.prismlauncher
         r2modman # mod manager for games
       ];
 

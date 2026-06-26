@@ -18,6 +18,7 @@
         nerd-fonts.adwaita-mono
         icomoon-feather
         adwaita-fonts
+        monocraft
       ];
     };
 }

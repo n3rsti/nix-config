@@ -36,5 +36,6 @@
     ];
 
     dev.kotlin.enable = false;
+    dev.csharp.enable = false;
   };
 }

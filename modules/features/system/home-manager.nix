@@ -10,10 +10,6 @@
       useUserPackages = true;
       backupFileExtension = "backup";
       overwriteBackup = true;
-
-      sharedModules = [
-        inputs.sops-nix.homeManagerModules.sops
-      ];
     };
   };
 }

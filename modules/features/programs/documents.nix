@@ -6,7 +6,6 @@
     }:
     {
       home.packages = with pkgs; [
-        foliate # Ebook reader
         gimp
         hunspell
         hunspellDicts.en_US
@@ -15,7 +14,11 @@
         papers # pdf viewer
         poppler-utils
         unstable.libreoffice-qt6-fresh
-        onlyoffice-desktopeditors
       ];
+
+      programs = {
+        onlyoffice.enable = true;
+        foliate.enable = true; # Ebook reader
+      };
     };
 }

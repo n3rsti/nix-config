@@ -17,8 +17,6 @@
 
       config = lib.mkIf cfg.enable {
         home.packages = with pkgs; [
-          bun
-          deno
           nodejs_24
           typescript
           eslint

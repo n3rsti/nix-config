@@ -5,9 +5,13 @@
       ...
     }:
     {
+      programs.discord = {
+        enable = true;
+        package = pkgs.unstable.discord;
+      };
+
       home.packages = with pkgs; [
         slack
-        unstable.discord
         unstable.protonmail-desktop
         unstable.signal-desktop
       ];
