@@ -10,6 +10,7 @@
         package = pkgs.openrgb;
       };
 
+      # Need both service and package installed
       environment.systemPackages = with pkgs; [
         openrgb
       ];

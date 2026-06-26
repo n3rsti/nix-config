@@ -1,8 +1,14 @@
 {
-  flake.nixosModules.systemd-boot = _: {
-    boot.loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
+  flake.nixosModules.systemd-boot =
+    { pkgs, ... }:
+    {
+      boot.loader = {
+        systemd-boot.enable = true;
+        efi.canTouchEfiVariables = true;
+      };
+
+      environment.systemPackages = with pkgs; [
+        efibootmgr
+      ];
     };
-  };
 }

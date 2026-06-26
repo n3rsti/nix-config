@@ -13,7 +13,8 @@
       self.nixosModules.tailscale-client
       self.nixosModules.zerotier
       self.nixosModules.fonts
-      self.nixosModules.packages
+      self.nixosModules.filesystems
+      self.nixosModules.diagnostics
       self.nixosModules.workstation-tools
       self.nixosModules.docker
       self.nixosModules.librepods
