@@ -10,6 +10,21 @@
       nixpkgs.overlays = [
         inputs.nix-minecraft.overlay
       ];
+
+      services.borgbackup.jobs.minecraft-backup = {
+        paths = "/srv/minecraft/fabric";
+        encryption.mode = "none";
+        environment.BORG_RSH = "ssh -p 23 -i /run/secrets/hetzner_storagebox";
+        repo = "u557087@u557087.your-storagebox.de:./backups/fabric";
+        compression = "auto,zstd";
+        startAt = "daily";
+        prune.keep = {
+          within = "3d";
+          daily = 7;
+          weekly = 2;
+        };
+      };
+
       # Minecraft server settings
       services.minecraft-servers = {
         enable = true;

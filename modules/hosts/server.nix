@@ -13,7 +13,6 @@
       self.nixosModules.paperless
       self.nixosModules.uptime-kuma
       ./server/_hardware-configuration.nix
-      ./server/_backups.nix
 
       (
         { pkgs, ... }:
@@ -97,10 +96,6 @@
 
             secrets = {
               hetzner_storagebox = { };
-              borgbackup_passphrase_immich = { };
-              borgbackup_passphrase_nextcloud = { };
-              borgbackup_passphrase_paperless = { };
-              nextcloud-admin-pass = { };
             };
           };
 
