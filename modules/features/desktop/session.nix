@@ -1,6 +1,6 @@
 {
   flake.homeModules.session =
-    { osConfig, lib, ... }:
+    _:
     {
       services.polkit-gnome.enable = true;
 

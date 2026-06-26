@@ -22,7 +22,7 @@
           {
             imports = [
               self.homeModules.n3rsti
-              self.homeModules.home-sops
+              self.homeModules.sops
             ];
 
             sops.secrets.id_pc = {

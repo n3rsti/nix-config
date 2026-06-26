@@ -100,6 +100,7 @@
               borgbackup_passphrase_immich = { };
               borgbackup_passphrase_nextcloud = { };
               borgbackup_passphrase_paperless = { };
+              nextcloud-admin-pass = { };
             };
           };
 
