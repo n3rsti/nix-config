@@ -9,14 +9,9 @@
       ];
     };
 
-  flake.homeModules.networking = { pkgs, ... }: {
+  flake.homeModules.networking = { ... }: {
     imports = [
       self.homeModules.networkmanager
-      self.homeModules.rdp
-    ];
-
-    home.packages = with pkgs; [
-      snx-rs
     ];
   };
 }

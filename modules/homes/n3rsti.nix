@@ -2,7 +2,7 @@
 {
   flake.homeModules.n3rsti = {
     imports = [
-      self.homeModules.workstation
+      self.homeModules.workstation-profile
       ./n3rsti/_firefox.nix
       ./n3rsti/_dotfiles.nix
       ./n3rsti/_email/protonmail.nix
@@ -61,5 +61,15 @@
     home.homeDirectory = "/home/n3rsti";
     home.stateVersion = "24.11";
 
+  };
+
+  flake.homeModules.n3rsti-vm = {
+    imports = [
+      self.homeModules.vm-profile
+    ];
+
+    home.username = "n3rsti";
+    home.homeDirectory = "/home/n3rsti";
+    home.stateVersion = "24.11";
   };
 }

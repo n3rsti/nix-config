@@ -1,10 +1,11 @@
 { self, ... }:
 {
-  flake.nixosModules.vm = _: {
+  flake.nixosModules.vm-profile = _: {
     imports = [
       self.nixosModules.base
       self.nixosModules.boot
       self.nixosModules.desktop
+      self.nixosModules.i3
       self.nixosModules.networking
       self.nixosModules.fonts
       self.nixosModules.filesystems
@@ -14,9 +15,10 @@
     ];
 
     nixpkgs.config.android_sdk.accept_license = true;
+    services.displayManager.defaultSession = "none+i3";
   };
 
-  flake.homeModules.vm = _: {
+  flake.homeModules.vm-profile = _: {
     imports = [
       self.homeModules.base
       self.homeModules.desktop

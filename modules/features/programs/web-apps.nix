@@ -45,7 +45,7 @@
           ];
         };
 
-      webApps = config.webApps;
+      inherit (config) webApps;
     in
     {
       options.webApps = lib.mkOption {
@@ -71,7 +71,7 @@
 
       config.xdg.desktopEntries = builtins.listToAttrs (
         map (app: {
-          name = app.name;
+          inherit (app) name;
           value = mkWebApp app;
         }) webApps
       );

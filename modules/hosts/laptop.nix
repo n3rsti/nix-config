@@ -4,7 +4,7 @@
     system = "x86_64-linux";
 
     modules = [
-      self.nixosModules.workstation
+      self.nixosModules.workstation-profile
       self.nixosModules.n3rsti
       self.nixosModules.distributed-builds
       self.nixosModules.swap

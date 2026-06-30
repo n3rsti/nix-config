@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.nixosModules.workstation = _: {
+  flake.nixosModules.workstation-profile = _: {
     imports = [
       self.nixosModules.base
       self.nixosModules.boot
@@ -27,7 +27,7 @@
     services.displayManager.defaultSession = "hyprland-uwsm";
   };
 
-  flake.homeModules.workstation = _: {
+  flake.homeModules.workstation-profile = { pkgs, ... }: {
     imports = [
       self.homeModules.base
       self.homeModules.desktop
@@ -42,6 +42,11 @@
       self.homeModules.hyprland
       self.homeModules.noctalia
       self.homeModules.walker
+      self.homeModules.rdp
+    ];
+
+    home.packages = with pkgs; [
+      snx-rs
     ];
 
     dev.kotlin.enable = false;
