@@ -6,13 +6,9 @@ let
   symlinkRoot = "${config.home.homeDirectory}/.config/dotfiles";
   link = config.lib.file.mkOutOfStoreSymlink;
   icons = [
-    "nixos-logo.png"
     "awakened.png"
     "exiled-exchange.png"
-    "hyprland-logo.png"
     "neovim-logo.png"
-    "nixos-logo-white.png"
-    "jakdojade.png"
     "monitor.png"
     "eye-dropper-solid.png"
   ];
@@ -20,10 +16,6 @@ let
   apps = [
     "awakened-poe-trade"
     "exiled-exchange"
-    "hyprland-wiki"
-    "nix-packages"
-    "nixos-options"
-    "jakdojade"
     "monitor-settings"
     "color-picker"
   ];
@@ -64,7 +56,6 @@ in
       recursive = true;
     };
   };
-  home.file.".tmux.conf".source = link "${symlinkRoot}/tmux/tmux.conf";
   home.file.".config/elephant/websearch.toml".source = link "${symlinkRoot}/elephant/websearch.toml";
 
   xdg.dataFile = iconLinks // appLinks;
