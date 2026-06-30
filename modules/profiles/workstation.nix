@@ -18,9 +18,13 @@
       self.nixosModules.workstation-tools
       self.nixosModules.docker
       self.nixosModules.librepods
+      self.nixosModules.hyprland
+      self.nixosModules.noctalia
     ];
 
     nixpkgs.config.android_sdk.accept_license = true;
+
+    services.displayManager.defaultSession = "hyprland-uwsm";
   };
 
   flake.homeModules.workstation = _: {
@@ -35,6 +39,9 @@
       self.homeModules.downloads
       self.homeModules.tailscale-client
       self.homeModules.web-apps
+      self.homeModules.hyprland
+      self.homeModules.noctalia
+      self.homeModules.walker
     ];
 
     dev.kotlin.enable = false;

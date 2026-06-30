@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.homeModules.launcher =
+  flake.homeModules.walker =
     { lib, pkgs, ... }:
     {
       imports = [

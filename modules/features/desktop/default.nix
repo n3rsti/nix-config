@@ -6,11 +6,9 @@
       self.nixosModules.bluetooth
       self.nixosModules.flatpak
       self.nixosModules.gnome-services
-      self.nixosModules.hyprland
       self.nixosModules.input
       self.nixosModules.printing
       self.nixosModules.gdm
-      self.nixosModules.noctalia
     ];
   };
 
@@ -19,11 +17,8 @@
       self.homeModules.session
       self.homeModules.theme
       self.homeModules.desktop-tools
-      self.homeModules.hyprland
       self.homeModules.desktop-apps
       self.homeModules.desktop-files
-      self.homeModules.launcher
-      self.homeModules.noctalia
     ];
   };
 }
