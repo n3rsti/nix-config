@@ -54,7 +54,7 @@
 
   flake.homeModules.n3rsti-server = {
     imports = [
-      self.homeModules.server
+      self.homeModules.server-profile
     ];
 
     home.username = "n3rsti";

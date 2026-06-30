@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.nixosModules.server = {
+  flake.nixosModules.server-profile = {
     imports = [
       self.nixosModules.base
       self.nixosModules.systemd-boot
@@ -11,7 +11,7 @@
     ];
   };
 
-  flake.homeModules.server = {
+  flake.homeModules.server-profile = {
     imports = [
       self.homeModules.base
     ];
