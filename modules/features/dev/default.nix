@@ -4,7 +4,7 @@
     { lib, pkgs, ... }:
     {
       imports = [
-        self.homeModules.editor
+        self.homeModules.neovim
         self.homeModules.java
         self.homeModules.c
         self.homeModules.csharp

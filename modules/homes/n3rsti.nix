@@ -66,6 +66,7 @@
   flake.homeModules.n3rsti-vm = {
     imports = [
       self.homeModules.vm-profile
+      ./n3rsti/_firefox.nix
     ];
 
     home.username = "n3rsti";

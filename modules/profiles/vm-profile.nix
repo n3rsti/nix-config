@@ -21,6 +21,13 @@
     services.displayManager.defaultSession = "none+i3";
 
     dev.microcontrollers.enable = false;
+
+    hardware = {
+      graphics = {
+        enable = true;
+        enable32Bit = true;
+      };
+    };
   };
 
   flake.homeModules.vm-profile = _: {

@@ -41,11 +41,6 @@ in
       recursive = true;
     };
 
-    "nvim" = {
-      source = link "${symlinkRoot}/nvim";
-      recursive = true;
-    };
-
     "walker/themes" = {
       source = link "${symlinkRoot}/walker/themes";
       recursive = true;
