@@ -41,11 +41,6 @@ in
       recursive = true;
     };
 
-    "walker/themes" = {
-      source = link "${symlinkRoot}/walker/themes";
-      recursive = true;
-    };
-
     "zed" = {
       source = link "${symlinkRoot}/zed";
       recursive = true;

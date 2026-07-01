@@ -1,7 +1,16 @@
 { inputs, ... }:
 {
   flake.homeModules.walker =
-    { lib, pkgs, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
+    let
+      symlinkRoot = "${config.home.homeDirectory}/.config/dotfiles";
+      link = config.lib.file.mkOutOfStoreSymlink;
+    in
     {
       imports = [
         inputs.walker.homeManagerModules.default
@@ -50,9 +59,16 @@
           };
         };
       };
+
       home.activation.elephant-restart = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         ${pkgs.systemd}/bin/systemctl --user restart elephant
       '';
 
+      xdg.configFile = {
+        "walker/themes" = {
+          source = link "${symlinkRoot}/walker/themes";
+          recursive = true;
+        };
+      };
     };
 }
