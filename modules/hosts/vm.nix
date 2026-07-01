@@ -6,7 +6,6 @@
     modules = [
       self.nixosModules.vm-profile
       self.nixosModules.n3rsti
-      self.nixosModules.amd
       ./vm/_hardware-configuration.nix
 
       (_: {
@@ -19,7 +18,7 @@
           };
 
         networking = {
-          hostName = "pc";
+          hostName = "vm-host";
         };
 
         system.stateVersion = "24.11";

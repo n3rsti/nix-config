@@ -16,6 +16,7 @@
         self.homeModules.python
         self.homeModules.rust
         self.homeModules.kotlin
+        self.homeModules.microcontrollers
         self.homeModules.opencode
         self.homeModules.git
         self.homeModules.dev-tools
@@ -33,15 +34,22 @@
         typst.enable = lib.mkDefault true;
         javascript.enable = lib.mkDefault true;
         kotlin.enable = lib.mkDefault true;
+        microcontrollers.enable = lib.mkDefault true;
       };
 
       home.packages = with pkgs; [
         unstable.devenv
         fixjson
-        arduino-ide
         bash-language-server # Bash lsp
         beautysh # Bash formatter
-        stlink # Something for flashing programs to microcontrollers
       ];
     };
+
+  flake.nixosModules.dev = { lib, ... }: {
+    imports = [
+      self.nixosModules.microcontrollers
+    ];
+
+    dev.microcontrollers.enable = lib.mkDefault true;
+  };
 }

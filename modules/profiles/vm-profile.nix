@@ -4,7 +4,6 @@
     imports = [
       self.nixosModules.base
       self.nixosModules.boot
-      self.nixosModules.desktop
       self.nixosModules.i3
       self.nixosModules.networking
       self.nixosModules.fonts
@@ -12,10 +11,16 @@
       self.nixosModules.diagnostics
       self.nixosModules.workstation-tools
       self.nixosModules.docker
+
+      self.nixosModules.gnome-services
+      self.nixosModules.gdm
+      self.nixosModules.dev
     ];
 
     nixpkgs.config.android_sdk.accept_license = true;
     services.displayManager.defaultSession = "none+i3";
+
+    dev.microcontrollers.enable = false;
   };
 
   flake.homeModules.vm-profile = _: {
@@ -29,5 +34,6 @@
 
     dev.kotlin.enable = false;
     dev.csharp.enable = false;
+    dev.microcontrollers.enable = false;
   };
 }

@@ -8,6 +8,7 @@
       self.nixosModules.gaming
       self.nixosModules.mobile-devices
       self.nixosModules.networking
+      self.nixosModules.avahi
       self.nixosModules.kdeconnect
       self.nixosModules.localsend
       self.nixosModules.tailscale-client
@@ -20,6 +21,7 @@
       self.nixosModules.librepods
       self.nixosModules.hyprland
       self.nixosModules.noctalia
+      self.nixosModules.dev
     ];
 
     nixpkgs.config.android_sdk.accept_license = true;
