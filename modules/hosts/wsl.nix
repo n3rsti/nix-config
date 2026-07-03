@@ -6,7 +6,7 @@
     modules = [
       inputs.nixos-wsl.nixosModules.default
       self.nixosModules.base
-      self.homeModules.dev
+      self.nixosModules.dev
 
       (
         { pkgs, ... }:
@@ -23,6 +23,7 @@
               self.homeModules.zsh
               self.homeModules.neovim
               self.homeModules.dev
+              self.homeModules.cli-core
             ];
 
             dev.kotlin.enable = false;
