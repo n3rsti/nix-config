@@ -57,6 +57,8 @@
                   ssh-add -q -- "$key" >/dev/null 2>&1
               done
           fi
+
+          eval "$(devenv hook zsh)"
         '';
       };
     };

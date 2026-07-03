@@ -15,6 +15,8 @@
             enable = true;
             defaultUser = "n3rsti";
             startMenuLaunchers = true;
+            useWindowsDriver = true;
+            docker-desktop.enable = true;
           };
 
           home-manager.users.n3rsti = {
@@ -32,12 +34,35 @@
             dev.typst.enable = false;
             dev.microcontrollers.enable = false;
 
+            home.sessionPath = [
+              "$HOME/sakctl"
+            ];
+
             home.username = "n3rsti";
             home.homeDirectory = "/home/n3rsti";
             home.stateVersion = "24.11";
           };
 
           dev.microcontrollers.enable = false;
+
+          programs = {
+            nix-ld = {
+              enable = true;
+              libraries = with pkgs; [
+                libxcrypt
+                libxcrypt-legacy
+                stdenv.cc.cc
+                zlib
+                openssl
+              ];
+
+            };
+
+            direnv = {
+              enable = true;
+              nix-direnv.enable = true;
+            };
+          };
 
           users.users.n3rsti = {
             isNormalUser = true;
