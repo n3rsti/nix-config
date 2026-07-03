@@ -10,6 +10,8 @@
         unstable.neovim
         sshfs
         unstable.tree-sitter
+        ripgrep
+        gcc
       ];
 
       xdg.configFile = {

@@ -6,6 +6,7 @@
     modules = [
       inputs.nixos-wsl.nixosModules.default
       self.nixosModules.base
+      self.homeModules.dev
 
       (
         { pkgs, ... }:
@@ -21,12 +22,21 @@
               self.homeModules.git
               self.homeModules.zsh
               self.homeModules.neovim
+              self.homeModules.dev
             ];
+
+            dev.kotlin.enable = false;
+            dev.csharp.enable = false;
+            dev.rust.enable = false;
+            dev.typst.enable = false;
+            dev.microcontrollers.enable = false;
 
             home.username = "n3rsti";
             home.homeDirectory = "/home/n3rsti";
             home.stateVersion = "24.11";
           };
+
+          dev.microcontrollers.enable = false;
 
           users.users.n3rsti = {
             isNormalUser = true;
