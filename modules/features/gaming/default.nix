@@ -10,6 +10,22 @@
       gamemode.enable = true;
       gamescope.enable = true;
     };
+
+    users.groups.lutrisgames = { };
+
+    systemd.tmpfiles.settings."10-lutris-games" = {
+      "/srv/games".d = {
+        user = "root";
+        group = "lutrisgames";
+        mode = "2775";
+      };
+
+      "/srv/games/lutris".d = {
+        user = "root";
+        group = "lutrisgames";
+        mode = "2775";
+      };
+    };
   };
 
   flake.homeModules.gaming =

@@ -6,6 +6,7 @@
     modules = [
       self.nixosModules.workstation-profile
       self.nixosModules.n3rsti
+      self.nixosModules.maja
       self.nixosModules.remote-builder
       self.nixosModules.sunshine
       self.nixosModules.swap
@@ -14,6 +15,7 @@
       self.nixosModules.tablet
       self.nixosModules.rgb
       self.nixosModules.libvirt
+      self.nixosModules.gnome
       ./pc/_hardware-configuration.nix
 
       (_: {
@@ -32,6 +34,12 @@
 
             programs.firefox.profiles.default.settings."widget.wayland.fractional-scale.enabled" = false;
           };
+
+        home-manager.users.Maja = {
+          imports = [
+            self.homeModules.maja
+          ];
+        };
 
         networking = {
           hostName = "pc";
@@ -54,6 +62,9 @@
         };
 
         hardware.i2c.enable = true;
+
+        users.users.n3rsti.extraGroups = [ "lutrisgames" ];
+        users.users.Maja.extraGroups = [ "lutrisgames" ];
 
         system.stateVersion = "24.11";
       })
