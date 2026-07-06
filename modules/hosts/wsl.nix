@@ -17,6 +17,11 @@
             startMenuLaunchers = true;
             useWindowsDriver = true;
             docker-desktop.enable = true;
+            # Temporary fix. Apparently only need install and mv. Should be fixed in the next release
+            extraBin = with pkgs; [
+              { src = "${coreutils}/bin/install"; }
+              { src = "${coreutils}/bin/mv"; }
+            ];
           };
 
           home-manager.users.n3rsti = {
@@ -27,6 +32,8 @@
               self.homeModules.dev
               self.homeModules.cli-core
             ];
+
+            programs.git.settings.user.email = "krzysztof.witucki@asseco.pl";
 
             dev.kotlin.enable = false;
             dev.csharp.enable = false;
