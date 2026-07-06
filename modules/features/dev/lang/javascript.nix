@@ -28,6 +28,8 @@
           prettierd
           emmet-language-server
         ];
+
+        programs.zsh.oh-my-zsh.plugins = [ "ng" ];
       };
     };
 }
