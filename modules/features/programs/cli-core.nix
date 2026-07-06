@@ -25,6 +25,7 @@
         websocat
         wget
         zip
+        gnumake
       ];
 
       programs = {
