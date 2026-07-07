@@ -84,8 +84,8 @@ This means that each module should be a [flake-parts](https://flake.parts/) modu
 
 1. Clone the repository.
 
-   > [!TIP]
-   > Use `nix-shell -p git` if `git` is not available.
+> [!TIP]
+> Use `nix-shell -p git` if `git` is not available.
 
 2. Create a new host under `modules/hosts/`.
 
