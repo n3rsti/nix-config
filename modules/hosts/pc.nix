@@ -20,7 +20,7 @@
 
       (_: {
         home-manager.users.n3rsti =
-          { config, ... }:
+          { config, pkgs, ... }:
           {
             imports = [
               self.homeModules.n3rsti
@@ -33,6 +33,7 @@
             };
 
             programs.firefox.profiles.default.settings."widget.wayland.fractional-scale.enabled" = false;
+            programs.btop.package = (pkgs.btop.override { rocmSupport = true; });
           };
 
         home-manager.users.Maja = {

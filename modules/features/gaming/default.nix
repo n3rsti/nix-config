@@ -45,7 +45,6 @@
         wineWow64Packages.staging
         unstable.winetricks
         protonup-ng # Proton utilities
-        (heroic.override { extraPkgs = pkgs: [ pkgs.gamescope ]; })
         r2modman # mod manager for games
       ];
 

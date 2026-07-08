@@ -9,6 +9,7 @@ This repository contains my NixOS and Home Manager configuration for multiple ma
 - Virtual machines
 
 The setup includes reusable modules that can be imported for quick host configuration. It is designed to be stable by using the stable `nixpkgs` channel for most packages.
+Additionaly the configuration is using the `determinate-nix` channels which essentially are copies of original `nixpkgs` with additional features such as [https://determinate.systems/blog/nixpkgs-cooldown/](nixpkgs-cooldown) for increased security.
 
 > [!NOTE]
 > Some dotfile configurations are already integrated into this repository. The rest can be found in my [dotfiles](https://github.com/n3rsti/dotfiles) repository.
