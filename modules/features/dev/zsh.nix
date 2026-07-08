@@ -15,7 +15,6 @@
         };
 
         shellAliases = {
-          nix-update = "sudo nix flake update --flake /etc/nixos";
           zed = "zeditor";
           vim = "nvim";
           ls = "eza -h --group-directories-first --icons=auto";
@@ -24,14 +23,6 @@
 
         initContent = ''
           export PATH="$PATH:$HOME/.npm-global/bin"
-
-          nix-switch() {
-            sudo nixos-rebuild switch --flake /etc/nixos#"$1"
-          }
-
-          nix-test() {
-            sudo nixos-rebuild test --flake /etc/nixos#"$1"
-          }
 
           open() {
             xdg-open "$@" >/dev/null 2>&1 &
@@ -58,7 +49,7 @@
               done
           fi
 
-          eval "$(devenv hook zsh)"
+          # eval "$(devenv hook zsh)"
         '';
       };
     };

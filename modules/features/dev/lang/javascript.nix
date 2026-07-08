@@ -27,6 +27,7 @@
           tailwindcss-language-server
           prettierd
           emmet-language-server
+          emmet-ls
         ];
 
         programs.zsh.oh-my-zsh.plugins = [ "ng" ];
