@@ -7,6 +7,7 @@
       inputs.nixos-wsl.nixosModules.default
       self.nixosModules.base
       self.nixosModules.dev
+      self.nixosModules.ssh-agent
 
       (
         { pkgs, ... }:
