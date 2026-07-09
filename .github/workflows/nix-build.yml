@@ -48,5 +48,5 @@ jobs:
             echo "Building $host"
             nix build ".#nixosConfigurations.$host.config.system.build.toplevel" \
               --print-build-logs
-            attic push personal:nixos ./result
+            attic push --jobs 2 personal:nixos ./result
           done
