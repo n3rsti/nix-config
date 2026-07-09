@@ -48,5 +48,17 @@ jobs:
             echo "Building $host"
             nix build ".#nixosConfigurations.$host.config.system.build.toplevel" \
               --print-build-logs
-            attic push --jobs 2 personal:nixos ./result
+
+            for attempt in 1 2 3 4 5; do
+              echo "Pushing $host to Attic, attempt $attempt"
+              if attic push --jobs 1 personal:nixos ./result; then
+                break
+              fi
+
+              if [ "$attempt" = 5 ]; then
+                exit 1
+              fi
+
+              sleep 60
+            done
           done
