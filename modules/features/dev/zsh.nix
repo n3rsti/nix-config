@@ -22,8 +22,6 @@
         };
 
         initContent = ''
-          export PATH="$PATH:$HOME/.npm-global/bin"
-
           open() {
             xdg-open "$@" >/dev/null 2>&1 &
           }
@@ -48,8 +46,6 @@
                   ssh-add -q -- "$key" >/dev/null 2>&1
               done
           fi
-
-          # eval "$(devenv hook zsh)"
         '';
       };
     };
