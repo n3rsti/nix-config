@@ -37,6 +37,12 @@ jobs:
         env:
           ATTIC_TOKEN: ${{ secrets.ATTIC_TOKEN }}
 
+      - name: Check Attic connectivity
+        run: |
+          set -euo pipefail
+          tailscale ping --c 5 attic.tail3ce7af.ts.net
+          attic cache info personal:nixos
+
       - name: Check flake
         run: nix flake check --print-build-logs
 
