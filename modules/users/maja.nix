@@ -1,6 +1,6 @@
 {
   flake.nixosModules.maja =
-    { pkgs, ... }:
+    _:
     {
       users.users.Maja = {
         isNormalUser = true;

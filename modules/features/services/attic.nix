@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.attic = { config, ... }: {
+  flake.nixosModules.attic = _: {
 
     sops.secrets.attic_server_token = { };
 

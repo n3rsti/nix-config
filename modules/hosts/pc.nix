@@ -33,7 +33,7 @@
             };
 
             programs.firefox.profiles.default.settings."widget.wayland.fractional-scale.enabled" = false;
-            programs.btop.package = (pkgs.btop.override { rocmSupport = true; });
+            programs.btop.package = pkgs.btop.override { rocmSupport = true; };
           };
 
         home-manager.users.Maja = {
