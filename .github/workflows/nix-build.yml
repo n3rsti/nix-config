@@ -56,7 +56,8 @@ jobs:
               fi
 
               if [ "$attempt" = 5 ]; then
-                exit 1
+                echo "::warning::Failed to push $host to Attic after 5 attempts; continuing."
+                break
               fi
 
               sleep 60
