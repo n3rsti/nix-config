@@ -1,0 +1,52 @@
+name: Build NixOS hosts
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: nix-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: tailscale/github-action@v4
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:github-actions
+
+      - uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            extra-substituters = https://attic.tail3ce7af.ts.net/nixos
+            extra-trusted-public-keys = nixos:59kSVSWnT2e294OYH70+jegOzMq8zhx8DWuWal43ajE=
+
+      - run: nix profile install nixpkgs#attic-client
+
+      - run: attic login personal https://attic.tail3ce7af.ts.net "$ATTIC_TOKEN"
+        env:
+          ATTIC_TOKEN: ${{ secrets.ATTIC_TOKEN }}
+
+      - name: Check flake
+        run: nix flake check --print-build-logs
+
+      - name: Build and push hosts
+        run: |
+          set -euo pipefail
+
+          for host in laptop pc server wsl; do
+            echo "Building $host"
+            nix build ".#nixosConfigurations.$host.config.system.build.toplevel" \
+              --print-build-logs
+            attic push personal:nixos ./result
+          done

@@ -12,6 +12,7 @@
       self.nixosModules.immich
       self.nixosModules.paperless
       self.nixosModules.uptime-kuma
+      self.nixosModules.attic
       ./server/_hardware-configuration.nix
 
       (
