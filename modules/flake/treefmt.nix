@@ -4,7 +4,8 @@
     inputs.treefmt-nix.flakeModule
   ];
 
-  perSystem = _: {
+  perSystem = { config, ... }: {
+    formatter = config.treefmt.build.wrapper;
     treefmt = {
       projectRootFile = "flake.nix";
 
