@@ -36,7 +36,7 @@
       {
         name = "Nix packages";
         url = "https://search.nixos.org/packages";
-        sha256 = "sha256-JopfYL/FCA4H4oK9MHWUPr1LVIRSB/ugDhgVsudHmxA=";
+        sha256 = "sha256-FSoIJ9LR2v0DYmmqOrV/r2LhDCqaYI2dMn2lqRZ4Pxo=";
       }
       {
         name = "Mynixos";
