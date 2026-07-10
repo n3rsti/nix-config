@@ -20,10 +20,10 @@
           download-buffer-size = 1024 * 1024 * 1024; # 1 GiB
 
           substituters = [
-            "https://attic.tail3ce7af.ts.net/nixos"
+            "http://server.tail3ce7af.ts.net:8083/nixos"
           ];
           trusted-public-keys = [
-            "nixos:59kSVSWnT2e294OYH70+jegOzMq8zhx8DWuWal43ajE="
+            "nixos:lVIomUEQXDQPIh/gHzcss6+IgEZ8SMIXlsdlNOFV3jc="
           ];
         };
 

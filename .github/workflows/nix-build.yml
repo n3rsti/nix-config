@@ -28,19 +28,19 @@ jobs:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
           extra_nix_config: |
             experimental-features = nix-command flakes
-            extra-substituters = https://attic.tail3ce7af.ts.net/nixos
+            extra-substituters = http://server.tail3ce7af.ts.net:8083/nixos
             extra-trusted-public-keys = nixos:59kSVSWnT2e294OYH70+jegOzMq8zhx8DWuWal43ajE=
 
       - run: nix profile install nixpkgs#attic-client
 
-      - run: attic login personal https://attic.tail3ce7af.ts.net "$ATTIC_TOKEN"
+      - run: attic login personal http://server.tail3ce7af.ts.net:8083 "$ATTIC_TOKEN"
         env:
           ATTIC_TOKEN: ${{ secrets.ATTIC_TOKEN }}
 
       - name: Check Attic connectivity
         run: |
           set -euo pipefail
-          tailscale ping --c 5 attic.tail3ce7af.ts.net
+          tailscale ping --c 5 server.tail3ce7af.ts.net
           attic cache info personal:nixos
 
       - name: Check flake
