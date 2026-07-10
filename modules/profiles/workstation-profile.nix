@@ -22,6 +22,7 @@
       self.nixosModules.hyprland
       self.nixosModules.noctalia
       self.nixosModules.dev
+      self.nixosModules.binary-cache
     ];
 
     nixpkgs.config.android_sdk.accept_license = true;

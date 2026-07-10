@@ -18,13 +18,6 @@
           cores = lib.mkDefault 4;
           auto-optimise-store = true;
           download-buffer-size = 1024 * 1024 * 1024; # 1 GiB
-
-          substituters = [
-            "http://server.tail3ce7af.ts.net:8083/nixos"
-          ];
-          trusted-public-keys = [
-            "nixos:lVIomUEQXDQPIh/gHzcss6+IgEZ8SMIXlsdlNOFV3jc="
-          ];
         };
 
         gc = {

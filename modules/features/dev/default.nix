@@ -21,6 +21,7 @@
         self.homeModules.git
         self.homeModules.dev-tools
         self.homeModules.terminal
+        self.homeModules.zig
       ];
 
       dev = {
