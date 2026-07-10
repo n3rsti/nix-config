@@ -26,28 +26,28 @@
       {
         name = "JakDojade";
         url = "https://jakdojade.pl/lista-miast";
-        sha256 = "sha256-B289FyJverdY1yXoS4dJS8xlOl3EsstbZzjy4wTZjeM=";
+        icon = ../../assets/jakdojade.png;
       }
       {
         name = "Hyprland wiki";
         url = "https://wiki.hypr.land";
-        sha256 = "sha256-SB9Q6M+JG3A/T+2e909lc4jujnnIWfT6XTySx9/bLhU=";
+        icon = ../../assets/hyprland.png;
       }
       {
         name = "Nix packages";
         url = "https://search.nixos.org/packages";
-        sha256 = "sha256-FSoIJ9LR2v0DYmmqOrV/r2LhDCqaYI2dMn2lqRZ4Pxo=";
+        icon = ../../assets/nixos.png;
       }
       {
         name = "Mynixos";
         url = "https://mynixos.com/options";
-        sha256 = "sha256-pVJ92BP+ZVrMbJXYqpTasm8tgrnMdfJ7mlgFZNDG5XM=";
+        icon = ../../assets/mynixos.png;
       }
 
       {
         name = "Youtube";
         url = "https://youtube.com";
-        sha256 = "sha256-y2rbGYQ7ZFvCJxgfUnRvAemo/abBEzjKwjxZd8fSOGw=";
+        icon = ../../assets/youtube.png;
       }
     ];
   };
