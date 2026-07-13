@@ -12,13 +12,14 @@
     ];
   };
 
-  flake.homeModules.desktop = {
+  flake.homeModules.desktop = { pkgs, ... }: {
     imports = [
-      self.homeModules.session
+      self.homeModules.polkit
       self.homeModules.theme
-      self.homeModules.desktop-tools
-      self.homeModules.desktop-apps
-      self.homeModules.desktop-files
+    ];
+
+    home.packages = with pkgs; [
+      glib # Needed for gapplication launching like with gnome-weather
     ];
   };
 }

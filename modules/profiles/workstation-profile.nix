@@ -16,13 +16,14 @@
       self.nixosModules.fonts
       self.nixosModules.filesystems
       self.nixosModules.diagnostics
-      self.nixosModules.workstation-tools
+      self.nixosModules.nix-tools
       self.nixosModules.docker
       self.nixosModules.librepods
       self.nixosModules.hyprland
       self.nixosModules.noctalia
       self.nixosModules.dev
       self.nixosModules.binary-cache
+      self.nixosModules.appimage
     ];
 
     nixpkgs.config.android_sdk.accept_license = true;

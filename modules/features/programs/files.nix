@@ -1,11 +1,13 @@
 {
-  flake.homeModules.desktop-files =
+  flake.homeModules.files =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
         baobab # Disk usage analyzer
         gnome-disk-utility # Disks
         resources
+        gnome-text-editor
+        switcheroo # Converting image formats
         (nautilus.overrideAttrs (old: {
           buildInputs =
             old.buildInputs

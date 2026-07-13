@@ -1,11 +1,9 @@
 {
-  flake.nixosModules.workstation-tools = _: {
+  flake.nixosModules.nix-tools = {
     programs = {
-      nh.enable = true;
-
-      appimage = {
+      nh = {
         enable = true;
-        binfmt = true;
+        flake = "/etc/nixos";
       };
 
       nix-ld.enable = true;

@@ -8,6 +8,7 @@
       self.nixosModules.base
       self.nixosModules.dev
       self.nixosModules.ssh-agent
+      self.nixosModules.nix-tools
 
       (
         { pkgs, ... }:
@@ -53,24 +54,13 @@
 
           dev.microcontrollers.enable = false;
 
-          programs = {
-            nix-ld = {
-              enable = true;
-              libraries = with pkgs; [
-                libxcrypt
-                libxcrypt-legacy
-                stdenv.cc.cc
-                zlib
-                openssl
-              ];
-
-            };
-
-            direnv = {
-              enable = true;
-              nix-direnv.enable = true;
-            };
-          };
+          programs.nix-ld.libraries = with pkgs; [
+            libxcrypt
+            libxcrypt-legacy
+            stdenv.cc.cc
+            zlib
+            openssl
+          ];
 
           users.users.n3rsti = {
             isNormalUser = true;
