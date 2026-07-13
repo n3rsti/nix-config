@@ -19,7 +19,6 @@
         self.homeModules.microcontrollers
         self.homeModules.opencode
         self.homeModules.git
-        self.homeModules.ghostty
         self.homeModules.zig
       ];
 

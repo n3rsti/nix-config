@@ -9,6 +9,7 @@
       self.homeModules.media
       self.homeModules.productivity
       self.homeModules.files
+      self.homeModules.ghostty
     ];
 
     home.packages = with pkgs; [
