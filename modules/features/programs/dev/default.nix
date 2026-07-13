@@ -24,17 +24,19 @@
       ];
 
       dev = {
-        java.enable = lib.mkDefault true;
-        c.enable = lib.mkDefault true;
-        python.enable = lib.mkDefault true;
-        rust.enable = lib.mkDefault true;
-        go.enable = lib.mkDefault true;
         nix.enable = lib.mkDefault true;
         lua.enable = lib.mkDefault true;
-        typst.enable = lib.mkDefault true;
-        javascript.enable = lib.mkDefault true;
-        kotlin.enable = lib.mkDefault true;
-        microcontrollers.enable = lib.mkDefault true;
+
+        java.enable = lib.mkDefault false;
+        c.enable = lib.mkDefault false;
+        python.enable = lib.mkDefault false;
+        rust.enable = lib.mkDefault false;
+        go.enable = lib.mkDefault false;
+        typst.enable = lib.mkDefault false;
+        javascript.enable = lib.mkDefault false;
+        kotlin.enable = lib.mkDefault false;
+        zig.enable = lib.mkDefault false;
+        microcontrollers.enable = lib.mkDefault false;
       };
 
       home.packages = with pkgs; [
@@ -50,6 +52,6 @@
       self.nixosModules.microcontrollers
     ];
 
-    dev.microcontrollers.enable = lib.mkDefault true;
+    dev.microcontrollers.enable = lib.mkDefault false;
   };
 }

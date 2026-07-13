@@ -34,11 +34,9 @@
 
             programs.git.settings.user.email = "krzysztof.witucki@asseco.pl";
 
-            dev.kotlin.enable = false;
-            dev.csharp.enable = false;
-            dev.rust.enable = false;
-            dev.typst.enable = false;
-            dev.microcontrollers.enable = false;
+            dev.java.enable = true;
+            dev.javascript.enable = true;
+            dev.python.enable = true;
 
             home.sessionPath = [
               "$HOME/sakctl"
@@ -48,8 +46,6 @@
             home.homeDirectory = "/home/n3rsti";
             home.stateVersion = "24.11";
           };
-
-          dev.microcontrollers.enable = false;
 
           programs.nix-ld.libraries = with pkgs; [
             libxcrypt
