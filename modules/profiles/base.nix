@@ -8,6 +8,7 @@
       self.nixosModules.home-manager
       self.nixosModules.locale
       self.nixosModules.nix
+      self.nixosModules.nix-tools
       self.nixosModules.shell
     ];
   };

@@ -8,7 +8,6 @@
       self.nixosModules.base
       self.nixosModules.dev
       self.nixosModules.ssh-agent
-      self.nixosModules.nix-tools
 
       (
         { pkgs, ... }:
@@ -28,11 +27,9 @@
 
           home-manager.users.n3rsti = {
             imports = [
-              self.homeModules.git
-              self.homeModules.zsh
+              self.homeModules.base
               self.homeModules.neovim
               self.homeModules.dev
-              self.homeModules.cli-core
             ];
 
             programs.git.settings.user.email = "krzysztof.witucki@asseco.pl";

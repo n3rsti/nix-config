@@ -9,7 +9,6 @@
       self.nixosModules.fonts
       self.nixosModules.filesystems
       self.nixosModules.diagnostics
-      self.nixosModules.nix-tools
       self.nixosModules.docker
 
       self.nixosModules.gnome-services
