@@ -5,10 +5,10 @@
       lib,
       pkgs,
       config,
+      dotfilesPath,
       ...
     }:
     let
-      symlinkRoot = "${config.home.homeDirectory}/.config/dotfiles";
       link = config.lib.file.mkOutOfStoreSymlink;
     in
     {
@@ -66,9 +66,11 @@
 
       xdg.configFile = {
         "walker/themes" = {
-          source = link "${symlinkRoot}/walker/themes";
+          source = link "${dotfilesPath}/walker/themes";
           recursive = true;
         };
       };
+
+      home.file.".config/elephant/websearch.toml".source = link "${dotfilesPath}/elephant/websearch.toml";
     };
 }

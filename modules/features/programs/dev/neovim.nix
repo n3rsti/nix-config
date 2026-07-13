@@ -1,8 +1,12 @@
 {
   flake.homeModules.neovim =
-    { pkgs, config, ... }:
+    {
+      pkgs,
+      config,
+      dotfilesPath,
+      ...
+    }:
     let
-      symlinkRoot = "${config.home.homeDirectory}/.config/dotfiles";
       link = config.lib.file.mkOutOfStoreSymlink;
     in
     {
@@ -16,7 +20,7 @@
 
       xdg.configFile = {
         "nvim" = {
-          source = link "${symlinkRoot}/nvim";
+          source = link "${dotfilesPath}/nvim";
           recursive = true;
         };
       };

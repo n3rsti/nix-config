@@ -51,8 +51,5 @@
     home.packages = with pkgs; [
       snx-rs
     ];
-
-    dev.kotlin.enable = false;
-    dev.csharp.enable = false;
   };
 }

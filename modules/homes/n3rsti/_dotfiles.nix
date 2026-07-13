@@ -1,9 +1,9 @@
 {
   config,
+  dotfilesPath,
   ...
 }:
 let
-  symlinkRoot = "${config.home.homeDirectory}/.config/dotfiles";
   link = config.lib.file.mkOutOfStoreSymlink;
   icons = [
     "awakened.png"
@@ -23,31 +23,17 @@ let
   iconLinks = builtins.listToAttrs (
     map (name: {
       name = "icons/${name}";
-      value.source = link "${symlinkRoot}/apps/icons/${name}";
+      value.source = link "${dotfilesPath}/apps/icons/${name}";
     }) icons
   );
 
   appLinks = builtins.listToAttrs (
     map (name: {
       name = "applications/${name}.desktop";
-      value.source = link "${symlinkRoot}/apps/${name}.desktop";
+      value.source = link "${dotfilesPath}/apps/${name}.desktop";
     }) apps
   );
 in
 {
-  xdg.configFile = {
-    "hypr" = {
-      source = link "${symlinkRoot}/hypr";
-      recursive = true;
-    };
-
-    "zed" = {
-      source = link "${symlinkRoot}/zed";
-      recursive = true;
-    };
-  };
-  home.file.".config/elephant/websearch.toml".source = link "${symlinkRoot}/elephant/websearch.toml";
-
   xdg.dataFile = iconLinks // appLinks;
-
 }

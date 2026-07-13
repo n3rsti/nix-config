@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Nix packages
+Comment=Nix packages
+Exec=xdg-open https://search.nixos.org/packages
+Icon=nixos-logo
+Terminal=false
+Type=Application

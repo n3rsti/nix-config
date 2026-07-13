@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.nixosModules.home-manager = {
+  flake.nixosModules.home-manager = { dotfilesPath, ... }: {
     imports = [
       inputs.home-manager.nixosModules.default
     ];
@@ -10,6 +10,10 @@
       useUserPackages = true;
       backupFileExtension = "backup";
       overwriteBackup = true;
+
+      extraSpecialArgs = {
+        inherit dotfilesPath;
+      };
     };
   };
 }

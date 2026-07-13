@@ -1,6 +1,11 @@
-{ inputs, self, ... }:
 {
-  flake.nixosConfigurations.wsl = inputs.nixpkgs.lib.nixosSystem {
+  inputs,
+  self,
+  mkNixosSystem,
+  ...
+}:
+{
+  flake.nixosConfigurations.wsl = mkNixosSystem {
     system = "x86_64-linux";
 
     modules = [

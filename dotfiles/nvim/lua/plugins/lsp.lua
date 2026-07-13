@@ -1,0 +1,56 @@
+vim.pack.add({
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	"https://github.com/j-hui/fidget.nvim",
+})
+
+require("fidget").setup({})
+
+local servers = {
+	lua_ls = {},
+	gopls = {},
+	clangd = {},
+	vue_ls = {},
+	nil_ls = {},
+	ts_ls = {},
+	vtsls = {},
+	air = {},
+	vhdl_ls = {},
+	r_language_server = {},
+	jsonls = {},
+	tailwindcss = {},
+	rust_analyzer = {},
+	jdtls = {},
+	qmlls = {},
+	cssls = {},
+	texlab = {},
+	basedpyright = {},
+	roslyn_ls = {},
+	eslint = {},
+	tinymist = {},
+	blueprint_ls = {},
+	kotlin_language_server = {},
+	-- emmet_language_server = {
+	-- 	filetypes = {
+	-- 		"astro",
+	-- 		"eruby",
+	-- 		"html",
+	-- 		"htmlangular",
+	-- 		"htmldjango",
+	-- 		"javascriptreact",
+	-- 		"less",
+	-- 		"svelte",
+	-- 		"typescriptreact",
+	-- 		"vue",
+	-- 	},
+	-- },
+	emmet_ls = {},
+	angularls = {},
+	html = {},
+	bashls = {},
+	zls = {},
+}
+
+for server, config in pairs(servers) do
+	vim.lsp.config[server] = config
+	vim.lsp.enable(server)
+end
