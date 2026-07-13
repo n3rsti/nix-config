@@ -23,7 +23,9 @@ hl.config({
 
 hl.layer_rule({
 	name = "noctalia",
-	match = { namespace = "^(noctalia-background-.*$|noctalia-notifications-.*$|noctalia-toast-.*$)" },
+	match = {
+		namespace = "^(noctalia-bar-default|noctalia-attached-panel)",
+	},
 	ignore_alpha = 0.3,
 	blur = true,
 	blur_popups = true,

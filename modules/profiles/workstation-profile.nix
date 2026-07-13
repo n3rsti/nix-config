@@ -48,6 +48,8 @@
       self.homeModules.rdp
     ];
 
+    dev.java.enable = true;
+
     home.packages = with pkgs; [
       snx-rs
     ];
