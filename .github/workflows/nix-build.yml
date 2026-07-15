@@ -39,7 +39,7 @@ jobs:
           extra_nix_config: |
             experimental-features = nix-command flakes
             extra-substituters = http://server.tail3ce7af.ts.net:8083/nixos
-            extra-trusted-public-keys = nixos:59kSVSWnT2e294OYH70+jegOzMq8zhx8DWuWal43ajE=
+            extra-trusted-public-keys = nixos:lVIomUEQXDQPIh/gHzcss6+IgEZ8SMIXlsdlNOFV3jc=
 
       - run: nix profile install nixpkgs#attic-client
 
