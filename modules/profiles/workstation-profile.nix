@@ -49,6 +49,7 @@
     ];
 
     dev.java.enable = true;
+    dev.javascript.enable = true;
 
     home.packages = with pkgs; [
       snx-rs

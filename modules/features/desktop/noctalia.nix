@@ -12,7 +12,16 @@
   };
 
   flake.homeModules.noctalia =
-    { pkgs, ... }:
+    {
+      pkgs,
+      config,
+      dotfilesPath,
+      ...
+    }:
+
+    let
+      link = config.lib.file.mkOutOfStoreSymlink;
+    in
     {
 
       imports = [
@@ -28,6 +37,15 @@
       ];
 
       programs.noctalia.enable = true;
+
+      home.file.".config/noctalia/settings.toml".source = link "${dotfilesPath}/noctalia/settings.toml";
+
+      xdg.configFile = {
+        "noctalia/palettes" = {
+          source = link "${dotfilesPath}/noctalia/palettes";
+          recursive = true;
+        };
+      };
 
       # programs.noctalia-shell = {
       #   enable = true;
