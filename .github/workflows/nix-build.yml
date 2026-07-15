@@ -12,17 +12,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build ${{ matrix.host }}
     runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: false
-      max-parallel: 3
-      matrix:
-        host:
-          - laptop
-          - pc
-          - server
 
     steps:
       - uses: actions/checkout@v4
@@ -56,16 +46,24 @@ jobs:
       - name: Check flake
         run: nix flake check --print-build-logs
 
-      - name: Build and push ${{ matrix.host }}
+      - name: Build all hosts
         run: |
           set -euo pipefail
 
-          nix build \
-            ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel" \
-            --print-build-logs
+          nix build --print-build-logs \
+            ".#nixosConfigurations.laptop.config.system.build.toplevel" \
+            ".#nixosConfigurations.pc.config.system.build.toplevel" \
+            ".#nixosConfigurations.server.config.system.build.toplevel"
+
+      - name: Push all hosts to Attic
+        run: |
+          set -euo pipefail
 
           for attempt in 1 2 3 4 5; do
-            if attic push --jobs 4 personal:nixos ./result; then
+            if attic push --jobs 4 personal:nixos \
+              ./result \
+              ./result-1 \
+              ./result-2; then
               exit 0
             fi
 
