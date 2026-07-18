@@ -81,7 +81,7 @@
 
           networking = {
             networkmanager.enable = true;
-            hostName = "nixos";
+            hostName = "server";
             firewall.allowedTCPPorts = [ ];
           };
 
