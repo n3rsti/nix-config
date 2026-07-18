@@ -31,7 +31,7 @@ jobs:
             extra-substituters = http://server.tail3ce7af.ts.net:8083/nixos
             extra-trusted-public-keys = nixos:lVIomUEQXDQPIh/gHzcss6+IgEZ8SMIXlsdlNOFV3jc=
 
-      - run: nix profile install nixpkgs#attic-client
+      - run: nix profile add nixpkgs#attic-client
 
       - run: attic login personal http://server.tail3ce7af.ts.net:8083 "$ATTIC_TOKEN"
         env:
@@ -44,13 +44,13 @@ jobs:
           attic cache info personal:nixos
 
       - name: Check flake
-        run: nix flake check --print-build-logs
+        run: nix flake check
 
       - name: Build all hosts
         run: |
           set -euo pipefail
 
-          nix build --print-build-logs \
+          nix build \
             ".#nixosConfigurations.laptop.config.system.build.toplevel" \
             ".#nixosConfigurations.pc.config.system.build.toplevel" \
             ".#nixosConfigurations.server.config.system.build.toplevel"
