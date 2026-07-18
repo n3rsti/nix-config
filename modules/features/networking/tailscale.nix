@@ -1,8 +1,8 @@
+{ self, ... }:
 {
   flake.nixosModules.tailscale =
     {
       config,
-      self,
       ...
     }:
     {
