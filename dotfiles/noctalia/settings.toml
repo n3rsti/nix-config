@@ -1,17 +1,18 @@
-config_version = 2
+[audio]
+enable_overdrive = true
 
 [bar.default]
-capsule_fill = "#14141c88"
-background_opacity = 0.45
+background_opacity = 0.45000000000000001
 capsule = true
 capsule_border = "outline"
+capsule_fill = "#14141c88"
 capsule_opacity = 0.68999998457729816
 capsule_padding = 19.0
 capsule_radius = 17
 capsule_thickness = 0.9499999824911356
 center = [ "clock", "media" ]
 contact_shadow = true
-end = [ "brightness", "bluetooth", "volume", "network", "battery", "notifications", "session" ]
+end = [ "brightness", "volume", "bluetooth", "network", "battery", "notifications", "session" ]
 font_family = "Adwaita Sans"
 font_weight = 600
 margin_ends = 0
@@ -19,14 +20,22 @@ scale = 0.90000000596046448
 start = [ "workspaces", "tray" ]
 thickness = 38
 
+[brightness]
+enable_ddcutil = true
+minimum_brightness = 0.0099999997764825821
+
 [calendar]
 enabled = true
+refresh_minutes = 5
 
     [calendar.account.home_nextcloud]
     provider = "custom"
     server_url = "https://nextcloud.tail3ce7af.ts.net/remote.php/dav/"
     type = "caldav"
     username = "n3rsti"
+
+[calendar_credentials]
+home_nextcloud_password = "#1C1728"
 
 [control_center]
 sidebar_section = "none"
@@ -62,9 +71,9 @@ started = "/etc/nixos/modules/features/desktop/noctalia/_noctalia-startup.sh"
 auto_locate = true
 
 [lockscreen_widgets]
-enabled = false
+enabled = true
 schema_version = 2
-widget_order = [ "lockscreen-login-box@DP-1" ]
+widget_order = [ "lockscreen-login-box@DP-1", "lockscreen-widget-0000000000000001", "lockscreen-widget-0000000000000002" ]
 
     [lockscreen_widgets.grid]
     cell_size = 16
@@ -72,24 +81,56 @@ widget_order = [ "lockscreen-login-box@DP-1" ]
     visible = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
-    box_height = 70.0
+    box_height = 80.0
     box_width = 400.0
     cx = 1280.0
-    cy = 1321.0
+    cy = 1310.0
     output = "DP-1"
     rotation = 0.0
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
         background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
+        background_opacity = 0.20000000000000001
+        background_radius = 16.0
         input_opacity = 1.0
         input_radius = 6.0
         show_caps_lock = true
-        show_keyboard_layout = true
+        show_keyboard_layout = false
         show_login_button = true
         show_password_hint = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 272.0
+    box_width = 608.0
+    cx = 1280.0
+    cy = 376.0
+    output = "DP-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background = false
+        center_text = true
+        shadow = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 128.0
+    box_width = 560.0
+    cx = 1264.0
+    cy = 1152.0
+    output = "DP-1"
+    rotation = 0.0
+    type = "media_player"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        background = true
+        background_opacity = 0.14999999999999999
+        hide_when_no_media = true
+        layout = "horizontal"
+
+[nightlight]
+enabled = true
 
 [notification]
 background_opacity = 0.71999998390674591
@@ -146,6 +187,8 @@ scale = 0.90000000000000013
 
 [widget.media]
 hide_when_no_media = true
+max_length = 180
+title_scroll = "on_hover"
 
 [widget.tray]
 scale = 1.1500000000000001

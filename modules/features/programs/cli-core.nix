@@ -39,6 +39,7 @@
           enable = true;
           enableZshIntegration = config.programs.zsh.enable;
         };
+        bat.enable = true;
       };
     };
 }
