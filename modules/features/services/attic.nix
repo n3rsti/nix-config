@@ -45,5 +45,7 @@
     };
 
     networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 8083 ];
+
+    services.tailscaleServe.apps.attic.target = "http://localhost:8083";
   };
 }
