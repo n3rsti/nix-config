@@ -13,6 +13,8 @@
         };
       };
 
+      services.tailscaleServe.apps.paperless.target = "http://127.0.0.1:28981";
+
       sops.secrets.borgbackup_passphrase_paperless = { };
 
       services.borgbackup.jobs.paperless-backup = {

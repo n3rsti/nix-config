@@ -13,6 +13,8 @@
       self.nixosModules.paperless
       self.nixosModules.uptime-kuma
       self.nixosModules.attic
+      self.nixosModules.pi-hole
+      self.nixosModules.glance
       ./server/_hardware-configuration.nix
 
       (
@@ -81,7 +83,7 @@
 
           networking = {
             networkmanager.enable = true;
-            hostName = "nixos";
+            hostName = "server";
             firewall.allowedTCPPorts = [ ];
           };
 

@@ -1,3 +1,4 @@
+{ self, ... }:
 {
   flake.nixosModules.tailscale =
     {
@@ -5,6 +6,9 @@
       ...
     }:
     {
+      imports = [
+        self.nixosModules.tailscale-serve
+      ];
       services = {
         tailscale = {
           enable = true;

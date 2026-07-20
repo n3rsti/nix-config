@@ -3,6 +3,8 @@
 
     services.immich.enable = true;
 
+    services.tailscaleServe.apps.immich.target = "http://localhost:2283";
+
     sops.secrets.borgbackup_passphrase_immich = { };
 
     services.borgbackup.jobs.immich-backup = {
