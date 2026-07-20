@@ -14,6 +14,7 @@
       self.nixosModules.uptime-kuma
       self.nixosModules.attic
       self.nixosModules.pi-hole
+      self.nixosModules.glance
       ./server/_hardware-configuration.nix
 
       (
