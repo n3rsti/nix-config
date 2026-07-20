@@ -21,7 +21,7 @@ map("<C-e>", function()
 	harpoon.ui:toggle_quick_menu(harpoon:list())
 end, "Toggle quick menu")
 
-for i = 1, 4 do
+for i = 1, 9 do
 	map("<leader>" .. i, function()
 		harpoon:list():select(i)
 	end, i)

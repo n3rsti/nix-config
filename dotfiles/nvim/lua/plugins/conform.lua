@@ -15,6 +15,8 @@ require("conform").setup({
 		vue = { "prettierd" },
 		bash = { "beautysh" },
 		sh = { "beautysh" },
+		html = { "prettierd" },
+		htmlangular = { "prettierd" },
 	},
 	format_on_save = {
 		timeout_ms = 500,

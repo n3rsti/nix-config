@@ -53,3 +53,17 @@ map("<Up>", function()
 end, "Quickfix: open")
 
 map("<Down>", vim.cmd.cclose, "Quickfix: close")
+
+local copy_current_file_path = function()
+	local path = vim.fn.expand("%:p")
+
+	if path == "" then
+		vim.notify("Current buffer has no file path", vim.log.levels.WARN)
+		return
+	end
+
+	vim.fn.setreg("+", path)
+	vim.notify("Copied: " .. path)
+end
+
+map("<leader>yp", copy_current_file_path, "Copy current file path")
