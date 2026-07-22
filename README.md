@@ -19,13 +19,9 @@ In addition, the configuration uses the `determinate-nix` channels. These are de
 
 ### Noctalia Shell Configuration
 
-![Noctalia shell configuration](./assets/20260706_204418.png)
+![Noctalia shell configuration](./assets/20260723_000136.png)
 
-![Noctalia shell configuration](./assets/20260706_204502.png)
-
-### Waybar Configuration
-
-![Desktop showcase with Waybar](./assets/desktop.png)
+![Noctalia shell configuration](./assets/20260723_000002.png)
 
 ## Details
 
