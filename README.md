@@ -6,7 +6,6 @@ This repository contains my NixOS and Home Manager configuration for multiple ma
 - Laptop
 - WSL
 - Server
-- Virtual machines
 
 The setup includes reusable modules that can be imported for quick host configuration. It is designed to be stable by using the stable `nixpkgs` channel for most packages.
 Additionaly the configuration is using the `determinate-nix` channels which essentially are copies of original `nixpkgs` with additional features such as [nixpkgs-cooldown](https://determinate.systems/blog/nixpkgs-cooldown) for increased security.
@@ -61,6 +60,8 @@ Configured as a 24/7 base for device integration and self-hosted services, inclu
 - Document organization with **Paperless**
 - Image storage with **Immich**
 - Backups with **borgbackup**
+- Build caching with **Github Actions** and **Attic* for ultra fast rebuilds even on slower machines
+- Pi-hole for Network-wide and remote Ad Blocking
 
 ## Repository Structure
 
@@ -86,7 +87,7 @@ This means that each module should be a [flake-parts](https://flake.parts/) modu
 1. Clone the repository.
 
 > [!TIP]
-> Use `nix-shell -p git` if `git` is not available.
+> Use `nix-shell -p git nh` if `git` and `nh` are not available.
 
 2. Create a new host under `modules/hosts/`.
 
@@ -101,11 +102,18 @@ This means that each module should be a [flake-parts](https://flake.parts/) modu
 5. Rebuild the system:
 
    ```sh
-   make switch HOST=host
+   nh os switch -H hostname
    ```
 
    Example:
 
    ```sh
-   make switch HOST=pc
+   nh os switch -H pc
    ```
+
+6. If you have the same hostname and configuration name, you can continue to just use:
+
+   ```sh
+   nh os switch
+   ```
+
