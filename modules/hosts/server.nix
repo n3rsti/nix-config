@@ -15,6 +15,7 @@
       self.nixosModules.attic
       self.nixosModules.pi-hole
       self.nixosModules.glance
+      self.nixosModules.docker
       ./server/_hardware-configuration.nix
 
       (
@@ -60,41 +61,16 @@
           environment.systemPackages = with pkgs; [
             nano
             neovim
-            git
-            ghostty
-            jdk25
             btop
-            tmux
-            go
-            docker
             wakeonlan
-            nmap
-            eza
-            zip
-            unzip
-            tree
-            nixfmt
             age
             sops
-            ripgrep
-            devenv
-            jq
           ];
 
           networking = {
             networkmanager.enable = true;
             hostName = "server";
             firewall.allowedTCPPorts = [ ];
-          };
-
-          services.networkd-dispatcher = {
-            enable = true;
-            rules."50-tailscale-optimizations" = {
-              onState = [ "routable" ];
-              script = ''
-                ${pkgs.ethtool}/bin/ethtool -K eth0 rx-udp-gro-forwarding on rx-gro-list off
-              '';
-            };
           };
 
           services.xserver.xkb = {

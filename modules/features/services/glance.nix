@@ -1,7 +1,9 @@
 {
   flake.nixosModules.glance =
     { config, ... }:
-
+    let
+      port = 8085;
+    in
     {
       sops.secrets.immich_api_key = {
         restartUnits = [ "glance.service" ];
@@ -13,7 +15,7 @@
         settings = {
           server = {
             host = "127.0.0.1";
-            port = 8085;
+            inherit port;
           };
 
           pages = [
@@ -25,6 +27,24 @@
                   size = "small";
 
                   widgets = [
+                    {
+                      type = "server-stats";
+                      servers = [
+                        {
+                          type = "local";
+                          name = "Services";
+                        }
+
+                      ];
+
+                    }
+                    {
+                      type = "dns-stats";
+                      service = "pihole-v6";
+                      url = "http://127.0.0.1:8084";
+                      password = "\${PIHOLE_APP_PASSWORD}";
+                      hour-format = "24h";
+                    }
                     {
                       type = "custom-api";
                       title = "Immich stats";
@@ -183,6 +203,8 @@
         };
       };
 
-      services.tailscaleServe.apps.glance.target = "http://localhost:8085";
+      services.tailscaleServe.apps.glance.target = "http://localhost:${toString port}";
+
+      services.glance.environmentFile = config.sops.templates."glance.env".path;
     };
 }

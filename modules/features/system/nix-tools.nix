@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.nix-tools = {
+  flake.nixosModules.nix-tools = { pkgs, ... }: {
     programs = {
       nh = {
         enable = true;
@@ -13,5 +13,9 @@
         nix-direnv.enable = true;
       };
     };
+
+    environment.systemPackages = with pkgs; [
+      nix-tree
+    ];
   };
 }
