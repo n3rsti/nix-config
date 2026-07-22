@@ -7,11 +7,13 @@ This repository contains my NixOS and Home Manager configuration for multiple ma
 - WSL
 - Server
 
-The setup includes reusable modules that can be imported for quick host configuration. It is designed to be stable by using the stable `nixpkgs` channel for most packages.
-Additionaly the configuration is using the `determinate-nix` channels which essentially are copies of original `nixpkgs` with additional features such as [nixpkgs-cooldown](https://determinate.systems/blog/nixpkgs-cooldown) for increased security.
+The setup includes reusable modules that can be imported to configure hosts quickly and consistently. To prioritize stability, most packages are sourced from the stable `nixpkgs` channel.
+
+In addition, the configuration uses the `determinate-nix` channels. These are derived from the upstream `nixpkgs` channels and include extra features such as [nixpkgs-cooldown](https://determinate.systems/blog/nixpkgs-cooldown), which helps improve supply-chain security.
+
 
 > [!NOTE]
-> Some dotfile configurations are already integrated into this repository. The rest can be found in my [dotfiles](https://github.com/n3rsti/dotfiles) repository.
+> Most of my dotfile configurations are already integrated into this repository. The rest can be found in my [dotfiles](https://github.com/n3rsti/dotfiles) repository.
 
 ## Screenshots
 
@@ -48,7 +50,7 @@ Main workstation configured for:
 Shares most of its configuration with the **PC**. It is configured for:
 
 - Updates built remotely by the PC
-- Remote desktop sharing
+- Comfortable usage without additional peripherals
 
 #### Server
 
@@ -60,8 +62,9 @@ Configured as a 24/7 base for device integration and self-hosted services, inclu
 - Document organization with **Paperless**
 - Image storage with **Immich**
 - Backups with **borgbackup**
-- Build caching with **Github Actions** and **Attic* for ultra fast rebuilds even on slower machines
-- Pi-hole for Network-wide and remote Ad Blocking
+- Build caching with **Github Actions** and **Attic** for ultra fast rebuilds even on slower machines
+- Network-wide and remote Ad Blocking with **Pi-hole**
+- Dashboard with **Glance**
 
 ## Repository Structure
 
