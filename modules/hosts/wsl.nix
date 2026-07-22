@@ -42,6 +42,7 @@
             dev.java.enable = true;
             dev.javascript.enable = true;
             dev.python.enable = true;
+            dev.zig.enable = true;
 
             home.sessionPath = [
               "$HOME/sakctl"

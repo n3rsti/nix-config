@@ -62,15 +62,4 @@
     home.stateVersion = "24.11";
 
   };
-
-  flake.homeModules.n3rsti-vm = {
-    imports = [
-      self.homeModules.vm-profile
-      ./n3rsti/_firefox.nix
-    ];
-
-    home.username = "n3rsti";
-    home.homeDirectory = "/home/n3rsti";
-    home.stateVersion = "24.11";
-  };
 }

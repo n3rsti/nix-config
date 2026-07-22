@@ -26,6 +26,11 @@
         wget
         zip
         gnumake
+        exfatprogs
+        parted
+        dmidecode
+        usbutils
+        vulkan-tools
       ];
 
       programs = {

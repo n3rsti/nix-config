@@ -9,6 +9,7 @@
       self.nixosModules.input
       self.nixosModules.printing
       self.nixosModules.gdm
+      self.nixosModules.fonts
     ];
   };
 
@@ -16,6 +17,7 @@
     imports = [
       self.homeModules.polkit
       self.homeModules.theme
+      self.homeModules.web-apps
     ];
 
     home.packages = with pkgs; [

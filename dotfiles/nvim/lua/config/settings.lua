@@ -70,3 +70,5 @@ vim.filetype.add({
 		razor = "razor",
 	},
 })
+
+vim.o.exrc = true

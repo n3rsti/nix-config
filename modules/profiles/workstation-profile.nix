@@ -13,9 +13,6 @@
       self.nixosModules.localsend
       self.nixosModules.tailscale-client
       self.nixosModules.zerotier
-      self.nixosModules.fonts
-      self.nixosModules.filesystems
-      self.nixosModules.diagnostics
       self.nixosModules.docker
       self.nixosModules.librepods
       self.nixosModules.hyprland
@@ -41,7 +38,6 @@
       self.homeModules.application-suite
       self.homeModules.downloads
       self.homeModules.tailscale-client
-      self.homeModules.web-apps
       self.homeModules.hyprland
       self.homeModules.noctalia
       self.homeModules.walker

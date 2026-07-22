@@ -19,8 +19,20 @@
       programs.mcp = {
         enable = true;
 
-        servers.nixos = {
-          command = "mcp-nixos";
+        servers = {
+          nixos = {
+            command = "mcp-nixos";
+          };
+
+          angular-cli = {
+            command = "npx";
+            args = [
+              "-y"
+              "@angular/cli"
+              "mcp"
+            ];
+          };
+
         };
       };
 
