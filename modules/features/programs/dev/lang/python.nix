@@ -23,6 +23,7 @@
               pip
               pygobject3
               dbus-python
+              jupytext
             ]
           ))
           basedpyright

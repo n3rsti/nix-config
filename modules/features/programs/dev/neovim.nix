@@ -16,6 +16,7 @@
         unstable.tree-sitter
         ripgrep
         gcc
+        imagemagick # To show images in neovim
       ];
 
       xdg.configFile = {
