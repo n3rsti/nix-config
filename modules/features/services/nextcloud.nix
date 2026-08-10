@@ -16,6 +16,7 @@
         database.createLocally = true;
         config.adminpassFile = "/run/secrets/nextcloud-admin-pass";
         config.dbtype = "pgsql";
+        settings.datadirectory = "/srv/storage/nextcloud";
         settings.trusted_domains = [
           "localhost"
           "server.tail3ce7af.ts.net"
@@ -29,6 +30,10 @@
         configureRedis = true;
       };
 
+      systemd.services.nextcloud-setup.unitConfig.RequiresMountsFor = [ "/srv/storage/nextcloud" ];
+      systemd.services.nextcloud-cron.unitConfig.RequiresMountsFor = [ "/srv/storage/nextcloud" ];
+      systemd.services.phpfpm-nextcloud.unitConfig.RequiresMountsFor = [ "/srv/storage/nextcloud" ];
+
       services.tailscaleServe.apps.nextcloud.target = "http://127.0.0.1:80";
 
       services.postgresqlBackup = {
@@ -38,7 +43,10 @@
       sops.secrets.borgbackup_passphrase_nextcloud = { };
 
       services.borgbackup.jobs.nextcloud-backup = {
-        paths = "/var/lib/nextcloud";
+        paths = [
+          "/var/lib/nextcloud"
+          "/srv/storage/nextcloud"
+        ];
         encryption = {
           mode = "repokey-blake2";
           passCommand = "cat /run/secrets/borgbackup_passphrase_nextcloud";
@@ -55,5 +63,9 @@
           yearly = 1;
         };
       };
+
+      systemd.services."borgbackup-job-nextcloud-backup".unitConfig.RequiresMountsFor = [
+        "/srv/storage/nextcloud"
+      ];
     };
 }

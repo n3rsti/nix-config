@@ -7,6 +7,7 @@
     {
       services.paperless = {
         enable = true;
+        mediaDir = "/srv/storage/paperless";
         settings = {
           PAPERLESS_URL = "https://paperless.tail3ce7af.ts.net";
           configureTika = true;
@@ -18,7 +19,10 @@
       sops.secrets.borgbackup_passphrase_paperless = { };
 
       services.borgbackup.jobs.paperless-backup = {
-        paths = "/var/lib/paperless";
+        paths = [
+          "/var/lib/paperless"
+          "/srv/storage/paperless"
+        ];
         encryption = {
           mode = "repokey-blake2";
           passCommand = "cat /run/secrets/borgbackup_passphrase_paperless";
@@ -35,6 +39,10 @@
           yearly = 1;
         };
       };
+
+      systemd.services."borgbackup-job-paperless-backup".unitConfig.RequiresMountsFor = [
+        "/srv/storage/paperless"
+      ];
 
       environment.systemPackages = with pkgs; [
         ocrmypdf
