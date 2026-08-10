@@ -65,6 +65,7 @@
             wakeonlan
             age
             sops
+            ghostty
           ];
 
           networking = {
