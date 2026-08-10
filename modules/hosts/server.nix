@@ -28,6 +28,7 @@
 
           home-manager.users.n3rsti.imports = [
             self.homeModules.n3rsti-server
+            self.homeModules.opencode
           ];
 
           programs.ssh = {
@@ -58,6 +59,44 @@
             groups.media = { };
           };
 
+          fileSystems."/srv/storage" = {
+            device = "/dev/disk/by-uuid/0ca806d5-a704-4eda-9e16-159fb418928e";
+            fsType = "ext4";
+          };
+
+          fileSystems."/srv/media" = {
+            device = "/srv/storage/media";
+            fsType = "none";
+            options = [ "bind" ];
+            depends = [ "/srv/storage" ];
+          };
+
+          systemd.tmpfiles.settings."10-storage" = {
+            "/srv/storage/media".d = {
+              mode = "2775";
+              user = "n3rsti";
+              group = "media";
+            };
+
+            "/srv/storage/immich".d = {
+              mode = "0700";
+              user = "immich";
+              group = "immich";
+            };
+
+            "/srv/storage/paperless".d = {
+              mode = "0750";
+              user = "paperless";
+              group = "paperless";
+            };
+
+            "/srv/storage/nextcloud".d = {
+              mode = "0750";
+              user = "nextcloud";
+              group = "nextcloud";
+            };
+          };
+
           environment.systemPackages = with pkgs; [
             nano
             neovim
@@ -65,6 +104,7 @@
             wakeonlan
             age
             sops
+            ghostty
           ];
 
           networking = {

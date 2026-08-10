@@ -1,14 +1,24 @@
 {
   flake.nixosModules.immich = _: {
 
-    services.immich.enable = true;
+    services.immich = {
+      enable = true;
+      mediaLocation = "/srv/storage/immich";
+    };
+
+    systemd.services.immich-server.unitConfig.RequiresMountsFor = [ "/srv/storage/immich" ];
 
     services.tailscaleServe.apps.immich.target = "http://localhost:2283";
+
+    services.postgresqlBackup.databases = [ "immich" ];
 
     sops.secrets.borgbackup_passphrase_immich = { };
 
     services.borgbackup.jobs.immich-backup = {
-      paths = "/var/lib/immich";
+      paths = [
+        "/var/lib/immich"
+        "/srv/storage/immich"
+      ];
       encryption = {
         mode = "repokey-blake2";
         passCommand = "cat /run/secrets/borgbackup_passphrase_immich";
@@ -25,5 +35,9 @@
         yearly = 1;
       };
     };
+
+    systemd.services."borgbackup-job-immich-backup".unitConfig.RequiresMountsFor = [
+      "/srv/storage/immich"
+    ];
   };
 }
