@@ -1,6 +1,7 @@
 -- Replace these with the actual classes from `hyprctl clients`
 local game_classes = {
 	["steam_app_238960"] = true,
+	["awakened-poe-trade"] = true,
 }
 
 local scroll_click_enabled = false
@@ -43,11 +44,6 @@ hl.bind("CTRL + SHIFT + mouse_down", scroll_click, { non_consuming = true })
 hl.bind("CTRL + SHIFT + mouse_up", scroll_click, { non_consuming = true })
 hl.bind("F4", hl.dsp.exec_cmd("~/.config/dotfiles/scripts/path-of-exile/poe_type.sh /exit"), { non_consuming = true })
 hl.bind(
-	"F5",
-	hl.dsp.exec_cmd("~/.config/dotfiles/scripts/path-of-exile/poe_type.sh /hideout"),
-	{ non_consuming = true }
-)
-hl.bind(
 	"F6",
 	hl.dsp.exec_cmd("~/.config/dotfiles/scripts/path-of-exile/poe_type.sh /kingsmarch"),
 	{ non_consuming = true }
@@ -58,4 +54,4 @@ hl.bind(
 	{ non_consuming = true }
 )
 
--- hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("~/.config/dotfiles/scripts/path-of-exile/poe_enter.sh"))
+-- hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("/etc/nixos/dotfiles/scripts/path-of-exile/poe_enter.sh"))
