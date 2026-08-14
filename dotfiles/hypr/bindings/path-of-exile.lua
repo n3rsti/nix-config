@@ -42,10 +42,10 @@ hl.bind("CTRL + mouse_down", scroll_click, { non_consuming = true })
 hl.bind("CTRL + mouse_up", scroll_click, { non_consuming = true })
 hl.bind("CTRL + SHIFT + mouse_down", scroll_click, { non_consuming = true })
 hl.bind("CTRL + SHIFT + mouse_up", scroll_click, { non_consuming = true })
-hl.bind("F4", hl.dsp.exec_cmd("~/.config/dotfiles/scripts/path-of-exile/poe_type.sh /exit"), { non_consuming = true })
+hl.bind("F4", hl.dsp.exec_cmd("~/.config/dotfiles/scripts/path-of-exile/poe_type.sh /boat"), { non_consuming = true })
 hl.bind(
 	"F6",
-	hl.dsp.exec_cmd("~/.config/dotfiles/scripts/path-of-exile/poe_type.sh /kingsmarch"),
+	hl.dsp.exec_cmd("~/.config/dotfiles/scripts/path-of-exile/poe_type.sh /menagerie"),
 	{ non_consuming = true }
 )
 hl.bind(
