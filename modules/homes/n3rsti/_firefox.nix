@@ -3,7 +3,14 @@
   ...
 }:
 {
+  stylix.targets.firefox = {
+    enable = true;
+    profileNames = [ "default" ];
+    colorTheme.enable = true;
+  };
+
   programs.firefox.profiles.default = {
+    extensions.settings."FirefoxColor@mozilla.com".force = true;
     preConfig = builtins.readFile "${pkgs.unstable.arkenfox-userjs}/user.js";
     extraConfig = ''
       user_pref("browser.startup.page", 1);

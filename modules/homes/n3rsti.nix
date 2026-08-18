@@ -7,6 +7,7 @@
       ./n3rsti/_dotfiles.nix
       ./n3rsti/_email/protonmail.nix
       ./n3rsti/_email/zimbra.nix
+      ./n3rsti/_gnome.nix
     ];
 
     home.username = "n3rsti";

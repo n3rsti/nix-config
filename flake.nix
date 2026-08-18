@@ -52,6 +52,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:nix-community/stylix/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     pixie-sddm = {
       url = "github:xCaptaiN09/pixie-sddm";
       inputs.nixpkgs.follows = "nixpkgs";

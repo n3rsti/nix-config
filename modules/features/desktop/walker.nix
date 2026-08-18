@@ -16,7 +16,7 @@
         inputs.walker.homeManagerModules.default
       ];
       programs.walker = {
-        enable = true;
+        enable = lib.mkDefault true;
         runAsService = true;
 
         config = {

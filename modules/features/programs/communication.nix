@@ -15,5 +15,12 @@
         unstable.protonmail-desktop
         unstable.signal-desktop
       ];
+
+      xdg.autostart = {
+        enable = true;
+        entries = [
+          "${pkgs.signal-desktop}/share/applications/signal.desktop"
+        ];
+      };
     };
 }

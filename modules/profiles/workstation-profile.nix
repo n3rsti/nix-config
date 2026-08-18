@@ -24,7 +24,7 @@
 
     nixpkgs.config.android_sdk.accept_license = true;
 
-    services.displayManager.defaultSession = "hyprland-uwsm";
+    services.displayManager.defaultSession = "gnome";
   };
 
   flake.homeModules.workstation-profile = { pkgs, ... }: {
