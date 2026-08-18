@@ -28,6 +28,11 @@
               { src = "${coreutils}/bin/install"; }
               { src = "${coreutils}/bin/mv"; }
             ];
+
+            wslConf.interop = {
+              enabled = false;
+              appendWindowsPath = false;
+            };
           };
 
           home-manager.users.n3rsti = {
