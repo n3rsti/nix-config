@@ -9,6 +9,8 @@
     pkgs.gnomeExtensions.brightness-control-using-ddcutil
     pkgs.unstable.gnomeExtensions.transparent-windows
     pkgs.gnomeExtensions.rounded-window-corners-reborn
+    pkgs.gnomeExtensions.caffeine
+    pkgs.gnomeExtensions.clipboard-indicator
   ];
 
   dconf = {
@@ -26,6 +28,8 @@
           pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
           pkgs.unstable.gnomeExtensions.transparent-windows.extensionUuid
           pkgs.gnomeExtensions.rounded-window-corners-reborn.extensionUuid
+          pkgs.gnomeExtensions.caffeine.extensionUuid
+          pkgs.gnomeExtensions.clipboard-indicator.extensionUuid
         ];
       };
 
