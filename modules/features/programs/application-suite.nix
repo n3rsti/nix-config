@@ -19,5 +19,15 @@
       gnome-online-accounts-gtk
       unstable.bitwarden-desktop
     ];
+
+    xdg.desktopEntries.bitwarden = {
+      name = "Bitwarden";
+      comment = "Secure and free password manager for all of your devices";
+      exec = "env XDG_CURRENT_DESKTOP=KDE ${pkgs.unstable.bitwarden-desktop}/bin/bitwarden %U";
+      icon = "bitwarden";
+      type = "Application";
+      categories = [ "Utility" ];
+      mimeType = [ "x-scheme-handler/bitwarden" ];
+    };
   };
 }

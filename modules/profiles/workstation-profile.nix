@@ -20,6 +20,7 @@
       self.nixosModules.dev
       self.nixosModules.binary-cache
       self.nixosModules.appimage
+      self.nixosModules.gnome
     ];
 
     nixpkgs.config.android_sdk.accept_license = true;

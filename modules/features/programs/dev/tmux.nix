@@ -16,6 +16,7 @@
 
         set -g allow-passthrough on
         set -g visual-activity off
+        set -g set-clipboard on
 
         set -g status-style 'bg=#16161e fg=#a9b1d6'
         set -g window-status-current-format " #[bold]#I:#W#[default]* "
