@@ -37,7 +37,7 @@
             white-list = true;
           };
           enable = true;
-          jvmOpts = "-Xms8G -Xmx8G -XX:+UseZGC -XX:+AlwaysPreTouch -XX:+DisableExplicitGC";
+          jvmOpts = "-Xms2G -Xmx8G -XX:+UseZGC -XX:+DisableExplicitGC";
 
           package = pkgs.fabricServers.fabric-1_21_10.override {
             loaderVersion = "0.18.1";

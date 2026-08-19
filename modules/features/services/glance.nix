@@ -33,6 +33,17 @@
                         {
                           type = "local";
                           name = "Services";
+                          hide-mountpoints-by-default = true;
+                          mountpoints = {
+                            "/srv/storage" = {
+                              hide = false;
+                            };
+
+                            "/" = {
+                              hide = false;
+                            };
+
+                          };
                         }
 
                       ];

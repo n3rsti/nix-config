@@ -26,13 +26,15 @@
             sysctl."net.ipv6.conf.all.forwarding" = 1;
           };
 
-          home-manager.users.n3rsti.imports = [
-            self.homeModules.n3rsti-server
-            self.homeModules.opencode
-            self.homeModules.javascript
-          ];
+          home-manager.users.n3rsti = {
+            imports = [
+              self.homeModules.n3rsti-server
+              self.homeModules.opencode
+              self.homeModules.javascript
+            ];
 
-          dev.javascript.enable = true;
+            dev.javascript.enable = true;
+          };
 
           programs.ssh = {
             startAgent = true;

@@ -2,7 +2,6 @@
   flake.homeModules.theme =
     {
       pkgs,
-      config,
       ...
     }:
     {
