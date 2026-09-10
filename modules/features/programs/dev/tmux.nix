@@ -9,6 +9,9 @@
       terminal = "screen-256color";
 
       extraConfig = ''
+        # Fix wsl character spawning
+        set -sg escape-time 50
+
         setw -g pane-base-index 1
         set-option -g focus-events on
 

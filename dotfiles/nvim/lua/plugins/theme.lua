@@ -26,6 +26,8 @@ require("rose-pine").setup({
 		Pmenu = { bg = "base" },
 		BlinkCmpDoc = { bg = "base" },
 		BlinkCmpDocBorder = { bg = "base" },
+		TroubleNormal = { bg = "base" },
+		TroubleNormalNC = { bg = "base" },
 	},
 })
 

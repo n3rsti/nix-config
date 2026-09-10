@@ -11,6 +11,10 @@
         package = pkgs.unstable.opencode;
         enableMcpIntegration = true;
 
+        tui = {
+          scroll_acceleration.enabled = true;
+        };
+
         extraPackages = [
           pkgs.mcp-nixos
         ];
