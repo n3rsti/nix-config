@@ -2,6 +2,7 @@
 local game_classes = {
 	["steam_app_238960"] = true,
 	["awakened-poe-trade"] = true,
+	["steam_app_2694490"] = true,
 }
 
 local scroll_click_enabled = false

@@ -32,6 +32,20 @@
           pkgs.gnomeExtensions.clipboard-indicator.extensionUuid
         ];
       };
+      "org/gnome/desktop/input-sources" = {
+        sources = [
+          (lib.hm.gvariant.mkTuple [
+            "xkb"
+            "pl"
+          ])
+          (lib.hm.gvariant.mkTuple [
+            "xkb"
+            "us"
+          ])
+        ];
+
+        xkb-options = [ "terminate:ctrl_alt_bksp" ];
+      };
 
       "org/gnome/shell/keybindings" = {
         switch-to-application-1 = [ ];
