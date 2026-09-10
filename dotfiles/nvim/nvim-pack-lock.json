@@ -95,6 +95,14 @@
       "rev": "7a12a1677bbe96ca98f0c713448ac1f518ba09b7",
       "src": "https://github.com/NOSDuco/remote-sshfs.nvim"
     },
+    "telescope-frecency.nvim": {
+      "rev": "5479d8a269e30479280c59e44f805396127653e6",
+      "src": "https://github.com/nvim-telescope/telescope-frecency.nvim"
+    },
+    "telescope-fzf-native.nvim": {
+      "rev": "b25b749b9db64d375d782094e2b9dce53ad53a40",
+      "src": "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+    },
     "telescope-fzy-native.nvim": {
       "rev": "282f069504515eec762ab6d6c89903377252bf5b",
       "src": "https://github.com/nvim-telescope/telescope-fzy-native.nvim"

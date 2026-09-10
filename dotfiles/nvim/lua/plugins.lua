@@ -1,5 +1,16 @@
 require("plugins.highlighting")
 
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(event)
+		if
+			event.data.spec.name == "telescope-fzf-native.nvim"
+			and (event.data.kind == "install" or event.data.kind == "update")
+		then
+			vim.system({ "make" }, { cwd = event.data.path }):wait()
+		end
+	end,
+})
+
 vim.pack.add({
 	"https://github.com/3rd/image.nvim",
 	{ src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
@@ -26,7 +37,8 @@ vim.pack.add({
 	"https://github.com/stevearc/conform.nvim",
 	"https://github.com/stevearc/oil.nvim",
 	"https://github.com/theHamsta/nvim-dap-virtual-text",
-	"https://github.com/yioneko/telescope-fzy-native.nvim",
+	"https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+	"https://github.com/nvim-telescope/telescope-frecency.nvim",
 	"https://github.com/folke/lazydev.nvim",
 })
 
@@ -72,8 +84,9 @@ telescope.setup({
 		buffers = { sort_mru = true, ignore_current_buffer = true },
 	},
 })
-telescope.load_extension("fzy_native")
+telescope.load_extension("fzf")
 telescope.load_extension("remote-sshfs")
+telescope.load_extension("frecency")
 
 local telescope_maps = {
 	{ "<leader>sf", telescope_builtin.find_files, "Find files" },
