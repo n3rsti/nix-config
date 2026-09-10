@@ -40,6 +40,7 @@
               self.homeModules.base
               self.homeModules.neovim
               self.homeModules.dev
+              self.homeModules.infra
             ];
 
             programs.git.settings.user.email = "krzysztof.witucki@asseco.pl";

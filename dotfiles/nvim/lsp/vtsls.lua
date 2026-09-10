@@ -5,13 +5,14 @@ local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typ
 local vue_plugin = {
 	name = "@vue/typescript-plugin",
 	location = vue_language_server_path,
-	languages = { "javascript", "typescript", "vue" },
+	languages = { "vue" },
 	configNamespace = "typescript",
 }
 
 return {
 	settings = {
 		vtsls = {
+			autoUseWorkspaceTsdk = true,
 			tsserver = {
 				globalPlugins = {
 					vue_plugin,
