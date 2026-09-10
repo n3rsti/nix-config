@@ -30,6 +30,9 @@ vim.pack.add({
 	"https://github.com/folke/lazydev.nvim",
 })
 
+require("plugins.lsp")
+require("plugins.formatting")
+
 require("rose-pine").setup({
 	palette = { main = { base = "#111111" } },
 	highlight_groups = {
@@ -94,9 +97,6 @@ require("gitsigns").setup({
 		changedelete = { text = "|" },
 	},
 })
-
-require("plugins.lsp")
-require("plugins.formatting")
 
 local harpoon = require("harpoon")
 harpoon:setup()

@@ -56,8 +56,8 @@
               ];
 
               openssh.authorizedKeys.keyFiles = [
-                ../../keys/id_pc.pub
-                ../../keys/id_laptop.pub
+                ../../../keys/id_pc.pub
+                ../../../keys/id_laptop.pub
               ];
             };
 
@@ -124,7 +124,7 @@
           };
 
           sops = {
-            defaultSopsFile = ../../secrets/secrets.yaml;
+            defaultSopsFile = ../../../secrets/secrets.yaml;
             age.keyFile = "/var/lib/sops-nix/key.txt";
             age.generateKey = true;
 

@@ -12,7 +12,7 @@ require("blink.cmp").setup({
 		["<Tab>"] = { "select_next", "fallback" },
 	},
 	completion = {
-		trigger = { show_on_blocked_trigger_characters = { " ", "\n", "\t", ">" } },
+		trigger = { show_on_blocked_trigger_characters = { " ", "\n", "\t", ">", "}" } },
 		documentation = { auto_show = true, auto_show_delay_ms = 0 },
 		menu = {
 			draw = {
@@ -77,3 +77,9 @@ local servers = {
 for _, server in ipairs(servers) do
 	vim.lsp.enable(server)
 end
+
+local telescope = require("telescope.builtin")
+vim.keymap.set("n", "gd", telescope.lsp_definitions, { desc = "Go to definition" })
+vim.keymap.set("n", "grr", telescope.lsp_references, { desc = "References" })
+vim.keymap.set("n", "gi", telescope.lsp_implementations, { desc = "Go to implementation" })
+vim.keymap.set("n", "grt", telescope.lsp_type_definitions, { desc = "Go to type definition" })

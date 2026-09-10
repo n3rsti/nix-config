@@ -15,7 +15,6 @@
       self.nixosModules.tablet
       self.nixosModules.rgb
       self.nixosModules.libvirt
-      self.nixosModules.netboot
       ./_hardware-configuration.nix
 
       (_: {
@@ -52,12 +51,6 @@
 
         services = {
           input-remapper.enable = true;
-
-          netboot = {
-            enable = true;
-            listen = "192.168.1.15";
-            authorizedKeyFiles = [ ../../../keys/id_pc.pub ];
-          };
 
           flatpak.packages = [
             "sh.ppy.osu"
