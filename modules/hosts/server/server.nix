@@ -16,7 +16,7 @@
       self.nixosModules.pi-hole
       self.nixosModules.glance
       self.nixosModules.docker
-      ./server/_hardware-configuration.nix
+      ./_hardware-configuration.nix
 
       (
         { pkgs, ... }:

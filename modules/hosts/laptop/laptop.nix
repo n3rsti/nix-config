@@ -18,7 +18,7 @@
       self.nixosModules.power-management
       self.nixosModules.fingerprint
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
-      ./laptop/_hardware-configuration.nix
+      ./_hardware-configuration.nix
 
       (
         { pkgs, ... }:

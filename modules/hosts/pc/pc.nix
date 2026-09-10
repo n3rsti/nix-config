@@ -15,7 +15,7 @@
       self.nixosModules.tablet
       self.nixosModules.rgb
       self.nixosModules.libvirt
-      ./pc/_hardware-configuration.nix
+      ./_hardware-configuration.nix
 
       (_: {
         home-manager.users.n3rsti =
