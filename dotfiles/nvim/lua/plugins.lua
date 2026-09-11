@@ -1,12 +1,23 @@
 require("plugins.highlighting")
 
+local fzf_name = "telescope-fzf-native.nvim"
+local fzf_library = "build/libfzf.so"
+
+local function build_fzf(path)
+	local result = vim.system({ "make" }, {
+		cwd = path,
+		text = true,
+	}):wait()
+
+	if result.code ~= 0 then
+		error(("Failed to build %s:\n%s"):format(fzf_name, result.stderr))
+	end
+end
+
 vim.api.nvim_create_autocmd("PackChanged", {
 	callback = function(event)
-		if
-			event.data.spec.name == "telescope-fzf-native.nvim"
-			and (event.data.kind == "install" or event.data.kind == "update")
-		then
-			vim.system({ "make" }, { cwd = event.data.path }):wait()
+		if event.data.spec.name == fzf_name and (event.data.kind == "install" or event.data.kind == "update") then
+			build_fzf(event.data.path)
 		end
 	end,
 })
@@ -40,7 +51,24 @@ vim.pack.add({
 	"https://github.com/nvim-telescope/telescope-fzf-native.nvim",
 	"https://github.com/nvim-telescope/telescope-frecency.nvim",
 	"https://github.com/folke/lazydev.nvim",
+	"https://github.com/nvim-lualine/lualine.nvim",
+	"https://github.com/windwp/nvim-ts-autotag",
+	"https://github.com/chrisgrieser/nvim-chainsaw",
+	"https://github.com/folke/snacks.nvim",
+	{
+		src = "https://github.com/nickjvandyke/opencode.nvim",
+		version = vim.version.range("*"), -- Latest stable release
+	},
 })
+
+local fzf = vim.pack.get({ fzf_name })[1]
+if not fzf then
+	error(("%s missing after vim.pack.add()"):format(fzf_name))
+end
+
+if not vim.uv.fs_stat(fzf.path .. "/" .. fzf_library) then
+	build_fzf(fzf.path)
+end
 
 require("plugins.lsp")
 require("plugins.formatting")
@@ -145,4 +173,52 @@ local cmdline = require("tiny-cmdline")
 cmdline.setup({
 	on_reposition = cmdline.adapters.blink,
 	width = { value = "70%" },
+})
+
+require("lualine").setup({
+	options = {
+		icons_enabled = false,
+	},
+})
+require("nvim-ts-autotag").setup({})
+
+local chainsaw = require("chainsaw")
+chainsaw.setup({})
+
+vim.keymap.set("n", "<leader>lg", chainsaw.variableLog, {
+	desc = "Log variable",
+})
+
+vim.keymap.set({ "n", "x" }, "<leader>ask", function()
+	require("opencode").ask("@this: ")
+end, { desc = "Ask OpenCode…" })
+vim.keymap.set({ "n", "x" }, "<C-x>", function()
+	require("opencode").select()
+end, { desc = "Select OpenCode…" })
+
+require("snacks").setup({
+	input = {
+		enabled = true, -- Enhances Ask
+	},
+	picker = {
+		enabled = true, -- Enhances Select
+		win = {
+			input = {
+				keys = {
+					["<a-o>"] = { "opencode_send", mode = { "n", "i" } },
+				},
+			},
+		},
+		actions = {
+			opencode_send = function(picker) ---@param picker snacks.Picker
+				local items = vim.tbl_map(function(item) ---@param item snacks.picker.Item
+					return item.file
+							and require("opencode").format({ path = item.file, from = item.pos, to = item.end_pos })
+						or item.text
+				end, picker:selected({ fallback = true }))
+
+				require("opencode").prompt(table.concat(items, ", ") .. " ")
+			end,
+		},
+	},
 })

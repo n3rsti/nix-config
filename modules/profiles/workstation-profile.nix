@@ -47,6 +47,7 @@
 
     dev.java.enable = true;
     dev.javascript.enable = true;
+    dev.go.enable = true;
 
     home.packages = with pkgs; [
       snx-rs

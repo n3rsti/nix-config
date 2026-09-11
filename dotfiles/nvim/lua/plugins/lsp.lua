@@ -8,11 +8,16 @@ require("lazydev").setup({
 require("blink.cmp").setup({
 	keymap = {
 		preset = "enter",
-		["<S-Tab>"] = { "select_prev", "fallback" },
-		["<Tab>"] = { "select_next", "fallback" },
+
+		["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+		["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
 	},
 	completion = {
-		trigger = { show_on_blocked_trigger_characters = { " ", "\n", "\t", ">", "}" } },
+		list = {
+			selection = {
+				preselect = false,
+			},
+		},
 		documentation = { auto_show = true, auto_show_delay_ms = 0 },
 		menu = {
 			draw = {
