@@ -59,6 +59,7 @@ vim.pack.add({
 		src = "https://github.com/nickjvandyke/opencode.nvim",
 		version = vim.version.range("*"), -- Latest stable release
 	},
+	"https://github.com/f-person/git-blame.nvim",
 })
 
 local fzf = vim.pack.get({ fzf_name })[1]
@@ -167,12 +168,20 @@ require("typst-preview").setup({
 
 require("plugins.debugging")
 
-require("vim._core.ui2").enable({})
+require("vim._core.ui2").enable({
+	msg = {
+		target = "msg",
+		msg = {
+			timeout = 1500,
+		},
+	},
+})
 vim.o.cmdheight = 0
 local cmdline = require("tiny-cmdline")
 cmdline.setup({
 	on_reposition = cmdline.adapters.blink,
 	width = { value = "70%" },
+	native_types = {},
 })
 
 require("lualine").setup({
