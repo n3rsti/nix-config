@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.nixosModules.workstation-profile = _: {
+  flake.nixosModules.workstation-profile = { lib, ... }: {
     imports = [
       self.nixosModules.base
       self.nixosModules.boot
@@ -20,12 +20,11 @@
       self.nixosModules.dev
       self.nixosModules.binary-cache
       self.nixosModules.appimage
-      self.nixosModules.gnome
     ];
 
     nixpkgs.config.android_sdk.accept_license = true;
 
-    services.displayManager.defaultSession = "gnome";
+    services.displayManager.defaultSession = lib.mkTrue "hyprland-uwsm";
   };
 
   flake.homeModules.workstation-profile = { pkgs, ... }: {

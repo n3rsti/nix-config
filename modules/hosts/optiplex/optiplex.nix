@@ -1,10 +1,19 @@
-{ inputs, mkNixosSystem, ... }:
+{
+  inputs,
+  self,
+  mkNixosSystem,
+  ...
+}:
 {
   flake.nixosConfigurations.optiplex = mkNixosSystem {
     system = "x86_64-linux";
 
     modules = [
       inputs.disko.nixosModules.disko
+      self.nixosModules.base
+      self.nixosModules.tailscale
+      self.nixosModules.pi-hole
+      self.nixosModules.glance
       (
         { pkgs, ... }:
         {
@@ -22,6 +31,14 @@
               systemd-boot.enable = true;
               efi.canTouchEfiVariables = true;
             };
+          };
+
+          home-manager.users.n3rsti = {
+            imports = [
+              self.homeModules.base
+            ];
+
+            home.stateVersion = "26.05";
           };
 
           disko.devices.disk.main = {
@@ -67,10 +84,20 @@
             };
           };
 
+          sops = {
+            defaultSopsFile = ../../../secrets/secrets.yaml;
+            age.keyFile = "/var/lib/sops-nix/key.txt";
+            age.generateKey = true;
+          };
+
           users.users.n3rsti = {
+            shell = pkgs.zsh;
             isNormalUser = true;
             extraGroups = [ "wheel" ];
-            openssh.authorizedKeys.keyFiles = [ ../../../keys/id_pc.pub ];
+            openssh.authorizedKeys.keyFiles = [
+              ../../../keys/id_pc.pub
+              ../../../keys/id_laptop.pub
+            ];
           };
 
           nix.settings.experimental-features = [

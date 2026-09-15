@@ -15,6 +15,7 @@
       self.nixosModules.tablet
       self.nixosModules.rgb
       self.nixosModules.libvirt
+      self.nixosModules.gnome
       ./_hardware-configuration.nix
 
       (_: {

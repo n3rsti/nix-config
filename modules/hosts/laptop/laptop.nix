@@ -11,7 +11,6 @@
     modules = [
       self.nixosModules.workstation-profile
       self.nixosModules.n3rsti
-      self.nixosModules.distributed-builds
       self.nixosModules.swap
       self.nixosModules.intel
       self.nixosModules.backlight
