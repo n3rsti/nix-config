@@ -13,8 +13,6 @@
       self.nixosModules.paperless
       self.nixosModules.uptime-kuma
       self.nixosModules.attic
-      self.nixosModules.pi-hole
-      self.nixosModules.glance
       self.nixosModules.docker
       ./_hardware-configuration.nix
 

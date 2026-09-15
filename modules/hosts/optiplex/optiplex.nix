@@ -14,6 +14,8 @@
       self.nixosModules.tailscale
       self.nixosModules.pi-hole
       self.nixosModules.glance
+      self.nixosModules.flaresolverr
+      self.nixosModules.prowlarr
       (
         { pkgs, ... }:
         {
