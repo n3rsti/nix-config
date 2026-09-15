@@ -23,8 +23,21 @@
               url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt";
               type = "block";
               enabled = true;
-              description = "hagezi blocklist";
+              description = "hagezi pro";
             }
+            {
+              url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt";
+              type = "block";
+              enabled = true;
+              description = "hagezi tif";
+            }
+            {
+              url = "https://nsfw.oisd.nl/";
+              type = "block";
+              enabled = true;
+              description = "nsfw";
+            }
+
           ];
         };
 
