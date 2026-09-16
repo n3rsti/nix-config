@@ -33,7 +33,6 @@
               self.homeModules.javascript
             ];
 
-            dev.javascript.enable = true;
           };
 
           programs.ssh = {

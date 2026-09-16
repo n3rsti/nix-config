@@ -17,7 +17,6 @@
       self.nixosModules.librepods
       self.nixosModules.hyprland
       self.nixosModules.noctalia
-      self.nixosModules.dev
       self.nixosModules.binary-cache
       self.nixosModules.appimage
     ];
@@ -34,6 +33,9 @@
       self.homeModules.networking
       self.homeModules.kdeconnect
       self.homeModules.dev
+      self.homeModules.java
+      self.homeModules.javascript
+      self.homeModules.go
       self.homeModules.gaming
       self.homeModules.apps
       self.homeModules.tailscale-client
@@ -42,10 +44,6 @@
       self.homeModules.walker
       self.homeModules.rdp
     ];
-
-    dev.java.enable = true;
-    dev.javascript.enable = true;
-    dev.go.enable = true;
 
     home.packages = with pkgs; [
       snx-rs
