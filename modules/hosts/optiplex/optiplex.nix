@@ -10,12 +10,11 @@
 
     modules = [
       inputs.disko.nixosModules.disko
-      self.nixosModules.base
-      self.nixosModules.tailscale
       self.nixosModules.pi-hole
       self.nixosModules.glance
       self.nixosModules.flaresolverr
       self.nixosModules.prowlarr
+      self.nixosModules.server-profile
       (
         { pkgs, ... }:
         {
@@ -29,10 +28,6 @@
               "xhci_pci"
             ];
             kernelModules = [ "kvm-intel" ];
-            loader = {
-              systemd-boot.enable = true;
-              efi.canTouchEfiVariables = true;
-            };
           };
 
           home-manager.users.n3rsti = {
@@ -78,12 +73,11 @@
             firewall.allowedTCPPorts = [ 22 ];
           };
 
-          services.openssh = {
-            enable = true;
-            settings = {
-              PasswordAuthentication = false;
-              PermitRootLogin = "prohibit-password";
-            };
+          programs.ssh = {
+            startAgent = true;
+            extraConfig = ''
+              AddKeysToAgent yes
+            '';
           };
 
           sops = {

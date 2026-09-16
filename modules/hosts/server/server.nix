@@ -16,6 +16,7 @@
       self.nixosModules.docker
       self.nixosModules.prometheus
       self.nixosModules.grafana
+      self.nixosModules.pgsql-backup
       ./_hardware-configuration.nix
 
       (

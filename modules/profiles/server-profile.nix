@@ -7,7 +7,6 @@
       self.nixosModules.openssh
       self.nixosModules.tailscale
       self.nixosModules.docker
-      self.nixosModules.pgsql-backup
       self.nixosModules.binary-cache
     ];
   };
