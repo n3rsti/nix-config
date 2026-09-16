@@ -14,6 +14,8 @@
       self.nixosModules.uptime-kuma
       self.nixosModules.attic
       self.nixosModules.docker
+      self.nixosModules.prometheus
+      self.nixosModules.grafana
       ./_hardware-configuration.nix
 
       (

@@ -4,6 +4,14 @@
     services.immich = {
       enable = true;
       mediaLocation = "/srv/storage/immich";
+
+      environment = {
+        IMMICH_TELEMETRY_INCLUDE = "all";
+
+        # These are the defaults, but making them explicit is useful.
+        IMMICH_API_METRICS_PORT = "8081";
+        IMMICH_MICROSERVICES_METRICS_PORT = "8082";
+      };
     };
 
     systemd.services.immich-server.unitConfig.RequiresMountsFor = [ "/srv/storage/immich" ];

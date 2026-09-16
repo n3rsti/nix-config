@@ -110,6 +110,13 @@
                       cache = "1m";
                       sites = [
                         {
+                          title = "Grafana";
+                          url = "https://grafana.tail3ce7af.ts.net/";
+                          check-url = "https://grafana.tail3ce7af.ts.net/";
+                          icon = "di:grafana";
+                        }
+
+                        {
                           title = "Immich";
                           url = "https://immich.tail3ce7af.ts.net/";
                           check-url = "https://immich.tail3ce7af.ts.net/";
