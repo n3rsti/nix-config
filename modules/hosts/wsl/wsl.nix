@@ -11,7 +11,6 @@
     modules = [
       inputs.nixos-wsl.nixosModules.default
       self.nixosModules.base
-      self.nixosModules.dev
       self.nixosModules.ssh-agent
 
       (
@@ -41,16 +40,15 @@
               self.homeModules.neovim
               self.homeModules.dev
               self.homeModules.infra
+              self.homeModules.java
+              self.homeModules.javascript
+              self.homeModules.python
+              self.homeModules.zig
+              self.homeModules.c
+              self.homeModules.go
             ];
 
             programs.git.settings.user.email = "krzysztof.witucki@asseco.pl";
-
-            dev.java.enable = true;
-            dev.javascript.enable = true;
-            dev.python.enable = true;
-            dev.zig.enable = true;
-            dev.c.enable = true;
-            dev.go.enable = true;
 
             home.sessionPath = [
               "$HOME/sakctl"
