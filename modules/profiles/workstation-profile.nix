@@ -24,7 +24,7 @@
 
     nixpkgs.config.android_sdk.accept_license = true;
 
-    services.displayManager.defaultSession = lib.mkTrue "hyprland-uwsm";
+    services.displayManager.defaultSession = lib.mkDefault "hyprland-uwsm";
   };
 
   flake.homeModules.workstation-profile = { pkgs, ... }: {
@@ -35,8 +35,7 @@
       self.homeModules.kdeconnect
       self.homeModules.dev
       self.homeModules.gaming
-      self.homeModules.application-suite
-      self.homeModules.downloads
+      self.homeModules.apps
       self.homeModules.tailscale-client
       self.homeModules.hyprland
       self.homeModules.noctalia

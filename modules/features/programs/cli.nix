@@ -1,5 +1,6 @@
-{ self, ... }: {
-  flake.homeModules.cli-core =
+{ self, ... }:
+{
+  flake.homeModules.cli =
     {
       pkgs,
       config,

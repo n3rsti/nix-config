@@ -17,7 +17,7 @@
     imports = [
       self.homeModules.git
       self.homeModules.zsh
-      self.homeModules.cli-core
+      self.homeModules.cli
     ];
 
     programs.home-manager.enable = true;

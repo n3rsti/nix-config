@@ -4,7 +4,7 @@
     imports = [
       self.homeModules.desktop
       self.homeModules.gaming
-      self.homeModules.application-suite
+      self.homeModules.apps
     ];
 
     programs.home-manager.enable = true;
