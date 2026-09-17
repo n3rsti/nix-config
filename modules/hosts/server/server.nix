@@ -14,6 +14,7 @@
       self.nixosModules.uptime-kuma
       self.nixosModules.attic
       self.nixosModules.docker
+      self.nixosModules.glance
       self.nixosModules.prometheus
       self.nixosModules.grafana
       self.nixosModules.pgsql-backup

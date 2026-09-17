@@ -57,19 +57,5 @@
 
       services.tailscaleServe.apps.pihole.target = "http://localhost:${toString port}";
 
-      sops = {
-        secrets.pihole_app_password = {
-          restartUnits = [ "glance.service" ];
-        };
-
-        templates."glance.env" = {
-          mode = "0400";
-
-          content = ''
-            PIHOLE_APP_PASSWORD=${config.sops.placeholder.pihole_app_password}
-          '';
-        };
-      };
-
     };
 }

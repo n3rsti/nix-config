@@ -11,7 +11,6 @@
     modules = [
       inputs.disko.nixosModules.disko
       self.nixosModules.pi-hole
-      self.nixosModules.glance
       self.nixosModules.flaresolverr
       self.nixosModules.prowlarr
       self.nixosModules.server-profile

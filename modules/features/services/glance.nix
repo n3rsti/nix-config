@@ -52,7 +52,7 @@
                     {
                       type = "dns-stats";
                       service = "pihole-v6";
-                      url = "http://127.0.0.1:8084";
+                      url = "https://pihole.tail3ce7af.ts.net";
                       password = "\${PIHOLE_APP_PASSWORD}";
                       hour-format = "24h";
                     }
@@ -222,6 +222,20 @@
       };
 
       services.tailscaleServe.apps.glance.target = "http://localhost:${toString port}";
+
+      sops = {
+        secrets.pihole_app_password = {
+          restartUnits = [ "glance.service" ];
+        };
+
+        templates."glance.env" = {
+          mode = "0400";
+
+          content = ''
+            PIHOLE_APP_PASSWORD=${config.sops.placeholder.pihole_app_password}
+          '';
+        };
+      };
 
       services.glance.environmentFile = config.sops.templates."glance.env".path;
     };
