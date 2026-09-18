@@ -3,6 +3,7 @@
     { config, ... }:
     let
       port = 8085;
+      qbittorrentUrl = "https://qbittorrent.tail3ce7af.ts.net";
     in
     {
       sops.secrets.immich_api_key = {
@@ -96,6 +97,15 @@
                         </div>
                       '';
                     }
+                    (import ./glance_widgets/_qbittorrent-widget.nix {
+                      inherit qbittorrentUrl;
+                      mode = "default";
+                    })
+
+                    (import ./glance_widgets/_qbittorrent-widget.nix {
+                      inherit qbittorrentUrl;
+                      mode = "upload";
+                    })
                   ];
                 }
                 {

@@ -14,11 +14,20 @@
 
       home.packages = with pkgs; [
         # General
-        cheese # Camera
+        snapshot # Camera
         copyq
-        eog
+        loupe # Image viewer
+        showtime # Video player
         gnome-online-accounts-gtk
+        gnome-contacts
+        gnome-music
         unstable.bitwarden-desktop
+        errands # Task manager
+        gnome-calendar
+        gnome-clocks
+        gnome-weather # Weather app
+        gnome-maps
+        gnome-calculator
 
         # Communication
         slack
@@ -32,10 +41,7 @@
         hunspellDicts.pl_PL
         papers # pdf viewer
         poppler-utils
-        unstable.libreoffice-qt6-fresh
-
-        # Downloads
-        qbittorrent
+        unstable.libreoffice
 
         # Files
         baobab # Disk usage analyzer
@@ -66,14 +72,9 @@
         spotify
         unstable.jellyfin-media-player
         vlc
+        mpv # Video player for other unsupported formats
         wf-recorder # Simple screen recording
-
-        # Productivity
-        errands # Task manager
-        gnome-calendar
-        gnome-clocks
-        gnome-weather # Weather app
-        gnome-maps
+        qbittorrent
       ];
 
       programs = {

@@ -1,6 +1,6 @@
-.PHONY: switch test boot build update generate-hardware-config
+.PHONY: switch test boot build update generate-hardware-config remote-switch
 
-HOST_REQUIRED_TARGETS := switch test boot build
+HOST_REQUIRED_TARGETS := switch test boot build remote-switch
 
 ifneq ($(filter $(MAKECMDGOALS),$(HOST_REQUIRED_TARGETS)),)
 ifndef HOST
@@ -19,6 +19,12 @@ boot:
 
 build:
 	nixos-rebuild build --flake .#$(HOST)
+
+remote-switch:
+	nixos-rebuild switch --flake .#$(HOST) \
+		--target-host n3rsti@$(HOST) \
+		--sudo \
+		--ask-sudo-password
 
 generate-hardware-config:
 	sudo nixos-generate-config --show-hardware-config > hardware-configuration.nix
