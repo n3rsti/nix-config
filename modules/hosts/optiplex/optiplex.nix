@@ -10,6 +10,7 @@
 
     modules = [
       inputs.disko.nixosModules.disko
+      ./_minecraft-proxy.nix
       self.nixosModules.pi-hole
       self.nixosModules.flaresolverr
       self.nixosModules.prowlarr
@@ -69,7 +70,10 @@
           networking = {
             hostName = "optiplex";
             networkmanager.enable = true;
-            firewall.allowedTCPPorts = [ 22 ];
+            firewall.allowedTCPPorts = [
+              22
+              25565
+            ];
           };
 
           programs.ssh = {

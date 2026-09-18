@@ -36,7 +36,7 @@
         lutris.enable = true;
         prismlauncher = {
           enable = true;
-          package = pkgs.unstable.prismlauncher;
+          package = pkgs.prismlauncher;
         };
       };
 
