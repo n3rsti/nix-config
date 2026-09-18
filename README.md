@@ -59,8 +59,15 @@ Configured as a 24/7 base for device integration and self-hosted services, inclu
 - Image storage with **Immich**
 - Backups with **borgbackup**
 - Build caching with **Github Actions** and **Attic** for ultra fast rebuilds even on slower machines
-- Network-wide and remote Ad Blocking with **Pi-hole**
 - Dashboard with **Glance**
+
+#### Optiplex
+Dell Optiplex - 2nd server for other services such as:
+
+- Network-wide and remote Ad Blocking with **Pi-hole**
+- **Prowlarr** with **Flaresolverr**
+- Proxy for services such as **minecraft server** running on main server machine 
+- Public hosting
 
 ## Repository Structure
 
