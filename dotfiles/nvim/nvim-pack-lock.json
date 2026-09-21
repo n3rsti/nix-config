@@ -102,6 +102,10 @@
       "rev": "fbdb48c2ed45f4a8293d0d483f7730d24467ccb6",
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
+    "nvim-hlslens": {
+      "rev": "be2d7b2be01860b5445a007ff2bc72b29896db6b",
+      "src": "https://github.com/kevinhwang91/nvim-hlslens"
+    },
     "nvim-lspconfig": {
       "rev": "eeef061d58d759b5419c1e20c4b3a5bc3154f871",
       "src": "https://github.com/neovim/nvim-lspconfig"

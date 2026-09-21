@@ -60,6 +60,7 @@ vim.pack.add({
 		version = vim.version.range("*"), -- Latest stable release
 	},
 	"https://github.com/f-person/git-blame.nvim",
+	"https://github.com/kevinhwang91/nvim-hlslens",
 })
 
 local fzf = vim.pack.get({ fzf_name })[1]
@@ -230,4 +231,8 @@ require("snacks").setup({
 			end,
 		},
 	},
+})
+
+require("hlslens").setup({
+	nearest_only = true,
 })
