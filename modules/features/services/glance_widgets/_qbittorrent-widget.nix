@@ -9,7 +9,7 @@
 
   options = {
     view = "detailed";
-    mode = mode;
+    inherit mode;
   };
 
   subrequests = {

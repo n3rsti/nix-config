@@ -106,6 +106,10 @@
                       inherit qbittorrentUrl;
                       mode = "upload";
                     })
+
+                    (import ./glance_widgets/_minecraft-widget.nix {
+                      ip = "\${MC_SERVER_IP}";
+                    })
                   ];
                 }
                 {
@@ -227,6 +231,31 @@
                 }
               ];
             }
+            {
+              name = "F1";
+
+              columns = [
+                {
+                  size = "small";
+
+                  widgets = import ./glance_widgets/_f1-widgets.nix;
+                }
+
+                {
+                  size = "full";
+
+                  widgets = [
+                    {
+                      type = "videos";
+                      style = "grid-cards";
+                      channels = [
+                        "UCB_qr75-ydFVKSF9Dmo6izg"
+                      ];
+                    }
+                  ];
+                }
+              ];
+            }
           ];
         };
       };
@@ -238,11 +267,16 @@
           restartUnits = [ "glance.service" ];
         };
 
+        secrets.minecraft_server_ip = {
+          restartUnits = [ "glance.service" ];
+        };
+
         templates."glance.env" = {
           mode = "0400";
 
           content = ''
             PIHOLE_APP_PASSWORD=${config.sops.placeholder.pihole_app_password}
+            MC_SERVER_IP=${config.sops.placeholder.minecraft_server_ip}
           '';
         };
       };

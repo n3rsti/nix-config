@@ -1,6 +1,6 @@
 {
   flake.nixosModules.pi-hole =
-    { config, ... }:
+    _:
     let
       port = 8084;
     in
