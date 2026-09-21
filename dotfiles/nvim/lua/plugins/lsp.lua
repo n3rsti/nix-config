@@ -78,6 +78,7 @@ local servers = {
 	"vtsls",
 	"vue_ls",
 	"zls",
+	"ols",
 }
 for _, server in ipairs(servers) do
 	vim.lsp.enable(server)

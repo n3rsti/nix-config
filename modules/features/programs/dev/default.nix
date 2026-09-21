@@ -16,6 +16,7 @@
         fixjson
         bash-language-server # Bash lsp
         beautysh # Bash formatter
+        leetcode-cli
       ];
     };
 }

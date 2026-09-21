@@ -12,6 +12,7 @@
       inputs.nixos-wsl.nixosModules.default
       self.nixosModules.base
       self.nixosModules.ssh-agent
+      self.nixosModules.docker
 
       (
         { pkgs, ... }:
@@ -34,6 +35,8 @@
             };
           };
 
+          virtualisation.docker.logDriver = "json-file";
+
           home-manager.users.n3rsti = {
             imports = [
               self.homeModules.base
@@ -46,6 +49,7 @@
               self.homeModules.zig
               self.homeModules.c
               self.homeModules.go
+              self.homeModules.odin
             ];
 
             programs.git.settings.user.email = "krzysztof.witucki@asseco.pl";
