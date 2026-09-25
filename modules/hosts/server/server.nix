@@ -84,6 +84,18 @@
               group = "media";
             };
 
+            "/srv/storage/media/torrents".d = {
+              mode = "2775";
+              user = "n3rsti";
+              group = "media";
+            };
+
+            "/srv/storage/media/torrents/incomplete".d = {
+              mode = "2775";
+              user = "n3rsti";
+              group = "media";
+            };
+
             "/srv/storage/immich".d = {
               mode = "0700";
               user = "immich";

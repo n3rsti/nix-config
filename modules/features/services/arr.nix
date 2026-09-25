@@ -33,7 +33,19 @@
 
         qbittorrent = {
           enable = true;
+          group = "media";
           webuiPort = 8082;
+          serverConfig = {
+            Preferences.Downloads = {
+              SavePath = "/srv/media/torrents";
+              TempPath = "/srv/media/torrents/incomplete";
+              TempPathEnabled = true;
+            };
+            Preferences.Connection = {
+              Interface = "tailscale0";
+              InterfaceName = "tailscale0";
+            };
+          };
         };
 
         tailscaleServe.apps = {
@@ -45,6 +57,8 @@
           sonarr.target = "http://127.0.0.1:8989";
         };
       };
+
+      systemd.services.qbittorrent.unitConfig.RequiresMountsFor = [ "/srv/media/torrents" ];
 
     };
 
