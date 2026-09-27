@@ -1,8 +1,9 @@
 {
-  flake.nixosModules.immich = _: {
+  flake.nixosModules.immich = { pkgs, ... }: {
 
     services.immich = {
       enable = true;
+      package = pkgs.unstable.immich;
       mediaLocation = "/srv/storage/immich";
 
       environment = {
