@@ -120,6 +120,7 @@
         obs-studio.enable = true;
         yt-dlp.enable = true; # Downloading videos
         cava.enable = true; # Audio visualizer
+        gh.enable = true;
       };
 
       xdg = {
