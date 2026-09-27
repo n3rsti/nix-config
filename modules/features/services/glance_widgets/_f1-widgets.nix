@@ -3,7 +3,7 @@
     type = "custom-api";
     title = "Next Race";
     cache = "1h";
-    url = "https://f1api.dev/api/current/next?timezone=Europe/London";
+    url = "https://f1api.dev/api/current/next?timezone=Europe/Warsaw";
 
     template = ''
       {{ if ne (.JSON.String "status") "404" }}

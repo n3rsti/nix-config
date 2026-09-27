@@ -1,6 +1,6 @@
 {
   flake.nixosModules.glance =
-    { config, ... }:
+    { config, pkgs, ... }:
     let
       port = 8085;
       qbittorrentUrl = "https://qbittorrent.tail3ce7af.ts.net";
@@ -12,6 +12,7 @@
 
       services.glance = {
         enable = true;
+        package = pkgs.unstable.glance;
 
         settings = {
           server = {

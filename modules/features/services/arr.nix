@@ -8,7 +8,7 @@
       services = {
         jellyfin = {
           enable = true;
-          package = pkgs.jellyfin;
+          package = pkgs.unstable.jellyfin;
           group = "media";
         };
 
@@ -36,14 +36,21 @@
           group = "media";
           webuiPort = 8082;
           serverConfig = {
-            Preferences.Downloads = {
-              SavePath = "/srv/media/torrents";
-              TempPath = "/srv/media/torrents/incomplete";
-              TempPathEnabled = true;
-            };
-            Preferences.Connection = {
-              Interface = "tailscale0";
-              InterfaceName = "tailscale0";
+            Preferences = {
+              Downloads = {
+                SavePath = "/srv/media/torrents";
+                TempPath = "/srv/media/torrents/incomplete";
+                TempPathEnabled = true;
+              };
+              Connection = {
+                Interface = "tailscale0";
+                InterfaceName = "tailscale0";
+              };
+              WebUI = {
+                Username = "n3rsti";
+                Password_PBKDF2 = "@ByteArray(6A5Bish2XKk645H5T+rXhg==:XQ7Irb0RwX8nN29pSaMTx3U+qFehhWQw1VM0zMusnB39DByl+dDAoeuF9GK+yB2GBYV6Fw43UvbBQ8rtQ3favA==)";
+                LocalHostAuth = false;
+              };
             };
           };
         };
