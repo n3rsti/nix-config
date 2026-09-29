@@ -32,6 +32,9 @@
         dmidecode
         usbutils
         vulkan-tools
+        man
+        man-pages
+        man-pages-posix
       ];
 
       programs = {
