@@ -39,8 +39,9 @@
           enable = true;
           jvmOpts = "-Xms2G -Xmx8G -XX:+UseZGC -XX:+DisableExplicitGC";
 
-          package = pkgs.fabricServers.fabric-1_21_10.override {
-            loaderVersion = "0.18.1";
+          package = pkgs.fabricServers.fabric-26_3.override {
+            loaderVersion = "0.19.5";
+            jre_headless = pkgs.openjdk25_headless;
           };
 
           operators = {
@@ -57,80 +58,80 @@
             mods = pkgs.linkFarmFromDrvs "mods" (
               builtins.attrValues {
                 DistantHorizons = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/uCdwusMi/versions/rKh9HEXg/DistantHorizons-3.0.3-b-1.21.10-fabric-neoforge.jar";
-                  sha512 = "sha512-Df6z38fmK/0ksHB6cATqQ61rjT7o24ItWCufYypTl3nIH24Sau5voT+Fx89LKxj+8phA6pLkE3MLQ280dEFQVQ==";
+                  url = "https://cdn.modrinth.com/data/uCdwusMi/versions/TGgEbP9A/DistantHorizons-3.3.4-26.3-fabric-neoforge.jar";
+                  sha512 = "sha512-C5CxsI2Zl0v8PI6Gss6yUuL5FxXtZrklAEwoM1+0Thvdu7a4BD5NTVPIftJHeJzReIsbpOP0OU7+FU4MWc/yNg==";
                 };
                 Fabric-API = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/dQ3p80zK/fabric-api-0.138.3%2B1.21.10.jar";
-                  sha512 = "sha512-3HOjZTwplHbR9wy2ksTjWsP2lLOwhz49C3KelS6ZK4eNGo4LHRBJpEKg1IPTBoBzGU8Vr1LqmThURhbiBDPMOA==";
+                  url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/v2j28coa/fabric-api-0.162.0%2B26.3.jar";
+                  sha512 = "sha512-WrcJCJUvHSNG0WsSLKMTJ/QFXbWcJ5obw8PFgc41m7VBy6FXMPVbBye+fHxN68SkQSoYPCKODU3qgcc097QSzg==";
                 };
                 C2ME = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/VSNURh3q/versions/uNick7oj/c2me-fabric-mc1.21.10-0.3.5.1.0.jar";
-                  sha512 = "sha512-TQechyq5EP1lpsnocJxwUBeGJvcSXISTico4OI4ZmVvYdOBx6G5qz2+++qLylP2+vsua+ERKkIuaPeiU2AfE2w==";
+                  url = "https://cdn.modrinth.com/data/VSNURh3q/versions/ODMLK8M9/c2me-fabric-mc26.3-0.4.2-alpha.0.90.jar";
+                  sha512 = "sha512-0BQOva0it+4ALE4XaF27JU1mdWKEAADvmM7auvpTvGfRARufxNcPJvlk/HgTc+YVg9ObAB5+FWRLqX3RnqHCzg==";
                 };
                 Cloth-config = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/9s6osm5g/versions/qMxkrrmq/cloth-config-20.0.149-fabric.jar";
-                  sha512 = "sha512-3x2eA0ncZPwIWfF7ZbZ7DXdFomtJBeh/wUjd68AoXeUaMlWEhZnw1e4k9qqwD7rEhJ1Au5BSk26qRS0hbHraYg==";
+                  url = "https://cdn.modrinth.com/data/9s6osm5g/versions/fg2uyxOW/cloth-config-fabric-26.3.159.jar";
+                  sha512 = "sha512-iSThnUGEUJZyT6EPNxe8UZZKDtu7ytD/Hmxhh6OYsI81bklXmmV8LcRKf5LjhQdx88pwv4wfZU3mBCUWO5HbsQ==";
                 };
                 Cristellib = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/cl223EMc/versions/ZvMKpvgf/cristellib-fabric-1.21.10-3.0.3.jar";
-                  sha512 = "sha512-hQbQyvBexFZb8wHckZBzPkBh8KT3l0uFqhP7NdLbdbBEh0bQQneifjChaJEXnKdFA7EppdfojMEZSnJJxqrbnA==";
+                  url = "https://cdn.modrinth.com/data/cl223EMc/versions/rWxmPrGC/cristellib-fabric-26.3-3.1.13.jar";
+                  sha512 = "sha512-lhmN/AZ85wA8rZshEobljjbvyqKXKa88CcZD0+i9ilTlgU642IaAo4yvnmMopUEVG2xrG9msEX2ccnjZPW3ojA==";
                 };
                 DungeonsAndTaverns = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/tpehi7ww/versions/Fp3HZr0m/dungeons-and-taverns-v5.0.4.jar";
-                  sha512 = "sha512-YbO1rLYlliMpZYDkaQonJHxrqRspo2w5d+kbkDRUxzqASWVtFlRiUKN7wM2iCDTOnKfcRhFxaz4Jj2eUNqYVHw==";
+                  url = "https://cdn.modrinth.com/data/tpehi7ww/versions/WilF7nqU/dungeons-and-taverns-6.0.2.jar";
+                  sha512 = "sha512-sMz1JRJWCoEVs1bFo+WFxxlmrxByny1DZBryaCWCcrufnGjFPEnreaXV9kW6ng3/bkritlTq9qbRRpd95DXAJQ==";
                 };
                 FallingTree = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/Fb4jn8m6/versions/hDjB8uAg/FallingTree-1.21.10-1.21.10.1.jar";
-                  sha512 = "sha512-YW02VdD+emtW8rfJc6xF9BOA9o0+XQxiBc8wgv8fNamJXI+K8tPqKnwkQBeErcT8l5tweUql98i8upqVELFDmA==";
+                  url = "https://cdn.modrinth.com/data/Fb4jn8m6/versions/AAGlDV9D/FallingTree-26.3-25.jar";
+                  sha512 = "sha512-BxNIJvbW4BIyz0yWuh/8UptD2TvjwYohW6OvhXIoKmsE4xdffcWDFHH2cirUpPkWHUMgNQdhfDtsQ5CMUOfvIQ==";
                 };
                 Incendium = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/ZVzW5oNS/versions/PovCtpuw/Incendium_1.21.x_v5.4.9.jar";
-                  sha512 = "sha512-BosH6x7uCTS65EMDZXjUBg9UpiTyLyrOsKlTs3KI4KPmdqDXIdJRUelJ5QbufQSBwR9klT/jFZNC8kRuqYSFnA==";
+                  url = "https://cdn.modrinth.com/data/ZVzW5oNS/versions/vMABj7fb/Incendium_26.3_v5.5.3%2B26.3.jar";
+                  sha512 = "sha512-VYIu+xevjmeEk0HiAhrSCGpWTJ5+ljjMiHtSP/VrRuRVCesedd9b6wGaIQlB9uyRf7+OBsYO0pPF0PjRePTDqQ==";
                 };
                 Tectonic = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/lWDHr9jE/versions/kL6i6vRY/tectonic-3.0.17-fabric-1.21.10.jar";
-                  sha512 = "sha512-GyPvj1lmHtmp6ORcce+im6h5soYUgtr3x+xByjTUrNLqDs5OcfFrvkYIPH1bxAtNjoKX1LAUKkEzNHw58iOzcg==";
+                  url = "https://cdn.modrinth.com/data/lWDHr9jE/versions/j2jmkU85/tectonic-3.0.31-fabric-26.3.jar";
+                  sha512 = "sha512-itvZHuPnySVGXviDZ846E72ViDi53x6LqePwxecZcZR170hEkbkxlJFIAMxbdSMQTLCUUmGb8wdVXGSfXS4CvA==";
                 };
                 Terralith = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/8oi3bsk5/versions/JKg71Gq0/Terralith_1.21.x_v2.5.13.jar";
-                  sha512 = "sha512-MQOHnvOQ1Hpo8QvUvxudQGOWkFr6ZAuMFcOkTIwVu8PG/cTqtalGtr4ViFExQI9s1pjEqNIGUUSyqxxG+nEM2w==";
+                  url = "https://cdn.modrinth.com/data/8oi3bsk5/versions/aGE3hYAA/Terralith_26.3_v2.6.5%2B26.3.jar";
+                  sha512 = "sha512-kYsjLfeoVbronH+oWv+1zhNOI2xHJvoUpb2qF56x4BDwQKn6mB8Aag4m5CGiqWG8KademaRQD9GDYai6gUeAcQ==";
                 };
                 Nullscape = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/LPjGiSO4/versions/3fv8O3xX/Nullscape_1.21.x_v1.2.14.jar";
-                  sha512 = "sha512-s1qd/ccYDKhRrqN47kaH4Ys6rnF8FocKd2Kvxn3Ax3WY+yxKYssS1u0OrPfJFmUg4KPn3OINoJgXBl0n5iyLRA==";
+                  url = "https://cdn.modrinth.com/data/LPjGiSO4/versions/79OyFQtd/Nullscape_26.3_v2.0.1%2B26.3.jar";
+                  sha512 = "sha512-roSUb9amLqCGPLyf0nZq0IY1qFbS4Vr4Ya99AIB8mOYG0aKgbrF26mJ1AxtmtqGGskXHpAl3l9PBIkTKmk/paA==";
                 };
                 PlaceholderApi = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/eXts2L7r/versions/T5pDJV1K/placeholder-api-2.8.1%2B1.21.10.jar";
-                  sha512 = "sha512-kmBmQEV5MWmPJy5OiGa1NXdnNg54o+7Ys71JDooXv+rv3AvURKyLpPUbf58et/IjN+A0tAmTnbNgEmnUtTrSLA==";
+                  url = "https://cdn.modrinth.com/data/eXts2L7r/versions/lXytLqWj/placeholder-api-3.2.0%2B26.3.jar";
+                  sha512 = "sha512-6yuzHlEGiq0lgbeGTqexGxIJuhwrJ1Uc1YN9mzErgYtzu0fAY3S0a5m3NAHGLGtsEV9wLFWu1q/UZ62K1kSN5A==";
                 };
                 SparseStructures = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/qwvI41y9/versions/xqUgclGq/sparsestructures-fabric-1.21.10-3.1.jar";
-                  sha512 = "sha512-v+MM+la7aHyaIHFCJAVweRpRm4tN6+lsc/xTcoY5dKM5DhjFVj5NufxBox81sr3AcqOst0Le+mWkJq5YuX8CIg==";
+                  url = "https://cdn.modrinth.com/data/qwvI41y9/versions/pDwhgAWy/sparsestructures-fabric-26.3-3.1.5.jar";
+                  sha512 = "sha512-OV1MlxkKg46vrbTu8w1WQ7Ra+qQmIvUiWYoLg8EacapdIhOWX8UErhVxjQzOwJvt2JkYFKg6hpokHJwbCQWkyw==";
                 };
                 Structory = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/aKCwCJlY/versions/qm2RM1eD/Structory_1.21.x_v1.3.12.jar";
-                  sha512 = "sha512-jfluy8BTgPmWmiO8MirsC18S/nWHPwLL9NC9hV3LglT9D5pEj9/a6hYDguf+nMaOASKgEBkXnOyEbHd/9xiKxw==";
+                  url = "https://cdn.modrinth.com/data/aKCwCJlY/versions/GjOkOVW4/Structory_26.3_v1.3.18%2B26.3.jar";
+                  sha512 = "sha512-qbfHzkWjjEvmhWMzfkE62/SGqOR/7MRQ0+5Z2t+Af67jnUmgmMLb/CpGbw02xxyo4FHxYe/b/BmwafDHDmtCIw==";
                 };
                 TownsAndTowers = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/DjLobEOy/versions/NXAdx4ui/t_and_t-fabric-neoforge-1.13.7.jar";
-                  sha512 = "sha512-fv6nWap7WceXf+Lh0YmkF4kryi/bq8DlR+qSFCXN5fJi6YJVb8g9AgmRBifcNJ5XzVQuct0Hg8rIx8QiGLezaw==";
+                  url = "https://cdn.modrinth.com/data/DjLobEOy/versions/yajFnGZS/t_and_t-fabric-neoforge-1.13.12.jar";
+                  sha512 = "sha512-Z3Q5G4c9AkFTi+Kc9/gpnr+vLZ8DKSsoED3/QfztID3GnmQDLKm5njtTZN4hafZUpmM6JVRlrcmU2xesCkwz2A==";
                 };
                 TradeCycling = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/qpPoAL6m/versions/bWRFCmCA/trade-cycling-fabric-1.21.10-1.0.19.jar";
-                  sha512 = "sha512-rO1Mlv5vauflgSHSP5mx0S4FzxOcWiFd8p4GXKxK4AVmA2ELrlxw+jYErCT+Ls8SPRQRg7q7BetiNnS/QkqADg==";
+                  url = "https://cdn.modrinth.com/data/qpPoAL6m/versions/URzCi2W4/trade-cycling-fabric-1.0.22%2B26.3.jar";
+                  sha512 = "sha512-RU39fwyJFV2sDdwrG9aUhsQ50nohSA2P9trEbB47eAngrigQG9MfuGmZmsKvpYwrjxUwRrhflUXO5DKuOWssrA==";
                 };
                 Lithostiched = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/XaDC71GB/versions/OHVYggvo/lithostitched-1.5.1-fabric-1.21.9.jar";
-                  sha512 = "sha512-6Xt7zZi8JjB1iYIsmOJOSgx7hZ8EYe2BBAElBobHugDtfp6JhCuXFM4NyB2jMELFY9nxGn4D2pA2hUCF835RYw==";
+                  url = "https://cdn.modrinth.com/data/XaDC71GB/versions/ekwE8Gez/lithostitched-2.0.5-fabric-26.3.jar";
+                  sha512 = "sha512-TP825gk+rUVsVIG823JycWWmRHxJTkL0SwbEfe7k9vgWQ0kOTU3Xfpt39vxed3GZYggE820Jo9ZsY7xbLw/HbA==";
                 };
                 WWOO = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/II7t6llZ/versions/qCxyIvl0/wwoo-fabric-2.6.0.jar";
-                  sha512 = "sha512-LcoEtdd0DqXGtuzTUc/4hYGI2iZbzNZHeFxfq7UfYWYbq5Zm3KoNeJB5DxXI5L6eaYcel6z9nJCA6yK/W0Co5w==";
+                  url = "https://cdn.modrinth.com/data/II7t6llZ/versions/23VeM3qz/wwoo-fabric-26.3-3.0.1.jar";
+                  sha512 = "sha512-flqhEDSm3tBOzhaMAxdTs+RkpVg1tz/UaBX7KDOy1UHPNi1dDcOE+J3I3Fr+f7t4SNJkxCko+4ZaSPTmsjPMTw==";
                 };
                 Sleep = pkgs.fetchurl {
-                  url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/fUtpj4ud/sleep-v4.3.13-mc1.21.6%2B.jar";
-                  sha512 = "sha512-KM71/MhHVNQ+X43ZFomrvQWtpjGEvdvxILB8UQ5wanaVGvTo1BdumVQ4rLsjKyapQ0T18A6cVZCV3aGOK0W+ZA==";
+                  url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/qWXoHji5/sleep-v4.4.0.0.jar";
+                  sha512 = "sha512-RW0/RehKDse0uOKWBYj/NKP7g10C0+cC1Lbz//2yOCOV93hgrCmYPH3ZJD2cQtEXJWOdSnw7ahOOJc0MHsy7zA==";
                 };
               }
             );
