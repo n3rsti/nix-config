@@ -42,14 +42,6 @@
               self.homeModules.base
               self.homeModules.neovim
               self.homeModules.dev
-              self.homeModules.infra
-              self.homeModules.java
-              self.homeModules.javascript
-              self.homeModules.python
-              self.homeModules.zig
-              self.homeModules.c
-              self.homeModules.go
-              self.homeModules.odin
             ];
 
             programs.git.settings.user.email = "krzysztof.witucki@asseco.pl";

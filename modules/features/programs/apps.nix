@@ -28,6 +28,7 @@
         gnome-weather # Weather app
         gnome-maps
         gnome-calculator
+        unstable.brave-origin
 
         # Communication
         slack
@@ -79,10 +80,6 @@
 
       programs = {
         # Browsers
-        brave = {
-          enable = true;
-          package = pkgs.unstable.brave;
-        };
         chromium.enable = true;
         firefox = {
           enable = true;

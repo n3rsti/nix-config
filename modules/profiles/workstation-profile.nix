@@ -33,9 +33,6 @@
       self.homeModules.networking
       self.homeModules.kdeconnect
       self.homeModules.dev
-      self.homeModules.java
-      self.homeModules.javascript
-      self.homeModules.go
       self.homeModules.gaming
       self.homeModules.apps
       self.homeModules.tailscale-client
