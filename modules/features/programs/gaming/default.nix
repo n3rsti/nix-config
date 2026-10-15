@@ -7,7 +7,10 @@
         dedicatedServer.openFirewall = true;
       };
 
-      gamemode.enable = true;
+      gamemode = {
+        enable = true;
+        settings.general.disable_splitlock = 0;
+      };
       gamescope.enable = true;
     };
 

@@ -35,6 +35,7 @@
         man
         man-pages
         man-pages-posix
+        file
       ];
 
       programs = {
