@@ -36,6 +36,7 @@
           group = "media";
           webuiPort = 8082;
           serverConfig = {
+            BitTorrent.Session.QueueingSystemEnabled = false;
             Preferences = {
               Downloads = {
                 SavePath = "/srv/media/torrents";

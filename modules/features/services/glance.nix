@@ -173,6 +173,13 @@
                           icon = "sh:attic";
                         }
 
+                        {
+                          title = "Vaultwarden";
+                          url = "https://vaultwarden.tail3ce7af.ts.net/";
+                          check-url = "https://vaultwarden.tail3ce7af.ts.net/";
+                          icon = "sh:vaultwarden";
+                        }
+
                       ];
                     }
 

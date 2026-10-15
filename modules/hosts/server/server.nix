@@ -18,6 +18,7 @@
       self.nixosModules.prometheus
       self.nixosModules.grafana
       self.nixosModules.pgsql-backup
+      self.nixosModules.vaultwarden
       ./_hardware-configuration.nix
 
       (
