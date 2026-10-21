@@ -53,6 +53,7 @@ Shares most of its configuration with the **PC**. It is configured for:
 Configured as a 24/7 base for device integration and self-hosted services, including:
 
 - Remote storage with **Nextcloud**
+- Password and secret storage with **Vaultwarden**
 - Movie and series streaming with the **Arr stack** and **Jellyfin**
 - Minecraft server hosting with [nix-minecraft](https://github.com/Infinidoge/nix-minecraft)
 - Document organization with **Paperless**
