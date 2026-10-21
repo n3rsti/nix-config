@@ -22,7 +22,7 @@
             defaultUser = "n3rsti";
             startMenuLaunchers = true;
             useWindowsDriver = true;
-            docker-desktop.enable = true;
+            docker-desktop.enable = false;
             # Temporary fix. Apparently only need install and mv. Should be fixed in the next release
             extraBin = with pkgs; [
               { src = "${coreutils}/bin/install"; }
@@ -67,7 +67,10 @@
             isNormalUser = true;
             description = "n3rsti";
             shell = pkgs.zsh;
-            extraGroups = [ "wheel" ];
+            extraGroups = [
+              "wheel"
+              "docker"
+            ];
           };
 
           networking.hostName = "wsl";
