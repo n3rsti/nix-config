@@ -185,9 +185,26 @@ cmdline.setup({
 	native_types = {},
 })
 
+local function project_file()
+	local file = vim.api.nvim_buf_get_name(0)
+	if file == "" then
+		return "[No Name]"
+	end
+
+	local root = vim.fs.root(0, { ".git", "lua", "package.json", "pyproject.toml" })
+	if root then
+		return vim.fs.relpath(root, file) or vim.fn.fnamemodify(file, ":t")
+	end
+
+	return vim.fn.fnamemodify(file, ":~:.")
+end
+
 require("lualine").setup({
 	options = {
 		icons_enabled = false,
+	},
+	sections = {
+		lualine_c = { project_file },
 	},
 })
 require("nvim-ts-autotag").setup({})
