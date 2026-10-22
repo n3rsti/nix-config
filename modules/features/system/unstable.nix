@@ -14,7 +14,7 @@
         };
         master = import inputs.nixpkgs_master {
           system = final.stdenv.hostPlatform.system;
-          config = final.config;
+          inherit (final) config;
         };
       })
     ];
