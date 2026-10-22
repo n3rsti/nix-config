@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs_unstable.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/0.1";
     nixpkgs.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-26.05-chilled/0.1";
+    nixpkgs_master.url = "github:NixOS/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
