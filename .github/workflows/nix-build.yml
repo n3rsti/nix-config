@@ -53,7 +53,8 @@ jobs:
           nix build \
             ".#nixosConfigurations.laptop.config.system.build.toplevel" \
             ".#nixosConfigurations.pc.config.system.build.toplevel" \
-            ".#nixosConfigurations.server.config.system.build.toplevel"
+            ".#nixosConfigurations.server.config.system.build.toplevel" \
+            ".#nixosConfigurations.optiplex.config.system.build.toplevel"
 
       - name: Push all hosts to Attic
         run: |
@@ -63,7 +64,8 @@ jobs:
             if attic push --jobs 4 personal:nixos \
               ./result \
               ./result-1 \
-              ./result-2; then
+              ./result-2 \
+              ./result-3; then
               exit 0
             fi
 
