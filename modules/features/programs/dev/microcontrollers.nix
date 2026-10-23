@@ -5,4 +5,10 @@
       stlink
     ];
   };
+  flake.nixosModules.microcontrollers = { pkgs, ... }: {
+    services.udev.packages = with pkgs; [
+      openocd
+      stlink
+    ];
+  };
 }

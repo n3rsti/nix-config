@@ -16,6 +16,7 @@
       self.nixosModules.rgb
       self.nixosModules.libvirt
       self.nixosModules.gnome
+      self.nixosModules.microcontrollers
       ./_hardware-configuration.nix
 
       (_: {
@@ -25,6 +26,7 @@
             imports = [
               self.homeModules.n3rsti
               self.homeModules.sops
+              self.homeModules.microcontrollers
             ];
 
             sops.secrets.id_pc = {
