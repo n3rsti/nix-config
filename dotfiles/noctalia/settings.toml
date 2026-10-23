@@ -100,6 +100,8 @@ auto_locate = true
 
 [lockscreen]
 fingerprint = false
+transition = [ "fade" ]
+transition_duration = 300
 
 [lockscreen_widgets]
 enabled = false
@@ -351,6 +353,7 @@ source = "custom"
 
 [wallpaper]
 directory = "/etc/nixos/dotfiles/wallpapers"
+transition = [ "fade" ]
 
     [wallpaper.default]
     path = "/etc/nixos/dotfiles/wallpapers/richard-horvath-_nWaeTF6qo0-unsplash.jpg"
