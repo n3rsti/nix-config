@@ -15,7 +15,7 @@
       self.nixosModules.intel
       self.nixosModules.backlight
       self.nixosModules.power-management
-      self.nixosModules.fingerprint
+      self.nixosModules.microcontrollers
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
       ./_hardware-configuration.nix
 
@@ -30,6 +30,7 @@
               imports = [
                 self.homeModules.n3rsti
                 self.homeModules.sops
+                self.homeModules.microcontrollers
               ];
 
               sops.secrets.id_laptop = {

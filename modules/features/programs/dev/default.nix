@@ -28,6 +28,9 @@
         bash-language-server # Bash lsp
         beautysh # Bash formatter
         leetcode-cli
+        vscodium-fhs
+        dbeaver-bin
+        bruno # Http / requests testing
       ];
     };
 }
