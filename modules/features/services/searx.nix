@@ -18,6 +18,16 @@
 
         settings = {
           general.enable_metrics = false;
+          ui = {
+            query_in_title = true;
+            infinite_scroll = true;
+          };
+          engines = [
+            {
+              name = "brave";
+              disabled = true;
+            }
+          ];
 
           server = {
             secret_key = "$SEARXNG_SECRET";
