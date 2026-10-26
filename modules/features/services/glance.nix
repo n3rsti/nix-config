@@ -180,6 +180,13 @@
                           icon = "sh:vaultwarden";
                         }
 
+                        {
+                          title = "Searxng";
+                          url = "https://searxng.tail3ce7af.ts.net/";
+                          check-url = "https://searxng.tail3ce7af.ts.net/";
+                          icon = "sh:searxng";
+                        }
+
                       ];
                     }
 

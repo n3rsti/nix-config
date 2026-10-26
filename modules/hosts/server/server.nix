@@ -19,6 +19,7 @@
       self.nixosModules.grafana
       self.nixosModules.pgsql-backup
       self.nixosModules.vaultwarden
+      self.nixosModules.searx
       ./_hardware-configuration.nix
 
       (

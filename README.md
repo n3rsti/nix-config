@@ -61,6 +61,7 @@ Configured as a 24/7 base for device integration and self-hosted services, inclu
 - Backups with **borgbackup**
 - Build caching with **Github Actions** and **Attic** for ultra fast rebuilds even on slower machines
 - Dashboard with **Glance**
+- Self-hosted metasearch engine - **SearXNG**
 
 #### Optiplex
 Dell Optiplex - 2nd server for other services such as:
