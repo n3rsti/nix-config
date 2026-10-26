@@ -21,5 +21,18 @@
       user_pref("services.sync.engine.prefs", true);
       user_pref("services.sync.prefs.sync.browser.uiCustomization.state", true);
     '';
+
+    search = {
+      engines.searxng = {
+        urls = [
+          {
+            template = "https://searxng.tail3ce7af.ts.net/search?q=%s";
+          }
+        ];
+      };
+
+      default = "searxng";
+      privateDefault = "searxng";
+    };
   };
 }
