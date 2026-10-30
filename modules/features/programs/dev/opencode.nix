@@ -7,11 +7,16 @@
         package = pkgs.unstable.opencode;
         enableMcpIntegration = true;
 
+        agents = {
+          caveman = ./agents/caveman.md;
+        };
+
         tui = {
           scroll_acceleration.enabled = true;
         };
 
         settings = {
+          default_agent = "caveman";
           provider.ollama = {
             npm = "@ai-sdk/openai-compatible";
             name = "Ollama Local";
@@ -82,7 +87,6 @@
           thunderbird = {
             command = "${pkgs.unstable.thunderbird-mcp}/bin/thunderbird-mcp";
           };
-
         };
       };
 
