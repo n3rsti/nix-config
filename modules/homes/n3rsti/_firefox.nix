@@ -12,6 +12,17 @@
   programs.firefox.profiles.default = {
     extensions.settings."FirefoxColor@mozilla.com".force = true;
     preConfig = builtins.readFile "${pkgs.unstable.arkenfox-userjs}/user.js";
+    search = {
+      engines.searxng = {
+        urls = [
+          {
+            template = "https://searxng.tail3ce7af.ts.net/search?q={searchTerms}";
+          }
+        ];
+      };
+      default = "searxng";
+      privateDefault = "searxng";
+    };
     extraConfig = ''
       user_pref("browser.startup.page", 1);
       user_pref("browser.startup.homepage", "https://glance.tail3ce7af.ts.net|https://github.com/n3rsti|https://mail.proton.me|https://chatgpt.com|https://ekursy.put.poznan.pl/");
@@ -21,5 +32,6 @@
       user_pref("services.sync.engine.prefs", true);
       user_pref("services.sync.prefs.sync.browser.uiCustomization.state", true);
     '';
+
   };
 }

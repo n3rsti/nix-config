@@ -37,6 +37,7 @@
         man-pages-posix
         file
         openssl
+        firejail
       ];
 
       programs = {
