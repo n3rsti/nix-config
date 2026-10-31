@@ -20,7 +20,6 @@
           general.enable_metrics = false;
           ui = {
             query_in_title = true;
-            infinite_scroll = true;
           };
           engines = [
             {
@@ -33,6 +32,7 @@
             secret_key = "$SEARXNG_SECRET";
             image_proxy = true;
           };
+          plugins."searx.plugins.infinite_scroll.SXNGPlugin".active = true;
         };
       };
 

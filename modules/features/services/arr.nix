@@ -2,6 +2,7 @@
   flake.nixosModules.arr =
     {
       pkgs,
+      lib,
       ...
     }:
     {
@@ -29,6 +30,18 @@
 
         seerr = {
           enable = true;
+        };
+
+        tdarr = {
+          enable = true;
+          group = "media";
+          package = pkgs.unstable.tdarr;
+          nodes.main = {
+            workers = {
+              transcodeCPU = 2;
+              transcodeGPU = 0;
+            };
+          };
         };
 
         qbittorrent = {
@@ -63,10 +76,15 @@
           qbittorrent.target = "http://127.0.0.1:8082";
           radarr.target = "http://127.0.0.1:7878";
           sonarr.target = "http://127.0.0.1:8989";
+          tdarr.target = "http://127.0.0.1:8265";
         };
       };
 
       systemd.services.qbittorrent.unitConfig.RequiresMountsFor = [ "/srv/media/torrents" ];
+
+      # Fix bazarr permissions
+      systemd.services.radarr.serviceConfig.UMask = lib.mkForce "0002";
+      systemd.services.sonarr.serviceConfig.UMask = lib.mkForce "0002";
 
     };
 
@@ -86,6 +104,8 @@
       tailscaleServe.apps = {
         prowlarr.target = "http://127.0.0.1:9696";
       };
+
     };
+
   };
 }
