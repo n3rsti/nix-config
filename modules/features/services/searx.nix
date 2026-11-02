@@ -20,6 +20,7 @@
           general.enable_metrics = false;
           ui = {
             query_in_title = true;
+            theme_args.simple_style = "dark";
           };
           engines = [
             {

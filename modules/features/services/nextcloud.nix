@@ -12,6 +12,7 @@
         enable = true;
         https = true;
         package = pkgs.nextcloud33;
+        phpPackage = pkgs.master.php84;
         hostName = "nextcloud.tail3ce7af.ts.net";
         database.createLocally = true;
         config.adminpassFile = "/run/secrets/nextcloud-admin-pass";
