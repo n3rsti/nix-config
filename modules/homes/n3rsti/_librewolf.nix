@@ -29,4 +29,15 @@ _: {
       "devtools.toolbox.host" = "right";
     };
   };
+
+  programs.librewolf.policies.ClearOnShutdown.Exceptions = [
+    "https://github.com"
+    "https://twitch.tv"
+    "https://steamcommunity.com"
+    "https://chatgpt.com"
+    "https://proton.me"
+    "https://protonmail.com"
+    "https://accounts.youtube.com"
+    "https://pathofexile.com"
+  ];
 }
