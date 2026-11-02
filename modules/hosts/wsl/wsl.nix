@@ -13,7 +13,6 @@
       self.nixosModules.base
       self.nixosModules.ssh-agent
       self.nixosModules.docker
-      self.nixosModules.comin
 
       (
         { pkgs, ... }:
