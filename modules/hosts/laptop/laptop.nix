@@ -16,7 +16,6 @@
       self.nixosModules.backlight
       self.nixosModules.power-management
       self.nixosModules.microcontrollers
-      self.nixosModules.comin
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t490
       ./_hardware-configuration.nix
 

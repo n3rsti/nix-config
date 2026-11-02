@@ -17,7 +17,6 @@
       self.nixosModules.libvirt
       self.nixosModules.gnome
       self.nixosModules.microcontrollers
-      self.nixosModules.comin
       ./_hardware-configuration.nix
 
       (_: {

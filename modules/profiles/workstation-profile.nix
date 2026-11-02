@@ -19,6 +19,7 @@
       self.nixosModules.noctalia
       self.nixosModules.binary-cache
       self.nixosModules.appimage
+      self.nixosModules.comin-desktop
     ];
 
     nixpkgs.config.android_sdk.accept_license = true;
