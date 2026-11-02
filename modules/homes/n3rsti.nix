@@ -4,6 +4,7 @@
     imports = [
       self.homeModules.workstation-profile
       ./n3rsti/_firefox.nix
+      ./n3rsti/_librewolf.nix
       ./n3rsti/_dotfiles.nix
       ./n3rsti/_email/protonmail.nix
       ./n3rsti/_email/zimbra.nix

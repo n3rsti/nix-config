@@ -103,6 +103,23 @@
           };
         };
 
+        librewolf = {
+          enable = true;
+          package = pkgs.unstable.librewolf;
+
+          profiles.default = {
+            isDefault = true;
+            search = {
+              default = lib.mkDefault "ddg";
+              privateDefault = lib.mkDefault "ddg";
+            };
+            extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+              bitwarden
+              sponsorblock
+            ];
+          };
+        };
+
         # Communication
         discord = {
           enable = true;
@@ -119,6 +136,8 @@
         cava.enable = true; # Audio visualizer
         gh.enable = true;
       };
+
+      home.sessionVariables.DO_NOT_TRACK = "true";
 
       xdg = {
         autostart = {
