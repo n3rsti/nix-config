@@ -13,6 +13,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -75,3 +77,7 @@ jobs:
 
             sleep 60
           done
+
+      - name: Promote built commit for deployment
+        if: github.ref == 'refs/heads/main'
+        run: git push origin HEAD:refs/heads/deploy
