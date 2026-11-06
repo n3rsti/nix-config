@@ -95,6 +95,8 @@
         ocrmypdf
         qpdf
         mupdf
+
+        unstable.opencode-desktop
       ];
     };
 }
