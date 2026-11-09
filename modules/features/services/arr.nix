@@ -33,7 +33,7 @@
         };
 
         tdarr = {
-          enable = true;
+          enable = false;
           group = "media";
           package = pkgs.tdarr;
           nodes.main = {
