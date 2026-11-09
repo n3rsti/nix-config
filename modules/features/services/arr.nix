@@ -32,18 +32,6 @@
           enable = true;
         };
 
-        tdarr = {
-          enable = false;
-          group = "media";
-          package = pkgs.tdarr;
-          nodes.main = {
-            workers = {
-              transcodeCPU = 2;
-              transcodeGPU = 0;
-            };
-          };
-        };
-
         qbittorrent = {
           enable = true;
           group = "media";
@@ -76,7 +64,6 @@
           qbittorrent.target = "http://127.0.0.1:8082";
           radarr.target = "http://127.0.0.1:7878";
           sonarr.target = "http://127.0.0.1:8989";
-          tdarr.target = "http://127.0.0.1:8265";
         };
       };
 
