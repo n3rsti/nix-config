@@ -35,7 +35,7 @@
         tdarr = {
           enable = true;
           group = "media";
-          package = pkgs.unstable.tdarr;
+          package = pkgs.tdarr;
           nodes.main = {
             workers = {
               transcodeCPU = 2;
