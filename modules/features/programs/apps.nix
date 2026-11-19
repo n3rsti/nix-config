@@ -22,7 +22,7 @@
         gnome-contacts
         gnome-music
         unstable.bitwarden-desktop
-        errands # Task manager
+        unstable.errands # Task manager
         gnome-calendar
         gnome-clocks
         gnome-weather # Weather app
