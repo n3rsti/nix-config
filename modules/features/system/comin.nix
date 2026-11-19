@@ -23,6 +23,6 @@
     ];
 
     services.comin.desktop.enable = true;
-    services.comin.deployConfirmer.mode = lib.mkDefault "manual";
+    services.comin.deployConfirmer.mode = lib.mkDefault "without";
   };
 }
