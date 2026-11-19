@@ -14,7 +14,6 @@ if: ${{ github.event.workflow_run.conclusion == 'failure' }}
 
 engine:
   id: copilot
-  model: gpt-6.1-terra
 
 permissions:
   actions: read
