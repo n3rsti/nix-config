@@ -28,7 +28,6 @@
         gnome-weather # Weather app
         gnome-maps
         gnome-calculator
-        unstable.brave-origin
 
         # Communication
         slack
