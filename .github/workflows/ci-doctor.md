@@ -14,6 +14,7 @@ if: ${{ github.event.workflow_run.conclusion == 'failure' }}
 
 engine:
   id: copilot
+  model: sonnet
 
 permissions:
   actions: read
