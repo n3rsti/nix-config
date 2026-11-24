@@ -15,6 +15,7 @@
       self.nixosModules.flaresolverr
       self.nixosModules.prowlarr
       self.nixosModules.server-profile
+      self.nixosModules.comin
       (
         { pkgs, ... }:
         {
