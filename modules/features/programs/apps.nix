@@ -28,11 +28,19 @@
         gnome-weather # Weather app
         gnome-maps
         gnome-calculator
+        unstable.organicmaps
 
         # Communication
         slack
         unstable.protonmail-desktop
-        unstable.signal-desktop
+        (symlinkJoin {
+          name = "signal-desktop-keyring";
+          paths = [ unstable.signal-desktop ];
+          nativeBuildInputs = [ makeWrapper ];
+          postBuild = ''
+            wrapProgram "$out/bin/signal-desktop" --add-flags "--password-store=gnome-libsecret"
+          '';
+        })
 
         # Documents
         gimp
