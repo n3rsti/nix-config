@@ -3,6 +3,7 @@
     home.packages = with pkgs; [
       arduino-ide
       stlink
+      dfu-util
     ];
   };
   flake.nixosModules.microcontrollers = { pkgs, ... }: {
